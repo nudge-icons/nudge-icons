@@ -122,8 +122,22 @@ Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 2
 
 React and Vue components and the `@nudge-icons/svg` files are generated from `icons/` by `pnpm build:icons` (also run by `typecheck`, `test` and `build`). They are git-ignored; change `icons/` or `scripts/build-icons.ts`, never the generated files. `pnpm build` also bundles a single icon from every package entry and fails if any other icon gets in, so keep generated calls marked `/* @__PURE__ */`.
 
+## Storybook and browser tests
+
+`apps/storybook` is an internal test bench, not the docs site. `pnpm storybook` opens it; it uses the React component source, so no package build is needed.
+
+- **Icons** has one story per icon: every variant and, for icons with a second state, `active`, at 16, 20, 24, 32 and 48 px, standing still. Chromatic snapshots these on every push and pull request, so a changed drawing shows up as a visual diff to review.
+- **Testing/Playground** is one live icon driven by args. It is not snapshotted; the Playwright tests in `apps/storybook/e2e` open it and measure CSS animations and transitions as the browser plays them: `hover` on every component (each icon in each variant), the blink and look of `eye`, `once`, `loop` and a number of loops, `false`, `active` in both directions for every component with a second state, `prefers-reduced-motion`, and that nothing stays attached after `once` (a finished animation holding its last frame makes Chrome draw the lines blurred).
+
+```bash
+pnpm build:storybook && pnpm e2e
+```
+
+The first run needs a browser: `pnpm --filter @nudge-icons/storybook exec playwright install chromium`.
+
 ## Before opening a pull request
 
 ```bash
 pnpm check:icons && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm format:check
+pnpm build:storybook && pnpm e2e
 ```

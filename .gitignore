@@ -19,3 +19,6 @@ packages/svg/icons.json
 CLAUDE.md
 docs/plan.md
 docs/interview.md
+apps/storybook/src/generated/
+apps/storybook/test-results/
+apps/storybook/playwright-report/

@@ -15,7 +15,10 @@
     "test": "pnpm build:icons && vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "build": "pnpm build:icons && pnpm -r build && tsx scripts/check-treeshake.ts"
+    "build": "pnpm build:icons && pnpm --filter './packages/*' build && tsx scripts/check-treeshake.ts",
+    "storybook": "pnpm build:icons && pnpm --filter @nudge-icons/storybook dev",
+    "build:storybook": "pnpm build:icons && pnpm --filter @nudge-icons/storybook build",
+    "e2e": "pnpm --filter @nudge-icons/storybook e2e"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
