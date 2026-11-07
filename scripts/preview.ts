@@ -81,7 +81,9 @@ function card(name: string): string {
         parseSvgTree(readFileSync(file, "utf8")),
         new Set(drawnParts(motion, toggle?.motion ?? [])),
       );
-      const svg = `${rootTag.replace(">", ` class="nudge-icon nudge-${id}" data-animate="hover"${state ? " data-active" : ""}>`)}${body}</svg>`;
+      // Like the components: icons with a second state have no hover motion by default.
+      const animate = meta.toggle ? "" : ' data-animate="hover"';
+      const svg = `${rootTag.replace(">", ` class="nudge-icon nudge-${id}"${animate}${state ? " data-active" : ""}>`)}${body}</svg>`;
       const sized = (px: number) =>
         svg.replace('width="24" height="24"', `width="${px}" height="${px}"`);
       const label = [variant, state].filter(Boolean).join(" · ");
@@ -102,8 +104,11 @@ function card(name: string): string {
   const own = meta.filled?.animation;
   const filledNote = own ? ` · filled ${escape(own.name)}: ${escape(own.description)}` : "";
   const moves = meta.animation.motion ? "" : ` <small class="todo">no motion yet</small>`;
-  return `<section class="nudge-trigger${meta.animation.motion ? "" : " still"}">
-    <h2>${name} <small>${meta.category}</small>${moves}</h2>
+  const toggleHint = meta.toggle
+    ? ` <small class="toggle-hint">click a row to toggle active</small>`
+    : "";
+  return `<section class="nudge-trigger${meta.animation.motion ? "" : " still"}${meta.toggle ? " has-toggle" : ""}">
+    <h2>${name} <small>${meta.category}</small>${moves}${toggleHint}</h2>
     <p>${escape(meta.animation.name)}: ${escape(meta.animation.description)}${toggle}${filledNote}</p>
     ${rows}
   </section>`;
@@ -136,6 +141,8 @@ const html = `<!doctype html>
   .dark { background: #18181b; color: #f4f4f5; }
   .state { color: #888; font-size: 12px; }
   .todo { color: #c60; }
+  .has-toggle .row { cursor: pointer; }
+  .toggle-hint { color: #06c; }
   body.only-moving .still { display: none; }
   .modes { position: sticky; top: 0; z-index: 1; display: flex; gap: 8px; align-items: center;
     padding: 8px 0; background: #f6f6f4; }
@@ -151,6 +158,7 @@ const html = `<!doctype html>
   <button data-mode="once">once (replay)</button>
   <button data-mode="3">3×</button>
   <button data-mode="false">off</button>
+  <button id="toggle-all">toggle active</button>
   <label><input type="checkbox" id="only-moving"> only icons with motion</label>
 </div>
 <main>
@@ -160,6 +168,18 @@ ${ordered.map(card).join("\n")}
 <script>
   // Dotted frame: stroke edge (1–23). Dashed frame: safe area for points (2–22).
   // Below each zoomed icon: centre of the drawn shape, red when it is off by more than 0.25.
+  // Clicking a row of a card with a second state flips that row, like the active prop:
+  // a row without the second state turns it on, a row with it turns it off.
+  const flip = (row) => {
+    const on = !row.querySelector(".nudge-icon").hasAttribute("data-active");
+    for (const icon of row.querySelectorAll(".nudge-icon")) icon.toggleAttribute("data-active", on);
+  };
+  for (const row of document.querySelectorAll(".has-toggle .row")) {
+    row.addEventListener("click", () => flip(row));
+  }
+  document.getElementById("toggle-all").addEventListener("click", () => {
+    for (const row of document.querySelectorAll(".has-toggle .row")) flip(row);
+  });
   document.getElementById("only-moving").addEventListener("change", (e) => {
     document.body.classList.toggle("only-moving", e.target.checked);
   });
@@ -177,6 +197,8 @@ ${ordered.map(card).join("\n")}
       requestAnimationFrame(() => {
         for (const icon of icons) {
           if (mode === "false") continue;
+          // Default mode: icons with a second state keep no hover motion, as in the components.
+          if (mode === "hover" && icon.closest(".has-toggle")) continue;
           icon.setAttribute("data-animate", times > 0 ? "loop" : mode);
           if (times > 0) icon.style.setProperty("--nudge-repeat", String(times));
         }

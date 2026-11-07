@@ -46,6 +46,7 @@ export type ToggleMotion = { part: string; morph?: string } & (
   | { preset: "draw" }
   | { preset: "move"; x?: number; y?: number; angle?: number; origin?: Point }
   | { preset: "trim"; length: number; offset: number }
+  | { preset: "bump"; x?: number; y?: number }
 );
 export type TogglePreset = ToggleMotion["preset"];
 
@@ -309,7 +310,7 @@ function frameBlock(name: string, frames: Record<number, string>) {
   return `@keyframes ${name}{${steps.join("")}}`;
 }
 
-export const TOGGLE_PRESETS: TogglePreset[] = ["hide", "draw", "move", "trim"];
+export const TOGGLE_PRESETS: TogglePreset[] = ["hide", "draw", "move", "trim", "bump"];
 
 /** Parts drawn with stroke dashes; they need pathLength="1" on their shapes. */
 export const drawnParts = (motion: readonly Motion[] = [], toggle: readonly ToggleMotion[] = []) =>
@@ -386,6 +387,22 @@ export function iconCss(
     if (t.preset === "trim") {
       rest = `stroke-dasharray:${t.length}`;
       active = `stroke-dashoffset:${t.offset}`;
+    }
+    if (t.preset === "bump") {
+      // A one-off push when the icon becomes active: an animation applied by
+      // [data-active] plays once as the attribute appears. It comes after the shared base
+      // (which stops motion on active icons), so it wins at equal zero specificity.
+      const name = `nudge-${id}-${t.part}-on`;
+      const bounce = SPECS.bounce.frames({
+        part: t.part,
+        preset: "bounce",
+        x: t.x ?? 0,
+        y: t.y ?? 0,
+      });
+      rules.push(
+        `@media (prefers-reduced-motion:no-preference){${frameBlock(name, bounce)}:where(${icon}[data-active] ${part}){animation:${name} .5s ease-out backwards}}`,
+      );
+      continue;
     }
     if (t.morph) active = [active, `d:path("${t.morph}")`].filter(Boolean).join(";");
     if (rest) rules.push(`:where(${icon} ${part}){${rest}}`);

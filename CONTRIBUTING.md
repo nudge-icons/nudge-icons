@@ -69,14 +69,15 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 
   `parts` lists what changes between the states, and `motion` (required) says how, as a CSS transition:
 
-  | Preset | Parameters                  | Active state                                                          |
-  | ------ | --------------------------- | --------------------------------------------------------------------- |
-  | `hide` | —                           | the part fades out (the middle line of `menu`)                        |
-  | `draw` | —                           | the part draws in (the slash of `eye`); use it for `activeOnly` parts |
-  | `move` | `x`, `y`, `angle`, `origin` | the part moves and turns (the lines of `menu` fold into a cross)      |
-  | `trim` | `length`, `offset`          | the stroke is cut short (the shackle of `lock` opens)                 |
+  | Preset | Parameters                  | Active state                                                                                        |
+  | ------ | --------------------------- | --------------------------------------------------------------------------------------------------- |
+  | `hide` | —                           | the part fades out (the middle line of `menu`)                                                      |
+  | `draw` | —                           | the part draws in (the slash of `eye`); use it for `activeOnly` parts                               |
+  | `move` | `x`, `y`, `angle`, `origin` | the part moves and turns (the lines of `menu` fold into a cross)                                    |
+  | `trim` | `length`, `offset`          | the stroke is cut short (the shackle of `lock` opens)                                               |
+  | `bump` | `x`, `y`                    | a one-off jolt as the icon becomes active (the front sheet of `copy`); skipped under reduced motion |
 
-  Any toggle motion may add `morph`: the part's path in the active state, for example the lifted shackle of `lock`. It must use the same commands as the source path (so browsers interpolate it), stay on the grid and inside the safe area, and only add to what the preset already shows: Safari ignores the CSS `d` property, so there the preset alone has to read correctly. Transitions run even with `animate={false}`, take `--nudge-toggle-duration` (300ms by default), are instant under reduced motion, and an active icon does not play its motion. `activeOnly` lists parts drawn only in the active state: they are hidden by default, dropped from the `/static` entry, and must not be moved by `animation`.
+  Any toggle motion may add `morph`: the part's path in the active state, for example the lifted shackle of `lock`. It must use the same commands as the source path (so browsers interpolate it), stay on the grid and inside the safe area, and only add to what the preset already shows: Safari ignores the CSS `d` property, so there the preset alone has to read correctly. Transitions run even with `animate={false}`, take `--nudge-toggle-duration` (300ms by default), are instant under reduced motion, and an active icon does not play its motion. Icons with a toggle default to `animate={false}`: otherwise their hover motion would start the moment `active` turns off under the pointer and fight the transition back. `activeOnly` lists parts drawn only in the active state: they are hidden by default, dropped from the `/static` entry, and must not be moved by `animation`.
 
 - `filled` (and `half`) is required when `icons/filled/<name>.svg` (or `icons/half/<name>.svg`) exists. It may override `animation` when the filled drawing cannot play the outline one, for example when the animated detail is a hole:
 

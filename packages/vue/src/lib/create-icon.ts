@@ -20,6 +20,9 @@ const iconProps = {
 
 const toggleProps = {
   ...iconProps,
+  // No hover motion by default: the toggle is the animation, and a hover motion would
+  // start right when `active` turns off and fight the transition back.
+  animate: { type: [String, Boolean, Number] as PropType<Animate>, default: false },
   /** Shows the second drawing, for example `Menu` turns into a cross. */
   active: { type: Boolean, default: false },
 };

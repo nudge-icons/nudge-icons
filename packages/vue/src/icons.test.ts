@@ -77,6 +77,11 @@ describe("animate and active", () => {
     expect(mount(Bell, { props: { animate: 0 } }).attributes("data-animate")).toBeUndefined();
   });
 
+  it("does not move icons with a second state on hover by default", () => {
+    expect(mount(Menu).attributes("data-animate")).toBeUndefined();
+    expect(mount(Menu, { props: { animate: "hover" } }).attributes("data-animate")).toBe("hover");
+  });
+
   it("marks the second state with data-active", () => {
     expect(mount(Menu).attributes("data-active")).toBeUndefined();
     expect(mount(Menu, { props: { active: true } }).attributes("data-active")).toBe("");

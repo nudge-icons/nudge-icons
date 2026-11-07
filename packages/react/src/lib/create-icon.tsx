@@ -2,6 +2,7 @@ import type { CSSProperties, Ref } from "react";
 import { BASE_CSS } from "../generated/base-css";
 import { renderNode, renderSvg } from "./render-svg";
 import type {
+  Animate,
   Component,
   IconComponent,
   IconNode,
@@ -15,12 +16,15 @@ function make<P extends IconProps>(
   displayName: string,
   node: IconNode,
   css: string,
+  // Icons with a second state do not move on hover by default: their animation is the
+  // toggle, and a hover motion would start right when `active` turns off and fight it.
+  defaultAnimate: Animate = "hover",
 ): Component<P> {
   const children = renderNode(node);
   const icon: Component<P> = (props) => {
     const {
       ref,
-      animate = "hover",
+      animate = defaultAnimate,
       active,
       style,
       ...rest
@@ -69,4 +73,4 @@ export const createToggleIcon = (
   displayName: string,
   node: IconNode,
   css = "",
-): ToggleIconComponent => make<ToggleIconProps>(name, displayName, node, css);
+): ToggleIconComponent => make<ToggleIconProps>(name, displayName, node, css, false);

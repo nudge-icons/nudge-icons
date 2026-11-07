@@ -127,6 +127,16 @@ describe("iconCss", () => {
     );
   });
 
+  it("plays a bump once when the icon becomes active, except with reduced motion", () => {
+    const css = iconCss("copy", [], [], [{ part: "front", preset: "bump", x: -1, y: -1 }]);
+    expect(css).toMatch(
+      /^@media \(prefers-reduced-motion:no-preference\)\{@keyframes nudge-copy-front-on\{/,
+    );
+    expect(css).toContain(
+      ':where(.nudge-copy[data-active] [data-part="front"]){animation:nudge-copy-front-on .5s ease-out backwards}',
+    );
+  });
+
   it("returns nothing for an icon without motion or toggle", () => {
     expect(iconCss("plain")).toBe("");
   });

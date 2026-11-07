@@ -100,6 +100,12 @@ describe("animate and active", () => {
     expect(svgOf(render(<Bell animate={0} />).container).dataset.animate).toBeUndefined();
   });
 
+  it("does not move icons with a second state on hover by default", () => {
+    expect(svgOf(render(<Menu />).container).dataset.animate).toBeUndefined();
+    cleanup();
+    expect(svgOf(render(<Menu animate="hover" />).container).dataset.animate).toBe("hover");
+  });
+
   it("marks the second state with data-active", () => {
     expect(svgOf(render(<Menu />).container).dataset.active).toBeUndefined();
     cleanup();

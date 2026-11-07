@@ -23,13 +23,19 @@
     ]
   },
   "toggle": {
-    "description": "A tick draws inside the front sheet",
-    "parts": ["check"],
+    "description": "A tick draws inside the front sheet, which gives a short jolt",
+    "parts": ["check", "front"],
     "activeOnly": ["check"],
     "motion": [
       {
         "part": "check",
         "preset": "draw"
+      },
+      {
+        "part": "front",
+        "preset": "bump",
+        "x": -1.5,
+        "y": -1.5
       }
     ]
   }

@@ -28,7 +28,7 @@ export interface StaticIconProps extends Omit<
 }
 
 export interface IconProps extends StaticIconProps {
-  /** Default `"hover"`. */
+  /** Default `"hover"`; `false` for icons with a second state (`Menu`, `Copy`, `Eye`, `Lock`). */
   animate?: Animate;
 }
 
