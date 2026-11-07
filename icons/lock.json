@@ -10,5 +10,6 @@
   "toggle": {
     "description": "The shackle's right leg releases and the lock opens",
     "parts": ["shackle"]
-  }
+  },
+  "filled": {}
 }

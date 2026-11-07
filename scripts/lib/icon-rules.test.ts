@@ -30,6 +30,16 @@ describe("pathPoints", () => {
   });
 });
 
+describe("pathPoints with extremes", () => {
+  it("adds the lowest point of an arc between its end points", () => {
+    expect(pathPoints("M10 20a2 2 0 0 0 4 0", true)).toContainEqual([12, 22]);
+  });
+
+  it("adds control points of curves", () => {
+    expect(pathPoints("M4 12c0 6 8 8 8 8", true)).toContainEqual([4, 18]);
+  });
+});
+
 describe("checkIcon", () => {
   it("accepts a valid icon", () => {
     expect(
@@ -50,6 +60,11 @@ describe("checkIcon", () => {
   it("rejects shapes outside the safe area", () => {
     const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="11"/>'), meta());
     expect(errors.some((e) => e.includes("outside the 2–22 safe area"))).toBe(true);
+  });
+
+  it("rejects an arc that bulges out of the safe area", () => {
+    const errors = checkIcon("dot", svg('<path d="M10 20.5a2 2 0 0 0 4 0"/>'), meta());
+    expect(errors).toContain("<path> point (12, 22.5) is outside the 2–22 safe area");
   });
 
   it("rejects a wrong root stroke width", () => {
@@ -102,5 +117,43 @@ describe("checkIcon", () => {
       toggle: { description: "Hides", parts: ["slash"], activeOnly: ["slash"] },
     });
     expect(errors).toContain('animation must not move the active-only part "slash"');
+  });
+
+  it("accepts fill on children of a filled icon", () => {
+    const errors = checkIcon(
+      "dot",
+      svg('<circle data-part="core" fill="currentColor" cx="12" cy="12" r="4"/>'),
+      { ...meta(["core"]), filled: {} },
+      "filled",
+    );
+    expect(errors).toEqual([]);
+  });
+
+  it("rejects fill on children of an outline icon", () => {
+    const errors = checkIcon(
+      "dot",
+      svg('<circle fill="currentColor" cx="12" cy="12" r="4"/>'),
+      meta(),
+    );
+    expect(errors).toContain('<circle> must not have "fill": paint and stroke come from the root');
+  });
+
+  it("requires a filled icon to fill something and to be declared in metadata", () => {
+    const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), meta(), "filled");
+    expect(errors).toContain('filled icon needs at least one element with fill="currentColor"');
+    expect(errors).toContain("metadata needs a filled block when icons/filled/<name>.svg exists");
+  });
+
+  it("checks parts against the filled animation override", () => {
+    const errors = checkIcon(
+      "dot",
+      svg('<circle data-part="badge" fill="currentColor" cx="12" cy="12" r="4"/>'),
+      {
+        ...meta(["core"]),
+        filled: { animation: { name: "pop", description: "Pops", parts: ["badge"] } },
+      },
+      "filled",
+    );
+    expect(errors).toEqual([]);
   });
 });

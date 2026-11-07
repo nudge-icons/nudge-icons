@@ -11,5 +11,6 @@
     "description": "A slash draws across the eye to hide it",
     "parts": ["slash"],
     "activeOnly": ["slash"]
-  }
+  },
+  "filled": {}
 }

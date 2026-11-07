@@ -6,5 +6,6 @@
     "name": "turn",
     "description": "The gear turns by one tooth",
     "parts": ["gear"]
-  }
+  },
+  "filled": {}
 }

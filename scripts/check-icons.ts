@@ -1,31 +1,58 @@
-// Checks every icon in icons/ against the drawing rules. Exits with 1 on any violation.
-import { readdirSync, readFileSync } from "node:fs";
+// Checks every icon in icons/ and icons/<variant>/ against the drawing rules.
+// Exits with 1 on any violation.
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { checkIcon } from "./lib/icon-rules.ts";
+import { checkIcon, PAINTED_VARIANTS, type Variant } from "./lib/icon-rules.ts";
 
 const dir = join(import.meta.dirname, "..", "icons");
-const names = readdirSync(dir)
-  .filter((f) => f.endsWith(".svg"))
-  .map((f) => f.slice(0, -4))
-  .sort();
+const svgNames = (d: string) =>
+  existsSync(d)
+    ? readdirSync(d)
+        .filter((f) => f.endsWith(".svg"))
+        .map((f) => f.slice(0, -4))
+        .sort()
+    : [];
 
-let failed = 0;
-for (const name of names) {
-  let meta: unknown = null;
+function readMeta(name: string): unknown {
   try {
-    meta = JSON.parse(readFileSync(join(dir, `${name}.json`), "utf8"));
+    return JSON.parse(readFileSync(join(dir, `${name}.json`), "utf8"));
   } catch {
-    // Reported by checkIcon as missing metadata.
-  }
-  const errors = checkIcon(name, readFileSync(join(dir, `${name}.svg`), "utf8"), meta);
-  if (errors.length) {
-    failed++;
-    console.log(`✗ ${name}`);
-    for (const e of errors) console.log(`    ${e}`);
-  } else {
-    console.log(`✓ ${name}`);
+    return null; // Reported by checkIcon as missing metadata.
   }
 }
 
-console.log(`\n${names.length - failed}/${names.length} icons pass`);
+const jobs: Array<{ name: string; variant: Variant; label: string; extra: string[] }> = [];
+for (const name of svgNames(dir)) {
+  const meta = readMeta(name) as Record<string, unknown> | null;
+  const extra = PAINTED_VARIANTS.filter(
+    (v) => meta?.[v] !== undefined && !existsSync(join(dir, v, `${name}.svg`)),
+  ).map((v) => `metadata has a ${v} block but icons/${v}/<name>.svg is missing`);
+  jobs.push({ name, variant: "outline", label: name, extra });
+}
+for (const variant of PAINTED_VARIANTS) {
+  for (const name of svgNames(join(dir, variant))) {
+    const extra = existsSync(join(dir, `${name}.svg`))
+      ? []
+      : [`${variant} icon has no outline icon with the same name`];
+    jobs.push({ name, variant, label: `${variant}/${name}`, extra });
+  }
+}
+
+let failed = 0;
+for (const { name, variant, label, extra } of jobs) {
+  const file = join(variant === "outline" ? dir : join(dir, variant), `${name}.svg`);
+  const errors = [
+    ...extra,
+    ...checkIcon(name, readFileSync(file, "utf8"), readMeta(name), variant),
+  ];
+  if (errors.length) {
+    failed++;
+    console.log(`✗ ${label}`);
+    for (const e of errors) console.log(`    ${e}`);
+  } else {
+    console.log(`✓ ${label}`);
+  }
+}
+
+console.log(`\n${jobs.length - failed}/${jobs.length} icons pass`);
 if (failed) process.exitCode = 1;

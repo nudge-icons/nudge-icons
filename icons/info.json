@@ -6,5 +6,12 @@
     "name": "bounce",
     "description": "The dot hops above the stem",
     "parts": ["dot"]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"]
+    }
   }
 }

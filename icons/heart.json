@@ -1,6 +1,12 @@
 {
   "name": "heart",
   "category": "status",
-  "tags": ["like", "favorite", "love", "health"],
-  "animation": { "name": "beat", "description": "The heart beats twice", "parts": ["shape"] }
+  "tags": ["like", "favorite", "love", "health", "rating"],
+  "animation": {
+    "name": "beat",
+    "description": "The heart beats twice",
+    "parts": ["shape"]
+  },
+  "filled": {},
+  "half": {}
 }

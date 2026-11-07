@@ -6,5 +6,6 @@
     "name": "shake",
     "description": "The sign shakes side to side",
     "parts": ["sign"]
-  }
+  },
+  "filled": {}
 }
