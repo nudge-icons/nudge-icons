@@ -1,0 +1,17 @@
+{
+  "name": "circle",
+  "category": "interface",
+  "tags": ["dot", "radio", "shape", "indicator"],
+  "equivalents": {
+    "lucide": ["circle"],
+    "tabler": ["circle"],
+    "phosphor": ["circle"],
+    "material": ["circle"]
+  },
+  "animation": {
+    "name": "pulse",
+    "description": "The circle pulses once",
+    "parts": ["shape"]
+  },
+  "filled": {}
+}

@@ -1,0 +1,17 @@
+{
+  "name": "camera",
+  "category": "objects",
+  "tags": ["photo", "picture", "capture", "snapshot"],
+  "equivalents": {
+    "lucide": ["camera"],
+    "heroicons": ["camera"],
+    "tabler": ["camera"],
+    "phosphor": ["camera"],
+    "material": ["photo_camera"]
+  },
+  "animation": {
+    "name": "snap",
+    "description": "The lens closes and opens like a shutter",
+    "parts": ["lens"]
+  }
+}

@@ -2,6 +2,13 @@
   "name": "check",
   "category": "actions",
   "tags": ["done", "confirm", "success", "tick"],
+  "equivalents": {
+    "lucide": ["check"],
+    "heroicons": ["check"],
+    "tabler": ["check"],
+    "phosphor": ["check"],
+    "material": ["check"]
+  },
   "animation": {
     "name": "draw",
     "description": "The tick draws itself from left to right",

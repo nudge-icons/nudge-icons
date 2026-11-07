@@ -1,0 +1,17 @@
+{
+  "name": "chart",
+  "category": "interface",
+  "tags": ["analytics", "statistics", "bars", "report"],
+  "equivalents": {
+    "lucide": ["chart-column", "bar-chart-3"],
+    "heroicons": ["chart-bar"],
+    "tabler": ["chart-bar"],
+    "phosphor": ["chart-bar"],
+    "material": ["bar_chart"]
+  },
+  "animation": {
+    "name": "grow",
+    "description": "The bars grow up from the axis",
+    "parts": ["bars"]
+  }
+}

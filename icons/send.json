@@ -2,6 +2,13 @@
   "name": "send",
   "category": "status",
   "tags": ["message", "paper-plane", "submit", "share"],
+  "equivalents": {
+    "lucide": ["send"],
+    "heroicons": ["paper-airplane"],
+    "tabler": ["send"],
+    "phosphor": ["paper-plane-tilt"],
+    "material": ["send"]
+  },
   "animation": {
     "name": "fly",
     "description": "The plane flies off to the top right and comes back",

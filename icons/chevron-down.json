@@ -2,6 +2,13 @@
   "name": "chevron-down",
   "category": "interface",
   "tags": ["expand", "dropdown", "open", "caret"],
+  "equivalents": {
+    "lucide": ["chevron-down"],
+    "heroicons": ["chevron-down"],
+    "tabler": ["chevron-down"],
+    "phosphor": ["caret-down"],
+    "material": ["keyboard_arrow_down"]
+  },
   "animation": {
     "name": "nudge",
     "description": "The chevron nudges down and back",

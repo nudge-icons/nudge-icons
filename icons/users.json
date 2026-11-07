@@ -1,0 +1,17 @@
+{
+  "name": "users",
+  "category": "objects",
+  "tags": ["people", "team", "group", "members"],
+  "equivalents": {
+    "lucide": ["users-round"],
+    "heroicons": ["users"],
+    "tabler": ["users"],
+    "phosphor": ["users"],
+    "material": ["group"]
+  },
+  "animation": {
+    "name": "nod",
+    "description": "The front person nods, then the one behind",
+    "parts": ["front", "back"]
+  }
+}

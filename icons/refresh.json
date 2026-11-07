@@ -2,6 +2,13 @@
   "name": "refresh",
   "category": "actions",
   "tags": ["reload", "sync", "update", "retry"],
+  "equivalents": {
+    "lucide": ["refresh-cw"],
+    "heroicons": ["arrow-path"],
+    "tabler": ["refresh"],
+    "phosphor": ["arrows-clockwise"],
+    "material": ["refresh"]
+  },
   "animation": {
     "name": "spin",
     "description": "The arrows make one full turn",

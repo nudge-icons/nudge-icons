@@ -2,6 +2,13 @@
   "name": "download",
   "category": "actions",
   "tags": ["save", "export", "file", "arrow-down"],
+  "equivalents": {
+    "lucide": ["download"],
+    "heroicons": ["arrow-down-tray"],
+    "tabler": ["download"],
+    "phosphor": ["download-simple"],
+    "material": ["download"]
+  },
   "animation": {
     "name": "drop",
     "description": "The arrow drops into the tray and returns",

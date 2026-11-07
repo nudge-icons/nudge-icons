@@ -81,6 +81,27 @@ describe("checkIcon", () => {
     expect(errors).toContain('animation part "core" has no element with data-part="core"');
   });
 
+  it("accepts equivalents in known icon sets", () => {
+    const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
+      ...meta(),
+      equivalents: { lucide: ["circle-dot"], material: ["radio_button_checked"] },
+    });
+    expect(errors).toEqual([]);
+  });
+
+  it("rejects equivalents in unknown sets or with bad ids", () => {
+    const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
+      ...meta(),
+      equivalents: { feather: ["circle"], lucide: ["CircleDot"] },
+    });
+    expect(errors).toContain(
+      'equivalents set "feather" is not one of lucide, heroicons, tabler, phosphor, material',
+    );
+    expect(errors).toContain(
+      'equivalents.lucide must be a non-empty list of icon ids like "triangle-alert"',
+    );
+  });
+
   it("requires metadata to match the file name", () => {
     const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
       ...meta(),

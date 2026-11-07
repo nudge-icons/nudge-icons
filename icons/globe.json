@@ -1,0 +1,17 @@
+{
+  "name": "globe",
+  "category": "objects",
+  "tags": ["world", "web", "language", "internet"],
+  "equivalents": {
+    "lucide": ["globe"],
+    "heroicons": ["globe-alt"],
+    "tabler": ["world"],
+    "phosphor": ["globe"],
+    "material": ["public"]
+  },
+  "animation": {
+    "name": "spin",
+    "description": "The meridian sweeps across as the globe turns",
+    "parts": ["meridian"]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "credit-card",
+  "category": "objects",
+  "tags": ["payment", "billing", "card", "purchase"],
+  "equivalents": {
+    "lucide": ["credit-card"],
+    "heroicons": ["credit-card"],
+    "tabler": ["credit-card"],
+    "phosphor": ["credit-card"],
+    "material": ["credit_card"]
+  },
+  "animation": {
+    "name": "swipe",
+    "description": "The card swipes to the side and back",
+    "parts": ["card"]
+  }
+}

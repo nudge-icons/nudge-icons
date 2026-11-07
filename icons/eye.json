@@ -2,6 +2,13 @@
   "name": "eye",
   "category": "status",
   "tags": ["view", "show", "visible", "preview"],
+  "equivalents": {
+    "lucide": ["eye"],
+    "heroicons": ["eye"],
+    "tabler": ["eye"],
+    "phosphor": ["eye"],
+    "material": ["visibility"]
+  },
   "animation": {
     "name": "blink",
     "description": "The eye blinks",

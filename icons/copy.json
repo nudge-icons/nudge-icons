@@ -2,6 +2,13 @@
   "name": "copy",
   "category": "actions",
   "tags": ["duplicate", "clipboard", "paste", "clone"],
+  "equivalents": {
+    "lucide": ["copy"],
+    "heroicons": ["document-duplicate"],
+    "tabler": ["copy"],
+    "phosphor": ["copy"],
+    "material": ["content_copy"]
+  },
   "animation": {
     "name": "stack",
     "description": "The front sheet slides onto the back one and returns",

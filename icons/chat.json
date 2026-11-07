@@ -1,0 +1,17 @@
+{
+  "name": "chat",
+  "category": "objects",
+  "tags": ["message", "conversation", "talk", "support"],
+  "equivalents": {
+    "lucide": ["message-square"],
+    "heroicons": ["chat-bubble-left"],
+    "tabler": ["message"],
+    "phosphor": ["chat"],
+    "material": ["chat"]
+  },
+  "animation": {
+    "name": "pop",
+    "description": "The bubble pops up from its tail",
+    "parts": ["bubble"]
+  }
+}

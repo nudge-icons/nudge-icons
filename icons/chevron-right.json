@@ -1,0 +1,17 @@
+{
+  "name": "chevron-right",
+  "category": "interface",
+  "tags": ["next", "forward", "expand", "caret"],
+  "equivalents": {
+    "lucide": ["chevron-right"],
+    "heroicons": ["chevron-right"],
+    "tabler": ["chevron-right"],
+    "phosphor": ["caret-right"],
+    "material": ["chevron_right"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The chevron nudges right and back",
+    "parts": ["chevron"]
+  }
+}

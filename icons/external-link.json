@@ -2,6 +2,13 @@
   "name": "external-link",
   "category": "interface",
   "tags": ["open", "new-tab", "outside", "link"],
+  "equivalents": {
+    "lucide": ["external-link"],
+    "heroicons": ["arrow-top-right-on-square"],
+    "tabler": ["external-link"],
+    "phosphor": ["arrow-square-out"],
+    "material": ["open_in_new"]
+  },
   "animation": {
     "name": "escape",
     "description": "The arrow slips out of the frame and returns",

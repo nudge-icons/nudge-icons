@@ -1,0 +1,17 @@
+{
+  "name": "user",
+  "category": "objects",
+  "tags": ["person", "profile", "account", "avatar"],
+  "equivalents": {
+    "lucide": ["user-round"],
+    "heroicons": ["user"],
+    "tabler": ["user"],
+    "phosphor": ["user"],
+    "material": ["person"]
+  },
+  "animation": {
+    "name": "nod",
+    "description": "The head nods",
+    "parts": ["head"]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "plug",
+  "category": "objects",
+  "tags": ["integration", "connect", "power", "plugin"],
+  "equivalents": {
+    "lucide": ["plug"],
+    "tabler": ["plug"],
+    "phosphor": ["plug"],
+    "material": ["power"]
+  },
+  "animation": {
+    "name": "connect",
+    "description": "The plug pushes up and settles",
+    "parts": ["plug"]
+  }
+}

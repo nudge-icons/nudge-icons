@@ -1,0 +1,17 @@
+{
+  "name": "shield",
+  "category": "status",
+  "tags": ["security", "protection", "safe", "privacy"],
+  "equivalents": {
+    "lucide": ["shield"],
+    "tabler": ["shield"],
+    "phosphor": ["shield"],
+    "material": ["shield"]
+  },
+  "animation": {
+    "name": "guard",
+    "description": "The shield pulses once",
+    "parts": ["shield"]
+  },
+  "filled": {}
+}

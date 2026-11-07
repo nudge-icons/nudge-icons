@@ -1,0 +1,17 @@
+{
+  "name": "comment",
+  "category": "objects",
+  "tags": ["message", "reply", "speech", "feedback"],
+  "equivalents": {
+    "lucide": ["message-circle"],
+    "heroicons": ["chat-bubble-oval-left"],
+    "tabler": ["message-circle"],
+    "phosphor": ["chat-circle"],
+    "material": ["mode_comment"]
+  },
+  "animation": {
+    "name": "pop",
+    "description": "The bubble pops up from its tail",
+    "parts": ["bubble"]
+  }
+}

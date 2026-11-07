@@ -2,6 +2,13 @@
   "name": "upload",
   "category": "actions",
   "tags": ["import", "send", "file", "arrow-up"],
+  "equivalents": {
+    "lucide": ["upload"],
+    "heroicons": ["arrow-up-tray"],
+    "tabler": ["upload"],
+    "phosphor": ["upload-simple"],
+    "material": ["upload"]
+  },
   "animation": {
     "name": "lift",
     "description": "The arrow lifts out of the tray and returns",

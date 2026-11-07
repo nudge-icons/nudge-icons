@@ -2,6 +2,13 @@
   "name": "arrow-right",
   "category": "interface",
   "tags": ["next", "forward", "continue", "go"],
+  "equivalents": {
+    "lucide": ["arrow-right"],
+    "heroicons": ["arrow-right"],
+    "tabler": ["arrow-right"],
+    "phosphor": ["arrow-right"],
+    "material": ["arrow_forward"]
+  },
   "animation": {
     "name": "nudge",
     "description": "The arrow nudges right and back",

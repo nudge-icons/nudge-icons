@@ -2,6 +2,13 @@
   "name": "star",
   "category": "status",
   "tags": ["favorite", "rating", "bookmark", "featured"],
+  "equivalents": {
+    "lucide": ["star"],
+    "heroicons": ["star"],
+    "tabler": ["star"],
+    "phosphor": ["star"],
+    "material": ["star"]
+  },
   "animation": {
     "name": "twinkle",
     "description": "The star grows, tilts and settles",

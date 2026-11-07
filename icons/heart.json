@@ -2,6 +2,13 @@
   "name": "heart",
   "category": "status",
   "tags": ["like", "favorite", "love", "health", "rating"],
+  "equivalents": {
+    "lucide": ["heart"],
+    "heroicons": ["heart"],
+    "tabler": ["heart"],
+    "phosphor": ["heart"],
+    "material": ["favorite"]
+  },
   "animation": {
     "name": "beat",
     "description": "The heart beats twice",

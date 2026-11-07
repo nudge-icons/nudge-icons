@@ -1,0 +1,17 @@
+{
+  "name": "video",
+  "category": "objects",
+  "tags": ["camera", "record", "movie", "film"],
+  "equivalents": {
+    "lucide": ["video"],
+    "heroicons": ["video-camera"],
+    "tabler": ["video"],
+    "phosphor": ["video-camera"],
+    "material": ["videocam"]
+  },
+  "animation": {
+    "name": "record",
+    "description": "The lens pulses as if recording",
+    "parts": ["lens"]
+  }
+}

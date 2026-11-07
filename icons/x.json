@@ -2,6 +2,13 @@
   "name": "x",
   "category": "actions",
   "tags": ["close", "cancel", "remove", "delete"],
+  "equivalents": {
+    "lucide": ["x"],
+    "heroicons": ["x-mark"],
+    "tabler": ["x"],
+    "phosphor": ["x"],
+    "material": ["close"]
+  },
   "animation": {
     "name": "turn",
     "description": "The cross turns a quarter turn and settles",

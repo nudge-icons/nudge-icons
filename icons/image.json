@@ -1,0 +1,17 @@
+{
+  "name": "image",
+  "category": "objects",
+  "tags": ["picture", "photo", "media", "landscape"],
+  "equivalents": {
+    "lucide": ["image"],
+    "heroicons": ["photo"],
+    "tabler": ["photo"],
+    "phosphor": ["image"],
+    "material": ["image"]
+  },
+  "animation": {
+    "name": "rise",
+    "description": "The sun rises over the hill and settles",
+    "parts": ["sun"]
+  }
+}

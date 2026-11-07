@@ -2,6 +2,13 @@
   "name": "search",
   "category": "interface",
   "tags": ["find", "magnifier", "lookup", "zoom"],
+  "equivalents": {
+    "lucide": ["search"],
+    "heroicons": ["magnifying-glass"],
+    "tabler": ["search"],
+    "phosphor": ["magnifying-glass"],
+    "material": ["search"]
+  },
   "animation": {
     "name": "scan",
     "description": "The lens moves in a small circle",

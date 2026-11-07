@@ -2,6 +2,13 @@
   "name": "info",
   "category": "status",
   "tags": ["information", "help", "details", "about"],
+  "equivalents": {
+    "lucide": ["info"],
+    "heroicons": ["information-circle"],
+    "tabler": ["info-circle"],
+    "phosphor": ["info"],
+    "material": ["info"]
+  },
   "animation": {
     "name": "bounce",
     "description": "The dot hops above the stem",

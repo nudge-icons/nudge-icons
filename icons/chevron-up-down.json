@@ -1,0 +1,17 @@
+{
+  "name": "chevron-up-down",
+  "category": "interface",
+  "tags": ["select", "sort", "dropdown", "combobox"],
+  "equivalents": {
+    "lucide": ["chevrons-up-down"],
+    "heroicons": ["chevron-up-down"],
+    "tabler": ["selector"],
+    "phosphor": ["caret-up-down"],
+    "material": ["unfold_more"]
+  },
+  "animation": {
+    "name": "stretch",
+    "description": "The chevrons move apart and back",
+    "parts": ["up", "down"]
+  }
+}

@@ -2,6 +2,13 @@
   "name": "check-circle",
   "category": "status",
   "tags": ["success", "done", "complete", "verified"],
+  "equivalents": {
+    "lucide": ["circle-check", "check-circle"],
+    "heroicons": ["check-circle"],
+    "tabler": ["circle-check"],
+    "phosphor": ["check-circle"],
+    "material": ["check_circle"]
+  },
   "animation": {
     "name": "draw",
     "description": "The tick draws itself inside the circle",

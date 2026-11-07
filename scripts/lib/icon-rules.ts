@@ -33,8 +33,14 @@ const CHILD_ATTRS: Record<string, string[]> = {
 
 export interface IconMeta {
   name: string;
-  category: "actions" | "interface" | "status";
+  category: "actions" | "interface" | "status" | "objects";
   tags: string[];
+  /**
+   * The closest icon in other sets, by each set's own icon id (file name), not its
+   * component name: `{ "lucide": ["triangle-alert"], "material": ["warning"] }`.
+   * Feeds the migration tables in the docs and llms.txt.
+   */
+  equivalents?: Partial<Record<IconSet, string[]>>;
   /** Motion played by `animate`: the icon moves and returns to its resting drawing. */
   animation: { name: string; description: string; parts: string[] };
   /** Optional second state shown by `active`. */
@@ -53,6 +59,10 @@ export interface IconMeta {
   /** Present when icons/half/<name>.svg exists: the left half is filled, for ratings. */
   half?: VariantMeta;
 }
+
+/** Icon sets we map to in `equivalents`. */
+export const ICON_SETS = ["lucide", "heroicons", "tabler", "phosphor", "material"] as const;
+export type IconSet = (typeof ICON_SETS)[number];
 
 export interface VariantMeta {
   animation?: IconMeta["animation"];
@@ -314,10 +324,11 @@ function checkMeta(name: string, meta: unknown, parts: Set<string>, variant: Var
   if (!m || typeof m !== "object") return ["metadata must be a JSON object"];
   const errors: string[] = [];
   if (m.name !== name) errors.push(`metadata name "${String(m.name)}" must match the file name`);
-  if (!["actions", "interface", "status"].includes(m.category as string)) {
-    errors.push("metadata category must be actions, interface or status");
+  if (!["actions", "interface", "status", "objects"].includes(m.category as string)) {
+    errors.push("metadata category must be actions, interface, status or objects");
   }
   if (!Array.isArray(m.tags) || m.tags.length < 2) errors.push("metadata needs at least 2 tags");
+  errors.push(...checkEquivalents(m.equivalents));
   const own = variant === "outline" ? undefined : m[variant];
   if (variant !== "outline" && (typeof own !== "object" || own === null)) {
     errors.push(`metadata needs a ${variant} block when icons/${variant}/<name>.svg exists`);
@@ -331,6 +342,26 @@ function checkMeta(name: string, meta: unknown, parts: Set<string>, variant: Var
     }
   }
   errors.push(...checkToggle(m.toggle, parts, a?.parts ?? []));
+  return errors;
+}
+
+function checkEquivalents(eq: unknown): string[] {
+  if (eq === undefined) return [];
+  if (typeof eq !== "object" || eq === null || Array.isArray(eq)) {
+    return ["metadata equivalents must be an object of icon set to icon ids"];
+  }
+  const errors: string[] = [];
+  for (const [set, ids] of Object.entries(eq)) {
+    if (!(ICON_SETS as readonly string[]).includes(set)) {
+      errors.push(`equivalents set "${set}" is not one of ${ICON_SETS.join(", ")}`);
+    } else if (
+      !Array.isArray(ids) ||
+      !ids.length ||
+      !ids.every((id) => typeof id === "string" && /^[a-z0-9]+([-_][a-z0-9]+)*$/.test(id))
+    ) {
+      errors.push(`equivalents.${set} must be a non-empty list of icon ids like "triangle-alert"`);
+    }
+  }
   return errors;
 }
 

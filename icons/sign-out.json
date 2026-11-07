@@ -1,0 +1,17 @@
+{
+  "name": "sign-out",
+  "category": "actions",
+  "tags": ["logout", "exit", "leave", "door"],
+  "equivalents": {
+    "lucide": ["log-out"],
+    "heroicons": ["arrow-right-start-on-rectangle"],
+    "tabler": ["logout"],
+    "phosphor": ["sign-out"],
+    "material": ["logout"]
+  },
+  "animation": {
+    "name": "exit",
+    "description": "The arrow slides out of the door and back",
+    "parts": ["arrow"]
+  }
+}

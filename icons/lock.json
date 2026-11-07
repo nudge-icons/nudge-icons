@@ -2,6 +2,13 @@
   "name": "lock",
   "category": "status",
   "tags": ["secure", "private", "password", "locked"],
+  "equivalents": {
+    "lucide": ["lock"],
+    "heroicons": ["lock-closed"],
+    "tabler": ["lock"],
+    "phosphor": ["lock"],
+    "material": ["lock"]
+  },
   "animation": {
     "name": "jiggle",
     "description": "The shackle jiggles as if tested",

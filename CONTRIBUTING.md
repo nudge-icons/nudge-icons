@@ -42,7 +42,19 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 }
 ```
 
-- `category`: `actions`, `interface` or `status`.
+- `category`: `actions`, `interface`, `status` or `objects`.
+- `equivalents` (optional) maps other icon sets to their closest icon, using each set's own icon id (its file name), not the component name. Supported sets: `lucide`, `heroicons`, `tabler`, `phosphor`, `material` (Material Symbols). List the set's current id first, then old names it still exports as aliases (Lucide `loader-2` for `loader-circle`). Leave a set out when it has no close match. Check ids against the set's published icon list:
+
+  ```json
+  "equivalents": {
+    "lucide": ["triangle-alert"],
+    "heroicons": ["exclamation-triangle"],
+    "tabler": ["alert-triangle"],
+    "phosphor": ["warning"],
+    "material": ["warning"]
+  }
+  ```
+
 - `animation` is the motion played by the `animate` prop: the icon moves and returns to its resting drawing. `animation.parts` lists the `data-part` values it moves; each must exist in the SVG.
 - `toggle` is optional and describes a second state shown by the `active` prop:
 

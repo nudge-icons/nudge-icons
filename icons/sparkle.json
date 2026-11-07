@@ -1,0 +1,18 @@
+{
+  "name": "sparkle",
+  "category": "actions",
+  "tags": ["ai", "magic", "generate", "stars"],
+  "equivalents": {
+    "lucide": ["sparkles"],
+    "heroicons": ["sparkles"],
+    "tabler": ["sparkles"],
+    "phosphor": ["sparkle"],
+    "material": ["star_shine"]
+  },
+  "animation": {
+    "name": "twinkle",
+    "description": "The two stars grow and shrink one after the other",
+    "parts": ["big", "small"]
+  },
+  "filled": {}
+}

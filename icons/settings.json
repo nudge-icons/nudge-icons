@@ -2,6 +2,13 @@
   "name": "settings",
   "category": "interface",
   "tags": ["gear", "cog", "preferences", "options"],
+  "equivalents": {
+    "lucide": ["settings"],
+    "heroicons": ["cog-6-tooth"],
+    "tabler": ["settings"],
+    "phosphor": ["gear"],
+    "material": ["settings"]
+  },
   "animation": {
     "name": "turn",
     "description": "The gear turns by one tooth",

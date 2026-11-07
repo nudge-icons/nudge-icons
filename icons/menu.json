@@ -2,6 +2,13 @@
   "name": "menu",
   "category": "interface",
   "tags": ["hamburger", "navigation", "list", "bars"],
+  "equivalents": {
+    "lucide": ["menu"],
+    "heroicons": ["bars-3"],
+    "tabler": ["menu-2"],
+    "phosphor": ["list"],
+    "material": ["menu"]
+  },
   "animation": {
     "name": "wave",
     "description": "The lines shift sideways one after another",

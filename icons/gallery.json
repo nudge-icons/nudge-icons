@@ -1,0 +1,16 @@
+{
+  "name": "gallery",
+  "category": "objects",
+  "tags": ["images", "photos", "album", "media"],
+  "equivalents": {
+    "lucide": ["images"],
+    "tabler": ["library-photo"],
+    "phosphor": ["images"],
+    "material": ["photo_library"]
+  },
+  "animation": {
+    "name": "shuffle",
+    "description": "The front picture slides off the stack and back",
+    "parts": ["front"]
+  }
+}

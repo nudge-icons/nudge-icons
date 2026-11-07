@@ -1,0 +1,17 @@
+{
+  "name": "grid",
+  "category": "interface",
+  "tags": ["layout", "dashboard", "apps", "tiles"],
+  "equivalents": {
+    "lucide": ["layout-grid"],
+    "heroicons": ["squares-2x2"],
+    "tabler": ["layout-grid"],
+    "phosphor": ["squares-four"],
+    "material": ["grid_view"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The tiles pulse one after another",
+    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"]
+  }
+}

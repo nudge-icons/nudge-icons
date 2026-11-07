@@ -1,0 +1,17 @@
+{
+  "name": "calendar",
+  "category": "objects",
+  "tags": ["date", "schedule", "event", "day"],
+  "equivalents": {
+    "lucide": ["calendar"],
+    "heroicons": ["calendar"],
+    "tabler": ["calendar"],
+    "phosphor": ["calendar-blank"],
+    "material": ["calendar_today"]
+  },
+  "animation": {
+    "name": "flip",
+    "description": "The rings lift as if a page turns",
+    "parts": ["rings"]
+  }
+}

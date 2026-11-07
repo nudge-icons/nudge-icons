@@ -1,0 +1,17 @@
+{
+  "name": "pencil",
+  "category": "actions",
+  "tags": ["edit", "write", "rename", "draw"],
+  "equivalents": {
+    "lucide": ["pencil"],
+    "heroicons": ["pencil"],
+    "tabler": ["pencil"],
+    "phosphor": ["pencil-simple"],
+    "material": ["edit"]
+  },
+  "animation": {
+    "name": "scribble",
+    "description": "The pencil wiggles as if writing",
+    "parts": ["pencil"]
+  }
+}

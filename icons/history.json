@@ -1,0 +1,16 @@
+{
+  "name": "history",
+  "category": "interface",
+  "tags": ["recent", "time", "undo", "past"],
+  "equivalents": {
+    "lucide": ["history"],
+    "tabler": ["history"],
+    "phosphor": ["clock-counter-clockwise"],
+    "material": ["history"]
+  },
+  "animation": {
+    "name": "rewind",
+    "description": "The clock hands turn backwards",
+    "parts": ["hands"]
+  }
+}

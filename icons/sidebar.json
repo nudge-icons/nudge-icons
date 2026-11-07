@@ -1,0 +1,16 @@
+{
+  "name": "sidebar",
+  "category": "interface",
+  "tags": ["panel", "layout", "navigation", "drawer"],
+  "equivalents": {
+    "lucide": ["panel-left"],
+    "tabler": ["layout-sidebar"],
+    "phosphor": ["sidebar-simple"],
+    "material": ["dock_to_left"]
+  },
+  "animation": {
+    "name": "slide",
+    "description": "The divider slides out and back",
+    "parts": ["divider"]
+  }
+}

@@ -2,6 +2,13 @@
   "name": "alert-triangle",
   "category": "status",
   "tags": ["warning", "caution", "error", "danger"],
+  "equivalents": {
+    "lucide": ["triangle-alert", "alert-triangle"],
+    "heroicons": ["exclamation-triangle"],
+    "tabler": ["alert-triangle"],
+    "phosphor": ["warning"],
+    "material": ["warning"]
+  },
   "animation": {
     "name": "shake",
     "description": "The sign shakes side to side",

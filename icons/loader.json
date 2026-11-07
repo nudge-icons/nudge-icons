@@ -2,6 +2,12 @@
   "name": "loader",
   "category": "interface",
   "tags": ["loading", "spinner", "progress", "wait"],
+  "equivalents": {
+    "lucide": ["loader-circle", "loader-2"],
+    "tabler": ["loader-2"],
+    "phosphor": ["circle-notch"],
+    "material": ["progress_activity"]
+  },
   "animation": {
     "name": "spin",
     "description": "The arc spins around the centre",
