@@ -1,0 +1,10 @@
+{
+  "name": "download",
+  "category": "actions",
+  "tags": ["save", "export", "file", "arrow-down"],
+  "animation": {
+    "name": "drop",
+    "description": "The arrow drops into the tray and returns",
+    "parts": ["arrow"]
+  }
+}

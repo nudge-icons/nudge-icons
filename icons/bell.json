@@ -1,0 +1,10 @@
+{
+  "name": "bell",
+  "category": "interface",
+  "tags": ["notification", "alert", "reminder", "ring"],
+  "animation": {
+    "name": "ring",
+    "description": "The bell swings from the top and the clapper follows",
+    "parts": ["body", "clapper"]
+  }
+}

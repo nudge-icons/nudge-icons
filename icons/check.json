@@ -1,0 +1,10 @@
+{
+  "name": "check",
+  "category": "actions",
+  "tags": ["done", "confirm", "success", "tick"],
+  "animation": {
+    "name": "draw",
+    "description": "The tick draws itself from left to right",
+    "parts": ["mark"]
+  }
+}
