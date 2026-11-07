@@ -183,6 +183,39 @@ describe("checkIcon", () => {
     expect(errors).toContain('animation must not move the active-only part "slash"');
   });
 
+  it("accepts a motion-only part that revolves", () => {
+    const errors = checkIcon(
+      "dot",
+      svg(
+        '<circle data-part="core" cx="12" cy="12" r="9"/>\n  <ellipse data-part="back" cx="12" cy="12" rx="8" ry="9"/>',
+      ),
+      {
+        ...meta(["core"]),
+        animation: {
+          name: "revolve",
+          description: "Turns",
+          parts: ["core", "back"],
+          motionOnly: ["back"],
+          motion: [
+            { part: "core", preset: "pulse" as const, scale: 1.1 },
+            { part: "back", preset: "revolve" as const, rx: 4, radius: 9, offset: 90 },
+          ],
+        },
+      },
+    );
+    expect(errors).toEqual([]);
+  });
+
+  it("rejects a motion-only part whose motion cannot bring it in", () => {
+    const errors = checkIcon("dot", svg('<circle data-part="core" cx="12" cy="12" r="4"/>'), {
+      ...meta(["core"]),
+      animation: { ...meta(["core"]).animation, motionOnly: ["core"] },
+    });
+    expect(errors).toContain(
+      'motionOnly part "core" needs a motion that sets its opacity (revolve)',
+    );
+  });
+
   it("accepts fill on children of a filled icon", () => {
     const errors = checkIcon(
       "dot",

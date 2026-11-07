@@ -60,8 +60,8 @@ function card(name: string): string {
       const variant = PAINTED_VARIANTS.find((v) => file.includes(`/${v}/`)) ?? "";
       const id = variant ? `${name}-${variant}` : name;
       const toggle = meta.toggle;
-      const motion =
-        ((variant ? meta[variant]?.animation : undefined) ?? meta.animation).motion ?? [];
+      const animation = (variant ? meta[variant]?.animation : undefined) ?? meta.animation;
+      const motion = animation.motion ?? [];
       motionCss.set(
         id,
         iconCss(
@@ -74,6 +74,7 @@ function card(name: string): string {
               .filter((n) => n.tag === "path" && n.attrs["data-part"])
               .map((n) => [n.attrs["data-part"], n.attrs.d ?? ""]),
           ),
+          animation.motionOnly ?? [],
         ),
       );
       const rootTag = readFileSync(file, "utf8").match(/<svg[^>]*>/)?.[0] ?? "<svg>";

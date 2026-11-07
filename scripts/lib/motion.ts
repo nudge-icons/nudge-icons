@@ -30,7 +30,13 @@ export type Motion = MotionBase &
     | { preset: "shake"; x: number }
     | { preset: "orbit"; r: number }
     | { preset: "flash" }
-    | { preset: "revolve"; rx: number; radius: number }
+    | {
+        preset: "revolve";
+        rx: number;
+        radius: number;
+        /** Degrees of longitude ahead of the meridian drawn with `rx`, for a second meridian. */
+        offset?: number;
+      }
     | { preset: "blink"; to: string }
     | { preset: "look"; x: number; blink?: boolean }
   );
@@ -225,14 +231,19 @@ const SPECS: Record<Preset, PresetSpec> = {
     loopRest: 0,
     // A meridian of a sphere seen while it turns: its half-width is radius · |sin(longitude)|.
     // Half a turn brings the same drawing back, so loops are seamless. Animating rx keeps
-    // the stroke width, which scaleX would squash.
+    // the stroke width, which scaleX would squash. Near the edge of the sphere a meridian
+    // would lie on the outline (the globe reads as a circle with a line), so it fades out
+    // there; a second meridian `offset: 90` ahead is in the middle at that moment.
     frames: (m) => {
       if (m.preset !== "revolve") return {};
-      const start = Math.asin(Math.min(1, m.rx / m.radius));
+      const start = Math.asin(Math.min(1, m.rx / m.radius)) + ((m.offset ?? 0) * Math.PI) / 180;
       const frames: Record<number, string> = {};
-      for (let step = 0; step <= 12; step++) {
-        const rx = m.radius * Math.abs(Math.sin(start + (step / 12) * Math.PI));
-        frames[round((step / 12) * 100)] = `rx:${round(rx)}px`;
+      const steps = 24;
+      for (let step = 0; step <= steps; step++) {
+        const side = Math.abs(Math.sin(start + (step / steps) * Math.PI));
+        const opacity = Math.min(1, Math.max(0, (0.76 - side) / 0.06));
+        frames[round((step / steps) * 100)] =
+          `rx:${round(m.radius * side)}px;opacity:${round(opacity)}`;
       }
       return frames;
     },
@@ -346,7 +357,8 @@ export function baseCss(): string {
 
 /**
  * CSS for one component. `id` is the component id (`heart-filled`), `activeOnly` the
- * parts hidden until `data-active`. Returns "" when there is nothing to style.
+ * parts hidden until `data-active`, `motionOnly` the parts hidden unless their motion
+ * plays. Returns "" when there is nothing to style.
  */
 export function iconCss(
   id: string,
@@ -355,9 +367,13 @@ export function iconCss(
   toggle: readonly ToggleMotion[] = [],
   /** The `d` of each part that is a single path, for presets that morph it. */
   paths: Readonly<Record<string, string>> = {},
+  motionOnly: readonly string[] = [],
 ) {
   const icon = `.nudge-${id}`;
   const rules: string[] = [];
+
+  // Parts that exist only in motion: hidden at rest, their keyframes set the opacity.
+  for (const p of motionOnly) rules.push(`:where(${icon} [data-part="${p}"]){opacity:0}`);
 
   // Parts that exist only when active stay hidden until then, unless a toggle draws them.
   const drawnIn = new Set(toggle.filter((t) => t.preset === "draw").map((t) => t.part));
@@ -494,7 +510,7 @@ export function checkMotion(motion: unknown, parts: readonly string[]): string[]
     if (raw.beats !== undefined && raw.beats !== 1 && raw.beats !== 2) {
       errors.push(`${where}: beats must be 1 or 2`);
     }
-    for (const key of ["angle", "scale", "x", "y", "r", "rx", "radius"]) {
+    for (const key of ["angle", "scale", "x", "y", "r", "rx", "radius", "offset"]) {
       if (raw[key] !== undefined && !num(raw[key]))
         errors.push(`${where}: ${key} must be a number`);
     }

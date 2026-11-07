@@ -49,6 +49,11 @@ export interface IconMeta {
     parts: string[];
     /** How each part moves, using the presets in motion.ts. */
     motion?: Motion[];
+    /**
+     * Parts drawn only while the motion plays, like the second meridian of `globe`.
+     * Hidden at rest and dropped from `/static`; their motion must set the opacity.
+     */
+    motionOnly?: string[];
   };
   /** Optional second state shown by `active`. */
   toggle?: {
@@ -359,6 +364,7 @@ function checkMeta(
       errors.push("metadata animation needs motion (see the presets in motion.ts)");
     }
     errors.push(...checkMotion(a.motion, a.parts ?? []));
+    errors.push(...checkMotionOnly(a, m.toggle?.parts ?? []));
     for (const m of Array.isArray(a.motion) ? a.motion : []) {
       if (m?.preset === "blink" && typeof m.to === "string") {
         errors.push(...checkMorph(m.part, m.to, elements, "blink"));
@@ -442,6 +448,24 @@ function checkMorph(
     if (x < SAFE_MIN || x > SAFE_MAX || y < SAFE_MIN || y > SAFE_MAX) {
       errors.push(`${where}: point (${+x.toFixed(2)}, ${+y.toFixed(2)}) is outside the safe area`);
     }
+  }
+  return errors;
+}
+
+/** Parts shown only in motion need a motion that brings them in, and no toggle role. */
+function checkMotionOnly(a: IconMeta["animation"], toggleParts: readonly string[]): string[] {
+  const only = a.motionOnly;
+  if (only === undefined) return [];
+  if (!Array.isArray(only)) return ["animation.motionOnly must be a list"];
+  const errors: string[] = [];
+  const moved = new Map((Array.isArray(a.motion) ? a.motion : []).map((m) => [m.part, m.preset]));
+  for (const p of only) {
+    if (!(a.parts ?? []).includes(p))
+      errors.push(`motionOnly part "${p}" must be in animation parts`);
+    if (moved.get(p) !== "revolve") {
+      errors.push(`motionOnly part "${p}" needs a motion that sets its opacity (revolve)`);
+    }
+    if (toggleParts.includes(p)) errors.push(`motionOnly part "${p}" must not be a toggle part`);
   }
   return errors;
 }

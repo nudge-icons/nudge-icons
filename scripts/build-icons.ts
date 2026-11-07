@@ -22,12 +22,17 @@ interface IconVariant {
   nodes: SvgNode[];
   /** Parts drawn only in the active state; empty unless the icon has a toggle. */
   activeOnly: string[];
+  /** Parts drawn only while the motion plays. */
+  motionOnly: string[];
   /** Motion of this variant (a filled or half variant may override the outline's). */
   motion: Motion[];
   /** How toggle parts change when active; shared by all variants. */
   toggleMotion: ToggleMotion[];
   toggle: boolean;
 }
+
+const variantAnimation = (meta: IconMeta, variant: Variant) =>
+  (variant === "outline" ? undefined : meta[variant]?.animation) ?? meta.animation;
 
 const pascal = (id: string) =>
   id
@@ -59,9 +64,8 @@ function loadIcons(): IconVariant[] {
         meta,
         nodes: parseSvgTree(svg),
         activeOnly: meta.toggle?.activeOnly ?? [],
-        motion:
-          ((variant === "outline" ? undefined : meta[variant]?.animation) ?? meta.animation)
-            .motion ?? [],
+        motion: variantAnimation(meta, variant).motion ?? [],
+        motionOnly: variantAnimation(meta, variant).motionOnly ?? [],
         toggleMotion: meta.toggle?.motion ?? [],
         toggle: meta.toggle !== undefined,
       });
@@ -112,7 +116,14 @@ function partPaths(nodes: SvgNode[], out: Record<string, string> = {}): Record<s
 }
 
 const css = (icon: IconVariant) =>
-  iconCss(icon.id, icon.motion, icon.activeOnly, icon.toggleMotion, partPaths(icon.nodes));
+  iconCss(
+    icon.id,
+    icon.motion,
+    icon.activeOnly,
+    icon.toggleMotion,
+    partPaths(icon.nodes),
+    icon.motionOnly,
+  );
 
 const SHAPES = new Set(["path", "line", "polyline", "polygon", "circle", "ellipse", "rect"]);
 
@@ -145,8 +156,9 @@ export const ${icon.component}: ${type} = /* @__PURE__ */ ${factory}(${args.join
 `;
 }
 
-/** The drawing at rest: without parts shown only when active. */
-const restingNodes = (icon: IconVariant) => withoutParts(icon.nodes, new Set(icon.activeOnly));
+/** The drawing at rest: without parts shown only when active or only in motion. */
+const restingNodes = (icon: IconVariant) =>
+  withoutParts(icon.nodes, new Set([...icon.activeOnly, ...icon.motionOnly]));
 
 function staticModule(icon: IconVariant, target: Target): string {
   const nodes = restingNodes(icon);

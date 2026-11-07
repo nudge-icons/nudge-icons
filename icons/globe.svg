@@ -2,4 +2,5 @@
   <circle data-part="sphere" cx="12" cy="12" r="9"/>
   <path data-part="equator" d="M3 12h18"/>
   <ellipse data-part="meridian" cx="12" cy="12" rx="4" ry="9"/>
+  <ellipse data-part="meridian-back" cx="12" cy="12" rx="8" ry="9"/>
 </svg>

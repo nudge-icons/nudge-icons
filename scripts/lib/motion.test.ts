@@ -108,6 +108,34 @@ describe("iconCss", () => {
     expect(css).toContain(':where(.nudge-demo:not([data-active]) [data-part="slash"]){opacity:0}');
   });
 
+  it("hides motion-only parts at rest", () => {
+    const globe = iconCss(
+      "globe",
+      [{ part: "back", preset: "revolve", rx: 4, radius: 9, offset: 90 }],
+      [],
+      [],
+      {},
+      ["back"],
+    );
+    expect(globe).toContain(':where(.nudge-globe [data-part="back"]){opacity:0}');
+  });
+
+  it("fades a revolving meridian out near the edge and keeps a second one inside", () => {
+    const frames = (offset: number) =>
+      [
+        ...iconCss("g", [{ part: "m", preset: "revolve", rx: 4, radius: 9, offset }]).matchAll(
+          /rx:([\d.]+)px;opacity:([\d.]+)/g,
+        ),
+      ].map(([, rx, opacity]) => ({ rx: Number(rx), opacity: Number(opacity) }));
+    const front = frames(0);
+    const back = frames(90);
+    // Never drawn on the outline of the sphere.
+    for (const f of [...front, ...back]) if (f.rx > 6.9) expect(f.opacity).toBe(0);
+    // At rest the first meridian shows and the second is gone.
+    expect(front[0]).toEqual({ rx: 4, opacity: 1 });
+    expect(back[0]?.opacity).toBe(0);
+  });
+
   it("adds a morph to the active state and transitions d", () => {
     const morphed = iconCss(
       "lock",

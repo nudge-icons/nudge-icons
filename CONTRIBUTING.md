@@ -89,19 +89,19 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 
 - Every icon needs `animation.motion`; `pnpm check:icons` fails without it. It says how each part moves, using shared presets (`scripts/lib/motion.ts`). One motion per part; times in milliseconds, points in canvas units:
 
-  | Preset    | Parameters                               | Use                                                                                           |
-  | --------- | ---------------------------------------- | --------------------------------------------------------------------------------------------- |
-  | `swing`   | `origin: [x, y]`, `angle`                | a bell or a sign swinging from a pin                                                          |
-  | `nudge`   | `x`, `y`                                 | a push and back, like an arrow                                                                |
-  | `bounce`  | `x`, `y`                                 | a push that settles in smaller swings                                                         |
-  | `pass`    | `x`, `y`                                 | moves away fading out, comes back from the other side                                         |
-  | `draw`    | —                                        | the stroke draws itself                                                                       |
-  | `spin`    | `origin` (default centre), `angle` (360) | a turn; 90 for a cross that settles                                                           |
-  | `pulse`   | `origin`, `scale`, `beats` (1 or 2)      | a heartbeat or a pop                                                                          |
-  | `shake`   | `x`                                      | a warning shaking side to side                                                                |
-  | `orbit`   | `r`                                      | a small circle, like a lens searching                                                         |
-  | `flash`   | —                                        | flickers twice                                                                                |
-  | `revolve` | `rx`, `radius`                           | a meridian ellipse turning with a globe (animates `rx`, keeps the stroke width; Safari 17.4+) |
+  | Preset    | Parameters                               | Use                                                                                                                                                                                      |
+  | --------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `swing`   | `origin: [x, y]`, `angle`                | a bell or a sign swinging from a pin                                                                                                                                                     |
+  | `nudge`   | `x`, `y`                                 | a push and back, like an arrow                                                                                                                                                           |
+  | `bounce`  | `x`, `y`                                 | a push that settles in smaller swings                                                                                                                                                    |
+  | `pass`    | `x`, `y`                                 | moves away fading out, comes back from the other side                                                                                                                                    |
+  | `draw`    | —                                        | the stroke draws itself                                                                                                                                                                  |
+  | `spin`    | `origin` (default centre), `angle` (360) | a turn; 90 for a cross that settles                                                                                                                                                      |
+  | `pulse`   | `origin`, `scale`, `beats` (1 or 2)      | a heartbeat or a pop                                                                                                                                                                     |
+  | `shake`   | `x`                                      | a warning shaking side to side                                                                                                                                                           |
+  | `orbit`   | `r`                                      | a small circle, like a lens searching                                                                                                                                                    |
+  | `flash`   | —                                        | flickers twice                                                                                                                                                                           |
+  | `revolve` | `rx`, `radius`, `offset`                 | a meridian ellipse turning with a globe (animates `rx`, keeps the stroke width; Safari 17.4+); it fades out near the outline, so add a second meridian with `offset: 90` in `motionOnly` |
 
   Every motion also takes `delay` and `duration` (ms); `pulse` also takes `axis: "x" | "y"` to squash along one axis (a blinking eye). All presets return to the resting drawing (`pass` fades its part out and back in on the way), so `hover` and `once` end where they started.
 
@@ -111,6 +111,8 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
     { "part": "clapper", "preset": "swing", "origin": [12, 3], "angle": 16, "delay": 60 }
   ]
   ```
+
+  `animation.motionOnly` lists parts drawn only while the motion plays, like the back meridian of `globe`: hidden at rest, dropped from the `/static` entry and the `@nudge-icons/svg` files, and their motion must set the opacity (today only `revolve` does).
 
   The CSS comes in two layers: a shared base, loaded once per page by any animated icon, decides when parts play (hover or focus of the icon or an interactive parent, `once`, `loop`, reduced motion); each icon only adds its keyframes and a few custom properties on its moving parts. It only animates `transform`, `opacity`, stroke dashes and, for `revolve`, an ellipse's `rx`, wraps every selector in `:where()` (zero specificity) and is switched off by `prefers-reduced-motion`. Each motion is followed by a rest inside the same cycle, so a loop pauses between repeats. Users tune it with `--nudge-duration` (the whole cycle, rest included) and `--nudge-easing`; a loop repeats `--nudge-repeat` times (infinite by default), which components set from a numeric `animate`.
 

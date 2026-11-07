@@ -3,7 +3,7 @@ import { cleanup, render } from "@testing-library/react";
 import { createRef } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import * as animated from "./index";
-import { Bell, Check, Eye, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
+import { Bell, Check, Eye, Globe, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
 import * as still from "./static";
 
 afterEach(cleanup);
@@ -186,6 +186,16 @@ describe("static entry", () => {
     expect(svg.querySelector('[data-part="slash"]')).toBeNull();
     expect(svg.querySelector('[data-part="pupil"]')).not.toBeNull();
     expect(container.querySelector("style")).toBeNull();
+  });
+
+  it("drops parts that only show in motion", () => {
+    expect(
+      svgOf(render(<Globe />).container).querySelector('[data-part="meridian-back"]'),
+    ).not.toBeNull();
+    cleanup();
+    expect(
+      svgOf(render(<still.Globe />).container).querySelector('[data-part="meridian-back"]'),
+    ).toBeNull();
   });
 
   it("does not accept animate or active", () => {

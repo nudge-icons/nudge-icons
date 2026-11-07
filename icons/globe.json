@@ -12,13 +12,21 @@
   "animation": {
     "name": "revolve",
     "description": "The globe turns around its axis",
-    "parts": ["meridian"],
+    "parts": ["meridian", "meridian-back"],
+    "motionOnly": ["meridian-back"],
     "motion": [
       {
         "part": "meridian",
         "preset": "revolve",
         "rx": 4,
         "radius": 9
+      },
+      {
+        "part": "meridian-back",
+        "preset": "revolve",
+        "rx": 4,
+        "radius": 9,
+        "offset": 90
       }
     ]
   }
