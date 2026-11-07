@@ -7,7 +7,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "check:icons": "tsx scripts/check-icons.ts",
+    "check:icons": "tsx scripts/check-icons.ts && tsx scripts/check-equivalents.ts",
     "preview": "tsx scripts/preview.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -17,8 +17,13 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@phosphor-icons/core": "2.1.1",
+    "@tabler/icons": "3.50.0",
     "@types/node": "26.6.6",
     "eslint": "10.14.0",
+    "heroicons": "2.2.0",
+    "lucide-static": "1.70.0",
+    "material-symbols": "0.48.3",
     "prettier": "3.9.10",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
