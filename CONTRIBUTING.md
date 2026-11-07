@@ -135,6 +135,8 @@ pnpm build:storybook && pnpm e2e
 
 The first run needs a browser: `pnpm --filter @nudge-icons/storybook exec playwright install chromium`.
 
+CI runs everything above on every push and pull request, plus the Vue tests on Vue 3.3, the oldest supported version.
+
 ## Before opening a pull request
 
 ```bash
