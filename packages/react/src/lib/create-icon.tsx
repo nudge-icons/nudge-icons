@@ -1,6 +1,7 @@
 import {
   createElement,
   forwardRef,
+  type CSSProperties,
   type ForwardRefExoticComponent,
   type PropsWithoutRef,
   type ReactNode,
@@ -13,8 +14,11 @@ export type IconNode = ReadonlyArray<
   readonly [tag: string, attrs: Readonly<Record<string, string>>, children?: IconNode]
 >;
 
-/** When the motion plays: on hover or focus (also of an interactive parent), in a loop, once on mount, or never. */
-export type Animate = "hover" | "loop" | "once" | false;
+/**
+ * When the motion plays: on hover or focus (also of an interactive parent), in a loop,
+ * once on mount, a number of times (`3`), or never.
+ */
+export type Animate = "hover" | "loop" | "once" | number | false;
 
 export interface StaticIconProps extends Omit<
   SVGProps<SVGSVGElement>,
@@ -70,8 +74,12 @@ function make<P extends StaticIconProps>(
       className,
       animate = "hover",
       active,
+      style,
       ...rest
     } = props as ToggleIconProps;
+    // A number plays the loop that many times; 0 or less means no motion.
+    const repeat = typeof animate === "number" ? animate : undefined;
+    const mode = repeat === undefined ? animate : repeat > 0 ? "loop" : false;
     const width =
       absoluteStrokeWidth && Number(size) > 0
         ? (Number(strokeWidth) * 24) / Number(size)
@@ -90,7 +98,12 @@ function make<P extends StaticIconProps>(
         strokeLinecap="round"
         strokeLinejoin="round"
         className={["nudge-icon", `nudge-${name}`, className].filter(Boolean).join(" ")}
-        {...(css !== undefined && animate !== false && { "data-animate": animate })}
+        {...(css !== undefined && mode !== false && { "data-animate": mode })}
+        style={
+          css !== undefined && repeat !== undefined && repeat > 0
+            ? ({ ...style, "--nudge-repeat": repeat } as CSSProperties)
+            : style
+        }
         {...(css !== undefined && active && { "data-active": "" })}
         {...(labelled ? { role: "img" } : { "aria-hidden": true })}
         {...rest}

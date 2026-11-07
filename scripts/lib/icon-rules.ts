@@ -1,4 +1,5 @@
 // Drawing rules for source icons in icons/. See CONTRIBUTING.md, "Drawing rules".
+import { checkMotion, type Motion } from "./motion.ts";
 
 export const CANVAS = 24;
 export const SAFE_MIN = 2;
@@ -42,7 +43,13 @@ export interface IconMeta {
    */
   equivalents?: Partial<Record<IconSet, string[]>>;
   /** Motion played by `animate`: the icon moves and returns to its resting drawing. */
-  animation: { name: string; description: string; parts: string[] };
+  animation: {
+    name: string;
+    description: string;
+    parts: string[];
+    /** How each part moves, using the presets in motion.ts. */
+    motion?: Motion[];
+  };
   /** Optional second state shown by `active`. */
   toggle?: {
     description: string;
@@ -340,6 +347,7 @@ function checkMeta(name: string, meta: unknown, parts: Set<string>, variant: Var
     for (const p of a.parts ?? []) {
       if (!parts.has(p)) errors.push(`animation part "${p}" has no element with data-part="${p}"`);
     }
+    errors.push(...checkMotion(a.motion, a.parts ?? []));
   }
   errors.push(...checkToggle(m.toggle, parts, a?.parts ?? []));
   return errors;

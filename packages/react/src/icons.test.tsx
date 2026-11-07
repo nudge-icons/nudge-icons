@@ -3,7 +3,7 @@ import { cleanup, render } from "@testing-library/react";
 import { createRef } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import * as animated from "./index";
-import { Bell, Eye, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
+import { Bell, Check, Eye, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
 import * as still from "./static";
 
 afterEach(cleanup);
@@ -91,6 +91,15 @@ describe("animate and active", () => {
     expect(svgOf(render(<Heart animate={false} />).container).dataset.animate).toBeUndefined();
   });
 
+  it("plays a number of times with a numeric animate", () => {
+    const svg = svgOf(render(<Bell animate={3} style={{ opacity: 0.5 }} />).container);
+    expect(svg.dataset.animate).toBe("loop");
+    expect(svg.style.getPropertyValue("--nudge-repeat")).toBe("3");
+    expect(svg.style.opacity).toBe("0.5");
+    cleanup();
+    expect(svgOf(render(<Bell animate={0} />).container).dataset.animate).toBeUndefined();
+  });
+
   it("marks the second state with data-active", () => {
     expect(svgOf(render(<Menu />).container).dataset.active).toBeUndefined();
     cleanup();
@@ -113,6 +122,32 @@ describe("animate and active", () => {
     const styles = document.head.querySelectorAll('style[data-href="nudge-eye"]');
     expect(styles).toHaveLength(1);
     expect(styles[0]?.textContent).toContain('[data-part="slash"]');
+  });
+});
+
+describe("motion", () => {
+  it("ships the motion CSS of an icon and gives drawn parts pathLength", () => {
+    const { container } = render(<Check />);
+    expect(svgOf(container).querySelector('[data-part="mark"]')?.getAttribute("pathLength")).toBe(
+      "1",
+    );
+    const css = document.head.querySelector('style[data-href="nudge-check"]')?.textContent ?? "";
+    expect(css).toContain("@keyframes nudge-check-mark");
+    expect(css).toContain("prefers-reduced-motion");
+  });
+
+  it("switching animate from false to once turns the motion on", () => {
+    const { container, rerender } = render(<Bell animate={false} />);
+    expect(svgOf(container).dataset.animate).toBeUndefined();
+    rerender(<Bell animate="once" />);
+    expect(svgOf(container).dataset.animate).toBe("once");
+    const css = document.head.querySelector('style[data-href="nudge-bell"]')?.textContent ?? "";
+    expect(css).toContain('.nudge-bell[data-animate="once"] [data-part="clapper"]');
+  });
+
+  it("static icons have no pathLength", () => {
+    const { container } = render(<still.Check />);
+    expect(svgOf(container).querySelector("[pathLength]")).toBeNull();
   });
 });
 

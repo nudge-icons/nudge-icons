@@ -12,6 +12,12 @@
   "animation": {
     "name": "draw",
     "description": "The tick draws itself from left to right",
-    "parts": ["mark"]
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "draw"
+      }
+    ]
   }
 }

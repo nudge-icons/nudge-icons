@@ -2,7 +2,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import * as animated from "./index";
-import { Bell, Eye, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
+import { Bell, Check, Eye, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
 import * as still from "./static";
 
 describe("icon defaults", () => {
@@ -68,6 +68,15 @@ describe("animate and active", () => {
     expect(mount(Heart, { props: { animate: false } }).attributes("data-animate")).toBeUndefined();
   });
 
+  it("plays a number of times with a numeric animate", () => {
+    const svg = mount(Bell, { props: { animate: 3 }, attrs: { style: "opacity: 0.5" } });
+    expect(svg.attributes("data-animate")).toBe("loop");
+    const el = svg.element as SVGSVGElement;
+    expect(el.style.getPropertyValue("--nudge-repeat")).toBe("3");
+    expect(el.style.opacity).toBe("0.5");
+    expect(mount(Bell, { props: { animate: 0 } }).attributes("data-animate")).toBeUndefined();
+  });
+
   it("marks the second state with data-active", () => {
     expect(mount(Menu).attributes("data-active")).toBeUndefined();
     expect(mount(Menu, { props: { active: true } }).attributes("data-active")).toBe("");
@@ -90,6 +99,29 @@ describe("animate and active", () => {
     expect(first.find("style").exists()).toBe(false);
     first.unmount();
     expect(document.head.querySelector('style[data-nudge-head="eye"]')).not.toBeNull();
+  });
+});
+
+describe("motion", () => {
+  it("ships the motion CSS of an icon and gives drawn parts pathLength", () => {
+    expect(
+      mount(Check).find('[data-part="mark"]').attributes("pathlength") ??
+        mount(Check).find('[data-part="mark"]').attributes("pathLength"),
+    ).toBe("1");
+    const css = document.head.querySelector('style[data-nudge-head="check"]')?.textContent ?? "";
+    expect(css).toContain("@keyframes nudge-check-mark");
+    expect(css).toContain("prefers-reduced-motion");
+  });
+
+  it("switching animate from false to once turns the motion on", async () => {
+    const bell = mount(Bell, { props: { animate: false } });
+    expect(bell.attributes("data-animate")).toBeUndefined();
+    await bell.setProps({ animate: "once" });
+    expect(bell.attributes("data-animate")).toBe("once");
+  });
+
+  it("static icons have no pathLength", () => {
+    expect(mount(still.Check).find("[pathLength]").exists()).toBe(false);
   });
 });
 

@@ -11,6 +11,12 @@
   "animation": {
     "name": "spin",
     "description": "The arc spins around the centre",
-    "parts": ["arc"]
+    "parts": ["arc"],
+    "motion": [
+      {
+        "part": "arc",
+        "preset": "spin"
+      }
+    ]
   }
 }

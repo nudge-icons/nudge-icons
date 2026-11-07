@@ -9,7 +9,7 @@ Every icon in `icons/` follows these rules. `pnpm check:icons` enforces most of 
 - Stroke and paint are set on the root `<svg>` only: `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, `stroke-linecap="round"`, `stroke-linejoin="round"`.
 - Allowed elements: `path`, `circle`, `ellipse`, `rect`, `line`, `polyline`, `polygon`, `g`. Child elements carry geometry attributes only.
 - Coordinates snap to a 0.5 grid. Use as few points per `path` as possible.
-- Animated parts are separate elements marked with `data-part="…"`, for example `data-part="clapper"` in `bell`.
+- Animated parts are separate elements marked with `data-part="…"`, for example `data-part="clapper"` in `bell`. Part names are also a public styling API (users colour single parts with CSS), so do not rename them in a minor release.
 - Check every icon at 16, 24 and 48px on light and dark backgrounds.
 
 ### Filled variant
@@ -55,7 +55,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   }
   ```
 
-- `animation` is the motion played by the `animate` prop: the icon moves and returns to its resting drawing. `animation.parts` lists the `data-part` values it moves; each must exist in the SVG.
+- `animation` is the motion played by the `animate` prop (`"hover"`, `"loop"`, `"once"`, a number of repeats, or `false`): the icon moves and returns to its resting drawing. `animation.parts` lists the `data-part` values it moves; each must exist in the SVG.
 - `toggle` is optional and describes a second state shown by the `active` prop:
 
   ```json
@@ -76,7 +76,31 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   }
   ```
 
-Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 24 and 48px on light and dark, in both states and in every variant. The dashed frame is the 2–22 safe area, the dotted one the 1–23 stroke edge; the measured centre is shown under each icon and turns red when it is off.
+- `animation.motion` says how each part moves, using shared presets (`scripts/lib/motion.ts`). One motion per part; times in milliseconds, points in canvas units:
+
+  | Preset   | Parameters                               | Use                                                   |
+  | -------- | ---------------------------------------- | ----------------------------------------------------- |
+  | `swing`  | `origin: [x, y]`, `angle`                | a bell or a sign swinging from a pin                  |
+  | `nudge`  | `x`, `y`                                 | a push and back, like an arrow                        |
+  | `bounce` | `x`, `y`                                 | a push that settles in smaller swings                 |
+  | `pass`   | `x`, `y`                                 | moves away fading out, comes back from the other side |
+  | `draw`   | —                                        | the stroke draws itself                               |
+  | `spin`   | `origin` (default centre), `angle` (360) | a turn; 90 for a cross that settles                   |
+  | `pulse`  | `origin`, `scale`, `beats` (1 or 2)      | a heartbeat or a pop                                  |
+  | `shake`  | `x`                                      | a warning shaking side to side                        |
+
+  Every motion also takes `delay`. All presets return to the resting drawing (`pass` fades its part out and back in on the way), so `hover` and `once` end where they started.
+
+  ```json
+  "motion": [
+    { "part": "body", "preset": "swing", "origin": [12, 3], "angle": 12 },
+    { "part": "clapper", "preset": "swing", "origin": [12, 3], "angle": 16, "delay": 60 }
+  ]
+  ```
+
+  The generated CSS only animates `transform` and stroke dashes, wraps every selector in `:where()` (zero specificity) and is switched off by `prefers-reduced-motion`. Users tune it with `--nudge-duration` and `--nudge-easing`; a loop repeats `--nudge-repeat` times (infinite by default), which components set from a numeric `animate`.
+
+Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 24 and 48px on light and dark, in both states and in every variant, with its motion. Icons with motion come first; hover a card to play it, or switch every icon to `loop`, `once`, `3×` or off. The dashed frame is the 2–22 safe area, the dotted one the 1–23 stroke edge; the measured centre is shown under each icon and turns red when it is off.
 
 ## Generated code
 

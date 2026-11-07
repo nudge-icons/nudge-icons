@@ -12,6 +12,12 @@
   "animation": {
     "name": "spin",
     "description": "The arrows make one full turn",
-    "parts": ["arrows"]
+    "parts": ["arrows"],
+    "motion": [
+      {
+        "part": "arrows",
+        "preset": "spin"
+      }
+    ]
   }
 }

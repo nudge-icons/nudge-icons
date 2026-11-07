@@ -12,7 +12,16 @@
   "animation": {
     "name": "beat",
     "description": "The heart beats twice",
-    "parts": ["shape"]
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.15,
+        "beats": 2
+      }
+    ]
   },
   "filled": {},
   "half": {}

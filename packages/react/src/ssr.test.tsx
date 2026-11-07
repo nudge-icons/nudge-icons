@@ -22,7 +22,10 @@ afterEach(() => {
 describe("server rendering and hydration", () => {
   it("renders the CSS of an icon once per server render", () => {
     const html = renderToString(<App />);
-    expect(html.match(/data-href="nudge-eye"/g)).toHaveLength(1);
+    // React merges styles of one precedence into a tag with space-separated hrefs.
+    const hrefs = [...html.matchAll(/data-href="([^"]*)"/g)].flatMap((m) => m[1]?.split(" ") ?? []);
+    expect(hrefs.filter((h) => h === "nudge-eye")).toHaveLength(1);
+    expect(hrefs.filter((h) => h === "nudge-heart")).toHaveLength(1);
   });
 
   it("hydrates several server-rendered roots on one page (islands)", async () => {

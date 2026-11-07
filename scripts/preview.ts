@@ -1,8 +1,11 @@
 // Builds preview.html: every icon on the 24px grid, at 16/24/48px on light and dark,
-// in both states for icons with a toggle, and in the filled and half variants. Used to review drafts; not published.
+// in both states for icons with a toggle, and in the filled and half variants, with their
+// motion CSS. Used to review drafts; not published.
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PAINTED_VARIANTS, type IconMeta } from "./lib/icon-rules.ts";
+import { drawnParts, iconCss } from "./lib/motion.ts";
+import { parseSvgTree, type SvgNode } from "./lib/svg-tree.ts";
 
 const root = join(import.meta.dirname, "..");
 const dir = join(root, "icons");
@@ -20,11 +23,38 @@ const draftActiveCss = `
 .lock.active [data-part="shackle"] { stroke-dasharray: 30; stroke-dashoffset: -3.5; }
 `;
 
+const hasMotion = (name: string) =>
+  Boolean(
+    (JSON.parse(readFileSync(join(dir, `${name}.json`), "utf8")) as IconMeta).animation.motion,
+  );
+// Icons with motion first, so the ones to review are on top.
+const ordered = [...names.filter(hasMotion), ...names.filter((n) => !hasMotion(n))];
+const moving = names.filter(hasMotion).length;
+
 const variantCounts = PAINTED_VARIANTS.map(
   (v) => `${names.filter((n) => existsSync(join(dir, v, `${n}.svg`))).length} ${v}`,
 ).join(", ");
 
 const escape = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+// Motion CSS of every component, once each.
+const motionCss = new Map<string, string>();
+
+const SHAPES = new Set(["path", "line", "polyline", "polygon", "circle", "ellipse", "rect"]);
+
+/** Serialises the drawing, adding pathLength="1" inside drawn parts like the generator does. */
+function shapes(nodes: SvgNode[], drawn: Set<string>, inside = false): string {
+  return nodes
+    .map((n) => {
+      const isDrawn = inside || drawn.has(n.attrs["data-part"] ?? "");
+      const attrs = { ...n.attrs, ...(isDrawn && SHAPES.has(n.tag) ? { pathLength: "1" } : {}) };
+      const text = Object.entries(attrs)
+        .map(([k, v]) => ` ${k}="${v}"`)
+        .join("");
+      return `<${n.tag}${text}>${shapes(n.children, drawn, isDrawn)}</${n.tag}>`;
+    })
+    .join("");
+}
 
 function card(name: string): string {
   const meta = JSON.parse(readFileSync(join(dir, `${name}.json`), "utf8")) as IconMeta;
@@ -32,17 +62,20 @@ function card(name: string): string {
     join(dir, `${name}.svg`),
     ...PAINTED_VARIANTS.map((v) => join(dir, v, `${name}.svg`)),
   ].filter(existsSync);
-  const hidden = (meta.toggle?.activeOnly ?? [])
-    .map((p) => `.${name}:not(.active) [data-part="${p}"] { display: none; }`)
-    .join("\n");
   const states = meta.toggle ? ["", "active"] : [""];
   const rows = files
     .flatMap((file) => states.map((state) => [file, state] as const))
     .map(([file, state]) => {
-      const svg = readFileSync(file, "utf8").trim();
+      const variant = PAINTED_VARIANTS.find((v) => file.includes(`/${v}/`)) ?? "";
+      const id = variant ? `${name}-${variant}` : name;
+      const motion =
+        ((variant ? meta[variant]?.animation : undefined) ?? meta.animation).motion ?? [];
+      motionCss.set(id, iconCss(id, motion, meta.toggle?.activeOnly ?? []));
+      const rootTag = readFileSync(file, "utf8").match(/<svg[^>]*>/)?.[0] ?? "<svg>";
+      const body = shapes(parseSvgTree(readFileSync(file, "utf8")), new Set(drawnParts(motion)));
+      const svg = `${rootTag.replace(">", ` class="nudge-icon nudge-${id}" data-animate="hover"${state ? " data-active" : ""}>`)}${body}</svg>`;
       const sized = (px: number) =>
         svg.replace('width="24" height="24"', `width="${px}" height="${px}"`);
-      const variant = PAINTED_VARIANTS.find((v) => file.includes(`/${v}/`)) ?? "";
       const label = [variant, state].filter(Boolean).join(" · ");
       const cls = `${name} ${state}`.trim();
       const big = sized(192);
@@ -60,9 +93,9 @@ function card(name: string): string {
   const toggle = meta.toggle ? ` · toggle: ${escape(meta.toggle.description)}` : "";
   const own = meta.filled?.animation;
   const filledNote = own ? ` · filled ${escape(own.name)}: ${escape(own.description)}` : "";
-  return `<section>
-    <style>${hidden}</style>
-    <h2>${name} <small>${meta.category}</small></h2>
+  const moves = meta.animation.motion ? "" : ` <small class="todo">no motion yet</small>`;
+  return `<section class="nudge-trigger${meta.animation.motion ? "" : " still"}">
+    <h2>${name} <small>${meta.category}</small>${moves}</h2>
     <p>${escape(meta.animation.name)}: ${escape(meta.animation.description)}${toggle}${filledNote}</p>
     ${rows}
   </section>`;
@@ -94,17 +127,55 @@ const html = `<!doctype html>
   .light { background: #fff; color: #222; border: 1px solid #eee; }
   .dark { background: #18181b; color: #f4f4f5; }
   .state { color: #888; font-size: 12px; }
+  .todo { color: #c60; }
+  body.only-moving .still { display: none; }
+  .modes { position: sticky; top: 0; z-index: 1; display: flex; gap: 8px; align-items: center;
+    padding: 8px 0; background: #f6f6f4; }
+  .modes button { font: inherit; padding: 4px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff; }
+  .modes button[aria-pressed="true"] { background: #222; color: #fff; }
   ${draftActiveCss}
 </style>
 </head>
 <body>
-<h1>nudge-icons · ${names.length} icons, ${variantCounts}</h1>
+<h1>nudge-icons · ${names.length} icons, ${variantCounts} · ${moving} with motion</h1>
+<div class="modes">Animate:
+  <button data-mode="hover" aria-pressed="true">hover (card)</button>
+  <button data-mode="loop">loop</button>
+  <button data-mode="once">once (replay)</button>
+  <button data-mode="3">3×</button>
+  <button data-mode="false">off</button>
+  <label><input type="checkbox" id="only-moving"> only icons with motion</label>
+</div>
 <main>
-${names.map(card).join("\n")}
+${ordered.map(card).join("\n")}
 </main>
+<style>${[...motionCss.values()].join("")}</style>
 <script>
   // Dotted frame: stroke edge (1–23). Dashed frame: safe area for points (2–22).
   // Below each zoomed icon: centre of the drawn shape, red when it is off by more than 0.25.
+  document.getElementById("only-moving").addEventListener("change", (e) => {
+    document.body.classList.toggle("only-moving", e.target.checked);
+  });
+  for (const button of document.querySelectorAll(".modes button")) {
+    button.addEventListener("click", () => {
+      for (const b of document.querySelectorAll(".modes button")) b.setAttribute("aria-pressed", String(b === button));
+      const icons = document.querySelectorAll(".nudge-icon");
+      // Removing the attribute first lets "once" replay.
+      for (const icon of icons) {
+        icon.removeAttribute("data-animate");
+        icon.style.removeProperty("--nudge-repeat");
+      }
+      const mode = button.dataset.mode;
+      const times = Number(mode);
+      requestAnimationFrame(() => {
+        for (const icon of icons) {
+          if (mode === "false") continue;
+          icon.setAttribute("data-animate", times > 0 ? "loop" : mode);
+          if (times > 0) icon.style.setProperty("--nudge-repeat", String(times));
+        }
+      });
+    });
+  }
   for (const zoom of document.querySelectorAll(".zoom")) {
     const svg = zoom.querySelector(":scope > svg");
     const b = svg.getBBox();

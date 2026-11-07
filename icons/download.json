@@ -11,7 +11,14 @@
   },
   "animation": {
     "name": "drop",
-    "description": "The arrow drops into the tray and returns",
-    "parts": ["arrow"]
+    "description": "The arrow sinks into the tray and fades, then drops back in from above",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "y": 5
+      }
+    ]
   }
 }

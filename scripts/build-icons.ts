@@ -3,6 +3,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { checkIcon, PAINTED_VARIANTS, type IconMeta, type Variant } from "./lib/icon-rules.ts";
+import { drawnParts, iconCss, type Motion } from "./lib/motion.ts";
 import { parseSvgTree, withoutParts, type SvgNode } from "./lib/svg-tree.ts";
 
 const root = join(import.meta.dirname, "..");
@@ -21,6 +22,8 @@ interface IconVariant {
   nodes: SvgNode[];
   /** Parts drawn only in the active state; empty unless the icon has a toggle. */
   activeOnly: string[];
+  /** Motion of this variant (a filled or half variant may override the outline's). */
+  motion: Motion[];
   toggle: boolean;
 }
 
@@ -54,6 +57,9 @@ function loadIcons(): IconVariant[] {
         meta,
         nodes: parseSvgTree(svg),
         activeOnly: meta.toggle?.activeOnly ?? [],
+        motion:
+          ((variant === "outline" ? undefined : meta[variant]?.animation) ?? meta.animation)
+            .motion ?? [],
         toggle: meta.toggle !== undefined,
       });
     }
@@ -92,11 +98,17 @@ function nodeCode(nodes: SvgNode[], target: Target): string {
   return `[${items.join(", ")}]`;
 }
 
-/** CSS that every animated component needs before any motion is added. */
-function baseCss(icon: IconVariant): string {
-  return icon.activeOnly
-    .map((p) => `:where(.nudge-${icon.id}:not([data-active]) [data-part="${p}"]){opacity:0}`)
-    .join("");
+const css = (icon: IconVariant) => iconCss(icon.id, icon.motion, icon.activeOnly);
+
+const SHAPES = new Set(["path", "line", "polyline", "polygon", "circle", "ellipse", "rect"]);
+
+/** Gives every shape inside a drawn part pathLength="1", so the draw preset needs no lengths. */
+function withPathLength(nodes: SvgNode[], parts: ReadonlySet<string>, inside = false): SvgNode[] {
+  return nodes.map((n) => {
+    const drawn = inside || parts.has(n.attrs["data-part"] ?? "");
+    const attrs = drawn && SHAPES.has(n.tag) ? { ...n.attrs, pathLength: "1" } : n.attrs;
+    return { ...n, attrs, children: withPathLength(n.children, parts, drawn) };
+  });
 }
 
 const header = (icon: IconVariant) => {
@@ -107,13 +119,10 @@ const header = (icon: IconVariant) => {
 function animatedModule(icon: IconVariant, target: Target): string {
   const factory = icon.toggle ? "createToggleIcon" : "createIcon";
   const type = icon.toggle ? "ToggleIconComponent" : "IconComponent";
-  const css = baseCss(icon);
-  const args = [
-    JSON.stringify(icon.id),
-    JSON.stringify(icon.component),
-    nodeCode(icon.nodes, target),
-  ];
-  if (css) args.push(JSON.stringify(css));
+  const styles = css(icon);
+  const nodes = withPathLength(icon.nodes, new Set(drawnParts(icon.motion)));
+  const args = [JSON.stringify(icon.id), JSON.stringify(icon.component), nodeCode(nodes, target)];
+  if (styles) args.push(JSON.stringify(styles));
   return `${header(icon)}import { ${factory}, type ${type} } from "../../lib/create-icon";
 
 // Pure, so bundlers drop icons that are not imported. The explicit type keeps .d.ts small.
@@ -170,8 +179,7 @@ function buildSvg(icons: IconVariant[]) {
 
 /** How much of the described motion and second states already has CSS. */
 function coverage(icons: IconVariant[]): string {
-  const css = (icon: IconVariant) => baseCss(icon);
-  const moving = icons.filter((i) => /animation\s*:/.test(css(i)));
+  const moving = icons.filter((i) => i.motion.length > 0);
   const toggles = icons.filter((i) => i.toggle);
   const missingToggles = toggles.filter(
     (i) => !(i.meta.toggle?.parts ?? []).every((p) => css(i).includes(`[data-part="${p}"]`)),

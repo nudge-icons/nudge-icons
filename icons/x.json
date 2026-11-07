@@ -12,6 +12,13 @@
   "animation": {
     "name": "turn",
     "description": "The cross turns a quarter turn and settles",
-    "parts": ["cross"]
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "spin",
+        "angle": 90
+      }
+    ]
   }
 }

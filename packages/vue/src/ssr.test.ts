@@ -25,8 +25,9 @@ describe("server rendering", () => {
     expect(eyes).toHaveLength(2);
     expect(eyes[0]).toContain('<style data-nudge="eye"');
     expect(eyes[1]).not.toContain("<style");
-    // Icons without CSS yet render no style at all.
-    expect(inlineStyles(html, "heart")).toHaveLength(0);
+    expect(inlineStyles(html, "heart")).toHaveLength(1);
+    // Icons without any CSS (Menu until its toggle is styled) render no style at all.
+    expect(inlineStyles(html, "menu")).toHaveLength(0);
   });
 
   it("starts fresh for every request", async () => {

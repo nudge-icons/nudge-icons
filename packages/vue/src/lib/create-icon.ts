@@ -14,8 +14,11 @@ export type IconNode = ReadonlyArray<
   readonly [tag: string, attrs: Readonly<Record<string, string>>, children?: IconNode]
 >;
 
-/** When the motion plays: on hover or focus (also of an interactive parent), in a loop, once on mount, or never. */
-export type Animate = "hover" | "loop" | "once" | false;
+/**
+ * When the motion plays: on hover or focus (also of an interactive parent), in a loop,
+ * once on mount, a number of times (`3`), or never.
+ */
+export type Animate = "hover" | "loop" | "once" | number | false;
 
 const staticProps = {
   /** Width and height. Default 24. */
@@ -33,7 +36,7 @@ const staticProps = {
 const iconProps = {
   ...staticProps,
   /** Default `"hover"`. */
-  animate: { type: [String, Boolean] as PropType<Animate>, default: "hover" },
+  animate: { type: [String, Boolean, Number] as PropType<Animate>, default: "hover" },
 };
 
 const toggleProps = {
@@ -110,6 +113,9 @@ function iconSetup(name: string, node: IconNode, css: string | undefined) {
           : p.strokeWidth;
       const labelled = Boolean(p.title ?? attrs["aria-label"] ?? attrs["aria-labelledby"]);
       const animated = css !== undefined;
+      // A number plays the loop that many times; 0 or less means no motion.
+      const repeat = typeof p.animate === "number" ? p.animate : undefined;
+      const mode = repeat === undefined ? (p.animate ?? "hover") : repeat > 0 ? "loop" : false;
       const children: VNode[] = [];
       if (inline && css) children.push(h("style", { "data-nudge": name }, css));
       if (p.title) children.push(h("title", p.title));
@@ -127,7 +133,11 @@ function iconSetup(name: string, node: IconNode, css: string | undefined) {
           "stroke-linecap": "round",
           "stroke-linejoin": "round",
           class: ["nudge-icon", `nudge-${name}`],
-          "data-animate": animated && p.animate !== false ? (p.animate ?? "hover") : undefined,
+          "data-animate": animated && mode !== false ? mode : undefined,
+          style:
+            animated && repeat !== undefined && repeat > 0
+              ? { "--nudge-repeat": repeat }
+              : undefined,
           "data-active": animated && p.active ? "" : undefined,
           ...(labelled ? { role: "img" } : { "aria-hidden": "true" }),
         },

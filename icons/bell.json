@@ -12,7 +12,22 @@
   "animation": {
     "name": "ring",
     "description": "The bell swings from the top and the clapper follows",
-    "parts": ["body", "clapper"]
+    "parts": ["body", "clapper"],
+    "motion": [
+      {
+        "part": "body",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 12
+      },
+      {
+        "part": "clapper",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 16,
+        "delay": 60
+      }
+    ]
   },
   "filled": {}
 }
