@@ -78,8 +78,12 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 
 Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 24 and 48px on light and dark, in both states and in every variant. The dashed frame is the 2–22 safe area, the dotted one the 1–23 stroke edge; the measured centre is shown under each icon and turns red when it is off.
 
+## Generated code
+
+React components and the `@nudge-icons/svg` files are generated from `icons/` by `pnpm build:icons` (also run by `typecheck`, `test` and `build`). They are git-ignored; change `icons/` or `scripts/build-icons.ts`, never the generated files.
+
 ## Before opening a pull request
 
 ```bash
-pnpm check:icons && pnpm lint && pnpm typecheck && pnpm test && pnpm format:check
+pnpm check:icons && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm format:check
 ```

@@ -2,7 +2,14 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["**/dist/**", "**/node_modules/**", "**/storybook-static/**"] },
+  {
+    ignores: [
+      "**/dist/**",
+      "**/node_modules/**",
+      "**/storybook-static/**",
+      "packages/*/src/generated/**",
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.strict,
 );

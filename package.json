@@ -9,11 +9,13 @@
   "scripts": {
     "check:icons": "tsx scripts/check-icons.ts && tsx scripts/check-equivalents.ts",
     "preview": "tsx scripts/preview.ts",
+    "build:icons": "tsx scripts/build-icons.ts",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
+    "typecheck": "pnpm build:icons && tsc --noEmit && pnpm -r typecheck",
+    "test": "pnpm build:icons && vitest run",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "build": "pnpm build:icons && pnpm -r build"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -22,6 +24,7 @@
     "@types/node": "26.6.6",
     "eslint": "10.14.0",
     "heroicons": "2.2.0",
+    "jsdom": "31.0.0",
     "lucide-static": "1.70.0",
     "material-symbols": "0.48.3",
     "prettier": "3.9.10",

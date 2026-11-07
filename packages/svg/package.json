@@ -1,0 +1,14 @@
+{
+  "name": "@nudge-icons/svg",
+  "version": "0.0.0",
+  "description": "Raw SVG files and metadata for nudge-icons",
+  "license": "MIT",
+  "files": [
+    "icons",
+    "icons.json"
+  ],
+  "exports": {
+    "./icons.json": "./icons.json",
+    "./*.svg": "./icons/*.svg"
+  }
+}
