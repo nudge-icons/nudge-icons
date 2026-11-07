@@ -38,3 +38,17 @@ export function withoutParts(nodes: SvgNode[], parts: ReadonlySet<string>): SvgN
     .filter((n) => !parts.has(n.attrs["data-part"] ?? ""))
     .map((n) => ({ ...n, children: withoutParts(n.children, parts) }));
 }
+
+/** Writes nodes back as SVG source: the given root tag, one element per line. */
+export function serializeSvg(rootTag: string, nodes: SvgNode[]): string {
+  const lines = (list: SvgNode[], depth: number): string[] =>
+    list.flatMap((n) => {
+      const pad = "  ".repeat(depth);
+      const attrs = Object.entries(n.attrs)
+        .map(([k, v]) => ` ${k}="${v}"`)
+        .join("");
+      if (!n.children.length) return [`${pad}<${n.tag}${attrs}/>`];
+      return [`${pad}<${n.tag}${attrs}>`, ...lines(n.children, depth + 1), `${pad}</${n.tag}>`];
+    });
+  return [rootTag, ...lines(nodes, 1), "</svg>", ""].join("\n");
+}

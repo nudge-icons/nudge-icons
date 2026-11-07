@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { dirname, join } from "node:path";
 import { checkIcon, PAINTED_VARIANTS, type IconMeta, type Variant } from "./lib/icon-rules.ts";
 import { baseCss, drawnParts, iconCss, type Motion, type ToggleMotion } from "./lib/motion.ts";
-import { parseSvgTree, withoutParts, type SvgNode } from "./lib/svg-tree.ts";
+import { parseSvgTree, serializeSvg, withoutParts, type SvgNode } from "./lib/svg-tree.ts";
 
 const root = join(import.meta.dirname, "..");
 const iconsDir = join(root, "icons");
@@ -145,8 +145,11 @@ export const ${icon.component}: ${type} = /* @__PURE__ */ ${factory}(${args.join
 `;
 }
 
+/** The drawing at rest: without parts shown only when active. */
+const restingNodes = (icon: IconVariant) => withoutParts(icon.nodes, new Set(icon.activeOnly));
+
 function staticModule(icon: IconVariant, target: Target): string {
-  const nodes = withoutParts(icon.nodes, new Set(icon.activeOnly));
+  const nodes = restingNodes(icon);
   return `${header(icon)}import { createStaticIcon } from "../../lib/create-static-icon";
 import type { StaticIconComponent } from "../../lib/types";
 
@@ -184,7 +187,8 @@ function buildSvg(icons: IconVariant[]) {
     rmSync(join(svgOut, dir), { recursive: true, force: true });
   for (const icon of icons) {
     const from = join(iconsDir, icon.variant === "outline" ? "" : icon.variant, `${icon.name}.svg`);
-    write(join(svgOut, "icons", `${icon.id}.svg`), readFileSync(from, "utf8"));
+    const rootTag = /<svg[^>]*>/.exec(readFileSync(from, "utf8"))?.[0] ?? "<svg>";
+    write(join(svgOut, "icons", `${icon.id}.svg`), serializeSvg(rootTag, restingNodes(icon)));
   }
   const outlines = icons.filter((i) => i.variant === "outline");
   const list = outlines.map((icon) => ({
