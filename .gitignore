@@ -1,0 +1,9 @@
+node_modules
+dist
+storybook-static
+.DS_Store
+*.log
+
+# Local-only notes for the owner and agents
+CLAUDE.md
+docs/plan.md
