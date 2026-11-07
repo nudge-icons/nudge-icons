@@ -4,7 +4,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PAINTED_VARIANTS, type IconMeta } from "./lib/icon-rules.ts";
-import { drawnParts, iconCss } from "./lib/motion.ts";
+import { baseCss, drawnParts, iconCss } from "./lib/motion.ts";
 import { parseSvgTree, type SvgNode } from "./lib/svg-tree.ts";
 
 const root = join(import.meta.dirname, "..");
@@ -149,7 +149,7 @@ const html = `<!doctype html>
 <main>
 ${ordered.map(card).join("\n")}
 </main>
-<style>${[...motionCss.values()].join("")}</style>
+<style>${baseCss()}${[...motionCss.values()].join("")}</style>
 <script>
   // Dotted frame: stroke edge (1–23). Dashed frame: safe area for points (2–22).
   // Below each zoomed icon: centre of the drawn shape, red when it is off by more than 0.25.

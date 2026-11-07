@@ -8,30 +8,9 @@ import {
   type SetupContext,
   type VNode,
 } from "vue";
-
-/** Icon drawing as data: `[tag, attributes, children]`, generated from icons/*.svg. */
-export type IconNode = ReadonlyArray<
-  readonly [tag: string, attrs: Readonly<Record<string, string>>, children?: IconNode]
->;
-
-/**
- * When the motion plays: on hover or focus (also of an interactive parent), in a loop,
- * once on mount, a number of times (`3`), or never.
- */
-export type Animate = "hover" | "loop" | "once" | number | false;
-
-const staticProps = {
-  /** Width and height. Default 24. */
-  size: { type: [Number, String] as PropType<number | string>, default: 24 },
-  /** Default 2. */
-  strokeWidth: { type: [Number, String] as PropType<number | string>, default: 2 },
-  /** Default `currentColor`, so the icon takes the text colour. */
-  color: { type: String, default: "currentColor" },
-  /** Keep the stroke at `strokeWidth` pixels at any `size` (needs a numeric `size`). */
-  absoluteStrokeWidth: { type: Boolean, default: false },
-  /** Accessible name. Without it (and without `aria-label`) the icon is hidden from assistive tech. */
-  title: { type: String, default: undefined },
-};
+import { BASE_CSS } from "../generated/base-css";
+import { renderSvg, staticProps, type StaticProps } from "./render-svg";
+import type { Animate, IconNode } from "./types";
 
 const iconProps = {
   ...staticProps,
@@ -84,64 +63,34 @@ function claimInlineStyle(id: string, css: string): boolean {
   return document.querySelector(`style[data-nudge="${id}"]`) !== null;
 }
 
-// --- Rendering --------------------------------------------------------------------------
-
-function renderNode(node: IconNode): VNode[] {
-  return node.map(([tag, attrs, children]) =>
-    h(tag, { ...attrs }, children ? renderNode(children) : undefined),
-  );
-}
-
-interface AnyIconProps {
-  size: number | string;
-  strokeWidth: number | string;
-  color: string;
-  absoluteStrokeWidth: boolean;
-  title: string | undefined;
-  animate?: Animate | undefined;
+interface AnimatedProps extends StaticProps {
+  animate: Animate;
   active?: boolean | undefined;
 }
 
-/** Shared setup for every icon; `css` is undefined for /static icons. */
-function iconSetup(name: string, node: IconNode, css: string | undefined) {
-  return (p: Readonly<AnyIconProps>, { attrs }: SetupContext) => {
+function iconSetup(name: string, node: IconNode, css: string) {
+  return (p: Readonly<AnimatedProps>, { attrs }: SetupContext) => {
+    // The shared base decides when parts play; the icon's own CSS says what plays.
+    const inlineBase = css ? claimInlineStyle("base", BASE_CSS) : false;
     const inline = css ? claimInlineStyle(name, css) : false;
     return () => {
-      const strokeWidth =
-        p.absoluteStrokeWidth && Number(p.size) > 0
-          ? (Number(p.strokeWidth) * 24) / Number(p.size)
-          : p.strokeWidth;
-      const labelled = Boolean(p.title ?? attrs["aria-label"] ?? attrs["aria-labelledby"]);
-      const animated = css !== undefined;
       // A number plays the loop that many times; 0 or less means no motion.
       const repeat = typeof p.animate === "number" ? p.animate : undefined;
-      const mode = repeat === undefined ? (p.animate ?? "hover") : repeat > 0 ? "loop" : false;
-      const children: VNode[] = [];
-      if (inline && css) children.push(h("style", { "data-nudge": name }, css));
-      if (p.title) children.push(h("title", p.title));
-      children.push(...renderNode(node));
-      return h(
-        "svg",
+      const mode = repeat === undefined ? p.animate : repeat > 0 ? "loop" : false;
+      const styles: VNode[] = [];
+      if (inlineBase) styles.push(h("style", { "data-nudge": "base" }, BASE_CSS));
+      if (inline) styles.push(h("style", { "data-nudge": name }, css));
+      return renderSvg(
+        name,
+        node,
+        p,
+        attrs,
         {
-          xmlns: "http://www.w3.org/2000/svg",
-          width: p.size,
-          height: p.size,
-          viewBox: "0 0 24 24",
-          fill: "none",
-          stroke: p.color,
-          "stroke-width": strokeWidth,
-          "stroke-linecap": "round",
-          "stroke-linejoin": "round",
-          class: ["nudge-icon", `nudge-${name}`],
-          "data-animate": animated && mode !== false ? mode : undefined,
-          style:
-            animated && repeat !== undefined && repeat > 0
-              ? { "--nudge-repeat": repeat }
-              : undefined,
-          "data-active": animated && p.active ? "" : undefined,
-          ...(labelled ? { role: "img" } : { "aria-hidden": "true" }),
+          "data-animate": mode !== false ? mode : undefined,
+          "data-active": p.active ? "" : undefined,
+          style: repeat !== undefined && repeat > 0 ? { "--nudge-repeat": repeat } : undefined,
         },
-        children,
+        styles,
       );
     };
   };
@@ -152,14 +101,3 @@ export const createIcon = (name: string, displayName: string, node: IconNode, cs
 
 export const createToggleIcon = (name: string, displayName: string, node: IconNode, css = "") =>
   defineComponent({ name: displayName, props: toggleProps, setup: iconSetup(name, node, css) });
-
-export const createStaticIcon = (name: string, displayName: string, node: IconNode) =>
-  defineComponent({
-    name: displayName,
-    props: staticProps,
-    setup: iconSetup(name, node, undefined),
-  });
-
-export type IconComponent = ReturnType<typeof createIcon>;
-export type ToggleIconComponent = ReturnType<typeof createToggleIcon>;
-export type StaticIconComponent = ReturnType<typeof createStaticIcon>;

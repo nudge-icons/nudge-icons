@@ -133,7 +133,9 @@ describe("motion", () => {
     );
     const css = document.head.querySelector('style[data-href="nudge-check"]')?.textContent ?? "";
     expect(css).toContain("@keyframes nudge-check-mark");
-    expect(css).toContain("prefers-reduced-motion");
+    const base = document.head.querySelectorAll('style[data-href="nudge-base"]');
+    expect(base).toHaveLength(1);
+    expect(base[0]?.textContent).toContain("prefers-reduced-motion");
   });
 
   it("switching animate from false to once turns the motion on", () => {
@@ -141,8 +143,8 @@ describe("motion", () => {
     expect(svgOf(container).dataset.animate).toBeUndefined();
     rerender(<Bell animate="once" />);
     expect(svgOf(container).dataset.animate).toBe("once");
-    const css = document.head.querySelector('style[data-href="nudge-bell"]')?.textContent ?? "";
-    expect(css).toContain('.nudge-bell[data-animate="once"] [data-part="clapper"]');
+    const base = document.head.querySelector('style[data-href="nudge-base"]')?.textContent ?? "";
+    expect(base).toContain(".nudge-icon[data-animate=once] [data-part]");
   });
 
   it("static icons have no pathLength", () => {

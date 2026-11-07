@@ -5,4 +5,4 @@ export type {
   IconProps,
   ToggleIconComponent,
   ToggleIconProps,
-} from "./lib/create-icon";
+} from "./lib/types";

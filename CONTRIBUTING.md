@@ -98,7 +98,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   ]
   ```
 
-  The generated CSS only animates `transform` and stroke dashes, wraps every selector in `:where()` (zero specificity) and is switched off by `prefers-reduced-motion`. Users tune it with `--nudge-duration` and `--nudge-easing`; a loop repeats `--nudge-repeat` times (infinite by default), which components set from a numeric `animate`.
+  The CSS comes in two layers: a shared base, loaded once per page by any animated icon, decides when parts play (hover or focus of the icon or an interactive parent, `once`, `loop`, reduced motion); each icon only adds its keyframes and a few custom properties on its moving parts. It only animates `transform`, `opacity` and stroke dashes, wraps every selector in `:where()` (zero specificity) and is switched off by `prefers-reduced-motion`. Each motion is followed by a rest inside the same cycle, so a loop pauses between repeats. Users tune it with `--nudge-duration` (the whole cycle, rest included) and `--nudge-easing`; a loop repeats `--nudge-repeat` times (infinite by default), which components set from a numeric `animate`.
 
 Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 24 and 48px on light and dark, in both states and in every variant, with its motion. Icons with motion come first; hover a card to play it, or switch every icon to `loop`, `once`, `3×` or off. The dashed frame is the 2–22 safe area, the dotted one the 1–23 stroke edge; the measured centre is shown under each icon and turns red when it is off.
 

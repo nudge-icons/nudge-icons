@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { checkMotion, iconCss, PRESETS, type Motion } from "./motion.ts";
+import { baseCss, checkMotion, iconCss, PRESETS, type Motion } from "./motion.ts";
 
 const every: Motion[] = [
   { part: "a", preset: "swing", origin: [12, 3], angle: 12 },
@@ -23,6 +23,37 @@ function rules(css: string): [string, string][] {
   return out;
 }
 
+describe("baseCss", () => {
+  const css = baseCss();
+
+  it("wraps every selector in :where() so users can always override it", () => {
+    for (const [selector] of rules(css)) expect(selector).toMatch(/^:where\(.*\)$/);
+  });
+
+  it("plays parts on hover or focus of the icon or an interactive parent, and once", () => {
+    expect(css).toContain(".nudge-icon[data-animate=hover]:is(:hover,:focus-visible) [data-part]");
+    expect(css).toContain(":is(:hover,:focus-visible) .nudge-icon[data-animate=hover] [data-part]");
+    expect(css).toContain(".nudge-icon[data-animate=once] [data-part]");
+  });
+
+  it("repeats a loop --nudge-repeat times, forever by default", () => {
+    expect(css).toMatch(
+      /\[data-animate=loop\] \[data-part\]\)\{animation:[^}]*var\(--nudge-repeat,infinite\)/,
+    );
+  });
+
+  it("lets users override duration and easing", () => {
+    expect(css).toContain("var(--nudge-duration,var(--nudge-t))");
+    expect(css).toContain("var(--nudge-easing,var(--nudge-f))");
+  });
+
+  it("turns every animation off for reduced motion, after the other rules", () => {
+    expect(
+      css.endsWith("@media (prefers-reduced-motion:reduce){:where(.nudge-icon *){animation:none}}"),
+    ).toBe(true);
+  });
+});
+
 describe("iconCss", () => {
   const css = iconCss("demo", every, ["slash"]);
 
@@ -32,12 +63,12 @@ describe("iconCss", () => {
 
   it("wraps every selector in :where() so users can always override it", () => {
     const selectors = rules(css).map(([s]) => s);
-    expect(selectors.length).toBeGreaterThan(10);
+    expect(selectors).toHaveLength(every.length + 1);
     for (const s of selectors) expect(s).toMatch(/^:where\(.*\)$/);
   });
 
   it("never sets colour or stroke width", () => {
-    const declared = rules(css)
+    const declared = [...rules(css), ...rules(baseCss())]
       .flatMap(([, body]) => body.split(";"))
       .map((d) => d.split(":")[0]?.trim())
       .filter(Boolean);
@@ -46,31 +77,19 @@ describe("iconCss", () => {
     }
   });
 
-  it("plays on hover of the icon or an interactive parent, once, and in a loop", () => {
-    expect(css).toContain(':is(:hover,:focus-visible) .nudge-demo[data-animate="hover"]');
-    // The icon itself can be focusable (tabIndex, role="button").
+  it("gives each moving part its keyframes, cycle length, easing and delay", () => {
+    expect(css).toContain("@keyframes nudge-demo-a{");
     expect(css).toContain(
-      '.nudge-demo[data-animate="hover"]:is(:hover,:focus-visible) [data-part="a"]',
+      ':where(.nudge-demo [data-part="a"]){--nudge-k:nudge-demo-a;--nudge-t:1620ms;--nudge-f:ease-in-out;transform-box:view-box;transform-origin:12px 3px}',
     );
-    expect(css).toContain('.nudge-demo[data-animate="once"] [data-part="a"]');
-    expect(css).toMatch(/\.nudge-demo\[data-animate="loop"\] \[data-part="a"\]\)\{animation:/);
+    expect(iconCss("d", [{ part: "p", preset: "draw", delay: 60 }])).toContain("--nudge-w:60ms");
+    // A continuous spin does not rest and runs linear in a loop.
+    expect(iconCss("s", [{ part: "p", preset: "spin" }])).toContain("--nudge-t:700ms;--nudge-f:");
+    expect(iconCss("s", [{ part: "p", preset: "spin" }])).toContain("--nudge-lf:linear");
   });
 
-  it("repeats a loop --nudge-repeat times, forever by default", () => {
-    expect(css).toMatch(
-      /\[data-animate="loop"\] \[data-part="a"\]\)\{animation:[^}]*var\(--nudge-repeat,infinite\)/,
-    );
-  });
-
-  it("uses the CSS variables for duration and easing", () => {
-    expect(css).toContain("var(--nudge-duration,900ms)");
-    expect(css).toContain("var(--nudge-easing,");
-  });
-
-  it("turns every animation off for reduced motion, after the other rules", () => {
-    expect(
-      css.endsWith("@media (prefers-reduced-motion:reduce){:where(.nudge-demo *){animation:none}}"),
-    ).toBe(true);
+  it("puts the rest after the motion and merges identical steps", () => {
+    expect(css).toContain("@keyframes nudge-demo-a{0%,55.56%,100%{transform:none}");
   });
 
   it("hides active-only parts until data-active", () => {

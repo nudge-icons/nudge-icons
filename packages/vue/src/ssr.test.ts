@@ -20,11 +20,13 @@ describe("server rendering", () => {
   it("renders each icon's CSS once per request, inside its first instance", async () => {
     const html = await renderToString(createSSRApp(App));
     expect(inlineStyles(html, "eye")).toHaveLength(1);
-    // The first Eye carries the style as its first child; the second does not.
-    const eyes = html.match(/<svg[^>]*nudge-eye[^>]*>(<style[^>]*>)?/g) ?? [];
+    // The first Eye carries the shared base and its own style; the second carries none.
+    const eyes = html.match(/<svg[^>]*nudge-eye[^>]*>(?:<style[^>]*>[^<]*<\/style>)*/g) ?? [];
     expect(eyes).toHaveLength(2);
+    expect(eyes[0]).toContain('<style data-nudge="base"');
     expect(eyes[0]).toContain('<style data-nudge="eye"');
     expect(eyes[1]).not.toContain("<style");
+    expect(inlineStyles(html, "base")).toHaveLength(1);
     expect(inlineStyles(html, "heart")).toHaveLength(1);
     // Icons without any CSS (Menu until its toggle is styled) render no style at all.
     expect(inlineStyles(html, "menu")).toHaveLength(0);

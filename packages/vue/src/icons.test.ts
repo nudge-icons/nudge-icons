@@ -110,7 +110,9 @@ describe("motion", () => {
     ).toBe("1");
     const css = document.head.querySelector('style[data-nudge-head="check"]')?.textContent ?? "";
     expect(css).toContain("@keyframes nudge-check-mark");
-    expect(css).toContain("prefers-reduced-motion");
+    const base = document.head.querySelectorAll('style[data-nudge-head="base"]');
+    expect(base).toHaveLength(1);
+    expect(base[0]?.textContent).toContain("prefers-reduced-motion");
   });
 
   it("switching animate from false to once turns the motion on", async () => {
