@@ -1,4 +1,4 @@
-import { forwardRef, type CSSProperties } from "react";
+import type { CSSProperties, Ref } from "react";
 import { BASE_CSS } from "../generated/base-css";
 import { renderNode, renderSvg } from "./render-svg";
 import type {
@@ -17,8 +17,16 @@ function make<P extends IconProps>(
   css: string,
 ): Component<P> {
   const children = renderNode(node);
-  const icon = forwardRef<SVGSVGElement, P>((props, ref) => {
-    const { animate = "hover", active, style, ...rest } = props as ToggleIconProps;
+  const icon: Component<P> = (props) => {
+    const {
+      ref,
+      animate = "hover",
+      active,
+      style,
+      ...rest
+    } = props as ToggleIconProps & {
+      ref?: Ref<SVGSVGElement>;
+    };
     // A number plays the loop that many times; 0 or less means no motion.
     const repeat = typeof animate === "number" ? animate : undefined;
     const mode = repeat === undefined ? animate : repeat > 0 ? "loop" : false;
@@ -31,8 +39,8 @@ function make<P extends IconProps>(
           : style,
     });
     if (!css) return svg;
-    // React 19 hoists these into <head> once per href; React 18 renders them in place.
-    // The shared base decides when parts play; the icon's own CSS says what plays.
+    // React 19 hoists these into <head> and keeps one per href, also across SSR and
+    // hydration. The shared base decides when parts play; the icon's own CSS what plays.
     return (
       <>
         <style href="nudge-base" precedence="nudge-icons">
@@ -44,7 +52,7 @@ function make<P extends IconProps>(
         {svg}
       </>
     );
-  });
+  };
   icon.displayName = displayName;
   return icon;
 }

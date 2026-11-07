@@ -1,4 +1,4 @@
-import type { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from "react";
+import type { FunctionComponent, Ref, SVGProps } from "react";
 
 /** Icon drawing as data: `[tag, attributes, children]`, generated from icons/*.svg. */
 export type IconNode = ReadonlyArray<
@@ -37,9 +37,8 @@ export interface ToggleIconProps extends IconProps {
   active?: boolean;
 }
 
-export type Component<P> = ForwardRefExoticComponent<
-  PropsWithoutRef<P> & RefAttributes<SVGSVGElement>
->;
+/** React 19 passes `ref` as a regular prop, so icons are plain function components. */
+export type Component<P> = FunctionComponent<P & { ref?: Ref<SVGSVGElement> }>;
 export type StaticIconComponent = Component<StaticIconProps>;
 export type IconComponent = Component<IconProps>;
 export type ToggleIconComponent = Component<ToggleIconProps>;
