@@ -80,7 +80,7 @@ Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 2
 
 ## Generated code
 
-React components and the `@nudge-icons/svg` files are generated from `icons/` by `pnpm build:icons` (also run by `typecheck`, `test` and `build`). They are git-ignored; change `icons/` or `scripts/build-icons.ts`, never the generated files.
+React and Vue components and the `@nudge-icons/svg` files are generated from `icons/` by `pnpm build:icons` (also run by `typecheck`, `test` and `build`). They are git-ignored; change `icons/` or `scripts/build-icons.ts`, never the generated files. `pnpm build` also bundles a single icon from every package entry and fails if any other icon gets in, so keep generated calls marked `/* @__PURE__ */`.
 
 ## Before opening a pull request
 
