@@ -1,0 +1,10 @@
+{
+  "name": "loader",
+  "category": "interface",
+  "tags": ["loading", "spinner", "progress", "wait"],
+  "animation": {
+    "name": "spin",
+    "description": "The arc spins around the centre",
+    "parts": ["arc"]
+  }
+}

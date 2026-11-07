@@ -1,0 +1,10 @@
+{
+  "name": "search",
+  "category": "interface",
+  "tags": ["find", "magnifier", "lookup", "zoom"],
+  "animation": {
+    "name": "scan",
+    "description": "The lens moves in a small circle",
+    "parts": ["lens"]
+  }
+}

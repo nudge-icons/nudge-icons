@@ -1,0 +1,10 @@
+{
+  "name": "x",
+  "category": "actions",
+  "tags": ["close", "cancel", "remove", "delete"],
+  "animation": {
+    "name": "turn",
+    "description": "The cross turns a quarter turn and settles",
+    "parts": ["cross"]
+  }
+}

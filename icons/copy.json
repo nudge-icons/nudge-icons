@@ -1,0 +1,15 @@
+{
+  "name": "copy",
+  "category": "actions",
+  "tags": ["duplicate", "clipboard", "paste", "clone"],
+  "animation": {
+    "name": "stack",
+    "description": "The front sheet slides onto the back one and returns",
+    "parts": ["front"]
+  },
+  "toggle": {
+    "description": "A tick draws inside the front sheet",
+    "parts": ["check"],
+    "activeOnly": ["check"]
+  }
+}

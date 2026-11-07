@@ -1,0 +1,10 @@
+{
+  "name": "alert-triangle",
+  "category": "status",
+  "tags": ["warning", "caution", "error", "danger"],
+  "animation": {
+    "name": "shake",
+    "description": "The sign shakes side to side",
+    "parts": ["sign"]
+  }
+}

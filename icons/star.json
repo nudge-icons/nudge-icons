@@ -1,0 +1,10 @@
+{
+  "name": "star",
+  "category": "status",
+  "tags": ["favorite", "rating", "bookmark", "featured"],
+  "animation": {
+    "name": "twinkle",
+    "description": "The star grows, tilts and settles",
+    "parts": ["shape"]
+  }
+}

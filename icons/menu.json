@@ -1,0 +1,14 @@
+{
+  "name": "menu",
+  "category": "interface",
+  "tags": ["hamburger", "navigation", "list", "bars"],
+  "animation": {
+    "name": "wave",
+    "description": "The lines shift sideways one after another",
+    "parts": ["top", "middle", "bottom"]
+  },
+  "toggle": {
+    "description": "The lines fold into a cross",
+    "parts": ["top", "middle", "bottom"]
+  }
+}

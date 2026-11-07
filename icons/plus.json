@@ -1,0 +1,10 @@
+{
+  "name": "plus",
+  "category": "actions",
+  "tags": ["add", "new", "create", "more"],
+  "animation": {
+    "name": "turn",
+    "description": "The plus turns a quarter turn and settles",
+    "parts": ["cross"]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "eye",
+  "category": "status",
+  "tags": ["view", "show", "visible", "preview"],
+  "animation": {
+    "name": "blink",
+    "description": "The eye blinks",
+    "parts": ["outline", "pupil"]
+  },
+  "toggle": {
+    "description": "A slash draws across the eye to hide it",
+    "parts": ["slash"],
+    "activeOnly": ["slash"]
+  }
+}

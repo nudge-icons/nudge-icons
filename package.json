@@ -8,6 +8,7 @@
   },
   "scripts": {
     "check:icons": "tsx scripts/check-icons.ts",
+    "preview": "tsx scripts/preview.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

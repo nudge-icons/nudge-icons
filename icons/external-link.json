@@ -1,0 +1,10 @@
+{
+  "name": "external-link",
+  "category": "interface",
+  "tags": ["open", "new-tab", "outside", "link"],
+  "animation": {
+    "name": "escape",
+    "description": "The arrow slips out of the frame and returns",
+    "parts": ["arrow"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "check-circle",
+  "category": "status",
+  "tags": ["success", "done", "complete", "verified"],
+  "animation": {
+    "name": "draw",
+    "description": "The tick draws itself inside the circle",
+    "parts": ["mark"]
+  }
+}

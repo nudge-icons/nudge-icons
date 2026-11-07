@@ -1,0 +1,10 @@
+{
+  "name": "settings",
+  "category": "interface",
+  "tags": ["gear", "cog", "preferences", "options"],
+  "animation": {
+    "name": "turn",
+    "description": "The gear turns by one tooth",
+    "parts": ["gear"]
+  }
+}

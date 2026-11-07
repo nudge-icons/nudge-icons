@@ -1,0 +1,10 @@
+{
+  "name": "info",
+  "category": "status",
+  "tags": ["information", "help", "details", "about"],
+  "animation": {
+    "name": "bounce",
+    "description": "The dot hops above the stem",
+    "parts": ["dot"]
+  }
+}

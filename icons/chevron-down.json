@@ -1,0 +1,10 @@
+{
+  "name": "chevron-down",
+  "category": "interface",
+  "tags": ["expand", "dropdown", "open", "caret"],
+  "animation": {
+    "name": "nudge",
+    "description": "The chevron nudges down and back",
+    "parts": ["chevron"]
+  }
+}

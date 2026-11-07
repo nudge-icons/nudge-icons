@@ -1,0 +1,10 @@
+{
+  "name": "upload",
+  "category": "actions",
+  "tags": ["import", "send", "file", "arrow-up"],
+  "animation": {
+    "name": "lift",
+    "description": "The arrow lifts out of the tray and returns",
+    "parts": ["arrow"]
+  }
+}

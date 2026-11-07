@@ -29,7 +29,20 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 ```
 
 - `category`: `actions`, `interface` or `status`.
-- `animation.parts` lists the `data-part` values the animation moves; each must exist in the SVG.
+- `animation` is the motion played by the `animate` prop: the icon moves and returns to its resting drawing. `animation.parts` lists the `data-part` values it moves; each must exist in the SVG.
+- `toggle` is optional and describes a second state shown by the `active` prop:
+
+  ```json
+  "toggle": {
+    "description": "A slash draws across the eye to hide it",
+    "parts": ["slash"],
+    "activeOnly": ["slash"]
+  }
+  ```
+
+  `parts` lists what changes between the states. `activeOnly` lists parts drawn only in the active state: they are hidden by default, dropped from the `/static` entry, and must not be moved by `animation`.
+
+Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 24 and 48px on light and dark, and in both states.
 
 ## Before opening a pull request
 

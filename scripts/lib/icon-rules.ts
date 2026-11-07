@@ -35,7 +35,16 @@ export interface IconMeta {
   name: string;
   category: "actions" | "interface" | "status";
   tags: string[];
+  /** Motion played by `animate`: the icon moves and returns to its resting drawing. */
   animation: { name: string; description: string; parts: string[] };
+  /** Optional second state shown by `active`. */
+  toggle?: {
+    description: string;
+    /** Parts that change between the two states. */
+    parts: string[];
+    /** Parts drawn only in the active state. Hidden by default and dropped from `/static`. */
+    activeOnly?: string[];
+  };
 }
 
 export interface Element {
@@ -212,6 +221,24 @@ function checkMeta(name: string, meta: unknown, parts: Set<string>): string[] {
     for (const p of a.parts ?? []) {
       if (!parts.has(p)) errors.push(`animation part "${p}" has no element with data-part="${p}"`);
     }
+  }
+  errors.push(...checkToggle(m.toggle, parts, a?.parts ?? []));
+  return errors;
+}
+
+function checkToggle(t: IconMeta["toggle"] | undefined, parts: Set<string>, motion: string[]) {
+  if (t === undefined) return [];
+  if (typeof t !== "object" || typeof t.description !== "string" || !Array.isArray(t.parts)) {
+    return ["metadata toggle needs a description and parts"];
+  }
+  const errors: string[] = [];
+  if (!t.parts.length) errors.push("metadata toggle needs at least 1 part");
+  for (const p of t.parts) {
+    if (!parts.has(p)) errors.push(`toggle part "${p}" has no element with data-part="${p}"`);
+  }
+  for (const p of t.activeOnly ?? []) {
+    if (!t.parts.includes(p)) errors.push(`toggle activeOnly part "${p}" must be in toggle parts`);
+    if (motion.includes(p)) errors.push(`animation must not move the active-only part "${p}"`);
   }
   return errors;
 }

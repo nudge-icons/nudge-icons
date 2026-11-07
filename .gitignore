@@ -3,6 +3,7 @@ dist
 storybook-static
 .DS_Store
 *.log
+preview.html
 
 # Local-only notes for the owner and agents
 CLAUDE.md

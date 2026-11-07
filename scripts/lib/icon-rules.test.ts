@@ -73,4 +73,34 @@ describe("checkIcon", () => {
     });
     expect(errors).toContain('metadata name "ring" must match the file name');
   });
+
+  it("accepts a toggle with an active-only part", () => {
+    const errors = checkIcon(
+      "dot",
+      svg(
+        '<circle data-part="core" cx="12" cy="12" r="4"/>\n  <path data-part="slash" d="M4 4l16 16"/>',
+      ),
+      {
+        ...meta(["core"]),
+        toggle: { description: "Hides", parts: ["slash"], activeOnly: ["slash"] },
+      },
+    );
+    expect(errors).toEqual([]);
+  });
+
+  it("requires toggle parts to exist", () => {
+    const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
+      ...meta(),
+      toggle: { description: "Hides", parts: ["slash"] },
+    });
+    expect(errors).toContain('toggle part "slash" has no element with data-part="slash"');
+  });
+
+  it("keeps active-only parts out of the motion animation", () => {
+    const errors = checkIcon("dot", svg('<path data-part="slash" d="M4 4l16 16"/>'), {
+      ...meta(["slash"]),
+      toggle: { description: "Hides", parts: ["slash"], activeOnly: ["slash"] },
+    });
+    expect(errors).toContain('animation must not move the active-only part "slash"');
+  });
 });

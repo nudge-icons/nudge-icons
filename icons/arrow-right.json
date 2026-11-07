@@ -1,0 +1,10 @@
+{
+  "name": "arrow-right",
+  "category": "interface",
+  "tags": ["next", "forward", "continue", "go"],
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges right and back",
+    "parts": ["arrow"]
+  }
+}

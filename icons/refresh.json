@@ -1,0 +1,10 @@
+{
+  "name": "refresh",
+  "category": "actions",
+  "tags": ["reload", "sync", "update", "retry"],
+  "animation": {
+    "name": "spin",
+    "description": "The arrows make one full turn",
+    "parts": ["arrows"]
+  }
+}

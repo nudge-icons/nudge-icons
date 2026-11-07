@@ -1,0 +1,14 @@
+{
+  "name": "lock",
+  "category": "status",
+  "tags": ["secure", "private", "password", "locked"],
+  "animation": {
+    "name": "jiggle",
+    "description": "The shackle jiggles as if tested",
+    "parts": ["shackle"]
+  },
+  "toggle": {
+    "description": "The shackle's right leg releases and the lock opens",
+    "parts": ["shackle"]
+  }
+}
