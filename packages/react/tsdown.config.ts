@@ -1,12 +1,10 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsdown";
 
 export default defineConfig({
   entry: ["src/index.ts", "src/static.ts"],
-  format: ["esm"],
+  format: "esm",
+  platform: "neutral",
   target: "es2022",
   dts: true,
   clean: true,
-  splitting: true,
-  treeshake: true,
-  external: ["react"],
 });

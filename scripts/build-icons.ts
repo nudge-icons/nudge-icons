@@ -106,6 +106,7 @@ const header = (icon: IconVariant) => {
 
 function animatedModule(icon: IconVariant, target: Target): string {
   const factory = icon.toggle ? "createToggleIcon" : "createIcon";
+  const type = icon.toggle ? "ToggleIconComponent" : "IconComponent";
   const css = baseCss(icon);
   const args = [
     JSON.stringify(icon.id),
@@ -113,18 +114,18 @@ function animatedModule(icon: IconVariant, target: Target): string {
     nodeCode(icon.nodes, target),
   ];
   if (css) args.push(JSON.stringify(css));
-  return `${header(icon)}import { ${factory} } from "../../lib/create-icon";
+  return `${header(icon)}import { ${factory}, type ${type} } from "../../lib/create-icon";
 
-// Pure, so bundlers drop icons that are not imported.
-export const ${icon.component} = /* @__PURE__ */ ${factory}(${args.join(", ")});
+// Pure, so bundlers drop icons that are not imported. The explicit type keeps .d.ts small.
+export const ${icon.component}: ${type} = /* @__PURE__ */ ${factory}(${args.join(", ")});
 `;
 }
 
 function staticModule(icon: IconVariant, target: Target): string {
   const nodes = withoutParts(icon.nodes, new Set(icon.activeOnly));
-  return `${header(icon)}import { createStaticIcon } from "../../lib/create-icon";
+  return `${header(icon)}import { createStaticIcon, type StaticIconComponent } from "../../lib/create-icon";
 
-export const ${icon.component} = /* @__PURE__ */ createStaticIcon(${JSON.stringify(icon.id)}, ${JSON.stringify(icon.component)}, ${nodeCode(nodes, target)});
+export const ${icon.component}: StaticIconComponent = /* @__PURE__ */ createStaticIcon(${JSON.stringify(icon.id)}, ${JSON.stringify(icon.component)}, ${nodeCode(nodes, target)});
 `;
 }
 
