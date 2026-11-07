@@ -12,6 +12,14 @@
   "animation": {
     "name": "escape",
     "description": "The arrow slips out of the frame and returns",
-    "parts": ["arrow"]
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "x": 3,
+        "y": -3
+      }
+    ]
   }
 }

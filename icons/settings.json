@@ -12,7 +12,14 @@
   "animation": {
     "name": "turn",
     "description": "The gear turns by one tooth",
-    "parts": ["gear"]
+    "parts": ["gear"],
+    "motion": [
+      {
+        "part": "gear",
+        "preset": "spin",
+        "angle": 45
+      }
+    ]
   },
   "filled": {}
 }

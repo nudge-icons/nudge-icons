@@ -12,7 +12,13 @@
   "animation": {
     "name": "flash",
     "description": "The bolt flickers twice",
-    "parts": ["bolt"]
+    "parts": ["bolt"],
+    "motion": [
+      {
+        "part": "bolt",
+        "preset": "flash"
+      }
+    ]
   },
   "filled": {}
 }

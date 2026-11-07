@@ -11,7 +11,14 @@
   "animation": {
     "name": "pulse",
     "description": "The circle pulses once",
-    "parts": ["shape"]
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "pulse",
+        "scale": 1.12
+      }
+    ]
   },
   "filled": {}
 }

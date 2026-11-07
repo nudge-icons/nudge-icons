@@ -11,9 +11,31 @@
   },
   "animation": {
     "name": "twinkle",
-    "description": "The star grows, tilts and settles",
-    "parts": ["shape"]
+    "description": "The star turns by one point and settles",
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "spin",
+        "origin": [12, 13],
+        "angle": 72
+      }
+    ]
   },
   "filled": {},
-  "half": {}
+  "half": {
+    "animation": {
+      "name": "pulse",
+      "description": "The half star pulses once",
+      "parts": ["shape"],
+      "motion": [
+        {
+          "part": "shape",
+          "preset": "pulse",
+          "origin": [12, 13],
+          "scale": 1.15
+        }
+      ]
+    }
+  }
 }

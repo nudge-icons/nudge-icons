@@ -11,7 +11,14 @@
   },
   "animation": {
     "name": "swipe",
-    "description": "The card swipes to the side and back",
-    "parts": ["card"]
+    "description": "The card slides out as if swiped through a reader and comes back",
+    "parts": ["card"],
+    "motion": [
+      {
+        "part": "card",
+        "preset": "pass",
+        "x": 4
+      }
+    ]
   }
 }

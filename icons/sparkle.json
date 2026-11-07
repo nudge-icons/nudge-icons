@@ -12,7 +12,22 @@
   "animation": {
     "name": "twinkle",
     "description": "The two stars grow and shrink one after the other",
-    "parts": ["big", "small"]
+    "parts": ["big", "small"],
+    "motion": [
+      {
+        "part": "big",
+        "preset": "pulse",
+        "origin": [9.5, 9.5],
+        "scale": 1.15
+      },
+      {
+        "part": "small",
+        "preset": "pulse",
+        "origin": [17.5, 17.5],
+        "scale": 1.35,
+        "delay": 150
+      }
+    ]
   },
   "filled": {}
 }

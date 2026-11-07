@@ -10,9 +10,17 @@
     "material": ["warning"]
   },
   "animation": {
-    "name": "shake",
-    "description": "The sign shakes side to side",
-    "parts": ["sign"]
+    "name": "swing",
+    "description": "The sign swings from its top like a hanging sign",
+    "parts": ["sign"],
+    "motion": [
+      {
+        "part": "sign",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 8
+      }
+    ]
   },
   "filled": {}
 }

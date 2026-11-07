@@ -12,13 +12,26 @@
   "animation": {
     "name": "draw",
     "description": "The tick draws itself inside the circle",
-    "parts": ["mark"]
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "draw"
+      }
+    ]
   },
   "filled": {
     "animation": {
       "name": "pop",
       "description": "The badge pops up and settles",
-      "parts": ["badge"]
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
     }
   }
 }

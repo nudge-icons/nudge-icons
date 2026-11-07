@@ -12,6 +12,13 @@
   "animation": {
     "name": "nudge",
     "description": "The arrow nudges right and back",
-    "parts": ["arrow"]
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": 2.5
+      }
+    ]
   }
 }

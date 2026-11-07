@@ -12,6 +12,13 @@
   "animation": {
     "name": "flip",
     "description": "The rings lift as if a page turns",
-    "parts": ["rings"]
+    "parts": ["rings"],
+    "motion": [
+      {
+        "part": "rings",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
   }
 }

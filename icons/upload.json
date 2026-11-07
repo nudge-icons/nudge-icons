@@ -12,6 +12,13 @@
   "animation": {
     "name": "lift",
     "description": "The arrow lifts out of the tray and returns",
-    "parts": ["arrow"]
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "y": -5
+      }
+    ]
   }
 }

@@ -12,6 +12,13 @@
   "animation": {
     "name": "rise",
     "description": "The sun rises over the hill and settles",
-    "parts": ["sun"]
+    "parts": ["sun"],
+    "motion": [
+      {
+        "part": "sun",
+        "preset": "nudge",
+        "y": -2
+      }
+    ]
   }
 }

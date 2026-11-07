@@ -12,6 +12,13 @@
   "animation": {
     "name": "grow",
     "description": "The bars grow up from the axis",
-    "parts": ["bars"]
+    "parts": ["bars"],
+    "motion": [
+      {
+        "part": "bars",
+        "preset": "draw",
+        "duration": 700
+      }
+    ]
   }
 }

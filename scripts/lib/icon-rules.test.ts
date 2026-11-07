@@ -8,7 +8,12 @@ const meta = (parts: string[] = []) => ({
   name: "dot",
   category: "status",
   tags: ["dot", "point"],
-  animation: { name: "pulse", description: "Pulses", parts },
+  animation: {
+    name: "pulse",
+    description: "Pulses",
+    parts,
+    motion: parts.map((part) => ({ part, preset: "pulse" as const, scale: 1.1 })),
+  },
 });
 
 describe("pathPoints", () => {
@@ -82,8 +87,8 @@ describe("checkIcon", () => {
   });
 
   it("accepts equivalents in known icon sets", () => {
-    const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
-      ...meta(),
+    const errors = checkIcon("dot", svg('<circle data-part="core" cx="12" cy="12" r="4"/>'), {
+      ...meta(["core"]),
       equivalents: { lucide: ["circle-dot"], material: ["radio_button_checked"] },
     });
     expect(errors).toEqual([]);
@@ -102,6 +107,39 @@ describe("checkIcon", () => {
     );
   });
 
+  it("requires every icon to move and every toggle part to change", () => {
+    const still = { ...meta(), animation: { name: "x", description: "x", parts: [] } };
+    expect(checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), still)).toContain(
+      "metadata animation needs motion (see the presets in motion.ts)",
+    );
+    const errors = checkIcon("dot", svg('<path data-part="slash" d="M4 4l16 16"/>'), {
+      ...meta(),
+      toggle: { description: "Hides", parts: ["slash"] },
+    });
+    expect(errors).toContain("toggle.motion must list how each toggle part changes");
+  });
+
+  it("checks that a morph keeps the path's commands and stays in bounds", () => {
+    const shackle = svg('<path data-part="shackle" d="M16 10.5V7.5a4 4 0 0 0-8 0v3"/>');
+    const toggle = (morph: string) => ({
+      ...meta(["shackle"]),
+      toggle: {
+        description: "Opens",
+        parts: ["shackle"],
+        motion: [{ part: "shackle", preset: "trim" as const, length: 30, offset: -3.5, morph }],
+      },
+    });
+    expect(checkIcon("dot", shackle, toggle("M16 9V6a4 4 0 0 0-8 0v4.5"))).toEqual([]);
+    expect(checkIcon("dot", shackle, toggle("M16 9L16 6a4 4 0 0 0-8 0v4.5"))).toContain(
+      'toggle morph for "shackle": must use the same commands as the source path to morph smoothly',
+    );
+    expect(
+      checkIcon("dot", shackle, toggle("M16 6V3a4 4 0 0 0-8 0v4.5")).some((e) =>
+        e.includes("outside the safe area"),
+      ),
+    ).toBe(true);
+  });
+
   it("requires metadata to match the file name", () => {
     const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
       ...meta(),
@@ -118,7 +156,12 @@ describe("checkIcon", () => {
       ),
       {
         ...meta(["core"]),
-        toggle: { description: "Hides", parts: ["slash"], activeOnly: ["slash"] },
+        toggle: {
+          description: "Hides",
+          parts: ["slash"],
+          activeOnly: ["slash"],
+          motion: [{ part: "slash", preset: "draw" as const }],
+        },
       },
     );
     expect(errors).toEqual([]);
@@ -171,7 +214,14 @@ describe("checkIcon", () => {
       svg('<circle data-part="badge" fill="currentColor" cx="12" cy="12" r="4"/>'),
       {
         ...meta(["core"]),
-        filled: { animation: { name: "pop", description: "Pops", parts: ["badge"] } },
+        filled: {
+          animation: {
+            name: "pop",
+            description: "Pops",
+            parts: ["badge"],
+            motion: [{ part: "badge", preset: "pulse", scale: 1.1 }],
+          },
+        },
       },
       "filled",
     );

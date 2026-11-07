@@ -12,10 +12,49 @@
   "animation": {
     "name": "wave",
     "description": "The lines shift sideways one after another",
-    "parts": ["top", "middle", "bottom"]
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 2
+      },
+      {
+        "part": "middle",
+        "preset": "nudge",
+        "x": 2,
+        "delay": 80
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": 2,
+        "delay": 160
+      }
+    ]
   },
   "toggle": {
     "description": "The lines fold into a cross",
-    "parts": ["top", "middle", "bottom"]
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "move",
+        "y": 6,
+        "angle": 45,
+        "origin": [12, 6]
+      },
+      {
+        "part": "middle",
+        "preset": "hide"
+      },
+      {
+        "part": "bottom",
+        "preset": "move",
+        "y": -6,
+        "angle": -45,
+        "origin": [12, 18]
+      }
+    ]
   }
 }

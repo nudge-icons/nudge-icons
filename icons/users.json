@@ -12,6 +12,19 @@
   "animation": {
     "name": "nod",
     "description": "The front person nods, then the one behind",
-    "parts": ["front", "back"]
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "back",
+        "preset": "bounce",
+        "y": 1.5,
+        "delay": 150
+      }
+    ]
   }
 }

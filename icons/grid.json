@@ -12,6 +12,39 @@
   "animation": {
     "name": "wave",
     "description": "The tiles pulse one after another",
-    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"]
+    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"],
+    "motion": [
+      {
+        "part": "top-left",
+        "preset": "pulse",
+        "origin": [6.5, 6.5],
+        "scale": 0.75,
+        "duration": 500
+      },
+      {
+        "part": "top-right",
+        "preset": "pulse",
+        "origin": [17.5, 6.5],
+        "scale": 0.75,
+        "duration": 500,
+        "delay": 90
+      },
+      {
+        "part": "bottom-right",
+        "preset": "pulse",
+        "origin": [17.5, 17.5],
+        "scale": 0.75,
+        "duration": 500,
+        "delay": 180
+      },
+      {
+        "part": "bottom-left",
+        "preset": "pulse",
+        "origin": [6.5, 17.5],
+        "scale": 0.75,
+        "duration": 500,
+        "delay": 270
+      }
+    ]
   }
 }

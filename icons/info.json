@@ -12,13 +12,27 @@
   "animation": {
     "name": "bounce",
     "description": "The dot hops above the stem",
-    "parts": ["dot"]
+    "parts": ["dot"],
+    "motion": [
+      {
+        "part": "dot",
+        "preset": "bounce",
+        "y": -2.5
+      }
+    ]
   },
   "filled": {
     "animation": {
       "name": "pop",
       "description": "The badge pops up and settles",
-      "parts": ["badge"]
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
     }
   }
 }

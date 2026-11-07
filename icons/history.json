@@ -10,7 +10,16 @@
   },
   "animation": {
     "name": "rewind",
-    "description": "The clock hands turn backwards",
-    "parts": ["hands"]
+    "description": "The arrow winds back around the clock",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "spin",
+        "origin": [12, 12],
+        "angle": -360,
+        "duration": 900
+      }
+    ]
   }
 }

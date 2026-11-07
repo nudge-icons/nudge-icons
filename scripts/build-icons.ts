@@ -3,7 +3,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { checkIcon, PAINTED_VARIANTS, type IconMeta, type Variant } from "./lib/icon-rules.ts";
-import { baseCss, drawnParts, iconCss, type Motion } from "./lib/motion.ts";
+import { baseCss, drawnParts, iconCss, type Motion, type ToggleMotion } from "./lib/motion.ts";
 import { parseSvgTree, withoutParts, type SvgNode } from "./lib/svg-tree.ts";
 
 const root = join(import.meta.dirname, "..");
@@ -24,6 +24,8 @@ interface IconVariant {
   activeOnly: string[];
   /** Motion of this variant (a filled or half variant may override the outline's). */
   motion: Motion[];
+  /** How toggle parts change when active; shared by all variants. */
+  toggleMotion: ToggleMotion[];
   toggle: boolean;
 }
 
@@ -60,6 +62,7 @@ function loadIcons(): IconVariant[] {
         motion:
           ((variant === "outline" ? undefined : meta[variant]?.animation) ?? meta.animation)
             .motion ?? [],
+        toggleMotion: meta.toggle?.motion ?? [],
         toggle: meta.toggle !== undefined,
       });
     }
@@ -98,7 +101,18 @@ function nodeCode(nodes: SvgNode[], target: Target): string {
   return `[${items.join(", ")}]`;
 }
 
-const css = (icon: IconVariant) => iconCss(icon.id, icon.motion, icon.activeOnly);
+/** The `d` of every part that is a single path. */
+function partPaths(nodes: SvgNode[], out: Record<string, string> = {}): Record<string, string> {
+  for (const n of nodes) {
+    const part = n.attrs["data-part"];
+    if (part && n.tag === "path" && n.attrs.d) out[part] = n.attrs.d;
+    partPaths(n.children, out);
+  }
+  return out;
+}
+
+const css = (icon: IconVariant) =>
+  iconCss(icon.id, icon.motion, icon.activeOnly, icon.toggleMotion, partPaths(icon.nodes));
 
 const SHAPES = new Set(["path", "line", "polyline", "polygon", "circle", "ellipse", "rect"]);
 
@@ -120,7 +134,7 @@ function animatedModule(icon: IconVariant, target: Target): string {
   const factory = icon.toggle ? "createToggleIcon" : "createIcon";
   const type = icon.toggle ? "ToggleIconComponent" : "IconComponent";
   const styles = css(icon);
-  const nodes = withPathLength(icon.nodes, new Set(drawnParts(icon.motion)));
+  const nodes = withPathLength(icon.nodes, new Set(drawnParts(icon.motion, icon.toggleMotion)));
   const args = [JSON.stringify(icon.id), JSON.stringify(icon.component), nodeCode(nodes, target)];
   if (styles) args.push(JSON.stringify(styles));
   return `${header(icon)}import { ${factory} } from "../../lib/create-icon";
@@ -188,7 +202,7 @@ function coverage(icons: IconVariant[]): string {
   const moving = icons.filter((i) => i.motion.length > 0);
   const toggles = icons.filter((i) => i.toggle);
   const missingToggles = toggles.filter(
-    (i) => !(i.meta.toggle?.parts ?? []).every((p) => css(i).includes(`[data-part="${p}"]`)),
+    (i) => !(i.meta.toggle?.parts ?? []).every((p) => i.toggleMotion.some((t) => t.part === p)),
   );
   const lines = [
     `Motion CSS: ${moving.length}/${icons.length} components`,

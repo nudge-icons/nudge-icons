@@ -28,8 +28,7 @@ describe("server rendering", () => {
     expect(eyes[1]).not.toContain("<style");
     expect(inlineStyles(html, "base")).toHaveLength(1);
     expect(inlineStyles(html, "heart")).toHaveLength(1);
-    // Icons without any CSS (Menu until its toggle is styled) render no style at all.
-    expect(inlineStyles(html, "menu")).toHaveLength(0);
+    expect(inlineStyles(html, "menu")).toHaveLength(1);
   });
 
   it("starts fresh for every request", async () => {

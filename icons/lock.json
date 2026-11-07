@@ -12,11 +12,27 @@
   "animation": {
     "name": "jiggle",
     "description": "The shackle jiggles as if tested",
-    "parts": ["shackle"]
+    "parts": ["shackle"],
+    "motion": [
+      {
+        "part": "shackle",
+        "preset": "bounce",
+        "y": -0.75
+      }
+    ]
   },
   "toggle": {
-    "description": "The shackle's right leg releases and the lock opens",
-    "parts": ["shackle"]
+    "description": "The shackle's right leg releases and the shackle lifts open",
+    "parts": ["shackle"],
+    "motion": [
+      {
+        "part": "shackle",
+        "preset": "trim",
+        "length": 30,
+        "offset": -3.5,
+        "morph": "M16 9V6a4 4 0 0 0-8 0v4.5"
+      }
+    ]
   },
   "filled": {}
 }

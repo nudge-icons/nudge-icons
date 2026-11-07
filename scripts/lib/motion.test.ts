@@ -10,6 +10,11 @@ const every: Motion[] = [
   { part: "f", preset: "shake", x: 1 },
   { part: "g", preset: "bounce", y: 2 },
   { part: "h", preset: "pass", y: 5 },
+  { part: "i", preset: "orbit", r: 1.5 },
+  { part: "j", preset: "flash" },
+  { part: "k", preset: "revolve", rx: 4, radius: 9 },
+  { part: "l", preset: "blink", to: "M2 13h20" },
+  { part: "m", preset: "look", x: 2, blink: true },
 ];
 
 /** Splits CSS into [selector, body] pairs, looking inside @media and skipping @keyframes. */
@@ -42,6 +47,11 @@ describe("baseCss", () => {
     );
   });
 
+  it("ends hover and once after the motion share, so nothing stays animated", () => {
+    expect(css).toContain("var(--nudge-w,0s) var(--nudge-s,1) backwards}");
+    expect(css).not.toContain(" both}");
+  });
+
   it("lets users override duration and easing", () => {
     expect(css).toContain("var(--nudge-duration,var(--nudge-t))");
     expect(css).toContain("var(--nudge-easing,var(--nudge-f))");
@@ -49,13 +59,15 @@ describe("baseCss", () => {
 
   it("turns every animation off for reduced motion, after the other rules", () => {
     expect(
-      css.endsWith("@media (prefers-reduced-motion:reduce){:where(.nudge-icon *){animation:none}}"),
+      css.endsWith(
+        "@media (prefers-reduced-motion:reduce){:where(.nudge-icon *){animation:none;transition:none}}",
+      ),
     ).toBe(true);
   });
 });
 
 describe("iconCss", () => {
-  const css = iconCss("demo", every, ["slash"]);
+  const css = iconCss("demo", every, ["slash"], [], { l: "M2 12h20" });
 
   it("covers every preset", () => {
     expect(PRESETS.sort()).toEqual(every.map((m) => m.preset).sort());
@@ -80,7 +92,7 @@ describe("iconCss", () => {
   it("gives each moving part its keyframes, cycle length, easing and delay", () => {
     expect(css).toContain("@keyframes nudge-demo-a{");
     expect(css).toContain(
-      ':where(.nudge-demo [data-part="a"]){--nudge-k:nudge-demo-a;--nudge-t:1620ms;--nudge-f:ease-in-out;transform-box:view-box;transform-origin:12px 3px}',
+      ':where(.nudge-demo [data-part="a"]){--nudge-k:nudge-demo-a;--nudge-t:1620ms;--nudge-f:ease-in-out;--nudge-s:0.556;transform-box:view-box;transform-origin:12px 3px}',
     );
     expect(iconCss("d", [{ part: "p", preset: "draw", delay: 60 }])).toContain("--nudge-w:60ms");
     // A continuous spin does not rest and runs linear in a loop.
@@ -96,6 +108,25 @@ describe("iconCss", () => {
     expect(css).toContain(':where(.nudge-demo:not([data-active]) [data-part="slash"]){opacity:0}');
   });
 
+  it("adds a morph to the active state and transitions d", () => {
+    const morphed = iconCss(
+      "lock",
+      [],
+      [],
+      [{ part: "shackle", preset: "trim", length: 30, offset: -3.5, morph: "M16 9V6" }],
+    );
+    expect(morphed).toContain(
+      ':where(.nudge-lock[data-active] [data-part="shackle"]){stroke-dashoffset:-3.5;d:path("M16 9V6")}',
+    );
+    expect(baseCss()).toContain(",d var(--nudge-toggle-duration");
+  });
+
+  it("blinks by morphing the part's own path to the target and back", () => {
+    expect(css).toContain(
+      '@keyframes nudge-demo-l{0%,12.14%,71.43%,100%{d:path("M2 12h20")}5%,7.14%{d:path("M2 13h20")}}',
+    );
+  });
+
   it("returns nothing for an icon without motion or toggle", () => {
     expect(iconCss("plain")).toBe("");
   });
@@ -103,7 +134,9 @@ describe("iconCss", () => {
 
 describe("checkMotion", () => {
   it("accepts valid motion", () => {
-    expect(checkMotion(every, ["a", "b", "c", "d", "e", "f", "g", "h"])).toEqual([]);
+    expect(
+      checkMotion(every, ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]),
+    ).toEqual([]);
   });
 
   it("reports malformed entries instead of crashing", () => {

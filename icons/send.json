@@ -12,6 +12,14 @@
   "animation": {
     "name": "fly",
     "description": "The plane flies off to the top right and comes back",
-    "parts": ["plane"]
+    "parts": ["plane"],
+    "motion": [
+      {
+        "part": "plane",
+        "preset": "pass",
+        "x": 4,
+        "y": -4
+      }
+    ]
   }
 }

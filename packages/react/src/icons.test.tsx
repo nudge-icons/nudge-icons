@@ -168,7 +168,7 @@ describe("variants", () => {
         .filter((k) => /^[A-Z]/.test(k))
         .sort();
     expect(names(animated)).toEqual(names(still));
-    expect(names(animated)).toHaveLength(65);
+    expect(names(animated)).toHaveLength(64);
   });
 });
 

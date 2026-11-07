@@ -12,6 +12,14 @@
   "animation": {
     "name": "record",
     "description": "The lens pulses as if recording",
-    "parts": ["lens"]
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "pulse",
+        "origin": [19.5, 12],
+        "scale": 1.15
+      }
+    ]
   }
 }

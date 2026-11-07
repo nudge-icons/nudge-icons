@@ -139,7 +139,7 @@ describe("variants and entries", () => {
         .filter((k) => /^[A-Z]/.test(k))
         .sort();
     expect(names(animated)).toEqual(names(still));
-    expect(names(animated)).toHaveLength(65);
+    expect(names(animated)).toHaveLength(64);
   });
 
   it("static icons have no CSS, animation state, active prop or active-only parts", () => {

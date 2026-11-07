@@ -11,7 +11,14 @@
   "animation": {
     "name": "guard",
     "description": "The shield pulses once",
-    "parts": ["shield"]
+    "parts": ["shield"],
+    "motion": [
+      {
+        "part": "shield",
+        "preset": "pulse",
+        "scale": 1.1
+      }
+    ]
   },
   "filled": {}
 }

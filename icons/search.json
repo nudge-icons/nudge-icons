@@ -11,7 +11,14 @@
   },
   "animation": {
     "name": "scan",
-    "description": "The lens moves in a small circle",
-    "parts": ["lens"]
+    "description": "The lens circles as if searching",
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "orbit",
+        "r": 1.5
+      }
+    ]
   }
 }

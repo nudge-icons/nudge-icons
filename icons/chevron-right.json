@@ -12,6 +12,13 @@
   "animation": {
     "name": "nudge",
     "description": "The chevron nudges right and back",
-    "parts": ["chevron"]
+    "parts": ["chevron"],
+    "motion": [
+      {
+        "part": "chevron",
+        "preset": "nudge",
+        "x": 2
+      }
+    ]
   }
 }

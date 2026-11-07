@@ -1,5 +1,5 @@
 // Drawing rules for source icons in icons/. See CONTRIBUTING.md, "Drawing rules".
-import { checkMotion, type Motion } from "./motion.ts";
+import { checkMotion, checkToggleMotion, type Motion, type ToggleMotion } from "./motion.ts";
 
 export const CANVAS = 24;
 export const SAFE_MIN = 2;
@@ -57,6 +57,8 @@ export interface IconMeta {
     parts: string[];
     /** Parts drawn only in the active state. Hidden by default and dropped from `/static`. */
     activeOnly?: string[];
+    /** How each toggle part changes, using the toggle presets in motion.ts. */
+    motion?: ToggleMotion[];
   };
   /**
    * Present when icons/filled/<name>.svg exists. The filled icon reuses `animation`
@@ -322,11 +324,17 @@ export function checkIcon(
   if (variant !== "outline" && !hasFill) {
     errors.push(`${variant} icon needs at least one element with fill="currentColor"`);
   }
-  errors.push(...checkMeta(name, meta, parts, variant));
+  errors.push(...checkMeta(name, meta, parts, variant, children));
   return errors;
 }
 
-function checkMeta(name: string, meta: unknown, parts: Set<string>, variant: Variant): string[] {
+function checkMeta(
+  name: string,
+  meta: unknown,
+  parts: Set<string>,
+  variant: Variant,
+  elements: Element[],
+): string[] {
   const m = meta as Partial<IconMeta> | null;
   if (!m || typeof m !== "object") return ["metadata must be a JSON object"];
   const errors: string[] = [];
@@ -347,9 +355,17 @@ function checkMeta(name: string, meta: unknown, parts: Set<string>, variant: Var
     for (const p of a.parts ?? []) {
       if (!parts.has(p)) errors.push(`animation part "${p}" has no element with data-part="${p}"`);
     }
+    if (!Array.isArray(a.motion) || !a.motion.length) {
+      errors.push("metadata animation needs motion (see the presets in motion.ts)");
+    }
     errors.push(...checkMotion(a.motion, a.parts ?? []));
+    for (const m of Array.isArray(a.motion) ? a.motion : []) {
+      if (m?.preset === "blink" && typeof m.to === "string") {
+        errors.push(...checkMorph(m.part, m.to, elements, "blink"));
+      }
+    }
   }
-  errors.push(...checkToggle(m.toggle, parts, a?.parts ?? []));
+  errors.push(...checkToggle(m.toggle, parts, a?.parts ?? [], elements));
   return errors;
 }
 
@@ -373,7 +389,12 @@ function checkEquivalents(eq: unknown): string[] {
   return errors;
 }
 
-function checkToggle(t: IconMeta["toggle"] | undefined, parts: Set<string>, motion: string[]) {
+function checkToggle(
+  t: IconMeta["toggle"] | undefined,
+  parts: Set<string>,
+  motion: string[],
+  elements: Element[],
+) {
   if (t === undefined) return [];
   if (typeof t !== "object" || typeof t.description !== "string" || !Array.isArray(t.parts)) {
     return ["metadata toggle needs a description and parts"];
@@ -386,6 +407,41 @@ function checkToggle(t: IconMeta["toggle"] | undefined, parts: Set<string>, moti
   for (const p of t.activeOnly ?? []) {
     if (!t.parts.includes(p)) errors.push(`toggle activeOnly part "${p}" must be in toggle parts`);
     if (motion.includes(p)) errors.push(`animation must not move the active-only part "${p}"`);
+  }
+  errors.push(...checkToggleMotion(t.motion, t.parts));
+  for (const m of Array.isArray(t.motion) ? t.motion : []) {
+    if (typeof m?.morph === "string") errors.push(...checkMorph(m.part, m.morph, elements));
+  }
+  return errors;
+}
+
+/** Command letters with their number counts: "M2 V1 a7 v1". Paths morph only if these match. */
+const pathShape = (d: string) =>
+  (d.match(/[a-zA-Z][^a-zA-Z]*/g) ?? [])
+    .map((seg) => `${seg[0]}${numbers(seg.slice(1)).length}`)
+    .join(" ");
+
+/** A morph target must keep the source path's commands and stay on the grid and in bounds. */
+function checkMorph(
+  part: string,
+  morph: string,
+  elements: Element[],
+  kind = "toggle morph",
+): string[] {
+  const where = `${kind} for "${part}"`;
+  const el = elements.find((e) => e.attrs["data-part"] === part);
+  if (el?.tag !== "path") return [`${where}: the part must be a single <path>`];
+  const errors: string[] = [];
+  if (pathShape(morph) !== pathShape(el.attrs.d ?? "")) {
+    errors.push(`${where}: must use the same commands as the source path to morph smoothly`);
+  }
+  for (const n of numbers(morph)) {
+    if (!onGrid(n)) errors.push(`${where}: number ${n} is off the ${GRID}px grid`);
+  }
+  for (const [x, y] of pathPoints(morph, true)) {
+    if (x < SAFE_MIN || x > SAFE_MAX || y < SAFE_MIN || y > SAFE_MAX) {
+      errors.push(`${where}: point (${+x.toFixed(2)}, ${+y.toFixed(2)}) is outside the safe area`);
+    }
   }
   return errors;
 }

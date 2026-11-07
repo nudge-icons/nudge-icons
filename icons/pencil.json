@@ -12,6 +12,14 @@
   "animation": {
     "name": "scribble",
     "description": "The pencil wiggles as if writing",
-    "parts": ["pencil"]
+    "parts": ["pencil"],
+    "motion": [
+      {
+        "part": "pencil",
+        "preset": "swing",
+        "origin": [4, 20],
+        "angle": 8
+      }
+    ]
   }
 }

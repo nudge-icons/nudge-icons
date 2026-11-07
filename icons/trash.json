@@ -11,7 +11,14 @@
   },
   "animation": {
     "name": "open",
-    "description": "The lid lifts and tilts, then closes",
-    "parts": ["lid"]
+    "description": "The lid lifts and drops back",
+    "parts": ["lid"],
+    "motion": [
+      {
+        "part": "lid",
+        "preset": "bounce",
+        "y": -2.5
+      }
+    ]
   }
 }

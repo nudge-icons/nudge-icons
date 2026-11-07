@@ -12,6 +12,18 @@
   "animation": {
     "name": "stretch",
     "description": "The chevrons move apart and back",
-    "parts": ["up", "down"]
+    "parts": ["up", "down"],
+    "motion": [
+      {
+        "part": "up",
+        "preset": "nudge",
+        "y": -1.5
+      },
+      {
+        "part": "down",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
   }
 }

@@ -12,6 +12,14 @@
   "animation": {
     "name": "pop",
     "description": "The bubble pops up from its tail",
-    "parts": ["bubble"]
+    "parts": ["bubble"],
+    "motion": [
+      {
+        "part": "bubble",
+        "preset": "pulse",
+        "origin": [4, 20],
+        "scale": 1.1
+      }
+    ]
   }
 }

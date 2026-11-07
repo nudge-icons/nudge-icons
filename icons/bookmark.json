@@ -12,7 +12,14 @@
   "animation": {
     "name": "drop",
     "description": "The ribbon drops a little and springs back",
-    "parts": ["ribbon"]
+    "parts": ["ribbon"],
+    "motion": [
+      {
+        "part": "ribbon",
+        "preset": "bounce",
+        "y": 1.5
+      }
+    ]
   },
   "filled": {}
 }

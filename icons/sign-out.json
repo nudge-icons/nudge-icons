@@ -12,6 +12,13 @@
   "animation": {
     "name": "exit",
     "description": "The arrow slides out of the door and back",
-    "parts": ["arrow"]
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "x": 3
+      }
+    ]
   }
 }

@@ -12,6 +12,15 @@
   "animation": {
     "name": "snap",
     "description": "The lens closes and opens like a shutter",
-    "parts": ["lens"]
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "pulse",
+        "origin": [12, 13],
+        "scale": 0.75,
+        "duration": 500
+      }
+    ]
   }
 }

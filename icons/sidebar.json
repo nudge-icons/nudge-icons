@@ -11,6 +11,13 @@
   "animation": {
     "name": "slide",
     "description": "The divider slides out and back",
-    "parts": ["divider"]
+    "parts": ["divider"],
+    "motion": [
+      {
+        "part": "divider",
+        "preset": "nudge",
+        "x": 3
+      }
+    ]
   }
 }

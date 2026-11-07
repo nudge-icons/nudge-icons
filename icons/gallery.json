@@ -11,6 +11,14 @@
   "animation": {
     "name": "shuffle",
     "description": "The front picture slides off the stack and back",
-    "parts": ["front"]
+    "parts": ["front"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": -2,
+        "y": -2
+      }
+    ]
   }
 }

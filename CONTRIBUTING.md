@@ -62,11 +62,21 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   "toggle": {
     "description": "A slash draws across the eye to hide it",
     "parts": ["slash"],
-    "activeOnly": ["slash"]
+    "activeOnly": ["slash"],
+    "motion": [{ "part": "slash", "preset": "draw" }]
   }
   ```
 
-  `parts` lists what changes between the states. `activeOnly` lists parts drawn only in the active state: they are hidden by default, dropped from the `/static` entry, and must not be moved by `animation`.
+  `parts` lists what changes between the states, and `motion` (required) says how, as a CSS transition:
+
+  | Preset | Parameters                  | Active state                                                          |
+  | ------ | --------------------------- | --------------------------------------------------------------------- |
+  | `hide` | —                           | the part fades out (the middle line of `menu`)                        |
+  | `draw` | —                           | the part draws in (the slash of `eye`); use it for `activeOnly` parts |
+  | `move` | `x`, `y`, `angle`, `origin` | the part moves and turns (the lines of `menu` fold into a cross)      |
+  | `trim` | `length`, `offset`          | the stroke is cut short (the shackle of `lock` opens)                 |
+
+  Any toggle motion may add `morph`: the part's path in the active state, for example the lifted shackle of `lock`. It must use the same commands as the source path (so browsers interpolate it), stay on the grid and inside the safe area, and only add to what the preset already shows: Safari ignores the CSS `d` property, so there the preset alone has to read correctly. Transitions run even with `animate={false}`, take `--nudge-toggle-duration` (300ms by default), are instant under reduced motion, and an active icon does not play its motion. `activeOnly` lists parts drawn only in the active state: they are hidden by default, dropped from the `/static` entry, and must not be moved by `animation`.
 
 - `filled` (and `half`) is required when `icons/filled/<name>.svg` (or `icons/half/<name>.svg`) exists. It may override `animation` when the filled drawing cannot play the outline one, for example when the animated detail is a hole:
 
@@ -76,20 +86,23 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   }
   ```
 
-- `animation.motion` says how each part moves, using shared presets (`scripts/lib/motion.ts`). One motion per part; times in milliseconds, points in canvas units:
+- Every icon needs `animation.motion`; `pnpm check:icons` fails without it. It says how each part moves, using shared presets (`scripts/lib/motion.ts`). One motion per part; times in milliseconds, points in canvas units:
 
-  | Preset   | Parameters                               | Use                                                   |
-  | -------- | ---------------------------------------- | ----------------------------------------------------- |
-  | `swing`  | `origin: [x, y]`, `angle`                | a bell or a sign swinging from a pin                  |
-  | `nudge`  | `x`, `y`                                 | a push and back, like an arrow                        |
-  | `bounce` | `x`, `y`                                 | a push that settles in smaller swings                 |
-  | `pass`   | `x`, `y`                                 | moves away fading out, comes back from the other side |
-  | `draw`   | —                                        | the stroke draws itself                               |
-  | `spin`   | `origin` (default centre), `angle` (360) | a turn; 90 for a cross that settles                   |
-  | `pulse`  | `origin`, `scale`, `beats` (1 or 2)      | a heartbeat or a pop                                  |
-  | `shake`  | `x`                                      | a warning shaking side to side                        |
+  | Preset    | Parameters                               | Use                                                                                           |
+  | --------- | ---------------------------------------- | --------------------------------------------------------------------------------------------- |
+  | `swing`   | `origin: [x, y]`, `angle`                | a bell or a sign swinging from a pin                                                          |
+  | `nudge`   | `x`, `y`                                 | a push and back, like an arrow                                                                |
+  | `bounce`  | `x`, `y`                                 | a push that settles in smaller swings                                                         |
+  | `pass`    | `x`, `y`                                 | moves away fading out, comes back from the other side                                         |
+  | `draw`    | —                                        | the stroke draws itself                                                                       |
+  | `spin`    | `origin` (default centre), `angle` (360) | a turn; 90 for a cross that settles                                                           |
+  | `pulse`   | `origin`, `scale`, `beats` (1 or 2)      | a heartbeat or a pop                                                                          |
+  | `shake`   | `x`                                      | a warning shaking side to side                                                                |
+  | `orbit`   | `r`                                      | a small circle, like a lens searching                                                         |
+  | `flash`   | —                                        | flickers twice                                                                                |
+  | `revolve` | `rx`, `radius`                           | a meridian ellipse turning with a globe (animates `rx`, keeps the stroke width; Safari 17.4+) |
 
-  Every motion also takes `delay`. All presets return to the resting drawing (`pass` fades its part out and back in on the way), so `hover` and `once` end where they started.
+  Every motion also takes `delay` and `duration` (ms); `pulse` also takes `axis: "x" | "y"` to squash along one axis (a blinking eye). All presets return to the resting drawing (`pass` fades its part out and back in on the way), so `hover` and `once` end where they started.
 
   ```json
   "motion": [
@@ -98,7 +111,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   ]
   ```
 
-  The CSS comes in two layers: a shared base, loaded once per page by any animated icon, decides when parts play (hover or focus of the icon or an interactive parent, `once`, `loop`, reduced motion); each icon only adds its keyframes and a few custom properties on its moving parts. It only animates `transform`, `opacity` and stroke dashes, wraps every selector in `:where()` (zero specificity) and is switched off by `prefers-reduced-motion`. Each motion is followed by a rest inside the same cycle, so a loop pauses between repeats. Users tune it with `--nudge-duration` (the whole cycle, rest included) and `--nudge-easing`; a loop repeats `--nudge-repeat` times (infinite by default), which components set from a numeric `animate`.
+  The CSS comes in two layers: a shared base, loaded once per page by any animated icon, decides when parts play (hover or focus of the icon or an interactive parent, `once`, `loop`, reduced motion); each icon only adds its keyframes and a few custom properties on its moving parts. It only animates `transform`, `opacity`, stroke dashes and, for `revolve`, an ellipse's `rx`, wraps every selector in `:where()` (zero specificity) and is switched off by `prefers-reduced-motion`. Each motion is followed by a rest inside the same cycle, so a loop pauses between repeats. Users tune it with `--nudge-duration` (the whole cycle, rest included) and `--nudge-easing`; a loop repeats `--nudge-repeat` times (infinite by default), which components set from a numeric `animate`.
 
 Run `pnpm preview` to build `preview.html` with every icon on the grid, at 16, 24 and 48px on light and dark, in both states and in every variant, with its motion. Icons with motion come first; hover a card to play it, or switch every icon to `loop`, `once`, `3×` or off. The dashed frame is the 2–22 safe area, the dotted one the 1–23 stroke edge; the measured centre is shown under each icon and turns red when it is off.
 

@@ -10,8 +10,16 @@
     "material": ["public"]
   },
   "animation": {
-    "name": "spin",
-    "description": "The meridian sweeps across as the globe turns",
-    "parts": ["meridian"]
+    "name": "revolve",
+    "description": "The globe turns around its axis",
+    "parts": ["meridian"],
+    "motion": [
+      {
+        "part": "meridian",
+        "preset": "revolve",
+        "rx": 4,
+        "radius": 9
+      }
+    ]
   }
 }

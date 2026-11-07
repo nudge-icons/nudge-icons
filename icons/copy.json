@@ -12,11 +12,25 @@
   "animation": {
     "name": "stack",
     "description": "The front sheet slides onto the back one and returns",
-    "parts": ["front"]
+    "parts": ["front"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": -2,
+        "y": -2
+      }
+    ]
   },
   "toggle": {
     "description": "A tick draws inside the front sheet",
     "parts": ["check"],
-    "activeOnly": ["check"]
+    "activeOnly": ["check"],
+    "motion": [
+      {
+        "part": "check",
+        "preset": "draw"
+      }
+    ]
   }
 }

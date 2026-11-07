@@ -11,6 +11,13 @@
   "animation": {
     "name": "connect",
     "description": "The plug pushes up and settles",
-    "parts": ["plug"]
+    "parts": ["plug"],
+    "motion": [
+      {
+        "part": "plug",
+        "preset": "bounce",
+        "y": -2
+      }
+    ]
   }
 }

@@ -14,15 +14,6 @@ const names = readdirSync(dir)
   .map((f) => f.slice(0, -4))
   .sort();
 
-// Draft second states for icons whose toggle moves existing parts. The real CSS
-// comes from the component templates later; this only shows the target drawing.
-const draftActiveCss = `
-.active [data-part="middle"] { opacity: 0; }
-.active [data-part="top"] { transform: translateY(6px) rotate(45deg); transform-origin: 12px 6px; }
-.active [data-part="bottom"] { transform: translateY(-6px) rotate(-45deg); transform-origin: 12px 18px; }
-.lock.active [data-part="shackle"] { stroke-dasharray: 30; stroke-dashoffset: -3.5; }
-`;
-
 const hasMotion = (name: string) =>
   Boolean(
     (JSON.parse(readFileSync(join(dir, `${name}.json`), "utf8")) as IconMeta).animation.motion,
@@ -68,11 +59,28 @@ function card(name: string): string {
     .map(([file, state]) => {
       const variant = PAINTED_VARIANTS.find((v) => file.includes(`/${v}/`)) ?? "";
       const id = variant ? `${name}-${variant}` : name;
+      const toggle = meta.toggle;
       const motion =
         ((variant ? meta[variant]?.animation : undefined) ?? meta.animation).motion ?? [];
-      motionCss.set(id, iconCss(id, motion, meta.toggle?.activeOnly ?? []));
+      motionCss.set(
+        id,
+        iconCss(
+          id,
+          motion,
+          toggle?.activeOnly ?? [],
+          toggle?.motion ?? [],
+          Object.fromEntries(
+            parseSvgTree(readFileSync(file, "utf8"))
+              .filter((n) => n.tag === "path" && n.attrs["data-part"])
+              .map((n) => [n.attrs["data-part"], n.attrs.d ?? ""]),
+          ),
+        ),
+      );
       const rootTag = readFileSync(file, "utf8").match(/<svg[^>]*>/)?.[0] ?? "<svg>";
-      const body = shapes(parseSvgTree(readFileSync(file, "utf8")), new Set(drawnParts(motion)));
+      const body = shapes(
+        parseSvgTree(readFileSync(file, "utf8")),
+        new Set(drawnParts(motion, toggle?.motion ?? [])),
+      );
       const svg = `${rootTag.replace(">", ` class="nudge-icon nudge-${id}" data-animate="hover"${state ? " data-active" : ""}>`)}${body}</svg>`;
       const sized = (px: number) =>
         svg.replace('width="24" height="24"', `width="${px}" height="${px}"`);
@@ -133,7 +141,6 @@ const html = `<!doctype html>
     padding: 8px 0; background: #f6f6f4; }
   .modes button { font: inherit; padding: 4px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff; }
   .modes button[aria-pressed="true"] { background: #222; color: #fff; }
-  ${draftActiveCss}
 </style>
 </head>
 <body>

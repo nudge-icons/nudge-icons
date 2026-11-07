@@ -12,6 +12,13 @@
   "animation": {
     "name": "nod",
     "description": "The head nods",
-    "parts": ["head"]
+    "parts": ["head"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "bounce",
+        "y": 1.5
+      }
+    ]
   }
 }

@@ -11,13 +11,31 @@
   },
   "animation": {
     "name": "blink",
-    "description": "The eye blinks",
-    "parts": ["outline", "pupil"]
+    "description": "The eye blinks, then glances left and right",
+    "parts": ["outline", "pupil"],
+    "motion": [
+      {
+        "part": "outline",
+        "preset": "blink",
+        "to": "M2.5 12S6 12 12 12s9.5 0 9.5 0-3.5 0-9.5 0S2.5 12 2.5 12z"
+      },
+      {
+        "part": "pupil",
+        "preset": "look",
+        "x": 2,
+        "blink": true
+      }
+    ]
   },
   "toggle": {
     "description": "A slash draws across the eye to hide it",
     "parts": ["slash"],
-    "activeOnly": ["slash"]
-  },
-  "filled": {}
+    "activeOnly": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
 }
