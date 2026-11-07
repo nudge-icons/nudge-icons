@@ -5,7 +5,7 @@
 Every icon in `icons/` follows these rules. `pnpm check:icons` enforces most of them.
 
 - Canvas: `viewBox="0 0 24 24"`, `width="24"`, `height="24"`. Keep all points inside the 2–22 safe zone (2px padding on every side), including the far side of arcs and the control points of curves. The 2px stroke then reaches 1–23.
-- Centre the drawn shape on the canvas within 0.25px. An intentional exception, such as the handle of `search`, is fine when it matches how the shape reads.
+- Centre the drawn shape on the canvas within 0.25px. When one part carries the visual weight, centre that part instead: `search` keeps its lens near the centre and lets the handle run into the corner, so its frame is off by 0.5px but it looks centred in an icon button. Check such exceptions in context (an input, a square icon button, a button with text), not only on the grid.
 - Stroke and paint are set on the root `<svg>` only: `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, `stroke-linecap="round"`, `stroke-linejoin="round"`.
 - Allowed elements: `path`, `circle`, `ellipse`, `rect`, `line`, `polyline`, `polygon`, `g`. Child elements carry geometry attributes only.
 - Coordinates snap to a 0.5 grid. Use as few points per `path` as possible.
