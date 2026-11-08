@@ -6,6 +6,9 @@ import { mergeConfig } from "vite";
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.tsx"],
   framework: "@storybook/react-vite",
+  // Serves an MCP endpoint at /mcp on the dev server, so coding agents can find stories,
+  // read the docs manifest and get preview links.
+  addons: ["@storybook/addon-mcp"],
   core: { disableTelemetry: true },
   // Stories use the component source, so they need no package build first.
   viteFinal: (vite) =>
