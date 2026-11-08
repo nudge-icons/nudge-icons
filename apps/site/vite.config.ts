@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { copyFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
+import { registryUrl, siteUrl } from "../../scripts/lib/site-url.ts";
 
 // GitHub Pages serves 404.html for unknown paths; a copy of the app lets
 // /nudge-icons/icons/bell load the app, which then routes on the client.
@@ -15,9 +16,11 @@ const spaFallback = (): Plugin => ({
 });
 
 export default defineConfig({
-  // Served from https://dimon85.github.io/nudge-icons/. SITE_BASE overrides it for other hosts.
-  base: process.env.SITE_BASE ?? "/nudge-icons/",
+  // The path of the site URL (scripts/lib/site-url.ts); SITE_URL moves it to another host.
+  base: new URL(siteUrl).pathname,
   plugins: [react(), spaFallback()],
+  // The same registry URL the items are built with (REGISTRY_URL overrides both).
+  define: { "import.meta.env.VITE_REGISTRY_URL": JSON.stringify(registryUrl) },
   resolve: {
     alias: [
       {

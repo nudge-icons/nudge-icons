@@ -25,6 +25,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build:icons
+      - run: pnpm build:registry
       - run: pnpm --filter @nudge-icons/site build
       - uses: actions/upload-pages-artifact@v5
         with:

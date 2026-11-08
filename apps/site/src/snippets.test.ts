@@ -1,11 +1,27 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULTS } from "./settings";
-import { contextSnippet, humanName, partsCss, reactSnippet, vueSnippet } from "./snippets";
+import {
+  contextSnippet,
+  humanName,
+  partsCss,
+  reactSnippet,
+  registryCommand,
+  vueSnippet,
+} from "./snippets";
 
 const bell = { component: "Bell", hasToggle: false };
 const eye = { component: "Eye", hasToggle: true };
 
 describe("code snippets", () => {
+  it("point the registry command at the item of the chosen framework", () => {
+    expect(registryCommand("heart-filled", "react")).toBe(
+      "npx shadcn@latest add https://dimon85.github.io/nudge-icons/r/heart-filled.json",
+    );
+    expect(registryCommand("heart-filled", "vue")).toBe(
+      "npx shadcn-vue@latest add https://dimon85.github.io/nudge-icons/r/vue/heart-filled.json",
+    );
+  });
+
   it("leave out props that match the defaults", () => {
     expect(reactSnippet(bell, DEFAULTS)).toBe(
       'import { Bell } from "@nudge-icons/react";\n\n<Bell />',

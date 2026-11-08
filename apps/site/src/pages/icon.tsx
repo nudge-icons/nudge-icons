@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Bell, Download, Pencil, Refresh, Trash } from "@nudge-icons/react";
+import { CORE_DIR, ICONS_DIR } from "../../../../scripts/lib/registry-layout.ts";
 import { related, SET_NAMES, type Entry, type EquivalentSet } from "../data";
 import { galleryHref, href, Link } from "../router";
 import { forIcon, toAnimate, useSettings } from "../settings";
@@ -7,6 +8,7 @@ import {
   contextSnippet,
   humanName,
   installCommand,
+  registryCommand,
   PART_COLOR,
   partsCss,
   reactSnippet,
@@ -223,11 +225,26 @@ export function IconPage({ entry }: { entry: Entry }) {
             <code>{installCommand(codeTab === "svg" ? "svg" : framework)}</code>
             <CopyButton text={installCommand(codeTab === "svg" ? "svg" : framework)} />
           </div>
-          {codeTab === "svg" && (
+          {codeTab === "svg" ? (
             <p className="hint">
               Plain SVG files, at rest: no motion and no second state. For those, use the React or
               Vue component.
             </p>
+          ) : (
+            <>
+              <p className="hint">
+                Or copy the source into your project, with no package to install. The first icon
+                also adds the shared core to <code>{CORE_DIR}/</code>; then import from{" "}
+                <code>
+                  @/{ICONS_DIR}/{entry.id}
+                </code>
+                .
+              </p>
+              <div className="install registry-install">
+                <code>{registryCommand(entry.id, framework)}</code>
+                <CopyButton text={registryCommand(entry.id, framework)} />
+              </div>
+            </>
           )}
 
           <h2>In context</h2>

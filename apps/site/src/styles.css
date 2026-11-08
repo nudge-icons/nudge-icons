@@ -1493,6 +1493,15 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   align-self: flex-start;
 }
 
+/* The registry command is a long URL: let it wrap instead of widening the page. */
+.registry-install {
+  max-width: 100%;
+}
+
+.registry-install code {
+  overflow-wrap: anywhere;
+}
+
 .in-context {
   display: flex;
   flex-direction: column;
