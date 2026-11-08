@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { baseCss, checkMotion, iconCss, PRESETS, type Motion } from "./motion.ts";
+import {
+  baseCss,
+  checkMotion,
+  checkToggleMotion,
+  iconCss,
+  PRESETS,
+  type Motion,
+} from "./motion.ts";
 
 const every: Motion[] = [
   { part: "a", preset: "swing", origin: [12, 3], angle: 12 },
@@ -229,5 +236,40 @@ describe("draw", () => {
   it("hides the part until it starts drawing, so no round-cap dot shows while it waits", () => {
     const css = iconCss("wifi", [{ part: "outer", preset: "draw", delay: 600 }]);
     expect(css).toMatch(/0%\{[^}]*stroke-dashoffset:1;opacity:0/);
+  });
+});
+
+describe("morph toggle", () => {
+  const toggle = [
+    { part: "half", preset: "morph" as const, morph: "M9.5 4L5.5 4L5.5 20L9.5 20L9.5 4" },
+    { part: "bar", preset: "draw" as const, fallback: true },
+  ];
+  const css = iconCss("play", [], ["bar"], toggle);
+
+  it("morphs where the browser can animate paths, and fades the part elsewhere", () => {
+    expect(css).toContain(
+      '@supports (d:path("M0 0")){:where(.nudge-play[data-active] [data-part="half"]){d:path("M9.5 4L5.5 4L5.5 20L9.5 20L9.5 4")}}',
+    );
+    expect(css).toContain(
+      '@supports not (d:path("M0 0")){:where(.nudge-play[data-active] [data-part="half"]){opacity:0}}',
+    );
+  });
+
+  it("draws a fallback part in only where the morph cannot play", () => {
+    expect(css).toContain(
+      ':where(.nudge-play [data-part="bar"]){opacity:0;stroke-dasharray:1 1;stroke-dashoffset:1}',
+    );
+    expect(css).toContain(
+      '@supports not (d:path("M0 0")){:where(.nudge-play[data-active] [data-part="bar"]){opacity:1;stroke-dashoffset:0}}',
+    );
+  });
+
+  it("needs a path, and allows fallback only on draw", () => {
+    expect(checkToggleMotion([{ part: "a", preset: "morph" }], ["a"])).toContain(
+      'toggle motion for "a": morph needs the part\'s path in the active state',
+    );
+    expect(checkToggleMotion([{ part: "a", preset: "hide", fallback: true }], ["a"])).toContain(
+      'toggle motion for "a": fallback is true or false, and only for draw',
+    );
   });
 });

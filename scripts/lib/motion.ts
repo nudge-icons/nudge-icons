@@ -58,7 +58,10 @@ export type Motion = MotionBase &
  */
 export type ToggleMotion = { part: string; morph?: string } & (
   | { preset: "hide" }
-  | { preset: "draw" }
+  /** `fallback`: only where the browser cannot morph paths (Safari), standing in for a morph. */
+  | { preset: "draw"; fallback?: boolean }
+  /** The part turns into `morph`; where paths cannot be animated (Safari), it fades out. */
+  | { preset: "morph"; morph: string }
   | { preset: "move"; x?: number; y?: number; angle?: number; origin?: Point }
   | { preset: "trim"; length: number; offset: number }
   | { preset: "bump"; x?: number; y?: number }
@@ -348,7 +351,10 @@ function frameBlock(name: string, frames: Record<number, string>) {
   return `@keyframes ${name}{${steps.join("")}}`;
 }
 
-export const TOGGLE_PRESETS: TogglePreset[] = ["hide", "draw", "move", "trim", "bump"];
+export const TOGGLE_PRESETS: TogglePreset[] = ["hide", "draw", "morph", "move", "trim", "bump"];
+
+/** Browsers that animate the CSS `d` property; Safari does not, so it gets a fallback. */
+const CAN_MORPH = '(d:path("M0 0"))';
 
 /** Parts drawn with stroke dashes; they need pathLength="1" on their shapes. */
 export const drawnParts = (motion: readonly Motion[] = [], toggle: readonly ToggleMotion[] = []) =>
@@ -414,9 +420,25 @@ export function iconCss(
     let rest = "";
     let active = "";
     if (t.preset === "hide") active = "opacity:0";
+    if (t.preset === "morph") {
+      // A real shape change where the browser can animate `d`, a fade where it cannot.
+      rules.push(
+        `@supports ${CAN_MORPH}{:where(${icon}[data-active] ${part}){d:path("${t.morph}")}}`,
+        `@supports not ${CAN_MORPH}{:where(${icon}[data-active] ${part}){opacity:0}}`,
+      );
+      continue;
+    }
     if (t.preset === "draw") {
       rest = "opacity:0;stroke-dasharray:1 1;stroke-dashoffset:1";
       active = "opacity:1;stroke-dashoffset:0";
+      if (t.fallback) {
+        // Stands in for a morph: it draws in only where the morph cannot play.
+        rules.push(
+          `:where(${icon} ${part}){${rest}}`,
+          `@supports not ${CAN_MORPH}{:where(${icon}[data-active] ${part}){${active}}}`,
+        );
+        continue;
+      }
     }
     if (t.preset === "move") {
       const moved = translate(t.x ?? 0, t.y ?? 0)
@@ -570,6 +592,15 @@ export function checkToggleMotion(motion: unknown, toggleParts: readonly string[
     }
     if (raw.morph !== undefined && typeof raw.morph !== "string") {
       errors.push(`${where}: morph must be a path string`);
+    }
+    if (raw.preset === "morph" && typeof raw.morph !== "string") {
+      errors.push(`${where}: morph needs the part's path in the active state`);
+    }
+    if (
+      raw.fallback !== undefined &&
+      (raw.preset !== "draw" || typeof raw.fallback !== "boolean")
+    ) {
+      errors.push(`${where}: fallback is true or false, and only for draw`);
     }
     if (raw.preset === "trim" && !(num(raw.length) && num(raw.offset))) {
       errors.push(`${where}: trim needs length and offset`);
