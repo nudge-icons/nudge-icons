@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Bell, Download, Pencil, Refresh, Trash } from "@nudge-icons/react";
 import { CORE_DIR, ICONS_DIR } from "../../../../scripts/lib/registry-layout.ts";
-import { related, SET_NAMES, type Entry, type EquivalentSet } from "../data";
-import { galleryHref, href, Link } from "../router";
-import { forIcon, toAnimate, useSettings } from "../settings";
+import { related, SET_NAMES, type Entry, type EquivalentSet } from "../lib/data";
+import { galleryHref, href, Link } from "../state/router";
+import { forIcon, toAnimate, useSettings } from "../state/settings";
 import {
   contextSnippet,
   humanName,
@@ -13,12 +13,12 @@ import {
   partsCss,
   reactSnippet,
   vueSnippet,
-} from "../snippets";
+} from "../lib/snippets";
 import { CodeBlock, CopyButton, FrameworkSwitch, Segmented, Switch } from "../components/controls";
 import { AppearanceFields, Field, MODES, ResetButton } from "../components/customizer";
 import { Blueprint } from "../components/blueprint";
 import { IconView } from "../components/icon-view";
-import { useReplay } from "../replay";
+import { useReplay } from "../state/replay";
 
 // Raw SVG files from @nudge-icons/svg, loaded only when an icon page asks for one.
 const SVG_FILES = import.meta.glob<string>("../../../../packages/svg/icons/*.svg", {

@@ -1,5 +1,6 @@
-import { VUE_DIR } from "../../../scripts/lib/registry-layout.ts";
-import type { Settings } from "./settings";
+import { VUE_DIR } from "../../../../scripts/lib/registry-layout.ts";
+import type { Settings } from "../state/settings";
+import { REGISTRY_URL } from "./constants";
 
 export interface SnippetIcon {
   /** The export of the chosen variant: `Heart`, `HeartFilled`. */
@@ -46,9 +47,6 @@ export function vueSnippet(icon: SnippetIcon, s: Settings): string {
 }
 
 export const installCommand = (pkg: "react" | "vue" | "svg") => `pnpm add @nudge-icons/${pkg}`;
-
-/** Where scripts/build-registry.ts output is served: the shadcn registry, and vue/ under it. */
-export const REGISTRY_URL = import.meta.env.VITE_REGISTRY_URL;
 
 /** Copies the component source (and the shared core, once) into the project. */
 export const registryCommand = (id: string, framework: "react" | "vue") =>

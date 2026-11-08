@@ -1,5 +1,5 @@
 import type { Animate } from "@nudge-icons/react";
-import type { Entry } from "../data";
+import type { Entry } from "../lib/data";
 import { IconView } from "./icon-view";
 
 // The drawing area is the 24-unit canvas with the same margin on every side, so the icon

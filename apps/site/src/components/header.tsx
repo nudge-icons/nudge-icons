@@ -1,8 +1,7 @@
-import { href, Link } from "../router";
-import { useSettings } from "../settings";
+import { href, Link } from "../state/router";
+import { useSettings } from "../state/settings";
+import { REPO_URL } from "../lib/constants";
 import { Logo } from "./logo";
-
-const REPO = "https://github.com/dimon85/nudge-icons";
 
 /** The official GitHub mark (Octicons `mark-github`), used only to link to the repository. */
 function GitHubMark() {
@@ -61,7 +60,7 @@ export function Header() {
         >
           <ThemeGlyph to={theme === "light" ? "dark" : "light"} />
         </button>
-        <a className="btn btn-icon" href={REPO} aria-label="nudge-icons on GitHub">
+        <a className="btn btn-icon" href={REPO_URL} aria-label="nudge-icons on GitHub">
           <GitHubMark />
         </a>
       </nav>

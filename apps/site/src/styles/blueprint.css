@@ -1,0 +1,135 @@
+/* Big preview: a technical drawing in canvas units (3 + 24 + 3 = 30). */
+:root {
+  --bp-minor: rgb(15 118 110 / 0.1);
+  --bp-mid: rgb(15 118 110 / 0.2);
+  --bp-major: rgb(15 118 110 / 0.38);
+  --bp-guide: rgb(15 118 110 / 0.55);
+  --bp-skeleton: #0d9488;
+}
+
+:root[data-theme="dark"] {
+  --bp-minor: rgb(44 201 192 / 0.09);
+  --bp-mid: rgb(44 201 192 / 0.17);
+  --bp-major: rgb(44 201 192 / 0.32);
+  --bp-guide: rgb(44 201 192 / 0.5);
+  --bp-skeleton: #5eead4;
+}
+
+.blueprint {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+/* Clean: the same canvas on a light grid that lines up with it, every 4 units. */
+.blueprint.is-clean {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: calc(100% / 30 * 4) calc(100% / 30 * 4);
+  background-position: calc(100% / 30 * 3) calc(100% / 30 * 3);
+}
+
+.bp-guides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bp-guides line,
+.bp-guides rect,
+.bp-guides circle {
+  fill: none;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.bp-minor line {
+  stroke: var(--bp-minor);
+}
+.bp-mid line {
+  stroke: var(--bp-mid);
+}
+.bp-major line {
+  stroke: var(--bp-major);
+}
+.bp-canvas {
+  stroke: var(--bp-major);
+}
+.bp-keyline {
+  stroke: var(--bp-mid);
+}
+.bp-safe {
+  stroke: var(--bp-guide);
+  stroke-dasharray: 4 3;
+}
+.bp-edge {
+  stroke: var(--bp-mid);
+  stroke-dasharray: 1 3;
+}
+.bp-ruler line {
+  stroke: var(--text-2);
+}
+.bp-ruler text {
+  fill: var(--text-2);
+  font: 0.8px var(--mono);
+}
+
+/* The icon sits on the 24-unit canvas, 3 units in from every side: centred in both views. */
+.bp-icon {
+  position: absolute;
+  inset: calc(100% / 30 * 3);
+  display: grid;
+}
+
+.bp-icon svg {
+  overflow: visible;
+}
+
+.bp-skeleton {
+  color: var(--bp-skeleton);
+  pointer-events: none;
+}
+
+.bp-skeleton svg * {
+  fill: none !important;
+}
+
+/* Solid: the centre line of a stroke. Dashed and lighter: the edge of a filled shape. */
+.bp-skeleton [fill="currentColor"] {
+  stroke-dasharray: 0.5 0.35;
+  opacity: 0.55;
+}
+
+.preview-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-stack.is-paused * {
+  animation-play-state: paused !important;
+}
+
+.preview-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  max-width: 340px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.preview-meta-actual {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}

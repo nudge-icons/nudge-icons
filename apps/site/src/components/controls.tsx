@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Copy } from "@nudge-icons/react";
-import { tokenize, type Lang } from "../highlight";
-import { useSettings, type Framework } from "../settings";
+import { tokenize, type Lang } from "../lib/highlight";
+import { useSettings, type Framework } from "../state/settings";
 
 export function Segmented<T extends string>({
   label,

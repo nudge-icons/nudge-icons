@@ -1,0 +1,83 @@
+/* Code */
+
+.code {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--code-bg);
+  overflow: hidden;
+}
+
+.code-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 4px 4px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.code-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.code-label {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--text-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Syntax colours: one hue per role, readable on the code background in both themes. */
+:root {
+  --tok-comment: #6b6b70;
+  --tok-tag: #0f766e;
+  --tok-attr: #9a3412;
+  --tok-string: #1d4ed8;
+  --tok-keyword: #be123c;
+  --tok-number: #b45309;
+  --tok-punct: #71717a;
+}
+
+:root[data-theme="dark"] {
+  --tok-comment: #8f8f97;
+  --tok-tag: #2cc9c0;
+  --tok-attr: #fdba74;
+  --tok-string: #93c5fd;
+  --tok-keyword: #fda4af;
+  --tok-number: #fcd34d;
+  --tok-punct: #a1a1aa;
+}
+
+.tok-comment {
+  color: var(--tok-comment);
+  font-style: italic;
+}
+.tok-tag {
+  color: var(--tok-tag);
+}
+.tok-attr {
+  color: var(--tok-attr);
+}
+.tok-string {
+  color: var(--tok-string);
+}
+.tok-keyword {
+  color: var(--tok-keyword);
+}
+.tok-number {
+  color: var(--tok-number);
+}
+.tok-punct {
+  color: var(--tok-punct);
+}
+
+.code pre {
+  margin: 0;
+  padding: 12px;
+  overflow-x: auto;
+  line-height: 1.6;
+}

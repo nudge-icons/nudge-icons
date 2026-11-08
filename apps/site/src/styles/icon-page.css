@@ -1,0 +1,82 @@
+/* Icon page */
+
+.icon-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.back {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: -16px;
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+.icon-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tags: search words for the icon; each opens the gallery searched for it. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.icon-head h1 {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.icon-cols {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.icon-cols-even {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.icon-left,
+.icon-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.icon-right h2,
+.icon-section h2 {
+  font-size: 16px;
+}

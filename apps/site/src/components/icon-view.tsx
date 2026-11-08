@@ -1,5 +1,5 @@
 import type { Animate } from "@nudge-icons/react";
-import type { Entry } from "../data";
+import type { Entry } from "../lib/data";
 
 /** Renders one gallery entry; `active` is passed only to icons with a second state. */
 export function IconView({

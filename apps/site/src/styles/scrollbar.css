@@ -1,0 +1,13 @@
+/* No layout jump when the scrollbar comes and goes: its space is always kept. */
+html {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.panel,
+.code pre,
+.mobile-filters {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}

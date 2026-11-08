@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DEFAULTS } from "./settings";
+import { DEFAULTS } from "../state/settings";
 import {
   contextSnippet,
   humanName,

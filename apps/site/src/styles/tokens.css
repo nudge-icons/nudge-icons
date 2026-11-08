@@ -1,0 +1,38 @@
+/* Light is the main theme; dark is the alternative. */
+:root {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f2f2f0;
+  --text: #18181b;
+  --text-2: #6b6b70;
+  --border: #e4e4e2;
+  --border-strong: #cfcfcc;
+  --accent: #0f766e;
+  --accent-text: #ffffff;
+  --accent-soft: rgb(15 118 110 / 0.08);
+  --accent-line: rgb(15 118 110 / 0.55);
+  --grid-line: rgb(24 24 27 / 0.06);
+  --code-bg: #f4f4f2;
+  --radius: 8px;
+  --font: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --header-h: 56px;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #121214;
+  --surface: #19191c;
+  --surface-2: #222226;
+  --text: #ececee;
+  --text-2: #9d9da3;
+  --border: #2b2b30;
+  --border-strong: #3a3a40;
+  --accent: #2cc9c0;
+  --accent-text: #0b1716;
+  --accent-soft: rgb(44 201 192 / 0.1);
+  --accent-line: rgb(44 201 192 / 0.6);
+  --grid-line: rgb(236 236 238 / 0.06);
+  --code-bg: #1f1f23;
+  color-scheme: dark;
+}

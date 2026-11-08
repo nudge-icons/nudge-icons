@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
-import type { Entry } from "../data";
-import { useSettings, type AnimateMode } from "../settings";
+import type { Entry } from "../lib/data";
+import { useSettings, type AnimateMode } from "../state/settings";
 import { Segmented, Switch } from "./controls";
 
 export const MODES = [

@@ -1,0 +1,348 @@
+/* Fixed box, so the row does not jump when the size changes. */
+.actual-box {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.customizer-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.compact-customizer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.tab-list {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-list button {
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--text-2);
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+
+.tab-list button[aria-selected="true"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.svg-source {
+  position: relative;
+}
+
+.svg-source:not(.is-expanded) pre {
+  max-height: 120px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, #000 40%, transparent);
+}
+
+.svg-expand {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.install {
+  align-self: flex-start;
+}
+
+/* The registry command is a long URL: let it wrap instead of widening the page. */
+.registry-install {
+  max-width: 100%;
+}
+
+.registry-install code {
+  overflow-wrap: anywhere;
+}
+
+.in-context {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.ctx-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ctx-menu {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  max-width: 100%;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-size: 14px;
+}
+
+.ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 6px;
+}
+
+.ctx-item {
+  cursor: pointer;
+}
+
+.ctx-item:hover {
+  background: var(--surface-2);
+}
+
+.ctx-item.is-disabled {
+  cursor: default;
+}
+
+.ctx-item.is-disabled:hover {
+  background: none;
+}
+
+.ctx-item.is-disabled {
+  opacity: 0.45;
+}
+
+.ctx-text {
+  margin: 0;
+  font-size: 14px;
+}
+
+.ctx-text svg {
+  vertical-align: -2px;
+}
+
+.icon-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.section-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parts,
+.variants,
+.motion-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.part {
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.part {
+  cursor: pointer;
+}
+
+.part[aria-pressed="true"] {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.parts-clear {
+  margin-left: auto;
+}
+
+.part:hover,
+.part:focus-visible {
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.small-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.small-sizes figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.small-sizes figcaption {
+  font-size: 12px;
+  color: var(--text-2);
+  font-family: var(--mono);
+}
+
+/* Pixel view: the raster fills the frame without smoothing, a grid marks each pixel. */
+.raster-frame {
+  position: relative;
+  display: block;
+}
+
+.raster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.raster-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 4px 4px;
+  outline: 1px solid var(--border);
+  pointer-events: none;
+}
+
+.raster-source {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.equivalents {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+.equivalents th,
+.equivalents td {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.equivalents th {
+  width: 40%;
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+.equivalents code {
+  margin-right: 8px;
+}
+
+.variant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.variant:hover {
+  border-color: var(--border-strong);
+}
+
+.variant[aria-current="page"] {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.motion-steps li {
+  font-size: 14px;
+}
+
+.not-found {
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: center;
+  padding: 32px 24px 48px;
+  color: var(--text-2);
+  font-size: 13px;
+}

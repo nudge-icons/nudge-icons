@@ -10,15 +10,15 @@ import {
   type Entry,
   type Filter,
   type Sort,
-} from "../data";
-import { href, Link, navigate, rememberGallerySearch } from "../router";
-import { galleryQuery, parseGalleryUrl } from "../gallery-url";
-import { forIcon, toAnimate, useSettings, type PageMotion } from "../settings";
-import { installCommand, reactSnippet, vueSnippet } from "../snippets";
+} from "../lib/data";
+import { href, Link, navigate, rememberGallerySearch } from "../state/router";
+import { galleryQuery, parseGalleryUrl } from "../lib/gallery-url";
+import { forIcon, toAnimate, useSettings, type PageMotion } from "../state/settings";
+import { installCommand, reactSnippet, vueSnippet } from "../lib/snippets";
 import { CodeBlock, CopyButton, FrameworkSwitch, Segmented, Switch } from "../components/controls";
 import { ActiveField, AppearanceFields, MotionField, ResetButton } from "../components/customizer";
 import { IconView } from "../components/icon-view";
-import { useReplay } from "../replay";
+import { useReplay } from "../state/replay";
 
 const PAGE_MOTION = [
   { value: "play", label: "Play" },

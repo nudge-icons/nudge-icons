@@ -1,9 +1,9 @@
-import { ENTRY_BY_ID } from "./data";
+import { ENTRY_BY_ID } from "./lib/data";
 import { Header } from "./components/header";
 import { GalleryPage } from "./pages/gallery";
 import { IconPage } from "./pages/icon";
-import { href, Link, parse, useLocation } from "./router";
-import { SettingsProvider } from "./settings";
+import { href, Link, parse, useLocation } from "./state/router";
+import { SettingsProvider } from "./state/settings";
 
 function Routes() {
   const { pathname, search } = useLocation();

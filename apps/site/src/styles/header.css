@@ -1,0 +1,203 @@
+/* Header */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--header-h);
+  padding: 0 24px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand .logo {
+  color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Logo motion: drawn once on load, only the push on hover. Timings from the logo study (S5″). */
+
+.logo .logo-dot,
+.logo .logo-line,
+.logo .logo-lines {
+  transform-box: fill-box;
+}
+
+.logo .logo-dot {
+  transform-origin: center;
+}
+
+.logo-intro .logo-dot {
+  stroke-dasharray: 1;
+  animation: logo-dot-intro 1.8s both;
+}
+
+.logo-intro .logo-line {
+  animation: logo-line-in 1.8s both;
+}
+
+.logo-intro .logo-line:nth-child(2) {
+  animation-name: logo-line-in-2;
+}
+
+.logo-intro .logo-line:nth-child(3) {
+  animation-name: logo-line-in-3;
+}
+
+.logo-intro .logo-lines {
+  animation: logo-lines-push 1.8s both;
+}
+
+.brand:hover .logo-ready .logo-dot,
+.brand:focus-visible .logo-ready .logo-dot {
+  animation: logo-dot-push 0.7s;
+}
+
+.brand:hover .logo-ready .logo-lines,
+.brand:focus-visible .logo-ready .logo-lines {
+  animation: logo-lines-hover 0.7s;
+}
+
+@keyframes logo-dot-intro {
+  0% {
+    stroke-dashoffset: 1;
+    transform: none;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  39% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 1;
+  }
+  /* After drawing, a solid stroke: a dash on a closed shape leaves a seam at its start. */
+  40%,
+  78% {
+    stroke-dasharray: 1 0;
+    transform: none;
+    animation-timing-function: cubic-bezier(0.3, 0.6, 0.4, 1);
+  }
+  84% {
+    stroke-dasharray: 1 0;
+    transform: translateX(3px) scaleX(0.92);
+    animation-timing-function: ease-in-out;
+  }
+  93% {
+    stroke-dasharray: 1 0;
+    transform: translateX(-0.6px);
+  }
+  100% {
+    stroke-dasharray: 1 0;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+}
+
+@keyframes logo-line-in {
+  0%,
+  39% {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  50%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes logo-line-in-2 {
+  0%,
+  44% {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  55%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes logo-line-in-3 {
+  0%,
+  50% {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  61%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes logo-lines-push {
+  0%,
+  69% {
+    transform: none;
+  }
+  78% {
+    transform: translateX(1.5px);
+    animation-timing-function: ease-out;
+  }
+  90%,
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes logo-dot-push {
+  0%,
+  30% {
+    transform: none;
+  }
+  50% {
+    transform: translateX(3px) scaleX(0.92);
+    animation-timing-function: ease-in-out;
+  }
+  75% {
+    transform: translateX(-0.6px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes logo-lines-hover {
+  0% {
+    transform: none;
+  }
+  30% {
+    transform: translateX(1.5px);
+    animation-timing-function: ease-out;
+  }
+  60%,
+  100% {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo * {
+    animation: none !important;
+    stroke-dasharray: none !important;
+  }
+}

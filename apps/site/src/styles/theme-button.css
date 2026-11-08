@@ -1,0 +1,23 @@
+/* Theme button: the rays turn, the moon tips, on hover. */
+.theme-glyph .theme-rays,
+.theme-glyph .theme-moon {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-button:hover .theme-rays,
+.theme-button:focus-visible .theme-rays {
+  transform: rotate(45deg);
+}
+
+.theme-button:hover .theme-moon,
+.theme-button:focus-visible .theme-moon {
+  transform: rotate(-15deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-glyph * {
+    transition: none;
+  }
+}
