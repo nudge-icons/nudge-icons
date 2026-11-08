@@ -1,0 +1,25 @@
+{
+  "name": "arrow-down",
+  "category": "interface",
+  "tags": ["down", "bottom", "decrease", "fall"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["arrow-down"],
+    "heroicons": ["arrow-down"],
+    "tabler": ["arrow-down"],
+    "phosphor": ["arrow-down"],
+    "material": ["arrow_downward"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges down and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "y": 2.5
+      }
+    ]
+  }
+}

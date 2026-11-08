@@ -1,0 +1,27 @@
+{
+  "name": "folder-open",
+  "category": "objects",
+  "tags": ["directory", "browse", "files", "opened"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["folder-open"],
+    "heroicons": ["folder-open"],
+    "tabler": ["folder-open"],
+    "phosphor": ["folder-open"],
+    "material": ["folder_open"]
+  },
+  "animation": {
+    "name": "close",
+    "description": "The front flap swings up shut on its hinge and drops open again",
+    "parts": ["front"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "fold",
+        "origin": [4.5, 20],
+        "skew": 17.7,
+        "scale": 1
+      }
+    ]
+  }
+}

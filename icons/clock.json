@@ -1,0 +1,26 @@
+{
+  "name": "clock",
+  "category": "objects",
+  "tags": ["time", "hour", "schedule", "watch"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["clock"],
+    "heroicons": ["clock"],
+    "tabler": ["clock"],
+    "phosphor": ["clock"],
+    "material": ["schedule"]
+  },
+  "animation": {
+    "name": "tick",
+    "description": "The minute hand sweeps a full turn while the hour hand stays",
+    "parts": ["minute"],
+    "motion": [
+      {
+        "part": "minute",
+        "preset": "spin",
+        "origin": [12, 12],
+        "duration": 900
+      }
+    ]
+  }
+}

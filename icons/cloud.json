@@ -1,0 +1,25 @@
+{
+  "name": "cloud",
+  "category": "objects",
+  "tags": ["weather", "storage", "sky", "upload"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["cloud"],
+    "heroicons": ["cloud"],
+    "tabler": ["cloud"],
+    "phosphor": ["cloud"],
+    "material": ["cloud"]
+  },
+  "animation": {
+    "name": "drift",
+    "description": "The cloud drifts right and back",
+    "parts": ["cloud"],
+    "motion": [
+      {
+        "part": "cloud",
+        "preset": "nudge",
+        "x": 1.5
+      }
+    ]
+  }
+}

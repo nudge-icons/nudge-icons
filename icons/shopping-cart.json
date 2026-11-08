@@ -1,0 +1,25 @@
+{
+  "name": "shopping-cart",
+  "category": "objects",
+  "tags": ["cart", "buy", "checkout", "store"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["shopping-cart"],
+    "heroicons": ["shopping-cart"],
+    "tabler": ["shopping-cart"],
+    "phosphor": ["shopping-cart"],
+    "material": ["shopping_cart"]
+  },
+  "animation": {
+    "name": "roll",
+    "description": "The cart rolls forward and back",
+    "parts": ["cart"],
+    "motion": [
+      {
+        "part": "cart",
+        "preset": "nudge",
+        "x": 2
+      }
+    ]
+  }
+}

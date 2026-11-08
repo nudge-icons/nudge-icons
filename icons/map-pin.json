@@ -1,0 +1,26 @@
+{
+  "name": "map-pin",
+  "category": "objects",
+  "tags": ["location", "place", "marker", "address"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["map-pin"],
+    "heroicons": ["map-pin"],
+    "tabler": ["map-pin"],
+    "phosphor": ["map-pin"],
+    "material": ["location_on"]
+  },
+  "animation": {
+    "name": "drop",
+    "description": "The pin drops in and settles",
+    "parts": ["pin"],
+    "motion": [
+      {
+        "part": "pin",
+        "preset": "bounce",
+        "y": -2
+      }
+    ]
+  },
+  "filled": {}
+}

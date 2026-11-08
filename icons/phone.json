@@ -1,0 +1,25 @@
+{
+  "name": "phone",
+  "category": "objects",
+  "tags": ["call", "contact", "telephone", "ring"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["phone"],
+    "heroicons": ["phone"],
+    "tabler": ["phone"],
+    "phosphor": ["phone"],
+    "material": ["call"]
+  },
+  "animation": {
+    "name": "ring",
+    "description": "The handset shakes as it rings",
+    "parts": ["handset"],
+    "motion": [
+      {
+        "part": "handset",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

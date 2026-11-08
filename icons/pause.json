@@ -1,0 +1,32 @@
+{
+  "name": "pause",
+  "category": "actions",
+  "tags": ["stop", "hold", "media", "break"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["pause"],
+    "heroicons": ["pause"],
+    "tabler": ["player-pause"],
+    "phosphor": ["pause"],
+    "material": ["pause"]
+  },
+  "animation": {
+    "name": "bob",
+    "description": "The bars bob one after the other",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "right",
+        "preset": "bounce",
+        "y": 1.5,
+        "delay": 120
+      }
+    ]
+  },
+  "filled": {}
+}

@@ -1,0 +1,26 @@
+{
+  "name": "moon",
+  "category": "interface",
+  "tags": ["dark", "night", "theme", "sleep"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["moon"],
+    "heroicons": ["moon"],
+    "tabler": ["moon"],
+    "phosphor": ["moon"],
+    "material": ["dark_mode"]
+  },
+  "animation": {
+    "name": "rock",
+    "description": "The moon rocks back and forth",
+    "parts": ["moon"],
+    "motion": [
+      {
+        "part": "moon",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 14
+      }
+    ]
+  }
+}

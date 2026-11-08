@@ -1,0 +1,37 @@
+{
+  "name": "wifi",
+  "category": "status",
+  "tags": ["wireless", "signal", "internet", "network"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["wifi"],
+    "heroicons": ["wifi"],
+    "tabler": ["wifi"],
+    "phosphor": ["wifi-high"],
+    "material": ["wifi"]
+  },
+  "animation": {
+    "name": "signal",
+    "description": "The waves appear one by one, outwards from the dot",
+    "parts": ["inner", "middle", "outer"],
+    "motion": [
+      {
+        "part": "inner",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "middle",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 300
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 600
+      }
+    ]
+  }
+}

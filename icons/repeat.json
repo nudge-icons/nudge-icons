@@ -1,0 +1,30 @@
+{
+  "name": "repeat",
+  "category": "actions",
+  "tags": ["loop", "again", "cycle", "replay"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["repeat"],
+    "heroicons": ["arrow-path-rounded-square"],
+    "tabler": ["repeat"],
+    "phosphor": ["repeat"],
+    "material": ["repeat"]
+  },
+  "animation": {
+    "name": "cycle",
+    "description": "The arrows push round the loop and back",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 1.5
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": -1.5
+      }
+    ]
+  }
+}

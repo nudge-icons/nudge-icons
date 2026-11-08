@@ -1,0 +1,25 @@
+{
+  "name": "sun",
+  "category": "interface",
+  "tags": ["light", "day", "theme", "brightness"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["sun"],
+    "heroicons": ["sun"],
+    "tabler": ["sun"],
+    "phosphor": ["sun"],
+    "material": ["light_mode"]
+  },
+  "animation": {
+    "name": "shine",
+    "description": "The rays turn a quarter turn",
+    "parts": ["rays"],
+    "motion": [
+      {
+        "part": "rays",
+        "preset": "spin",
+        "angle": 90
+      }
+    ]
+  }
+}

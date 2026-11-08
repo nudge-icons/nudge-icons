@@ -1,0 +1,38 @@
+{
+  "name": "shield-check",
+  "category": "status",
+  "tags": ["verified", "secure", "protected", "safe"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["shield-check"],
+    "heroicons": ["shield-check"],
+    "tabler": ["shield-check"],
+    "phosphor": ["shield-check"],
+    "material": ["verified_user"]
+  },
+  "animation": {
+    "name": "verify",
+    "description": "The tick draws itself inside the shield",
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "draw"
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "guard",
+      "description": "The shield pulses once",
+      "parts": ["shield"],
+      "motion": [
+        {
+          "part": "shield",
+          "preset": "pulse",
+          "scale": 1.1
+        }
+      ]
+    }
+  }
+}

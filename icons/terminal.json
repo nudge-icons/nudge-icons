@@ -1,0 +1,24 @@
+{
+  "name": "terminal",
+  "category": "objects",
+  "tags": ["console", "command", "shell", "prompt"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["terminal"],
+    "heroicons": ["command-line"],
+    "tabler": ["terminal"],
+    "phosphor": ["terminal"],
+    "material": ["terminal"]
+  },
+  "animation": {
+    "name": "blink",
+    "description": "The cursor blinks",
+    "parts": ["cursor"],
+    "motion": [
+      {
+        "part": "cursor",
+        "preset": "flash"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "code",
+  "category": "objects",
+  "tags": ["brackets", "developer", "source", "html"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["code"],
+    "heroicons": ["code-bracket"],
+    "tabler": ["code"],
+    "phosphor": ["code"],
+    "material": ["code"]
+  },
+  "animation": {
+    "name": "spread",
+    "description": "The brackets push apart and back",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1.5
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1.5
+      }
+    ]
+  }
+}

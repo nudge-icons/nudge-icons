@@ -1,0 +1,25 @@
+{
+  "name": "chevron-left",
+  "category": "interface",
+  "tags": ["back", "previous", "collapse", "caret"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["chevron-left"],
+    "heroicons": ["chevron-left"],
+    "tabler": ["chevron-left"],
+    "phosphor": ["caret-left"],
+    "material": ["chevron_left"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The chevron nudges left and back",
+    "parts": ["chevron"],
+    "motion": [
+      {
+        "part": "chevron",
+        "preset": "nudge",
+        "x": -2
+      }
+    ]
+  }
+}

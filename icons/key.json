@@ -1,0 +1,26 @@
+{
+  "name": "key",
+  "category": "objects",
+  "tags": ["password", "access", "login", "unlock"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["key"],
+    "heroicons": ["key"],
+    "tabler": ["key"],
+    "phosphor": ["key"],
+    "material": ["key"]
+  },
+  "animation": {
+    "name": "dangle",
+    "description": "The key swings on its ring",
+    "parts": ["key"],
+    "motion": [
+      {
+        "part": "key",
+        "preset": "swing",
+        "origin": [16, 8],
+        "angle": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "tag",
+  "category": "objects",
+  "tags": ["label", "price", "category", "sale"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["tag"],
+    "heroicons": ["tag"],
+    "tabler": ["tag"],
+    "phosphor": ["tag"],
+    "material": ["sell"]
+  },
+  "animation": {
+    "name": "dangle",
+    "description": "The tag swings from its hole",
+    "parts": ["tag"],
+    "motion": [
+      {
+        "part": "tag",
+        "preset": "swing",
+        "origin": [7.5, 7.5],
+        "angle": 10
+      }
+    ]
+  },
+  "filled": {}
+}

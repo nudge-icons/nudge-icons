@@ -1,0 +1,26 @@
+{
+  "name": "files",
+  "category": "objects",
+  "tags": ["documents", "pages", "multiple", "stack"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["files"],
+    "heroicons": ["document-duplicate"],
+    "tabler": ["files"],
+    "phosphor": ["files"],
+    "material": ["file_copy"]
+  },
+  "animation": {
+    "name": "stack",
+    "description": "The front page slides onto the back one and returns",
+    "parts": ["front"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": -2,
+        "y": 2
+      }
+    ]
+  }
+}

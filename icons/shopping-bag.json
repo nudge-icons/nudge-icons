@@ -1,0 +1,26 @@
+{
+  "name": "shopping-bag",
+  "category": "objects",
+  "tags": ["bag", "buy", "store", "purchase"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["shopping-bag"],
+    "heroicons": ["shopping-bag"],
+    "tabler": ["shopping-bag"],
+    "phosphor": ["shopping-bag"],
+    "material": ["shopping_bag"]
+  },
+  "animation": {
+    "name": "carry",
+    "description": "The bag swings as if carried",
+    "parts": ["bag"],
+    "motion": [
+      {
+        "part": "bag",
+        "preset": "swing",
+        "origin": [12, 2.5],
+        "angle": 8
+      }
+    ]
+  }
+}

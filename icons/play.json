@@ -1,0 +1,58 @@
+{
+  "name": "play",
+  "category": "actions",
+  "tags": ["start", "video", "media", "resume"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["play"],
+    "heroicons": ["play"],
+    "tabler": ["player-play"],
+    "phosphor": ["play"],
+    "material": ["play_arrow"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The triangle nudges forward and back",
+    "parts": ["half-left", "half-right"],
+    "motion": [
+      {
+        "part": "half-left",
+        "preset": "nudge",
+        "x": 1.5
+      },
+      {
+        "part": "half-right",
+        "preset": "nudge",
+        "x": 1.5
+      }
+    ]
+  },
+  "toggle": {
+    "description": "The triangle splits into the two pause bars",
+    "parts": ["half-left", "half-right", "left", "right"],
+    "activeOnly": ["left", "right"],
+    "motion": [
+      {
+        "part": "half-left",
+        "preset": "morph",
+        "morph": "M9.5 4L5.5 4L5.5 20L9.5 20L9.5 4"
+      },
+      {
+        "part": "half-right",
+        "preset": "morph",
+        "morph": "M14.5 4L18.5 4L18.5 20L14.5 20L14.5 4"
+      },
+      {
+        "part": "left",
+        "preset": "draw",
+        "fallback": true
+      },
+      {
+        "part": "right",
+        "preset": "draw",
+        "fallback": true
+      }
+    ]
+  },
+  "filled": {}
+}

@@ -1,0 +1,26 @@
+{
+  "name": "arrow-up-right",
+  "category": "interface",
+  "tags": ["diagonal", "trend", "growth", "go"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["arrow-up-right"],
+    "heroicons": ["arrow-up-right"],
+    "tabler": ["arrow-up-right"],
+    "phosphor": ["arrow-up-right"],
+    "material": ["north_east"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges up and to the right and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": 2,
+        "y": -2
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path data-part="tray" d="M6.5 9V2.5h11V9"/>
+  <path data-part="body" d="M6.5 17.5h-2a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2h15a2 2 0 0 1 2 2v4.5a2 2 0 0 1-2 2h-2"/>
+  <rect data-part="page" x="6.5" y="14" width="11" height="7.5" rx="1"/>
+</svg>

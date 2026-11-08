@@ -1,0 +1,25 @@
+{
+  "name": "printer",
+  "category": "objects",
+  "tags": ["print", "paper", "document", "output"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["printer"],
+    "heroicons": ["printer"],
+    "tabler": ["printer"],
+    "phosphor": ["printer"],
+    "material": ["print"]
+  },
+  "animation": {
+    "name": "feed",
+    "description": "The page feeds out and back",
+    "parts": ["page"],
+    "motion": [
+      {
+        "part": "page",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
+  }
+}

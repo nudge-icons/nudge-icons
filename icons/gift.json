@@ -1,0 +1,33 @@
+{
+  "name": "gift",
+  "category": "objects",
+  "tags": ["present", "reward", "bonus", "birthday"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["gift"],
+    "heroicons": ["gift"],
+    "tabler": ["gift"],
+    "phosphor": ["gift"],
+    "material": ["redeem"]
+  },
+  "animation": {
+    "name": "hop",
+    "description": "The gift hops, then the bow wiggles",
+    "parts": ["gift", "bow"],
+    "motion": [
+      {
+        "part": "gift",
+        "preset": "bounce",
+        "y": -1.5
+      },
+      {
+        "part": "bow",
+        "preset": "swing",
+        "origin": [12, 7.5],
+        "angle": 14,
+        "delay": 450,
+        "duration": 711
+      }
+    ]
+  }
+}

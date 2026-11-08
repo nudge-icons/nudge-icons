@@ -1,0 +1,30 @@
+{
+  "name": "archive",
+  "category": "objects",
+  "tags": ["box", "storage", "store", "backup"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["archive"],
+    "heroicons": ["archive-box"],
+    "tabler": ["archive"],
+    "phosphor": ["archive"],
+    "material": ["inventory_2"]
+  },
+  "animation": {
+    "name": "rattle",
+    "description": "The lid rattles on the box",
+    "parts": ["lid", "box"],
+    "motion": [
+      {
+        "part": "lid",
+        "preset": "bounce",
+        "y": -1.5
+      },
+      {
+        "part": "box",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

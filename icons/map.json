@@ -1,0 +1,26 @@
+{
+  "name": "map",
+  "category": "objects",
+  "tags": ["location", "navigation", "route", "travel"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["map"],
+    "heroicons": ["map"],
+    "tabler": ["map"],
+    "phosphor": ["map-trifold"],
+    "material": ["map"]
+  },
+  "animation": {
+    "name": "fold",
+    "description": "The map folds in and opens out",
+    "parts": ["map"],
+    "motion": [
+      {
+        "part": "map",
+        "preset": "pulse",
+        "scale": 0.85,
+        "axis": "x"
+      }
+    ]
+  }
+}

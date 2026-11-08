@@ -1,0 +1,25 @@
+{
+  "name": "power",
+  "category": "actions",
+  "tags": ["on", "off", "shutdown", "switch"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["power"],
+    "heroicons": ["power"],
+    "tabler": ["power"],
+    "phosphor": ["power"],
+    "material": ["power_settings_new"]
+  },
+  "animation": {
+    "name": "switch",
+    "description": "The ring draws around the switch",
+    "parts": ["ring"],
+    "motion": [
+      {
+        "part": "ring",
+        "preset": "draw",
+        "duration": 600
+      }
+    ]
+  }
+}

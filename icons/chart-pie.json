@@ -1,0 +1,26 @@
+{
+  "name": "chart-pie",
+  "category": "interface",
+  "tags": ["analytics", "share", "proportion", "statistics"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["chart-pie", "pie-chart"],
+    "heroicons": ["chart-pie"],
+    "tabler": ["chart-pie"],
+    "phosphor": ["chart-pie-slice"],
+    "material": ["pie_chart"]
+  },
+  "animation": {
+    "name": "slice",
+    "description": "The slice pops out and back",
+    "parts": ["slice"],
+    "motion": [
+      {
+        "part": "slice",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

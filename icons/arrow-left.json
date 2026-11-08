@@ -1,0 +1,25 @@
+{
+  "name": "arrow-left",
+  "category": "interface",
+  "tags": ["back", "previous", "return", "go"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["arrow-left"],
+    "heroicons": ["arrow-left"],
+    "tabler": ["arrow-left"],
+    "phosphor": ["arrow-left"],
+    "material": ["arrow_back"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges left and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": -2.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "file",
+  "category": "objects",
+  "tags": ["document", "page", "paper", "blank"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["file"],
+    "heroicons": ["document"],
+    "tabler": ["file"],
+    "phosphor": ["file"],
+    "material": ["draft"]
+  },
+  "animation": {
+    "name": "lift",
+    "description": "The page lifts and settles",
+    "parts": ["page"],
+    "motion": [
+      {
+        "part": "page",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

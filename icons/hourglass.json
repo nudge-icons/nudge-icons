@@ -1,0 +1,26 @@
+{
+  "name": "hourglass",
+  "category": "status",
+  "tags": ["wait", "time", "pending", "timer"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["hourglass"],
+    "tabler": ["hourglass"],
+    "phosphor": ["hourglass"],
+    "material": ["hourglass_empty"]
+  },
+  "animation": {
+    "name": "flip",
+    "description": "The hourglass flips over",
+    "parts": ["glass"],
+    "motion": [
+      {
+        "part": "glass",
+        "preset": "spin",
+        "origin": [12, 12],
+        "angle": 180,
+        "duration": 800
+      }
+    ]
+  }
+}

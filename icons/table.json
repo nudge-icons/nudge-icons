@@ -1,0 +1,25 @@
+{
+  "name": "table",
+  "category": "interface",
+  "tags": ["grid", "spreadsheet", "data", "cells"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["table"],
+    "heroicons": ["table-cells"],
+    "tabler": ["table"],
+    "phosphor": ["table"],
+    "material": ["table"]
+  },
+  "animation": {
+    "name": "fill",
+    "description": "The grid lines draw across the table",
+    "parts": ["lines"],
+    "motion": [
+      {
+        "part": "lines",
+        "preset": "draw",
+        "duration": 600
+      }
+    ]
+  }
+}

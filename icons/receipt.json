@@ -1,0 +1,33 @@
+{
+  "name": "receipt",
+  "category": "objects",
+  "tags": ["bill", "invoice", "purchase", "payment"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["receipt"],
+    "tabler": ["receipt"],
+    "phosphor": ["receipt"],
+    "material": ["receipt"]
+  },
+  "animation": {
+    "name": "print",
+    "description": "The lines print one after another",
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "draw"
+      },
+      {
+        "part": "middle",
+        "preset": "draw",
+        "delay": 100
+      },
+      {
+        "part": "bottom",
+        "preset": "draw",
+        "delay": 200
+      }
+    ]
+  }
+}

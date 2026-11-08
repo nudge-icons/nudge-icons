@@ -1,0 +1,25 @@
+{
+  "name": "clipboard",
+  "category": "objects",
+  "tags": ["paste", "notes", "board", "copy"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["clipboard"],
+    "heroicons": ["clipboard"],
+    "tabler": ["clipboard"],
+    "phosphor": ["clipboard"],
+    "material": ["content_paste"]
+  },
+  "animation": {
+    "name": "clip",
+    "description": "The clip lifts and snaps back",
+    "parts": ["clip"],
+    "motion": [
+      {
+        "part": "clip",
+        "preset": "bounce",
+        "y": -1
+      }
+    ]
+  }
+}

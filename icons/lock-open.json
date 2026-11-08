@@ -1,0 +1,26 @@
+{
+  "name": "lock-open",
+  "category": "status",
+  "tags": ["unlocked", "open", "public", "unsecure"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["lock-open"],
+    "heroicons": ["lock-open"],
+    "tabler": ["lock-open"],
+    "phosphor": ["lock-open"],
+    "material": ["lock_open"]
+  },
+  "animation": {
+    "name": "wiggle",
+    "description": "The open shackle wiggles on its hinge",
+    "parts": ["shackle"],
+    "motion": [
+      {
+        "part": "shackle",
+        "preset": "swing",
+        "origin": [8, 11],
+        "angle": -8
+      }
+    ]
+  }
+}

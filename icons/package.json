@@ -1,0 +1,42 @@
+{
+  "name": "package",
+  "category": "objects",
+  "tags": [
+    "box",
+    "delivery",
+    "shipping",
+    "parcel"
+  ],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": [
+      "package"
+    ],
+    "heroicons": [
+      "cube"
+    ],
+    "tabler": [
+      "package"
+    ],
+    "phosphor": [
+      "package"
+    ],
+    "material": [
+      "package_2"
+    ]
+  },
+  "animation": {
+    "name": "hop",
+    "description": "The box hops up and settles",
+    "parts": [
+      "box"
+    ],
+    "motion": [
+      {
+        "part": "box",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

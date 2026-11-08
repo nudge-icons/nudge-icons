@@ -1,0 +1,40 @@
+{
+  "name": "share",
+  "category": "actions",
+  "tags": ["network", "send", "social", "connect"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["share-2"],
+    "heroicons": ["share"],
+    "tabler": ["share"],
+    "phosphor": ["share-network"],
+    "material": ["share"]
+  },
+  "animation": {
+    "name": "spread",
+    "description": "The nodes pulse one after another, from the source outwards",
+    "parts": ["source", "top", "bottom"],
+    "motion": [
+      {
+        "part": "source",
+        "preset": "pulse",
+        "origin": [6, 12],
+        "scale": 1.2
+      },
+      {
+        "part": "top",
+        "preset": "pulse",
+        "origin": [18, 5],
+        "scale": 1.2,
+        "delay": 120
+      },
+      {
+        "part": "bottom",
+        "preset": "pulse",
+        "origin": [18, 19],
+        "scale": 1.2,
+        "delay": 240
+      }
+    ]
+  }
+}

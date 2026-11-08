@@ -1,0 +1,26 @@
+{
+  "name": "folder",
+  "category": "objects",
+  "tags": ["directory", "files", "category", "collection"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["folder"],
+    "heroicons": ["folder"],
+    "tabler": ["folder"],
+    "phosphor": ["folder"],
+    "material": ["folder"]
+  },
+  "animation": {
+    "name": "hop",
+    "description": "The folder hops up and settles",
+    "parts": ["folder"],
+    "motion": [
+      {
+        "part": "folder",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  },
+  "filled": {}
+}

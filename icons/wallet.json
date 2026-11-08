@@ -1,0 +1,25 @@
+{
+  "name": "wallet",
+  "category": "objects",
+  "tags": ["money", "payment", "balance", "finance"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["wallet"],
+    "heroicons": ["wallet"],
+    "tabler": ["wallet"],
+    "phosphor": ["wallet"],
+    "material": ["wallet"]
+  },
+  "animation": {
+    "name": "clasp",
+    "description": "The clasp opens and clicks shut",
+    "parts": ["clasp"],
+    "motion": [
+      {
+        "part": "clasp",
+        "preset": "nudge",
+        "x": -1.5
+      }
+    ]
+  }
+}

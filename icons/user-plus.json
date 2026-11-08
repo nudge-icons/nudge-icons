@@ -1,0 +1,32 @@
+{
+  "name": "user-plus",
+  "category": "actions",
+  "tags": ["add-user", "invite", "new", "member"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["user-round-plus"],
+    "heroicons": ["user-plus"],
+    "tabler": ["user-plus"],
+    "phosphor": ["user-plus"],
+    "material": ["person_add"]
+  },
+  "animation": {
+    "name": "invite",
+    "description": "The plus turns a quarter turn as the head nods",
+    "parts": ["head", "plus"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [18.5, 11.5],
+        "angle": 90,
+        "delay": 100
+      }
+    ]
+  }
+}

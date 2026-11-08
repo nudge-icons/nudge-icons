@@ -1,0 +1,25 @@
+{
+  "name": "inbox",
+  "category": "objects",
+  "tags": ["mail", "messages", "tray", "receive"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["inbox"],
+    "heroicons": ["inbox"],
+    "tabler": ["inbox"],
+    "phosphor": ["tray"],
+    "material": ["inbox"]
+  },
+  "animation": {
+    "name": "receive",
+    "description": "The tray dips as if something landed and settles",
+    "parts": ["tray"],
+    "motion": [
+      {
+        "part": "tray",
+        "preset": "bounce",
+        "y": 1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "database",
+  "category": "objects",
+  "tags": ["storage", "server", "data", "sql"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["database"],
+    "heroicons": ["circle-stack"],
+    "tabler": ["database"],
+    "phosphor": ["database"],
+    "material": ["database"]
+  },
+  "animation": {
+    "name": "fill",
+    "description": "The layers draw across the cylinder",
+    "parts": ["layers"],
+    "motion": [
+      {
+        "part": "layers",
+        "preset": "draw",
+        "duration": 600
+      }
+    ]
+  }
+}

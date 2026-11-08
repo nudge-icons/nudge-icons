@@ -1,0 +1,25 @@
+{
+  "name": "chevron-up",
+  "category": "interface",
+  "tags": ["collapse", "less", "close", "caret"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["chevron-up"],
+    "heroicons": ["chevron-up"],
+    "tabler": ["chevron-up"],
+    "phosphor": ["caret-up"],
+    "material": ["keyboard_arrow_up"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The chevron nudges up and back",
+    "parts": ["chevron"],
+    "motion": [
+      {
+        "part": "chevron",
+        "preset": "nudge",
+        "y": -2
+      }
+    ]
+  }
+}

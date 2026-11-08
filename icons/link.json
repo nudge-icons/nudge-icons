@@ -1,0 +1,32 @@
+{
+  "name": "link",
+  "category": "actions",
+  "tags": ["chain", "url", "hyperlink", "attach"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["link"],
+    "heroicons": ["link"],
+    "tabler": ["link"],
+    "phosphor": ["link"],
+    "material": ["link"]
+  },
+  "animation": {
+    "name": "tug",
+    "description": "The two links pull apart and snap back together",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "minus",
+  "category": "actions",
+  "tags": ["remove", "subtract", "less", "collapse"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["minus"],
+    "heroicons": ["minus"],
+    "tabler": ["minus"],
+    "phosphor": ["minus"],
+    "material": ["remove"]
+  },
+  "animation": {
+    "name": "squeeze",
+    "description": "The line squeezes in and springs back",
+    "parts": ["line"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "pulse",
+        "scale": 0.75,
+        "axis": "x"
+      }
+    ]
+  }
+}
