@@ -1,7 +1,7 @@
 {
-  "name": "chart",
+  "name": "chart-bar",
   "category": "interface",
-  "tags": ["analytics", "statistics", "bars", "report"],
+  "tags": ["analytics", "statistics", "bars", "report", "bar"],
   "since": "0.1.0",
   "equivalents": {
     "lucide": ["chart-column", "bar-chart-3"],
