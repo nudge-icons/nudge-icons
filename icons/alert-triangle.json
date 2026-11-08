@@ -2,6 +2,7 @@
   "name": "alert-triangle",
   "category": "status",
   "tags": ["warning", "caution", "error", "danger"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["triangle-alert", "alert-triangle"],
     "heroicons": ["exclamation-triangle"],

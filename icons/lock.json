@@ -2,6 +2,7 @@
   "name": "lock",
   "category": "status",
   "tags": ["secure", "private", "password", "locked"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["lock"],
     "heroicons": ["lock-closed"],

@@ -2,6 +2,7 @@
   "name": "bell",
   "category": "interface",
   "tags": ["notification", "alert", "reminder", "ring"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["bell"],
     "heroicons": ["bell"],

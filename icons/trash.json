@@ -2,6 +2,7 @@
   "name": "trash",
   "category": "actions",
   "tags": ["delete", "remove", "bin", "garbage"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["trash-2"],
     "heroicons": ["trash"],

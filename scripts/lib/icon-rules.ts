@@ -36,6 +36,8 @@ export interface IconMeta {
   name: string;
   category: "actions" | "interface" | "status" | "objects";
   tags: string[];
+  /** Release that added the icon, like "0.2.0". The site marks the latest release as new. */
+  since: string;
   /**
    * The closest icon in other sets, by each set's own icon id (file name), not its
    * component name: `{ "lucide": ["triangle-alert"], "material": ["warning"] }`.
@@ -348,6 +350,9 @@ function checkMeta(
     errors.push("metadata category must be actions, interface, status or objects");
   }
   if (!Array.isArray(m.tags) || m.tags.length < 2) errors.push("metadata needs at least 2 tags");
+  if (typeof m.since !== "string" || !/^\d+\.\d+\.\d+$/.test(m.since)) {
+    errors.push('metadata needs "since": the release that added the icon, like "0.2.0"');
+  }
   errors.push(...checkEquivalents(m.equivalents));
   const own = variant === "outline" ? undefined : m[variant];
   if (variant !== "outline" && (typeof own !== "object" || own === null)) {

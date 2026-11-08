@@ -2,6 +2,7 @@
   "name": "chat",
   "category": "objects",
   "tags": ["message", "conversation", "talk", "support"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["message-square"],
     "heroicons": ["chat-bubble-left"],

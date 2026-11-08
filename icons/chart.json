@@ -2,6 +2,7 @@
   "name": "chart",
   "category": "interface",
   "tags": ["analytics", "statistics", "bars", "report"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chart-column", "bar-chart-3"],
     "heroicons": ["chart-bar"],

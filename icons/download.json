@@ -2,6 +2,7 @@
   "name": "download",
   "category": "actions",
   "tags": ["save", "export", "file", "arrow-down"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["download"],
     "heroicons": ["arrow-down-tray"],

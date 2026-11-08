@@ -2,6 +2,7 @@
   "name": "shield",
   "category": "status",
   "tags": ["security", "protection", "safe", "privacy"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["shield"],
     "tabler": ["shield"],

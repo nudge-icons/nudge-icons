@@ -2,6 +2,7 @@
   "name": "arrow-right",
   "category": "interface",
   "tags": ["next", "forward", "continue", "go"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["arrow-right"],
     "heroicons": ["arrow-right"],

@@ -2,6 +2,7 @@
   "name": "credit-card",
   "category": "objects",
   "tags": ["payment", "billing", "card", "purchase"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["credit-card"],
     "heroicons": ["credit-card"],

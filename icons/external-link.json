@@ -2,6 +2,7 @@
   "name": "external-link",
   "category": "interface",
   "tags": ["open", "new-tab", "outside", "link"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["external-link"],
     "heroicons": ["arrow-top-right-on-square"],

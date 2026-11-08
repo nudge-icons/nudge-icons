@@ -2,6 +2,7 @@
   "name": "eye",
   "category": "status",
   "tags": ["view", "show", "visible", "preview"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["eye"],
     "heroicons": ["eye"],

@@ -2,6 +2,7 @@
   "name": "copy",
   "category": "actions",
   "tags": ["duplicate", "clipboard", "paste", "clone"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["copy"],
     "heroicons": ["document-duplicate"],

@@ -2,6 +2,7 @@
   "name": "camera",
   "category": "objects",
   "tags": ["photo", "picture", "capture", "snapshot"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["camera"],
     "heroicons": ["camera"],

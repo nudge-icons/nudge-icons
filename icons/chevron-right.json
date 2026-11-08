@@ -2,6 +2,7 @@
   "name": "chevron-right",
   "category": "interface",
   "tags": ["next", "forward", "expand", "caret"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chevron-right"],
     "heroicons": ["chevron-right"],

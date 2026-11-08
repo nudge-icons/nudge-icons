@@ -2,6 +2,7 @@
   "name": "calendar",
   "category": "objects",
   "tags": ["date", "schedule", "event", "day"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["calendar"],
     "heroicons": ["calendar"],

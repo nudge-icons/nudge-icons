@@ -2,6 +2,7 @@
   "name": "heart",
   "category": "status",
   "tags": ["like", "favorite", "love", "health", "rating"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["heart"],
     "heroicons": ["heart"],

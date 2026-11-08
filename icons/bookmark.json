@@ -2,6 +2,7 @@
   "name": "bookmark",
   "category": "actions",
   "tags": ["save", "favorite", "later", "ribbon"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["bookmark"],
     "heroicons": ["bookmark"],

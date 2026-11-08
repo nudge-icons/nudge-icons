@@ -2,6 +2,7 @@
   "name": "check-circle",
   "category": "status",
   "tags": ["success", "done", "complete", "verified"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["circle-check", "check-circle"],
     "heroicons": ["check-circle"],

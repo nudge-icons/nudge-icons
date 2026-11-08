@@ -2,6 +2,7 @@
   "name": "plus",
   "category": "actions",
   "tags": ["add", "new", "create", "more"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["plus"],
     "heroicons": ["plus"],

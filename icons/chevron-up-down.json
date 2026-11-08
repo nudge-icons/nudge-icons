@@ -2,6 +2,7 @@
   "name": "chevron-up-down",
   "category": "interface",
   "tags": ["select", "sort", "dropdown", "combobox"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chevrons-up-down"],
     "heroicons": ["chevron-up-down"],

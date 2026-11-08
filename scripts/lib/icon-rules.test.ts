@@ -8,6 +8,7 @@ const meta = (parts: string[] = []) => ({
   name: "dot",
   category: "status",
   tags: ["dot", "point"],
+  since: "0.1.0",
   animation: {
     name: "pulse",
     description: "Pulses",
@@ -259,5 +260,20 @@ describe("checkIcon", () => {
       "filled",
     );
     expect(errors).toEqual([]);
+  });
+});
+
+describe("since", () => {
+  const body = svg('<circle cx="12" cy="12" r="4"/>');
+  const message = 'metadata needs "since": the release that added the icon, like "0.2.0"';
+
+  it("accepts a release version", () => {
+    expect(checkIcon("dot", body, meta())).not.toContain(message);
+  });
+
+  it("rejects a missing or malformed version", () => {
+    const without = Object.fromEntries(Object.entries(meta()).filter(([k]) => k !== "since"));
+    expect(checkIcon("dot", body, without)).toContain(message);
+    expect(checkIcon("dot", body, { ...meta(), since: "v1" })).toContain(message);
   });
 });

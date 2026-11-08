@@ -2,6 +2,7 @@
   "name": "plug",
   "category": "objects",
   "tags": ["integration", "connect", "power", "plugin"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["plug"],
     "tabler": ["plug"],

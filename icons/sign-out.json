@@ -2,6 +2,7 @@
   "name": "sign-out",
   "category": "actions",
   "tags": ["logout", "exit", "leave", "door"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["log-out"],
     "heroicons": ["arrow-right-start-on-rectangle"],

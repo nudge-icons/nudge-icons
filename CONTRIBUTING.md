@@ -34,6 +34,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   "name": "download",
   "category": "actions",
   "tags": ["save", "export", "file", "arrow-down"],
+  "since": "0.1.0",
   "animation": {
     "name": "drop",
     "description": "The arrow drops into the tray and returns",
@@ -43,6 +44,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 ```
 
 - `category`: `actions`, `interface`, `status` or `objects`.
+- `since`: the release that adds the icon, like `"0.2.0"`. New icons get the next release; the site shows those of the latest release as new.
 - `equivalents` (optional) maps other icon sets to their closest icon, using each set's own icon id (its file name), not the component name. Supported sets: `lucide`, `heroicons`, `tabler`, `phosphor`, `material` (Material Symbols). List the set's current id first, then old names it still exports as aliases (Lucide `loader-2` for `loader-circle`). Leave a set out when it has no close match. `pnpm check:icons` checks every id against the sets, which are installed as dev dependencies:
 
   ```json

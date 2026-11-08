@@ -2,6 +2,7 @@
   "name": "info",
   "category": "status",
   "tags": ["information", "help", "details", "about"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["info"],
     "heroicons": ["information-circle"],

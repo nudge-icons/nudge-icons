@@ -2,6 +2,7 @@
   "name": "grid",
   "category": "interface",
   "tags": ["layout", "dashboard", "apps", "tiles"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["layout-grid"],
     "heroicons": ["squares-2x2"],

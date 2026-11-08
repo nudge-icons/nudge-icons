@@ -2,6 +2,7 @@
   "name": "users",
   "category": "objects",
   "tags": ["people", "team", "group", "members"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["users-round"],
     "heroicons": ["users"],

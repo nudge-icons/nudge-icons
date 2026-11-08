@@ -2,6 +2,7 @@
   "name": "send",
   "category": "status",
   "tags": ["message", "paper-plane", "submit", "share"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["send"],
     "heroicons": ["paper-airplane"],

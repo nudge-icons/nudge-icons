@@ -2,6 +2,7 @@
   "name": "chevron-down",
   "category": "interface",
   "tags": ["expand", "dropdown", "open", "caret"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chevron-down"],
     "heroicons": ["chevron-down"],

@@ -2,6 +2,7 @@
   "name": "search",
   "category": "interface",
   "tags": ["find", "magnifier", "lookup", "zoom"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["search"],
     "heroicons": ["magnifying-glass"],

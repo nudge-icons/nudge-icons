@@ -2,6 +2,7 @@
   "name": "bolt",
   "category": "status",
   "tags": ["lightning", "fast", "power", "flash"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["zap"],
     "heroicons": ["bolt"],

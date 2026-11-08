@@ -2,6 +2,7 @@
   "name": "circle",
   "category": "interface",
   "tags": ["dot", "radio", "shape", "indicator"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["circle"],
     "tabler": ["circle"],

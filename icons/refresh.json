@@ -2,6 +2,7 @@
   "name": "refresh",
   "category": "actions",
   "tags": ["reload", "sync", "update", "retry"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["refresh-cw"],
     "heroicons": ["arrow-path"],

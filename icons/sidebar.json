@@ -2,6 +2,7 @@
   "name": "sidebar",
   "category": "interface",
   "tags": ["panel", "layout", "navigation", "drawer"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["panel-left"],
     "tabler": ["layout-sidebar"],

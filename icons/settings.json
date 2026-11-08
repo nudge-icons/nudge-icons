@@ -2,6 +2,7 @@
   "name": "settings",
   "category": "interface",
   "tags": ["gear", "cog", "preferences", "options"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["settings"],
     "heroicons": ["cog-6-tooth"],

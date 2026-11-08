@@ -2,6 +2,7 @@
   "name": "video",
   "category": "objects",
   "tags": ["camera", "record", "movie", "film"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["video"],
     "heroicons": ["video-camera"],

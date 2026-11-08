@@ -2,6 +2,7 @@
   "name": "history",
   "category": "interface",
   "tags": ["recent", "time", "undo", "past"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["history"],
     "tabler": ["history"],

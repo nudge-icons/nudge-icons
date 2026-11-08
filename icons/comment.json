@@ -2,6 +2,7 @@
   "name": "comment",
   "category": "objects",
   "tags": ["message", "reply", "speech", "feedback"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["message-circle"],
     "heroicons": ["chat-bubble-oval-left"],

@@ -2,6 +2,7 @@
   "name": "user",
   "category": "objects",
   "tags": ["person", "profile", "account", "avatar"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["user-round"],
     "heroicons": ["user"],

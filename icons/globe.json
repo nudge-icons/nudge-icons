@@ -2,6 +2,7 @@
   "name": "globe",
   "category": "objects",
   "tags": ["world", "web", "language", "internet"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["globe"],
     "heroicons": ["globe-alt"],

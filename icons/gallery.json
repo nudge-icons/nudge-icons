@@ -2,6 +2,7 @@
   "name": "gallery",
   "category": "objects",
   "tags": ["images", "photos", "album", "media"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["images"],
     "tabler": ["library-photo"],

@@ -2,6 +2,7 @@
   "name": "pencil",
   "category": "actions",
   "tags": ["edit", "write", "rename", "draw"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["pencil"],
     "heroicons": ["pencil"],

@@ -2,6 +2,7 @@
   "name": "loader",
   "category": "interface",
   "tags": ["loading", "spinner", "progress", "wait"],
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["loader-circle", "loader-2"],
     "tabler": ["loader-2"],
