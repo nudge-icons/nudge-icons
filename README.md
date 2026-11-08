@@ -8,46 +8,70 @@ Animated line icons for React and Vue. Each icon has its own small motion that h
 
 ![A grid of nudge-icons, each playing its own motion](.github/readme/demo.gif)
 
-**[Browse the icons](https://dimon85.github.io/nudge-icons/)** · [Docs](https://dimon85.github.io/nudge-icons/docs/getting-started) · [Migrate from Lucide](https://dimon85.github.io/nudge-icons/docs/migrate-from-lucide)
+**[Browse the icons](https://dimon85.github.io/nudge-icons/)** · [Docs](https://dimon85.github.io/nudge-icons/docs/getting-started)
 
 ## Why
 
 - **Motion with meaning.** Every icon moves in its own way, on hover by default, also when the button or link around it is hovered or focused.
 - **CSS only.** No JS animation library. Icons move before hydration, work with server rendering, and stop under reduced motion with nothing to set up.
 - **Small.** One animated icon adds about 1.1 kB to your bundle, every next one about 0.2 kB.
-- **Drop-in for Lucide.** The same 24-unit grid, 2-unit stroke and props (`size`, `color`, `strokeWidth`, `absoluteStrokeWidth`), so both sets can live side by side while you switch.
+- **Familiar API.** A 24-unit grid with a 2-unit stroke and the props you know from other line icon sets (`size`, `color`, `strokeWidth`, `absoluteStrokeWidth`), so the icons sit well next to them.
 - **Second states.** `<Menu active={open} />` folds the lines into a cross, with a transition, instead of swapping two icons.
 - **Styleable parts.** The moving pieces have names (`data-part="clapper"`), so you can colour one part with CSS.
 - **React and Vue from one source,** plus plain SVG files and a shadcn registry.
 
 ## Install
 
+React 19 or later:
+
 ```sh
-pnpm add @nudge-icons/react   # React 19+
-pnpm add @nudge-icons/vue     # Vue 3.3+
+pnpm add @nudge-icons/react
+```
+
+Vue 3.3 or later:
+
+```sh
+pnpm add @nudge-icons/vue
 ```
 
 ## Use
 
+React:
+
 ```tsx
+import { useState } from "react";
 import { Bell, Menu } from "@nudge-icons/react";
 
-<button>
-  <Bell size={16} /> Notifications
-</button>;
-
-<button aria-expanded={open} aria-label="Menu" onClick={() => setOpen(!open)}>
-  <Menu active={open} />
-</button>;
+export function Toolbar() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button>
+        <Bell size={16} /> Notifications
+      </button>
+      <button aria-expanded={open} aria-label="Menu" onClick={() => setOpen(!open)}>
+        <Menu active={open} />
+      </button>
+    </>
+  );
+}
 ```
+
+Vue:
 
 ```vue
 <script setup lang="ts">
-import { Bell } from "@nudge-icons/vue";
+import { ref } from "vue";
+import { Bell, Menu } from "@nudge-icons/vue";
+
+const open = ref(false);
 </script>
 
 <template>
   <button><Bell :size="16" /> Notifications</button>
+  <button :aria-expanded="open" aria-label="Menu" @click="open = !open">
+    <Menu :active="open" />
+  </button>
 </template>
 ```
 
@@ -80,9 +104,15 @@ The extra bytes of an animated icon are its motion CSS. Animated icon sets built
 
 ```sh
 pnpm install
-pnpm site            # the docs site with the gallery
-pnpm preview         # every icon on one page, for drawing work
-pnpm storybook       # the visual test bench
+```
+
+- `pnpm site`: the docs site with the gallery.
+- `pnpm preview`: every icon on one page, for drawing work.
+- `pnpm storybook`: the visual test bench.
+
+Before a pull request:
+
+```sh
 pnpm check:icons && pnpm lint && pnpm typecheck && pnpm test && pnpm build
 ```
 

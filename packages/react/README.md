@@ -7,15 +7,22 @@ pnpm add @nudge-icons/react
 ```
 
 ```tsx
+import { useState } from "react";
 import { Bell, Menu } from "@nudge-icons/react";
 
-<button>
-  <Bell size={16} /> Notifications
-</button>;
-
-<button aria-expanded={open} aria-label="Menu" onClick={() => setOpen(!open)}>
-  <Menu active={open} />
-</button>;
+export function Toolbar() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button>
+        <Bell size={16} /> Notifications
+      </button>
+      <button aria-expanded={open} aria-label="Menu" onClick={() => setOpen(!open)}>
+        <Menu active={open} />
+      </button>
+    </>
+  );
+}
 ```
 
 - `animate`: `"hover"` (default; also when the parent button or link is hovered or focused), `"loop"`, `"once"`, a number of runs, or `false`.

@@ -6,7 +6,9 @@ export function StylingDoc() {
   return (
     <>
       <h2>Props</h2>
-      <p>The props match lucide-react, so most code moves over unchanged.</p>
+      <p>
+        The same props you know from other line icon sets, so existing code mostly keeps working.
+      </p>
       <table className="docs-table">
         <thead>
           <tr>
