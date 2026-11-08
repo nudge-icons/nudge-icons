@@ -11,15 +11,12 @@
   },
   "animation": {
     "name": "snap",
-    "description": "The lens closes and opens like a shutter",
+    "description": "The lens blinks twice like a shutter clicking",
     "parts": ["lens"],
     "motion": [
       {
         "part": "lens",
-        "preset": "pulse",
-        "origin": [12, 13],
-        "scale": 0.75,
-        "duration": 500
+        "preset": "flash"
       }
     ]
   }
