@@ -6,6 +6,7 @@
 export const ROUTES = {
   gallery: "/",
   icon: "/icons/:name",
+  doc: "/docs/:slug",
 } as const;
 
 export type Page = keyof typeof ROUTES;
@@ -48,7 +49,11 @@ export function pathFor(route: Exclude<Route, { page: "not-found" }>): string {
   return ROUTES[route.page].replace(PARAM, (_, name: string) => params[name] ?? "");
 }
 
-/** Every concrete page, for the build: static routes and one page per icon. */
-export function allPaths(iconIds: readonly string[]): string[] {
-  return [pathFor({ page: "gallery" }), ...iconIds.map((name) => pathFor({ page: "icon", name }))];
+/** Every concrete page, for the build: static routes, one page per icon and per doc section. */
+export function allPaths(iconIds: readonly string[], docSlugs: readonly string[]): string[] {
+  return [
+    pathFor({ page: "gallery" }),
+    ...docSlugs.map((slug) => pathFor({ page: "doc", slug })),
+    ...iconIds.map((name) => pathFor({ page: "icon", name })),
+  ];
 }

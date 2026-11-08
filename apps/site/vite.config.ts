@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
 import { iconVariants, type IconVariantInfo } from "../../scripts/lib/icon-list.ts";
 import { registryUrl, siteUrl } from "../../scripts/lib/site-url.ts";
+import { DOCS, docBySlug } from "./src/lib/docs.ts";
 import { headTags, pageMeta } from "./src/lib/page-meta.ts";
 import { allPaths, matchPath, type Route } from "./src/lib/routes.ts";
 
@@ -19,8 +20,9 @@ let icons: IconVariantInfo[] | undefined;
 function tagsFor(route: Route, path: string) {
   icons ??= iconVariants();
   const icon = route.page === "icon" ? icons.find((i) => i.id === route.name) : undefined;
+  const doc = route.page === "doc" ? docBySlug(route.slug) : undefined;
   const url = `${siteUrl}${path.slice(1)}`;
-  return `${START}\n    ${headTags(pageMeta(route, icon), url, siteUrl)}\n    ${END}`;
+  return `${START}\n    ${headTags(pageMeta(route, { icon, doc }), url, siteUrl)}\n    ${END}`;
 }
 
 /**
@@ -38,7 +40,10 @@ const pageFiles = (): Plugin => ({
     const index = readFileSync(join(dir, "index.html"), "utf8");
     const withTags = (tags: string) =>
       index.replace(new RegExp(`${START}[\\s\\S]*?${END}`), () => tags);
-    const paths = allPaths(icons.map((i) => i.id));
+    const paths = allPaths(
+      icons.map((i) => i.id),
+      DOCS.map((d) => d.slug),
+    );
     for (const path of paths) {
       if (path === "/") continue;
       const file = join(dir, `${path.slice(1)}.html`);

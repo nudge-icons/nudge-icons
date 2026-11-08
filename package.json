@@ -18,6 +18,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build": "pnpm build:icons && pnpm --filter './packages/*' build && tsx scripts/check-treeshake.ts && pnpm build:registry",
+    "site": "pnpm build:icons && pnpm build:registry && pnpm --filter @nudge-icons/site dev",
+    "site:root": "export SITE_URL=http://localhost:5173 && pnpm build:icons && pnpm build:registry && pnpm --filter @nudge-icons/site dev:root",
     "storybook": "pnpm build:icons && pnpm --filter @nudge-icons/storybook dev",
     "build:storybook": "pnpm build:icons && pnpm --filter @nudge-icons/storybook build",
     "e2e": "pnpm --filter @nudge-icons/storybook e2e"

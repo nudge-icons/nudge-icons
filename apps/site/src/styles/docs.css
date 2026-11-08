@@ -1,0 +1,324 @@
+/* Header navigation: Icons and Docs, next to the brand. */
+
+.header-nav {
+  display: flex;
+  gap: 4px;
+  margin-right: auto;
+  margin-left: 16px;
+}
+
+.header-nav a {
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  color: var(--text-2);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.header-nav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.footer a {
+  color: var(--text-2);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Docs: a section menu beside a column of text. */
+
+.docs {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 48px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.docs-nav ul {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docs-nav a {
+  display: block;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  color: var(--text-2);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.docs-nav a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.docs-nav a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 500;
+}
+
+.docs-main {
+  min-width: 0;
+  max-width: 720px;
+}
+
+.prose {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.prose h1 {
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.prose .lead {
+  margin: 8px 0 0;
+  color: var(--text-2);
+  font-size: 17px;
+}
+
+.prose h2 {
+  margin: 40px 0 12px;
+  font-size: 20px;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 12px 0;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+}
+
+.prose li + li {
+  margin-top: 6px;
+}
+
+.prose a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+.prose :not(pre) > code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--code-bg);
+  font-size: 0.87em;
+}
+
+.prose .code,
+.prose .docs-demo,
+.prose .docs-table {
+  margin: 16px 0;
+}
+
+.docs-command {
+  display: flex;
+  max-width: 100%;
+  margin: 12px 0;
+}
+
+.docs-command code {
+  overflow-wrap: anywhere;
+}
+
+.prose li .docs-command {
+  margin: 8px 0 0;
+}
+
+.docs-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.docs-parts-demo .nudge-bell [data-part="clapper"] {
+  stroke: #e11d48;
+}
+
+.docs-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-size: 14px;
+  cursor: default;
+}
+
+.docs-card:hover {
+  border-color: var(--border-strong);
+}
+
+.docs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Long names in prose and tables break instead of widening the page. */
+.prose :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+
+.docs-table th,
+.docs-table td {
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.docs-table th {
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.docs-names td code + code {
+  margin-left: 6px;
+}
+
+.docs-search input {
+  width: 100%;
+  max-width: 320px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.docs-license {
+  padding: 4px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.docs-next {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 48px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.docs-next:hover {
+  border-color: var(--accent-line);
+}
+
+/* Phone: the section menu becomes a row that scrolls sideways above the text. */
+@media (max-width: 820px) {
+  .header-nav {
+    margin-left: 4px;
+  }
+
+  .docs {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px 16px 40px;
+  }
+
+  .docs-nav {
+    margin: 0 -16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .docs-nav ul {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 16px 8px;
+    scrollbar-width: none;
+  }
+
+  .docs-nav a {
+    white-space: nowrap;
+  }
+
+  .prose h1 {
+    font-size: 26px;
+  }
+
+  /* Wide tables scroll sideways inside the column. */
+  .docs-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav a {
+    padding: 6px 8px;
+  }
+}
+
+/* Narrow phones: the brand keeps its mark and drops the name (the link keeps its label). */
+@media (max-width: 389px) {
+  .brand span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .header-nav {
+    margin-left: 0;
+  }
+}
+
+.brand .logo {
+  flex: none;
+}

@@ -1,4 +1,4 @@
-import { href, Link } from "../state/router";
+import { href, Link, parse, useLocation } from "../state/router";
 import { useSettings } from "../state/settings";
 import { REPO_URL } from "../lib/constants";
 import { Logo } from "./logo";
@@ -45,13 +45,26 @@ function ThemeGlyph({ to }: { to: "light" | "dark" }) {
 
 export function Header() {
   const { theme, setTheme } = useSettings();
+  const page = parse(useLocation().pathname).page;
+  const current = (section: "icons" | "docs") =>
+    (section === "docs" ? page === "doc" : page === "gallery" || page === "icon")
+      ? ("page" as const)
+      : undefined;
   return (
     <header className="header">
       <Link to={href({ page: "gallery" })} className="brand" aria-label="nudge-icons home">
         <Logo />
         <span>nudge-icons</span>
       </Link>
-      <nav className="header-actions">
+      <nav className="header-nav" aria-label="Main">
+        <Link to={href({ page: "gallery" })} aria-current={current("icons")}>
+          Icons
+        </Link>
+        <Link to={href({ page: "doc", slug: "getting-started" })} aria-current={current("docs")}>
+          Docs
+        </Link>
+      </nav>
+      <div className="header-actions">
         <button
           type="button"
           className="btn btn-icon theme-button"
@@ -63,7 +76,7 @@ export function Header() {
         <a className="btn btn-icon" href={REPO_URL} aria-label="nudge-icons on GitHub">
           <GitHubMark />
         </a>
-      </nav>
+      </div>
     </header>
   );
 }

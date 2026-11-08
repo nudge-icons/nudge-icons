@@ -1,6 +1,7 @@
 // Title, description and preview image of every page. The build writes them into each HTML
 // file (for search engines and link previews, which do not run JS); the app sets the same
 // title when it navigates. No React and no Vite APIs: vite.config.ts imports this module.
+import type { DocSection } from "./docs";
 import type { Route } from "./routes";
 
 export const SITE_NAME = "nudge-icons";
@@ -33,7 +34,20 @@ const sentence = (text: string) => (/[.!?]$/.test(text) ? text : `${text}.`);
 
 export const ogImagePath = (name: string) => `og/${name}.png`;
 
-export function pageMeta(route: Route, icon?: MetaIcon): PageMeta {
+/** What the page shows, when the route alone does not say: the icon or the doc section. */
+export interface MetaContext {
+  icon?: MetaIcon | undefined;
+  doc?: DocSection | undefined;
+}
+
+export function pageMeta(route: Route, { icon, doc }: MetaContext = {}): PageMeta {
+  if (route.page === "doc" && doc) {
+    return {
+      title: `${doc.title} · ${SITE_NAME}`,
+      description: doc.description,
+      image: ogImagePath("home"),
+    };
+  }
   if (route.page === "icon" && icon) {
     const name = words(icon.id);
     return {

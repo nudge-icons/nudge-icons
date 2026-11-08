@@ -12,6 +12,10 @@ describe("routes", () => {
     expect(matchPath("/icons/heart-filled/")).toEqual({ page: "icon", name: "heart-filled" });
   });
 
+  it("match a doc section", () => {
+    expect(matchPath("/docs/styling")).toEqual({ page: "doc", slug: "styling" });
+  });
+
   it("send unknown paths to not-found instead of the gallery", () => {
     expect(matchPath("/nope")).toEqual({ page: "not-found" });
     expect(matchPath("/icons/")).toEqual({ page: "not-found" });
@@ -26,6 +30,11 @@ describe("routes", () => {
   });
 
   it("list every page for the build", () => {
-    expect(allPaths(["bell", "clock"])).toEqual(["/", "/icons/bell", "/icons/clock"]);
+    expect(allPaths(["bell", "clock"], ["styling"])).toEqual([
+      "/",
+      "/docs/styling",
+      "/icons/bell",
+      "/icons/clock",
+    ]);
   });
 });
