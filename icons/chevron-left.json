@@ -2,7 +2,7 @@
   "name": "chevron-left",
   "category": "interface",
   "tags": ["back", "previous", "collapse", "caret"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chevron-left"],
     "heroicons": ["chevron-left"],

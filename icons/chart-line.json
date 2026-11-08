@@ -2,7 +2,7 @@
   "name": "chart-line",
   "category": "interface",
   "tags": ["analytics", "trend", "graph", "statistics"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chart-line", "line-chart"],
     "tabler": ["chart-line"],

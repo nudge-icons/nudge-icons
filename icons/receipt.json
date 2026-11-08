@@ -2,7 +2,7 @@
   "name": "receipt",
   "category": "objects",
   "tags": ["bill", "invoice", "purchase", "payment"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["receipt"],
     "tabler": ["receipt"],

@@ -2,7 +2,7 @@
   "name": "lock-open",
   "category": "status",
   "tags": ["unlocked", "open", "public", "unsecure"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["lock-open"],
     "heroicons": ["lock-open"],

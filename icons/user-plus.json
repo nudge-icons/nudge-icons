@@ -2,7 +2,7 @@
   "name": "user-plus",
   "category": "actions",
   "tags": ["add-user", "invite", "new", "member"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["user-round-plus"],
     "heroicons": ["user-plus"],

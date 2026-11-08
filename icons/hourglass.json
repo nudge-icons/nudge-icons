@@ -2,7 +2,7 @@
   "name": "hourglass",
   "category": "status",
   "tags": ["wait", "time", "pending", "timer"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["hourglass"],
     "tabler": ["hourglass"],

@@ -2,7 +2,7 @@
   "name": "arrow-up",
   "category": "interface",
   "tags": ["up", "top", "increase", "rise"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["arrow-up"],
     "heroicons": ["arrow-up"],

@@ -2,7 +2,7 @@
   "name": "wallet",
   "category": "objects",
   "tags": ["money", "payment", "balance", "finance"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["wallet"],
     "heroicons": ["wallet"],

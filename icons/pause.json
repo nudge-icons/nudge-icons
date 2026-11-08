@@ -2,7 +2,7 @@
   "name": "pause",
   "category": "actions",
   "tags": ["stop", "hold", "media", "break"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["pause"],
     "heroicons": ["pause"],

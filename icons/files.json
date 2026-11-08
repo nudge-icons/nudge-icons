@@ -2,7 +2,7 @@
   "name": "files",
   "category": "objects",
   "tags": ["documents", "pages", "multiple", "stack"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["files"],
     "heroicons": ["document-duplicate"],

@@ -2,7 +2,7 @@
   "name": "minus",
   "category": "actions",
   "tags": ["remove", "subtract", "less", "collapse"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["minus"],
     "heroicons": ["minus"],

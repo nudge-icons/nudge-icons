@@ -2,7 +2,7 @@
   "name": "table",
   "category": "interface",
   "tags": ["grid", "spreadsheet", "data", "cells"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["table"],
     "heroicons": ["table-cells"],

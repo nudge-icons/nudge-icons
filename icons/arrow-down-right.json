@@ -2,7 +2,7 @@
   "name": "arrow-down-right",
   "category": "interface",
   "tags": ["diagonal", "trend", "decline", "go"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["arrow-down-right"],
     "heroicons": ["arrow-down-right"],

@@ -2,7 +2,7 @@
   "name": "shield-check",
   "category": "status",
   "tags": ["verified", "secure", "protected", "safe"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["shield-check"],
     "heroicons": ["shield-check"],

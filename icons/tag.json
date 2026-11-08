@@ -2,7 +2,7 @@
   "name": "tag",
   "category": "objects",
   "tags": ["label", "price", "category", "sale"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["tag"],
     "heroicons": ["tag"],

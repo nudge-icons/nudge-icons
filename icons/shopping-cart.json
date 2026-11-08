@@ -2,7 +2,7 @@
   "name": "shopping-cart",
   "category": "objects",
   "tags": ["cart", "buy", "checkout", "store"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["shopping-cart"],
     "heroicons": ["shopping-cart"],

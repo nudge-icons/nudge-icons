@@ -2,7 +2,7 @@
   "name": "terminal",
   "category": "objects",
   "tags": ["console", "command", "shell", "prompt"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["terminal"],
     "heroicons": ["command-line"],

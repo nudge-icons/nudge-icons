@@ -2,7 +2,7 @@
   "name": "folder-open",
   "category": "objects",
   "tags": ["directory", "browse", "files", "opened"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["folder-open"],
     "heroicons": ["folder-open"],

@@ -2,7 +2,7 @@
   "name": "chart-pie",
   "category": "interface",
   "tags": ["analytics", "share", "proportion", "statistics"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["chart-pie", "pie-chart"],
     "heroicons": ["chart-pie"],

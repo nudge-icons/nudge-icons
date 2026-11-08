@@ -2,7 +2,7 @@
   "name": "cloud",
   "category": "objects",
   "tags": ["weather", "storage", "sky", "upload"],
-  "since": "0.2.0",
+  "since": "0.1.0",
   "equivalents": {
     "lucide": ["cloud"],
     "heroicons": ["cloud"],
