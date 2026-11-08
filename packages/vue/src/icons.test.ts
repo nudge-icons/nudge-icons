@@ -49,6 +49,14 @@ describe("props and attributes", () => {
     expect(svg.attributes("stroke-width")).toBe("1.5");
   });
 
+  it("paints filled variants in the given colour, not only their outline", () => {
+    const svg = mount(HeartFilled, { props: { color: "red" } });
+    expect(svg.attributes("stroke")).toBe("red");
+    // Children use fill="currentColor", which resolves to the color attribute.
+    expect(svg.attributes("color")).toBe("red");
+    expect(mount(Heart).attributes("color")).toBeUndefined();
+  });
+
   it("keeps the stroke in pixels with absoluteStrokeWidth", () => {
     const svg = mount(Heart, { props: { size: 48, absoluteStrokeWidth: true } });
     expect(svg.attributes("stroke-width")).toBe("1");

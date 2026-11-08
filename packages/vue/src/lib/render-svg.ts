@@ -55,6 +55,9 @@ export function renderSvg(
       viewBox: "0 0 24 24",
       fill: "none",
       stroke: p.color,
+      // Filled variants paint with fill="currentColor"; this makes them follow the colour too.
+      // A presentation attribute, so a user's CSS colour still wins.
+      ...(p.color !== "currentColor" && { color: p.color }),
       "stroke-width": strokeWidth,
       "stroke-linecap": "round",
       "stroke-linejoin": "round",

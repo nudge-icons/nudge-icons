@@ -70,6 +70,14 @@ describe("props", () => {
     expect(svg.getAttribute("class")).toBe("nudge-icon nudge-heart extra");
   });
 
+  it("paints filled variants in the given colour, not only their outline", () => {
+    const svg = svgOf(render(<HeartFilled color="red" />).container);
+    expect(svg.getAttribute("stroke")).toBe("red");
+    // Children use fill="currentColor", which resolves to the color attribute.
+    expect(svg.getAttribute("color")).toBe("red");
+    expect(svgOf(render(<Heart />).container).getAttribute("color")).toBeNull();
+  });
+
   it("keeps the stroke in pixels with absoluteStrokeWidth", () => {
     const svg = svgOf(render(<Heart size={48} absoluteStrokeWidth />).container);
     expect(svg.getAttribute("stroke-width")).toBe("1");
