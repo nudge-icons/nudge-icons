@@ -53,3 +53,12 @@ export function Link({
   };
   return <a href={to} onClick={handle} {...rest} />;
 }
+
+// The last gallery view (search, filters, sort, selection), so "All icons" returns to it.
+let lastGallerySearch = "";
+
+export function rememberGallerySearch(search: string) {
+  lastGallerySearch = search;
+}
+
+export const galleryHref = () => `${href({ page: "gallery" })}${lastGallerySearch}`;

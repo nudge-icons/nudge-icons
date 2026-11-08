@@ -721,6 +721,28 @@ button {
   flex: 1 1 360px;
 }
 
+.gallery-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 4px 0 12px;
+}
+
+/* Marks icons from the latest release. */
+.badge-new {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 0 5px;
+  border-radius: 4px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font: 500 10px/16px var(--font);
+  letter-spacing: 0.02em;
+}
+
 .gallery-hint {
   margin: 4px 0 12px;
 }

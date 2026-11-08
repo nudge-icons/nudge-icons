@@ -1,7 +1,8 @@
 // Pure gallery search, kept apart from the icon data so it can be tested without components.
 
 export type Variant = "outline" | "filled" | "half";
-export type Filter = "toggle" | "filled" | "half";
+export type Filter = "new" | "toggle" | "filled" | "half";
+export type Sort = "name" | "name-desc" | "newest";
 
 export interface Searchable {
   /** File id: `heart`, `heart-filled`. */
@@ -13,6 +14,10 @@ export interface Searchable {
     tags: readonly string[];
     equivalents: Partial<Record<string, readonly string[]>>;
     hasToggle: boolean;
+    /** Release that added the icon, like "0.2.0". */
+    since: string;
+    /** Added in the latest release. */
+    isNew: boolean;
   };
 }
 
@@ -31,15 +36,23 @@ export function searchEntries<T extends Searchable>(
   query: string,
   category: string | null,
   filters: ReadonlySet<Filter>,
+  sort: Sort = "name",
 ): T[] {
   const q = query.trim().toLowerCase().replace(/\s+/g, "-");
   const wantVariants = (["filled", "half"] as const).filter((f) => filters.has(f));
   return entries
     .filter((e) => category === null || e.icon.category === category)
+    .filter((e) => !filters.has("new") || e.icon.isNew)
     .filter((e) => !filters.has("toggle") || e.icon.hasToggle)
     .filter((e) => wantVariants.length === 0 || (wantVariants as Variant[]).includes(e.variant))
     .filter((e) => q === "" || matches(e, q))
-    .sort((a, b) => (q === "" ? 0 : Number(!a.id.includes(q)) - Number(!b.id.includes(q))));
+    .sort(
+      (a, b) =>
+        (q === "" ? 0 : Number(!a.id.includes(q)) - Number(!b.id.includes(q))) ||
+        (sort === "newest" ? compareVersions(b.icon.since, a.icon.since) : 0) ||
+        // Z–A by icon name; the variants of one icon keep their order (outline, filled, half).
+        (sort === "name-desc" ? b.icon.name.localeCompare(a.icon.name) : 0),
+    );
 }
 
 /** `users` → `user`, so plural and singular names match. */
@@ -83,4 +96,15 @@ export function relatedEntries<T extends Searchable>(
           .sort((a, b) => a.id.localeCompare(b.id))
           .slice(0, min - scored.length);
   return [...scored, ...fill].slice(0, limit);
+}
+
+/** Compares "0.10.0" and "0.9.0" as versions, not as text. */
+export function compareVersions(a: string, b: string): number {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < 3; i++) {
+    const d = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (d !== 0) return d;
+  }
+  return 0;
 }

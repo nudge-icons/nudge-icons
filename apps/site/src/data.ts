@@ -1,9 +1,16 @@
 import * as Icons from "@nudge-icons/react";
 import type { ToggleIconComponent } from "@nudge-icons/react";
 import list from "@nudge-icons/svg/icons.json";
-import { relatedEntries, searchEntries, type Filter, type Variant } from "./search";
+import {
+  compareVersions,
+  relatedEntries,
+  searchEntries,
+  type Filter,
+  type Sort,
+  type Variant,
+} from "./search";
 
-export type { Filter, Variant };
+export type { Filter, Sort, Variant };
 
 export interface MotionStep {
   part: string;
@@ -23,6 +30,7 @@ interface IconMeta {
   name: string;
   category: string;
   tags: string[];
+  since: string;
   equivalents: Partial<Record<EquivalentSet, string[]>>;
   animation: Animation;
   toggle?: { description: string; parts: string[] };
@@ -33,6 +41,7 @@ interface IconMeta {
 
 export interface IconMetaEntry extends IconMeta {
   hasToggle: boolean;
+  isNew: boolean;
 }
 
 /**
@@ -62,8 +71,20 @@ export const SET_NAMES: Record<EquivalentSet, string> = {
 
 const byName = Icons as unknown as Record<string, ToggleIconComponent | undefined>;
 
-export const ENTRIES: Entry[] = (list as unknown as IconMeta[]).flatMap((meta) => {
-  const icon: IconMetaEntry = { ...meta, hasToggle: meta.toggle !== undefined };
+const META = list as unknown as IconMeta[];
+
+/** The latest release that added icons; its icons are shown as new. */
+export const LATEST = META.map((m) => m.since).reduce((a, b) =>
+  compareVersions(a, b) >= 0 ? a : b,
+);
+
+export const ENTRIES: Entry[] = META.flatMap((meta) => {
+  const icon: IconMetaEntry = {
+    ...meta,
+    hasToggle: meta.toggle !== undefined,
+    // Nothing is new while every icon comes from the same, first release.
+    isNew: meta.since === LATEST && META.some((m) => m.since !== LATEST),
+  };
   const own: Entry[] = meta.variants.map((v) => {
     const Icon = byName[v.component];
     if (!Icon) throw new Error(`@nudge-icons/react has no export ${v.component}`);
@@ -93,28 +114,44 @@ export const CATEGORIES = [...new Set(ENTRIES.map((e) => e.icon.category))]
   })
   .map((name) => ({ name, count: ENTRIES.filter((e) => e.icon.category === name).length }));
 
-export const FILTERS: { id: Filter; label: string; hint: string; count: number }[] = [
-  {
-    id: "toggle",
-    label: "Second state",
-    hint: "Icons with an active prop that switches to a second drawing, like menu to a cross",
-    count: ENTRIES.filter((e) => e.icon.hasToggle).length,
-  },
-  {
-    id: "filled",
-    label: "Filled",
-    hint: "Solid versions, for selected or on states",
-    count: ENTRIES.filter((e) => e.variant === "filled").length,
-  },
-  {
-    id: "half",
-    label: "Half",
-    hint: "Half filled, for ratings",
-    count: ENTRIES.filter((e) => e.variant === "half").length,
-  },
-];
+// "New" only makes sense once there is an older release to compare with.
+export const FILTERS: { id: Filter; label: string; hint: string; count: number }[] = (
+  [
+    {
+      id: "new",
+      label: "New",
+      hint: `Added in ${LATEST}`,
+      count: ENTRIES.filter((e) => e.icon.isNew).length,
+    },
+    {
+      id: "toggle",
+      label: "Second state",
+      hint: "Icons with an active prop that switches to a second drawing, like menu to a cross",
+      count: ENTRIES.filter((e) => e.icon.hasToggle).length,
+    },
+    {
+      id: "filled",
+      label: "Filled",
+      hint: "Solid versions, for selected or on states",
+      count: ENTRIES.filter((e) => e.variant === "filled").length,
+    },
+    {
+      id: "half",
+      label: "Half",
+      hint: "Half filled, for ratings",
+      count: ENTRIES.filter((e) => e.variant === "half").length,
+    },
+  ] as const satisfies readonly { id: Filter; label: string; hint: string; count: number }[]
+).filter((f) => f.count > 0);
 
-export const search = (query: string, category: string | null, filters: ReadonlySet<Filter>) =>
-  searchEntries(ENTRIES, query, category, filters);
+/** Sorting by release only helps when some icons are newer than others. */
+export const HAS_NEW = ENTRIES.some((e) => e.icon.isNew);
+
+export const search = (
+  query: string,
+  category: string | null,
+  filters: ReadonlySet<Filter>,
+  sort: Sort,
+) => searchEntries(ENTRIES, query, category, filters, sort);
 
 export const related = (entry: Entry) => relatedEntries(ENTRIES, entry);

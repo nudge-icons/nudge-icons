@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Bell, Download, Pencil, Refresh, Trash } from "@nudge-icons/react";
 import { related, SET_NAMES, type Entry, type EquivalentSet } from "../data";
-import { href, Link } from "../router";
+import { galleryHref, href, Link } from "../router";
 import { forIcon, toAnimate, useSettings } from "../settings";
 import {
   contextSnippet,
@@ -70,7 +70,7 @@ export function IconPage({ entry }: { entry: Entry }) {
 
   return (
     <main className="icon-page" id="main">
-      <Link to={href({ page: "gallery" })} className="back">
+      <Link to={galleryHref()} className="back">
         ← All icons
       </Link>
       <header className="icon-head">

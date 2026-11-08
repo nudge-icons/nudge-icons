@@ -5,11 +5,14 @@ import {
   ENTRIES,
   ENTRY_BY_ID,
   FILTERS,
+  HAS_NEW,
   search,
   type Entry,
   type Filter,
+  type Sort,
 } from "../data";
-import { href, Link, navigate } from "../router";
+import { href, Link, navigate, rememberGallerySearch } from "../router";
+import { galleryQuery, parseGalleryUrl } from "../gallery-url";
 import { forIcon, toAnimate, useSettings, type PageMotion } from "../settings";
 import { installCommand, reactSnippet, vueSnippet } from "../snippets";
 import { CodeBlock, CopyButton, FrameworkSwitch, Segmented, Switch } from "../components/controls";
@@ -50,18 +53,21 @@ function useIntro() {
 
 export function GalleryPage({ selected }: { selected: string | null }) {
   const { settings, applyToAll, pageMotion, setPageMotion, framework } = useSettings();
-  // ?q= opens the gallery with a search, for example from a tag on an icon page.
-  const [query, setQuery] = useState(() => new URLSearchParams(location.search).get("q") ?? "");
-  // ?category= and ?only= open the gallery filtered, for example from an icon page.
-  const [category, setCategory] = useState<string | null>(() => {
-    const c = new URLSearchParams(location.search).get("category");
-    return CATEGORIES.some((x) => x.name === c) ? c : null;
-  });
-  const [filters, setFilters] = useState<ReadonlySet<Filter>>(() => {
-    const only = new URLSearchParams(location.search).get("only");
-    const f = FILTERS.find((x) => x.id === only);
-    return new Set(f ? [f.id] : []);
-  });
+  // The view lives in the address (?q, ?category, ?only, ?sort, ?icon): shareable,
+  // kept on reload and restored when coming back from an icon page.
+  const [initial] = useState(() =>
+    parseGalleryUrl(location.search, {
+      categories: CATEGORIES.map((c) => c.name),
+      filters: FILTERS.map((f) => f.id),
+    }),
+  );
+  const [query, setQuery] = useState(initial.query);
+  const [category, setCategory] = useState<string | null>(initial.category);
+  const [filters, setFilters] = useState<ReadonlySet<Filter>>(initial.filters);
+  const [sort, setSort] = useState<Sort>(initial.sort);
+  // With the New filter every icon is from the same release, so Newest falls back to A–Z.
+  const newestUseful = HAS_NEW && !filters.has("new");
+  const shownSort: Sort = sort === "newest" && !newestUseful ? "name" : sort;
   const [sheetOpen, setSheetOpen] = useState(false);
   // "Show active" in the second-state note: a quick look at every icon's other drawing.
   const [showActive, setShowActive] = useState(false);
@@ -75,7 +81,10 @@ export function GalleryPage({ selected }: { selected: string | null }) {
     panelRef.current?.scrollTo({ top: 0 });
   }, [selected]);
 
-  const results = useMemo(() => search(query, category, filters), [query, category, filters]);
+  const results = useMemo(
+    () => search(query, category, filters, shownSort),
+    [query, category, filters, shownSort],
+  );
   const entry = selected ? (ENTRY_BY_ID.get(selected) ?? null) : null;
 
   // ⌘K / Ctrl K focuses the search, like on most docs sites; "/" works too.
@@ -94,11 +103,16 @@ export function GalleryPage({ selected }: { selected: string | null }) {
   }, []);
 
   // Clicking the selected icon again, Esc or × clears the selection.
-  const select = (name: string | null) => {
-    navigate(name ? `${href({ page: "gallery" })}?icon=${name}` : href({ page: "gallery" }), {
-      replace: true,
-    });
-  };
+  const urlFor = (icon: string | null) =>
+    `${href({ page: "gallery" })}${galleryQuery({ query, category, filters, sort: shownSort, icon })}`;
+  const select = (name: string | null) => navigate(urlFor(name), { replace: true });
+
+  // Keep the address in step with the view, without adding history entries.
+  useEffect(() => {
+    const search = galleryQuery({ query, category, filters, sort: shownSort, icon: selected });
+    rememberGallerySearch(search);
+    if (search !== location.search) navigate(urlFor(selected), { replace: true });
+  }, [query, category, filters, shownSort, selected]);
 
   useEffect(() => {
     if (!selected) return;
@@ -317,10 +331,24 @@ export function GalleryPage({ selected }: { selected: string | null }) {
           </div>
         )}
 
-        <p className="hint gallery-hint">
-          {results.length} {results.length === 1 ? "icon" : "icons"} · Hover to animate · Click to
-          select
-        </p>
+        <div className="gallery-meta">
+          <p className="hint">
+            {results.length} {results.length === 1 ? "icon" : "icons"} · Hover to animate · Click to
+            select
+          </p>
+          <Segmented
+            label="Sort"
+            size="sm"
+            value={shownSort}
+            options={[
+              { value: "name", label: "A–Z" },
+              { value: "name-desc", label: "Z–A" },
+              // Newest only means something when the view mixes releases.
+              ...(newestUseful ? [{ value: "newest" as const, label: "Newest" }] : []),
+            ]}
+            onChange={setSort}
+          />
+        </div>
 
         {results.length === 0 ? (
           <div className="empty">
@@ -370,6 +398,7 @@ export function GalleryPage({ selected }: { selected: string | null }) {
                     {...(showActive && filters.has("toggle") && { active: true })}
                   />
                   <span className="cell-name">{e.id}</span>
+                  {e.icon.isNew && <span className="badge-new">new</span>}
                 </button>
               </li>
             ))}

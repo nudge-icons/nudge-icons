@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { relatedEntries, searchEntries, type Searchable, type Variant } from "./search";
+import {
+  compareVersions,
+  relatedEntries,
+  searchEntries,
+  type Searchable,
+  type Variant,
+} from "./search";
 
 const icon = (name: string, extra: Partial<Searchable["icon"]> = {}) => ({
   name,
@@ -7,6 +13,8 @@ const icon = (name: string, extra: Partial<Searchable["icon"]> = {}) => ({
   tags: [],
   equivalents: {},
   hasToggle: false,
+  since: "0.1.0",
+  isNew: false,
   ...extra,
 });
 const entry = (id: string, i: Searchable["icon"], variant: Variant = "outline"): Searchable => ({
@@ -104,5 +112,32 @@ describe("related icons", () => {
   it("fills up from the same category, after the real matches", () => {
     expect(related("menu")).toEqual(["bell"]);
     expect(related("bell")[0]).toBe("alert-triangle");
+  });
+});
+
+describe("new icons", () => {
+  const old = icon("bell");
+  const fresh = icon("sun", { since: "0.10.0", isNew: true });
+  const list = [entry("bell", old), entry("sun", fresh)];
+
+  it("filters to the latest release", () => {
+    expect(ids(searchEntries(list, "", null, new Set(["new"] as const)))).toEqual(["sun"]);
+  });
+
+  it("sorts newest first, comparing versions as numbers", () => {
+    expect(ids(searchEntries(list, "", null, none, "newest"))).toEqual(["sun", "bell"]);
+    expect(compareVersions("0.10.0", "0.9.0")).toBeGreaterThan(0);
+  });
+});
+
+describe("Z–A", () => {
+  it("reverses icon names and keeps each icon's variants together, outline first", () => {
+    expect(ids(searchEntries(ENTRIES, "", null, none, "name-desc"))).toEqual([
+      "heart",
+      "heart-filled",
+      "heart-half",
+      "eye",
+      "alert-triangle",
+    ]);
   });
 });
