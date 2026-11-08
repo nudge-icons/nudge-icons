@@ -9,3 +9,4 @@ export const ISSUES_URL = `${REPO_URL}/issues`;
 export const NEW_ISSUE_URL = `${REPO_URL}/issues/new`;
 export const CONTRIBUTING_URL = `${REPO_URL}/blob/main/CONTRIBUTING.md`;
 export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;
+export const SKILL_URL = `${REPO_URL}/tree/main/skills/nudge-icons`;

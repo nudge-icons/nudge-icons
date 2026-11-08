@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Bell, Download, Menu, Send } from "@nudge-icons/react";
+import { SKILL_URL } from "../../lib/constants";
 import { ENTRIES } from "../../lib/data";
 import { installCommand, registryCommand } from "../../lib/snippets";
 import { href, Link } from "../../state/router";
@@ -149,6 +150,24 @@ export function GettingStartedDoc() {
           Both packages are tested with server rendering, and the Vue package in Nuxt.
         </li>
       </ul>
+
+      <h2>AI coding agents</h2>
+      <p>
+        Agents tend to guess icon names and props. Give them the real ones:{" "}
+        <a href={`${import.meta.env.BASE_URL}llms.txt`} target="_blank" rel="noreferrer">
+          llms.txt
+        </a>{" "}
+        is an index of these docs, and{" "}
+        <a href={`${import.meta.env.BASE_URL}llms-full.txt`} target="_blank" rel="noreferrer">
+          llms-full.txt
+        </a>{" "}
+        has the whole API and every icon with its parts and motion. For Claude Code and other agents
+        with skills, copy the{" "}
+        <a href={SKILL_URL} target="_blank" rel="noreferrer">
+          nudge-icons skill
+        </a>{" "}
+        into your project's <code>.claude/skills/</code>.
+      </p>
     </>
   );
 }

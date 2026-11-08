@@ -26,6 +26,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build:icons
       - run: pnpm build:registry
+      - run: pnpm build:llms
       # Link-preview images: restored from the cache and rendered again only when an icon,
       # its motion text or the image script changed, so most runs skip the browser.
       - uses: actions/cache@v6
