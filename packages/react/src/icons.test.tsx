@@ -1,10 +1,22 @@
 // @vitest-environment jsdom
+/// <reference types="node" />
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
 import { cleanup, render } from "@testing-library/react";
 import { createRef } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import * as animated from "./index";
 import { Bell, Check, Eye, Globe, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
 import * as still from "./static";
+
+// One component per SVG file in icons/, icons/filled/ and icons/half/.
+const SVG_FILES = ["", "filled", "half"].reduce(
+  (n, dir) =>
+    n +
+    readdirSync(join(import.meta.dirname, "../../../icons", dir)).filter((f) => f.endsWith(".svg"))
+      .length,
+  0,
+);
 
 afterEach(cleanup);
 
@@ -182,7 +194,7 @@ describe("variants", () => {
         .filter((k) => /^[A-Z]/.test(k))
         .sort();
     expect(names(animated)).toEqual(names(still));
-    expect(names(animated)).toHaveLength(64);
+    expect(names(animated)).toHaveLength(SVG_FILES);
   });
 });
 

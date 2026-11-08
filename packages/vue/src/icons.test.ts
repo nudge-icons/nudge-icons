@@ -1,9 +1,21 @@
 // @vitest-environment jsdom
+/// <reference types="node" />
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import * as animated from "./index";
 import { Bell, Check, Eye, Heart, HeartFilled, Lock, Menu, StarHalf } from "./index";
 import * as still from "./static";
+
+// One component per SVG file in icons/, icons/filled/ and icons/half/.
+const SVG_FILES = ["", "filled", "half"].reduce(
+  (n, dir) =>
+    n +
+    readdirSync(join(import.meta.dirname, "../../../icons", dir)).filter((f) => f.endsWith(".svg"))
+      .length,
+  0,
+);
 
 describe("icon defaults", () => {
   it("renders a 24px line icon in the current colour", () => {
@@ -152,7 +164,7 @@ describe("variants and entries", () => {
         .filter((k) => /^[A-Z]/.test(k))
         .sort();
     expect(names(animated)).toEqual(names(still));
-    expect(names(animated)).toHaveLength(64);
+    expect(names(animated)).toHaveLength(SVG_FILES);
   });
 
   it("static icons have no CSS, animation state, active prop or active-only parts", () => {
