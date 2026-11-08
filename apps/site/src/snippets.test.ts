@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULTS } from "./settings";
-import { reactSnippet, vueSnippet } from "./snippets";
+import { contextSnippet, humanName, partsCss, reactSnippet, vueSnippet } from "./snippets";
 
 const bell = { component: "Bell", hasToggle: false };
 const eye = { component: "Eye", hasToggle: true };
@@ -38,5 +38,44 @@ describe("code snippets", () => {
 
   it("pass active only to icons with a second state", () => {
     expect(vueSnippet(bell, { ...DEFAULTS, active: true })).toContain("<Bell />");
+  });
+});
+
+describe("in-context snippet", () => {
+  it("names the button after the icon, without the variant", () => {
+    expect(humanName("alert-triangle-filled")).toBe("Alert triangle");
+  });
+
+  it("writes React with JSX comments and className", () => {
+    const code = contextSnippet("Comment", "comment", "react");
+    expect(code).toContain("<button><Comment size={16} /> Comment</button>");
+    expect(code).toContain('<button aria-label="Comment"><Comment size={20} /></button>');
+    expect(code).toContain('<div className="nudge-trigger">');
+    expect(code).toContain("{/* Animates when the whole button is hovered or focused. */}");
+  });
+
+  it("writes Vue inside a template with class", () => {
+    const code = contextSnippet("Comment", "comment", "vue");
+    expect(code.startsWith("<template>")).toBe(true);
+    expect(code).toContain('<Comment :size="16" />');
+    expect(code).toContain('<div class="nudge-trigger">');
+  });
+});
+
+describe("parts CSS", () => {
+  it("styles one part directly", () => {
+    expect(partsCss("bell", ["clapper"])).toBe(
+      '.nudge-bell [data-part="clapper"] {\n  stroke: #e11d48;\n}',
+    );
+  });
+
+  it("uses color for filled and half icons, so the fill follows", () => {
+    expect(partsCss("bell-filled", ["body"], true)).toContain("  color: #e11d48;");
+  });
+
+  it("groups several parts in :is()", () => {
+    expect(partsCss("eye", ["outline", "pupil"])).toContain(
+      '.nudge-eye :is([data-part="outline"], [data-part="pupil"]) {',
+    );
   });
 });

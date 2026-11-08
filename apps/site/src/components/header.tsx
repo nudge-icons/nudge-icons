@@ -1,6 +1,5 @@
 import { href, Link } from "../router";
-import { useSettings, type Framework } from "../settings";
-import { Segmented } from "./controls";
+import { useSettings } from "../settings";
 import { Logo } from "./logo";
 
 const REPO = "https://github.com/dimon85/nudge-icons";
@@ -45,13 +44,8 @@ function ThemeGlyph({ to }: { to: "light" | "dark" }) {
   );
 }
 
-const FRAMEWORKS = [
-  { value: "react", label: "React" },
-  { value: "vue", label: "Vue" },
-] as const satisfies readonly { value: Framework; label: string }[];
-
 export function Header() {
-  const { framework, setFramework, theme, setTheme } = useSettings();
+  const { theme, setTheme } = useSettings();
   return (
     <header className="header">
       <Link to={href({ page: "gallery" })} className="brand" aria-label="nudge-icons home">
@@ -59,13 +53,6 @@ export function Header() {
         <span>nudge-icons</span>
       </Link>
       <nav className="header-actions">
-        <Segmented
-          label="Framework"
-          size="sm"
-          value={framework}
-          options={FRAMEWORKS}
-          onChange={setFramework}
-        />
         <button
           type="button"
           className="btn btn-icon theme-button"

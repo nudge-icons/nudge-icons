@@ -202,6 +202,11 @@ button {
   box-shadow: 0 0 0 1px var(--border);
 }
 
+/* Inside the button, so it does not run over the neighbours. */
+.segmented button:focus-visible {
+  outline-offset: -2px;
+}
+
 .segmented button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
@@ -767,6 +772,11 @@ button {
   overflow: hidden;
 }
 
+a.cell {
+  color: var(--text);
+  text-decoration: none;
+}
+
 .cell:hover {
   border-color: var(--border);
 }
@@ -837,6 +847,17 @@ button {
 }
 
 /* One line; long names end in an ellipsis and show in full on hover. */
+.panel-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.panel-title-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-strong);
+}
+
 .panel-head h2 {
   flex: 1;
   min-width: 0;
@@ -1079,6 +1100,12 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   border-bottom: 1px solid var(--border);
 }
 
+.code-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .code-label {
   font-size: 12px;
   font-family: var(--mono);
@@ -1086,6 +1113,50 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Syntax colours: one hue per role, readable on the code background in both themes. */
+:root {
+  --tok-comment: #6b6b70;
+  --tok-tag: #0f766e;
+  --tok-attr: #9a3412;
+  --tok-string: #1d4ed8;
+  --tok-keyword: #be123c;
+  --tok-number: #b45309;
+  --tok-punct: #71717a;
+}
+
+:root[data-theme="dark"] {
+  --tok-comment: #8f8f97;
+  --tok-tag: #2cc9c0;
+  --tok-attr: #fdba74;
+  --tok-string: #93c5fd;
+  --tok-keyword: #fda4af;
+  --tok-number: #fcd34d;
+  --tok-punct: #a1a1aa;
+}
+
+.tok-comment {
+  color: var(--tok-comment);
+  font-style: italic;
+}
+.tok-tag {
+  color: var(--tok-tag);
+}
+.tok-attr {
+  color: var(--tok-attr);
+}
+.tok-string {
+  color: var(--tok-string);
+}
+.tok-keyword {
+  color: var(--tok-keyword);
+}
+.tok-number {
+  color: var(--tok-number);
+}
+.tok-punct {
+  color: var(--tok-punct);
 }
 
 .code pre {
@@ -1115,6 +1186,37 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
 
 .back:hover {
   color: var(--text);
+}
+
+.icon-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tags: search words for the icon; each opens the gallery searched for it. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .icon-head h1 {
@@ -1147,17 +1249,152 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   font-size: 16px;
 }
 
-.preview-300 {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  aspect-ratio: 1;
-  max-width: 340px;
-  background-size: 10% 10%;
+/* Big preview: a technical drawing in canvas units (3 + 24 + 3 = 30). */
+:root {
+  --bp-minor: rgb(15 118 110 / 0.1);
+  --bp-mid: rgb(15 118 110 / 0.2);
+  --bp-major: rgb(15 118 110 / 0.38);
+  --bp-guide: rgb(15 118 110 / 0.55);
+  --bp-skeleton: #0d9488;
 }
 
-.preview-300.is-paused * {
+:root[data-theme="dark"] {
+  --bp-minor: rgb(44 201 192 / 0.09);
+  --bp-mid: rgb(44 201 192 / 0.17);
+  --bp-major: rgb(44 201 192 / 0.32);
+  --bp-guide: rgb(44 201 192 / 0.5);
+  --bp-skeleton: #5eead4;
+}
+
+.blueprint {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+/* Clean: the same canvas on a light grid that lines up with it, every 4 units. */
+.blueprint.is-clean {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: calc(100% / 30 * 4) calc(100% / 30 * 4);
+  background-position: calc(100% / 30 * 3) calc(100% / 30 * 3);
+}
+
+.bp-guides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bp-guides line,
+.bp-guides rect,
+.bp-guides circle {
+  fill: none;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.bp-minor line {
+  stroke: var(--bp-minor);
+}
+.bp-mid line {
+  stroke: var(--bp-mid);
+}
+.bp-major line {
+  stroke: var(--bp-major);
+}
+.bp-canvas {
+  stroke: var(--bp-major);
+}
+.bp-keyline {
+  stroke: var(--bp-mid);
+}
+.bp-safe {
+  stroke: var(--bp-guide);
+  stroke-dasharray: 4 3;
+}
+.bp-edge {
+  stroke: var(--bp-mid);
+  stroke-dasharray: 1 3;
+}
+.bp-ruler line {
+  stroke: var(--text-2);
+}
+.bp-ruler text {
+  fill: var(--text-2);
+  font: 0.8px var(--mono);
+}
+
+/* The icon sits on the 24-unit canvas, 3 units in from every side: centred in both views. */
+.bp-icon {
+  position: absolute;
+  inset: calc(100% / 30 * 3);
+  display: grid;
+}
+
+.bp-icon svg {
+  overflow: visible;
+}
+
+.bp-skeleton {
+  color: var(--bp-skeleton);
+  pointer-events: none;
+}
+
+.bp-skeleton svg * {
+  fill: none !important;
+}
+
+/* Solid: the centre line of a stroke. Dashed and lighter: the edge of a filled shape. */
+.bp-skeleton [fill="currentColor"] {
+  stroke-dasharray: 0.5 0.35;
+  opacity: 0.55;
+}
+
+.preview-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-stack.is-paused * {
   animation-play-state: paused !important;
+}
+
+.preview-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  max-width: 340px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.preview-meta-actual {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Fixed box, so the row does not jump when the size changes. */
+.actual-box {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .player {
@@ -1169,6 +1406,13 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
 .player-actions {
   display: flex;
   gap: 4px;
+}
+
+.customizer-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
 }
 
 .compact-customizer {
@@ -1264,8 +1508,20 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   border-radius: 6px;
 }
 
+.ctx-item {
+  cursor: pointer;
+}
+
 .ctx-item:hover {
   background: var(--surface-2);
+}
+
+.ctx-item.is-disabled {
+  cursor: default;
+}
+
+.ctx-item.is-disabled:hover {
+  background: none;
 }
 
 .ctx-item.is-disabled {
@@ -1321,7 +1577,20 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   background: var(--surface);
   font-family: var(--mono);
   font-size: 13px;
-  cursor: default;
+}
+
+.part {
+  cursor: pointer;
+}
+
+.part[aria-pressed="true"] {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.parts-clear {
+  margin-left: auto;
 }
 
 .part:hover,
@@ -1355,8 +1624,29 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   font-family: var(--mono);
 }
 
+/* Pixel view: the raster fills the frame without smoothing, a grid marks each pixel. */
+.raster-frame {
+  position: relative;
+  display: block;
+}
+
 .raster {
+  display: block;
+  width: 100%;
+  height: 100%;
   image-rendering: pixelated;
+}
+
+.raster-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 4px 4px;
+  outline: 1px solid var(--border);
+  pointer-events: none;
 }
 
 .raster-source {
@@ -1516,11 +1806,8 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   .icon-cols-even {
     grid-template-columns: minmax(0, 1fr);
   }
-  .preview-300 {
+  .blueprint {
     max-width: none;
-    max-height: 60vw;
-    aspect-ratio: auto;
-    height: 60vw;
   }
   .small-sizes {
     gap: 20px;
@@ -1553,12 +1840,24 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   background-size: 14px 14px;
 }
 
-.parts-list {
+.parts-code {
   display: flex;
   flex-direction: column;
   gap: 12px;
   flex: 1;
   min-width: 0;
+}
+
+/* The part names as one block above their CSS. */
+.parts-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 
 @media (max-width: 820px) {

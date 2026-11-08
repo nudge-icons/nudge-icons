@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Copy } from "@nudge-icons/react";
+import { tokenize, type Lang } from "../highlight";
+import { useSettings, type Framework } from "../settings";
 
 export function Segmented<T extends string>({
   label,
@@ -14,16 +16,37 @@ export function Segmented<T extends string>({
   onChange: (v: T) => void;
   size?: "sm" | "md";
 }) {
+  // A radio group: Tab reaches only the checked option, arrow keys move the choice and the
+  // focus together, so the focus ring never sits on an option that is not chosen.
+  const move = (from: number, step: number, group: HTMLElement) => {
+    const next = (from + step + options.length) % options.length;
+    const option = options[next];
+    if (!option) return;
+    onChange(option.value);
+    group.querySelectorAll<HTMLButtonElement>("[role=radio]")[next]?.focus();
+  };
   return (
     <div className={`segmented segmented-${size}`} role="radiogroup" aria-label={label}>
-      {options.map((o) => (
+      {options.map((o, i) => (
         <button
           key={o.value}
           type="button"
           role="radio"
           aria-checked={o.value === value}
+          tabIndex={o.value === value ? 0 : -1}
           title={o.title}
           onClick={() => onChange(o.value)}
+          onKeyDown={(e) => {
+            const step =
+              e.key === "ArrowRight" || e.key === "ArrowDown"
+                ? 1
+                : e.key === "ArrowLeft" || e.key === "ArrowUp"
+                  ? -1
+                  : 0;
+            if (step === 0 || !e.currentTarget.parentElement) return;
+            e.preventDefault();
+            move(i, step, e.currentTarget.parentElement);
+          }}
         >
           {o.label}
         </button>
@@ -89,16 +112,60 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
   );
 }
 
-export function CodeBlock({ code, label }: { code: string; label: string }) {
+export function CodeBlock({
+  code,
+  label,
+  lang,
+  toolbar,
+}: {
+  code: string;
+  label: string;
+  lang: Lang;
+  /** Extra controls in the bar, such as the React/Vue switch. */
+  toolbar?: ReactNode;
+}) {
+  const tokens = useMemo(() => tokenize(code, lang), [code, lang]);
   return (
     <div className="code">
       <div className="code-bar">
         <span className="code-label">{label}</span>
-        <CopyButton text={code} />
+        <span className="code-tools">
+          {toolbar}
+          <CopyButton text={code} />
+        </span>
       </div>
       <pre>
-        <code>{code}</code>
+        <code>
+          {tokens.map((t, i) =>
+            t.type === "text" ? (
+              t.text
+            ) : (
+              <span key={i} className={`tok-${t.type}`}>
+                {t.text}
+              </span>
+            ),
+          )}
+        </code>
       </pre>
     </div>
+  );
+}
+
+const FRAMEWORKS = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+] as const satisfies readonly { value: Framework; label: string }[];
+
+/** React or Vue for every code sample on the site; the choice is remembered. */
+export function FrameworkSwitch() {
+  const { framework, setFramework } = useSettings();
+  return (
+    <Segmented
+      label="Framework"
+      size="sm"
+      value={framework}
+      options={FRAMEWORKS}
+      onChange={setFramework}
+    />
   );
 }

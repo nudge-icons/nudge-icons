@@ -12,8 +12,8 @@ import {
 import { href, Link, navigate } from "../router";
 import { forIcon, toAnimate, useSettings, type PageMotion } from "../settings";
 import { installCommand, reactSnippet, vueSnippet } from "../snippets";
-import { CodeBlock, CopyButton, Segmented, Switch } from "../components/controls";
-import { ActiveField, AppearanceFields, MotionField } from "../components/customizer";
+import { CodeBlock, CopyButton, FrameworkSwitch, Segmented, Switch } from "../components/controls";
+import { ActiveField, AppearanceFields, MotionField, ResetButton } from "../components/customizer";
 import { IconView } from "../components/icon-view";
 import { useReplay } from "../replay";
 
@@ -50,9 +50,18 @@ function useIntro() {
 
 export function GalleryPage({ selected }: { selected: string | null }) {
   const { settings, applyToAll, pageMotion, setPageMotion, framework } = useSettings();
-  const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<string | null>(null);
-  const [filters, setFilters] = useState<ReadonlySet<Filter>>(new Set());
+  // ?q= opens the gallery with a search, for example from a tag on an icon page.
+  const [query, setQuery] = useState(() => new URLSearchParams(location.search).get("q") ?? "");
+  // ?category= and ?only= open the gallery filtered, for example from an icon page.
+  const [category, setCategory] = useState<string | null>(() => {
+    const c = new URLSearchParams(location.search).get("category");
+    return CATEGORIES.some((x) => x.name === c) ? c : null;
+  });
+  const [filters, setFilters] = useState<ReadonlySet<Filter>>(() => {
+    const only = new URLSearchParams(location.search).get("only");
+    const f = FILTERS.find((x) => x.id === only);
+    return new Set(f ? [f.id] : []);
+  });
   const [sheetOpen, setSheetOpen] = useState(false);
   // "Show active" in the second-state note: a quick look at every icon's other drawing.
   const [showActive, setShowActive] = useState(false);
@@ -408,7 +417,7 @@ function Customizer({
   framework: "react" | "vue";
   onClear: () => void;
 }) {
-  const { settings, applyToAll, setApplyToAll, reset } = useSettings();
+  const { settings, applyToAll, setApplyToAll } = useSettings();
   const replay = useReplay(toAnimate(settings.animate));
 
   return (
@@ -416,7 +425,11 @@ function Customizer({
       {entry ? (
         <>
           <div className="panel-head">
-            <h2 title={entry.id}>{entry.id}</h2>
+            <h2 title={`${entry.id} · details`}>
+              <Link to={href({ page: "icon", name: entry.id })} className="panel-title-link">
+                {entry.id}
+              </Link>
+            </h2>
             <button
               type="button"
               className="btn btn-icon btn-sm btn-ghost"
@@ -499,14 +512,14 @@ function Customizer({
         ) : (
           <span />
         )}
-        <button type="button" className="btn btn-ghost btn-sm" onClick={reset}>
-          Reset
-        </button>
+        <ResetButton />
       </div>
 
       {entry && (
         <CodeBlock
-          label={`${entry.component} · ${framework === "react" ? "React" : "Vue"}`}
+          label={entry.component}
+          toolbar={<FrameworkSwitch />}
+          lang={framework === "react" ? "tsx" : "vue"}
           code={(framework === "react" ? reactSnippet : vueSnippet)(
             { component: entry.component, hasToggle: entry.icon.hasToggle },
             forIcon(settings, entry),

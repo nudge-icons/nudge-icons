@@ -136,3 +136,19 @@ function ColorField({
     </Field>
   );
 }
+
+/** Back to the library defaults; disabled while nothing is changed. */
+export function ResetButton() {
+  const { reset, changed } = useSettings();
+  return (
+    <button
+      type="button"
+      className="btn btn-ghost btn-sm"
+      disabled={!changed}
+      title="Back to the defaults: currentColor, stroke 2, size 24, hover"
+      onClick={reset}
+    >
+      Reset
+    </button>
+  );
+}

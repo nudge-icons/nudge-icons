@@ -41,3 +41,46 @@ export function searchEntries<T extends Searchable>(
     .filter((e) => q === "" || matches(e, q))
     .sort((a, b) => (q === "" ? 0 : Number(!a.id.includes(q)) - Number(!b.id.includes(q))));
 }
+
+/** `users` → `user`, so plural and singular names match. */
+const stem = (w: string) => (w.length > 3 && w.endsWith("s") ? w.slice(0, -1) : w);
+const nameWords = (name: string) => name.split("-").map(stem);
+
+/**
+ * Icons like this one, best first: shared tags weigh most, then a tag that names the
+ * other icon, then shared words in the name (`arrow-up`, `arrow-down`, `user`, `users`).
+ * When fewer than `min` are found, the rest come from the same category. Only other
+ * icons, outline only: variants of the same icon are listed separately.
+ */
+export function relatedEntries<T extends Searchable>(
+  entries: readonly T[],
+  current: Searchable,
+  { limit = 12, min = 6 } = {},
+): T[] {
+  const tags = new Set(current.icon.tags.map(stem));
+  const words = new Set(nameWords(current.icon.name));
+  const others = entries.filter(
+    (e) => e.variant === "outline" && e.icon.name !== current.icon.name,
+  );
+  const scored = others
+    .map((e) => {
+      const theirWords = nameWords(e.icon.name);
+      const score =
+        e.icon.tags.filter((t) => tags.has(stem(t))).length * 3 +
+        theirWords.filter((w) => tags.has(w)).length * 2 +
+        current.icon.tags.filter((t) => theirWords.includes(stem(t))).length * 2 +
+        theirWords.filter((w) => words.has(w)).length * 2;
+      return { e, score };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || a.e.id.localeCompare(b.e.id))
+    .map((x) => x.e);
+  const fill =
+    scored.length >= min
+      ? []
+      : others
+          .filter((e) => e.icon.category === current.icon.category && !scored.includes(e))
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .slice(0, min - scored.length);
+  return [...scored, ...fill].slice(0, limit);
+}

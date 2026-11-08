@@ -44,4 +44,50 @@ export function vueSnippet(icon: SnippetIcon, s: Settings): string {
   return `<script setup lang="ts">\nimport { ${name} } from "@nudge-icons/vue";\n</script>\n\n<template>\n  <${[name, ...attrs].join(" ")} />\n</template>`;
 }
 
-export const installCommand = (framework: "react" | "vue") => `pnpm add @nudge-icons/${framework}`;
+export const installCommand = (pkg: "react" | "vue" | "svg") => `pnpm add @nudge-icons/${pkg}`;
+
+/** `alert-triangle` → `Alert triangle`, for button text in examples. */
+export const humanName = (id: string) => {
+  const words = id.replace(/-(filled|half)$/, "").replace(/-/g, " ");
+  return words.charAt(0).toUpperCase() + words.slice(1);
+};
+
+/**
+ * How the icon sits in a button, an icon-only button and a menu row. The icon animates
+ * when its interactive parent is hovered or focused, so these need no extra code.
+ */
+export function contextSnippet(component: string, id: string, framework: "react" | "vue") {
+  const text = humanName(id);
+  const icon = (size: number) =>
+    framework === "react" ? `<${component} size={${size}} />` : `<${component} :size="${size}" />`;
+  const cls = framework === "react" ? "className" : "class";
+  const lines = [
+    "<!-- Animates when the whole button is hovered or focused. -->",
+    `<button>${icon(16)} ${text}</button>`,
+    "",
+    "<!-- Icon only: name the button; the icon stays hidden from screen readers. -->",
+    `<button aria-label="${text}">${icon(20)}</button>`,
+    "",
+    '<!-- Other containers: role="menuitem", or the nudge-trigger class. -->',
+    `<div role="menuitem">${icon(16)} ${text}</div>`,
+    `<div ${cls}="nudge-trigger">${icon(16)} ${text}</div>`,
+  ];
+  return framework === "react"
+    ? lines.map((l) => l.replace(/^<!-- (.*) -->$/, "{/* $1 */}")).join("\n")
+    : `<template>\n${lines.map((l) => (l ? `  ${l}` : l)).join("\n")}\n</template>`;
+}
+
+/** The example colour in the parts CSS; the preview paints the chosen parts with it. */
+export const PART_COLOR = "#e11d48";
+
+/**
+ * CSS that colours the chosen parts; several parts share one rule through `:is()`.
+ * Outline icons set `stroke`, which wins even over a `color` prop. Filled and half icons
+ * paint with `fill="currentColor"`, so they set `color`: it reaches the stroke and the fill
+ * and leaves unfilled lines unfilled.
+ */
+export function partsCss(id: string, parts: readonly string[], painted = false) {
+  const sel = parts.map((p) => `[data-part="${p}"]`);
+  const target = sel.length === 1 ? sel[0] : `:is(${sel.join(", ")})`;
+  return `.nudge-${id} ${target} {\n  ${painted ? "color" : "stroke"}: ${PART_COLOR};\n}`;
+}

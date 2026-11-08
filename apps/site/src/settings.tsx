@@ -61,6 +61,8 @@ interface SettingsContext {
   settings: Settings;
   update: (patch: Partial<Settings>) => void;
   reset: () => void;
+  /** True when any setting differs from the library defaults. */
+  changed: boolean;
   applyToAll: boolean;
   setApplyToAll: (v: boolean) => void;
   pageMotion: PageMotion;
@@ -100,6 +102,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         settings,
         update: (patch) => setSettings((s) => ({ ...s, ...patch })),
         reset: () => setSettings(DEFAULTS),
+        changed: (Object.keys(DEFAULTS) as (keyof Settings)[]).some(
+          (k) => settings[k] !== DEFAULTS[k],
+        ),
         applyToAll,
         setApplyToAll,
         pageMotion,

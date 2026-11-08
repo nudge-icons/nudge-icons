@@ -1,7 +1,7 @@
 import * as Icons from "@nudge-icons/react";
 import type { ToggleIconComponent } from "@nudge-icons/react";
 import list from "@nudge-icons/svg/icons.json";
-import { searchEntries, type Filter, type Variant } from "./search";
+import { relatedEntries, searchEntries, type Filter, type Variant } from "./search";
 
 export type { Filter, Variant };
 
@@ -116,3 +116,5 @@ export const FILTERS: { id: Filter; label: string; hint: string; count: number }
 
 export const search = (query: string, category: string | null, filters: ReadonlySet<Filter>) =>
   searchEntries(ENTRIES, query, category, filters);
+
+export const related = (entry: Entry) => relatedEntries(ENTRIES, entry);

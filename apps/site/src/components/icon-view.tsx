@@ -12,7 +12,8 @@ export function IconView({
   title,
 }: {
   entry: Entry;
-  size?: number;
+  /** Pixels, or a CSS length such as "100%" to fill a box. */
+  size?: number | string;
   strokeWidth?: number;
   color?: string | null;
   animate: Animate;

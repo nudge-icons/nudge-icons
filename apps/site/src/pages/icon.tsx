@@ -1,11 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Bell, Download, Pencil, Refresh, Trash } from "@nudge-icons/react";
-import { SET_NAMES, type Entry, type EquivalentSet } from "../data";
+import { related, SET_NAMES, type Entry, type EquivalentSet } from "../data";
 import { href, Link } from "../router";
 import { forIcon, toAnimate, useSettings } from "../settings";
-import { installCommand, reactSnippet, vueSnippet } from "../snippets";
-import { CodeBlock, CopyButton, Segmented, Switch } from "../components/controls";
-import { AppearanceFields, Field, MODES } from "../components/customizer";
+import {
+  contextSnippet,
+  humanName,
+  installCommand,
+  PART_COLOR,
+  partsCss,
+  reactSnippet,
+  vueSnippet,
+} from "../snippets";
+import { CodeBlock, CopyButton, FrameworkSwitch, Segmented, Switch } from "../components/controls";
+import { AppearanceFields, Field, MODES, ResetButton } from "../components/customizer";
+import { Blueprint } from "../components/blueprint";
 import { IconView } from "../components/icon-view";
 import { useReplay } from "../replay";
 
@@ -35,7 +44,20 @@ export function IconPage({ entry }: { entry: Entry }) {
   const { icon, animation } = entry;
   const replay = useReplay(toAnimate(settings.animate));
   const [paused, setPaused] = useState(false);
-  const [highlight, setHighlight] = useState<string | null>(null);
+  // React/Vue code or the raw SVG; with SVG the page shows the SVG package and no JSX.
+  const [codeTab, setCodeTab] = useState<CodeTab>("code");
+  const [view, setView] = useState<"blueprint" | "clean">("blueprint");
+  // Clicked parts stay highlighted; hovering a name previews just that one.
+  const [picked, setPicked] = useState<ReadonlySet<string>>(new Set());
+  const [hovered, setHovered] = useState<string | null>(null);
+  const shown = hovered !== null ? [hovered] : [...picked];
+  const togglePart = (p: string) =>
+    setPicked((prev) => {
+      const next = new Set(prev);
+      if (next.has(p)) next.delete(p);
+      else next.add(p);
+      return next;
+    });
 
   useEffect(() => {
     document.title = `${entry.id} · nudge-icons`;
@@ -53,32 +75,104 @@ export function IconPage({ entry }: { entry: Entry }) {
       </Link>
       <header className="icon-head">
         <h1>{entry.id}</h1>
-        <p className="hint">
-          <span className="capitalize">{icon.category}</span> · motion{" "}
-          <strong>{animation.name}</strong>
-          {icon.toggle && " · second state"}
-        </p>
+        {/* One row: the category first, then the second state, then the search tags. */}
+        <ul className="tags" role="list" aria-label="Category and tags">
+          <li>
+            <Link
+              to={`${href({ page: "gallery" })}?category=${icon.category}`}
+              className="tag capitalize"
+              title={`All ${icon.category} icons`}
+            >
+              {icon.category}
+            </Link>
+          </li>
+          {icon.toggle && (
+            <li>
+              <Link
+                to={`${href({ page: "gallery" })}?only=toggle`}
+                className="tag"
+                title="Icons with a second state"
+              >
+                second state
+              </Link>
+            </li>
+          )}
+          {icon.tags.map((t) => (
+            <li key={t}>
+              <Link
+                to={`${href({ page: "gallery" })}?q=${encodeURIComponent(t)}`}
+                className="tag"
+                title={`Search “${t}”`}
+              >
+                {t}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </header>
 
-      {highlight && (
-        // Dims every shape outside the hovered part; part names come from our own metadata.
-        <style>{`.parts-preview svg :is(path,circle,ellipse,rect,line,polyline,polygon):not([data-part="${highlight}"],[data-part="${highlight}"] *){opacity:.15}`}</style>
+      {shown.length > 0 && (
+        // The preview shows what the CSS below does: the chosen parts take its colour (filled
+        // shapes too), the rest are dimmed. Part names come from our own metadata.
+        <style>{`.parts-preview svg :is(${shown
+          .map((p) => `[data-part="${p}"],[data-part="${p}"] *`)
+          .join(",")}){stroke:${PART_COLOR}}.parts-preview svg :is(${shown
+          .map(
+            (p) =>
+              `[data-part="${p}"] [fill="currentColor"],[data-part="${p}"][fill="currentColor"]`,
+          )
+          .join(
+            ",",
+          )}){fill:${PART_COLOR}}.parts-preview svg :is(path,circle,ellipse,rect,line,polyline,polygon):not(${shown
+          .map((p) => `[data-part="${p}"],[data-part="${p}"] *`)
+          .join(",")}){opacity:.15}`}</style>
       )}
       <div className="icon-cols">
         <section className="icon-left" aria-label="Preview and settings">
+          {/* Big preview and the icon at its real size play, replay and pause together. */}
           <div
-            className={`preview-300 grid-bg ${paused ? "is-paused" : ""}`}
+            className={`preview-stack ${paused ? "is-paused" : ""}`}
             key={`${entry.id}-${replay.key}`}
             onAnimationEnd={replay.onAnimationEnd}
           >
-            <IconView
+            <Blueprint
               entry={entry}
-              size={240}
+              mode={view}
               strokeWidth={settings.strokeWidth}
               color={settings.color}
               animate={replay.animate}
               active={settings.active}
             />
+            <div className="preview-meta">
+              <Segmented
+                label="Preview"
+                size="sm"
+                value={view}
+                options={[
+                  {
+                    value: "blueprint",
+                    label: "Blueprint",
+                    title:
+                      "Grid and safe area. Solid line: stroke centre; dashed: edge of a filled shape",
+                  },
+                  { value: "clean", label: "Clean" },
+                ]}
+                onChange={setView}
+              />
+              <span className="preview-meta-actual">
+                Actual size · {settings.size} px
+                <span className="actual-box">
+                  <IconView
+                    entry={entry}
+                    size={settings.size}
+                    strokeWidth={settings.strokeWidth}
+                    color={settings.color}
+                    animate={replay.animate}
+                    active={settings.active}
+                  />
+                </span>
+              </span>
+            </div>
           </div>
           <div className="player">
             <div className="player-actions">
@@ -115,20 +209,38 @@ export function IconPage({ entry }: { entry: Entry }) {
               onChange={(active) => update({ active })}
             />
             {icon.toggle && <p className="hint">{icon.toggle.description}.</p>}
+            <div className="customizer-footer">
+              <ResetButton />
+            </div>
           </div>
         </section>
 
         <section className="icon-right" aria-label="Code">
-          <CodeTabs entry={entry} framework={framework} />
+          <CodeTabs entry={entry} tab={codeTab} setTab={setCodeTab} />
 
           <h2>Install</h2>
           <div className="install">
-            <code>{installCommand(framework)}</code>
-            <CopyButton text={installCommand(framework)} />
+            <code>{installCommand(codeTab === "svg" ? "svg" : framework)}</code>
+            <CopyButton text={installCommand(codeTab === "svg" ? "svg" : framework)} />
           </div>
+          {codeTab === "svg" && (
+            <p className="hint">
+              Plain SVG files, at rest: no motion and no second state. For those, use the React or
+              Vue component.
+            </p>
+          )}
 
           <h2>In context</h2>
           <InContext entry={entry} />
+          {/* The in-context code is about components animating with their parent; a plain SVG does not move. */}
+          {codeTab === "code" && (
+            <CodeBlock
+              label="In context"
+              toolbar={<FrameworkSwitch />}
+              code={contextSnippet(entry.component, entry.id, framework)}
+              lang={framework === "react" ? "tsx" : "vue"}
+            />
+          )}
         </section>
       </div>
 
@@ -146,29 +258,46 @@ export function IconPage({ entry }: { entry: Entry }) {
               strokeWidth={settings.strokeWidth}
               color={settings.color}
               animate={false}
-              active={highlight !== null && (icon.toggle?.parts.includes(highlight) ?? false)}
+              active={shown.some((p) => icon.toggle?.parts.includes(p) ?? false)}
             />
           </div>
-          <div className="parts-list">
-            <ul className="parts" role="list">
-              {parts.map((p) => (
-                <li key={p}>
-                  <button
-                    type="button"
-                    className="part"
-                    onMouseEnter={() => setHighlight(p)}
-                    onMouseLeave={() => setHighlight(null)}
-                    onFocus={() => setHighlight(p)}
-                    onBlur={() => setHighlight(null)}
-                  >
-                    {p}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <div className="parts-code">
+            <div className="parts-block">
+              <span className="field-label">Parts · click to select</span>
+              <ul className="parts" role="list">
+                {parts.map((p) => (
+                  <li key={p}>
+                    <button
+                      type="button"
+                      className="part"
+                      aria-pressed={picked.has(p)}
+                      onClick={() => togglePart(p)}
+                      onMouseEnter={() => setHovered(p)}
+                      onMouseLeave={() => setHovered(null)}
+                    >
+                      {p}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {picked.size > 0 && (
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-sm parts-clear"
+                  onClick={() => setPicked(new Set())}
+                >
+                  Clear
+                </button>
+              )}
+            </div>
             <CodeBlock
               label="CSS"
-              code={`.nudge-${icon.name} [data-part="${highlight ?? parts[0] ?? ""}"] {\n  stroke: #e11d48;\n}`}
+              lang="css"
+              code={partsCss(
+                entry.id,
+                shown.length > 0 ? shown : parts.slice(0, 1),
+                entry.variant !== "outline",
+              )}
             />
           </div>
         </div>
@@ -207,47 +336,89 @@ export function IconPage({ entry }: { entry: Entry }) {
           </ul>
         </section>
       </div>
+      <MoreLikeThis entry={entry} />
     </main>
   );
 }
 
-function CodeTabs({ entry, framework }: { entry: Entry; framework: "react" | "vue" }) {
-  const { settings: raw } = useSettings();
+/** Similar icons by tags, name and category; the same grid cells as the gallery. */
+function MoreLikeThis({ entry }: { entry: Entry }) {
+  const items = related(entry);
+  if (items.length === 0) return null;
+  return (
+    <section className="icon-section">
+      <h2>More like this</h2>
+      <ul className="grid" role="list">
+        {items.map((e) => (
+          <li key={e.id}>
+            <Link to={href({ page: "icon", name: e.id })} className="cell">
+              <IconView entry={e} animate="hover" />
+              <span className="cell-name">{e.id}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+type CodeTab = "code" | "svg";
+
+function CodeTabs({
+  entry,
+  tab,
+  setTab,
+}: {
+  entry: Entry;
+  tab: CodeTab;
+  setTab: (t: CodeTab) => void;
+}) {
+  const { settings: raw, framework, setFramework } = useSettings();
   const settings = forIcon(raw, entry);
-  const [tab, setTab] = useState<"component" | "svg">("component");
+  // React and Vue tabs set the site-wide framework, so every other sample follows.
   const [expanded, setExpanded] = useState(false);
   const svg = useSvgSource(entry.id);
   const component = (framework === "react" ? reactSnippet : vueSnippet)(
     { component: entry.component, hasToggle: entry.icon.hasToggle },
     settings,
   );
+  const tabs = [
+    { id: "react", label: "React", selected: tab === "code" && framework === "react" },
+    { id: "vue", label: "Vue", selected: tab === "code" && framework === "vue" },
+    { id: "svg", label: "SVG", selected: tab === "svg" },
+  ] as const;
 
   return (
     <div className="tabs">
       <div className="tab-list" role="tablist" aria-label="Code">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={tab === "component"}
-          onClick={() => setTab("component")}
-        >
-          {framework === "react" ? "React" : "Vue"} component
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={tab === "svg"}
-          onClick={() => setTab("svg")}
-        >
-          SVG
-        </button>
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            role="tab"
+            aria-selected={t.selected}
+            onClick={() => {
+              if (t.id === "svg") setTab("svg");
+              else {
+                setFramework(t.id);
+                setTab("code");
+              }
+            }}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
       <div role="tabpanel">
-        {tab === "component" ? (
-          <CodeBlock label={entry.component} code={component} />
+        {tab === "code" ? (
+          <CodeBlock
+            label={entry.component}
+            code={component}
+            lang={framework === "react" ? "tsx" : "vue"}
+          />
         ) : (
           <div className={`svg-source ${expanded ? "is-expanded" : ""}`}>
-            <CodeBlock label={`${entry.id}.svg · at rest`} code={svg ?? "Loading…"} />
+            <CodeBlock label={`${entry.id}.svg · at rest`} code={svg ?? "Loading…"} lang="html" />
             {!expanded && (
               <button
                 type="button"
@@ -266,28 +437,32 @@ function CodeTabs({ entry, framework }: { entry: Entry; framework: "react" | "vu
 
 function InContext({ entry }: { entry: Entry }) {
   const view = (size: number) => <IconView entry={entry} size={size} animate="hover" />;
-  const { icon } = entry;
+  // Same text as in the code below, so the example and the snippet match.
+  const text = humanName(entry.id);
   return (
     <div className="in-context">
       <div className="ctx-row">
         <button type="button" className="btn btn-primary">
-          {view(16)} {icon.name}
+          {view(16)} {text}
         </button>
         <button type="button" className="btn btn-ghost">
           {view(16)} Action
         </button>
-        <button type="button" className="btn btn-icon" aria-label={icon.name}>
+        <button type="button" className="btn btn-icon" aria-label={text}>
           {view(20)}
         </button>
       </div>
-      <div className="ctx-menu" role="presentation">
-        <div className="ctx-item">
-          {view(16)} {icon.name}
+      {/* Menu items animate their icon when the whole row is hovered or focused. */}
+      <div className="ctx-menu" role="menu" aria-label="Example menu">
+        <div className="ctx-item" role="menuitem" tabIndex={-1}>
+          {view(16)} {text}
         </div>
-        <div className="ctx-item">
+        <div className="ctx-item" role="menuitem" tabIndex={-1}>
           <Pencil size={16} /> Edit
         </div>
-        <div className="ctx-item is-disabled">{view(16)} Disabled item</div>
+        <div className="ctx-item is-disabled" role="menuitem" aria-disabled="true" tabIndex={-1}>
+          <IconView entry={entry} size={16} animate={false} /> Disabled item
+        </div>
       </div>
       <p className="ctx-text">
         Inline with 14 px text: press {view(14)} to continue, or <Download size={14} /> save it for
@@ -320,8 +495,10 @@ function Equivalents({ icon }: { icon: Entry["icon"] }) {
 }
 
 const SMALL_SIZES = [12, 14, 16, 20] as const;
+/** Pixel view scale: large enough to see single pixels and their antialiasing. */
+const ZOOM = 4;
 
-/** Small sizes at real pixels: 1× is the live SVG, 2× a raster of those pixels scaled up without smoothing. */
+/** Small sizes at real pixels: 1× is the live SVG; Pixels is a raster of those pixels, 4× with a grid. */
 function SmallSizeTest({ entry }: { entry: Entry }) {
   const { settings } = useSettings();
   const [zoom, setZoom] = useState<"1" | "2">("1");
@@ -337,7 +514,11 @@ function SmallSizeTest({ entry }: { entry: Entry }) {
             value={zoom}
             options={[
               { value: "1", label: "1×", title: "Actual pixels · 100%" },
-              { value: "2", label: "2×", title: "Raster of the actual pixels, scaled up" },
+              {
+                value: "2",
+                label: "Pixels ×4",
+                title: "The actual pixels, scaled up with a pixel grid",
+              },
             ]}
             onChange={(z) => {
               setZoom(z);
@@ -358,7 +539,7 @@ function SmallSizeTest({ entry }: { entry: Entry }) {
       <p className="hint">
         {zoom === "1"
           ? "Actual pixels · 100%. Animate loops the motion to check that it does not blur together at small sizes."
-          : "Pixels at 1× scaled up 2× without smoothing: what a non-Retina screen draws."}
+          : "Each square is one screen pixel at 1×, scaled up 4×. Grey squares are antialiasing: this is what a non-Retina screen draws."}
       </p>
       <div className="small-sizes">
         {SMALL_SIZES.map((s) => (
@@ -437,13 +618,9 @@ function Raster({
           animate={false}
         />
       </span>
-      <canvas
-        ref={canvas}
-        width={size}
-        height={size}
-        className="raster"
-        style={{ width: size * 2, height: size * 2 }}
-      />
+      <span className="raster-frame" style={{ width: size * ZOOM, height: size * ZOOM }}>
+        <canvas ref={canvas} width={size} height={size} className="raster" />
+      </span>
     </>
   );
 }
