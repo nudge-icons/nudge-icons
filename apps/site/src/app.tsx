@@ -5,24 +5,33 @@ import { IconPage } from "./pages/icon";
 import { href, Link, parse, useLocation } from "./state/router";
 import { SettingsProvider } from "./state/settings";
 
+function NotFound({ title }: { title: string }) {
+  return (
+    <main className="not-found" id="main">
+      <h1>{title}</h1>
+      <Link to={href({ page: "gallery" })}>← All icons</Link>
+    </main>
+  );
+}
+
 function Routes() {
   const { pathname, search } = useLocation();
   const route = parse(pathname);
-  if (route.page === "icon") {
-    const entry = ENTRY_BY_ID.get(route.name);
-    if (!entry)
+  switch (route.page) {
+    case "icon": {
+      const entry = ENTRY_BY_ID.get(route.name);
+      if (!entry) return <NotFound title={`No icon called “${route.name}”`} />;
+      return <IconPage key={entry.id} entry={entry} />;
+    }
+    case "gallery": {
+      const selected = new URLSearchParams(search).get("icon");
       return (
-        <main className="not-found" id="main">
-          <h1>No icon called “{route.name}”</h1>
-          <Link to={href({ page: "gallery" })}>← All icons</Link>
-        </main>
+        <GalleryPage selected={selected !== null && ENTRY_BY_ID.has(selected) ? selected : null} />
       );
-    return <IconPage key={entry.id} entry={entry} />;
+    }
+    case "not-found":
+      return <NotFound title="Page not found" />;
   }
-  const selected = new URLSearchParams(search).get("icon");
-  return (
-    <GalleryPage selected={selected !== null && ENTRY_BY_ID.has(selected) ? selected : null} />
-  );
 }
 
 export function App() {

@@ -1,19 +1,19 @@
 import { useEffect, useState, type AnchorHTMLAttributes, type MouseEvent } from "react";
 
-// A two-route site does not need a router library: paths are read from location and
-// links push history entries. BASE_URL is "/nudge-icons/" on GitHub Pages.
+import { matchPath, pathFor, type Route } from "../lib/routes";
+
+export type { Route } from "../lib/routes";
+
+// A few pages do not need a router library: paths are matched against the table in
+// lib/routes.ts and links push history entries. BASE_URL is "/nudge-icons/" on GitHub Pages.
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-export type Route = { page: "gallery" } | { page: "icon"; name: string };
-
 export function parse(pathname: string): Route {
-  const path = pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
-  const m = /^\/icons\/([a-z0-9-]+)\/?$/.exec(path);
-  return m?.[1] ? { page: "icon", name: m[1] } : { page: "gallery" };
+  return matchPath(pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname);
 }
 
-export const href = (route: Route): string =>
-  route.page === "icon" ? `${BASE}/icons/${route.name}` : `${BASE}/`;
+export const href = (route: Exclude<Route, { page: "not-found" }>): string =>
+  `${BASE}${pathFor(route)}`;
 
 const listeners = new Set<() => void>();
 
