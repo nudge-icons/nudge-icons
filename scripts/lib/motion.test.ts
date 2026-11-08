@@ -15,6 +15,7 @@ const every: Motion[] = [
   { part: "k", preset: "revolve", rx: 4, radius: 9 },
   { part: "l", preset: "blink", to: "M2 13h20" },
   { part: "m", preset: "look", x: 2, blink: true },
+  { part: "n", preset: "fold", origin: [4.5, 20], skew: 17.7, scale: 1.22 },
 ];
 
 /** Splits CSS into [selector, body] pairs, looking inside @media and skipping @keyframes. */
@@ -173,7 +174,7 @@ describe("iconCss", () => {
 describe("checkMotion", () => {
   it("accepts valid motion", () => {
     expect(
-      checkMotion(every, ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]),
+      checkMotion(every, ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"]),
     ).toEqual([]);
   });
 
@@ -204,5 +205,29 @@ describe("checkMotion", () => {
     expect(errors.some((e) => e.includes("preset must be one of"))).toBe(true);
     expect(errors).toContain('motion for "b": swing needs origin');
     expect(errors).toContain('motion for "b": a part can have only one motion');
+  });
+});
+
+describe("fold", () => {
+  it("leans and stretches the part from its hinge, then returns", () => {
+    const css = iconCss("folder-open", [
+      { part: "front", preset: "fold", origin: [4.5, 20], skew: 17.7, scale: 1.22 },
+    ]);
+    expect(css).toContain("transform:skewX(17.7deg) scaleY(1.22)");
+    expect(css).toContain("transform-origin:4.5px 20px");
+  });
+
+  it("needs a hinge, a lean and a stretch", () => {
+    const errors = checkMotion([{ part: "a", preset: "fold" }], ["a"]);
+    expect(errors).toContain('motion for "a": fold needs origin');
+    expect(errors).toContain('motion for "a": fold needs skew');
+    expect(errors).toContain('motion for "a": fold needs scale');
+  });
+});
+
+describe("draw", () => {
+  it("hides the part until it starts drawing, so no round-cap dot shows while it waits", () => {
+    const css = iconCss("wifi", [{ part: "outer", preset: "draw", delay: 600 }]);
+    expect(css).toMatch(/0%\{[^}]*stroke-dashoffset:1;opacity:0/);
   });
 });

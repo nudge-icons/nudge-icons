@@ -31,6 +31,15 @@ export type Motion = MotionBase &
     | { preset: "orbit"; r: number }
     | { preset: "flash" }
     | {
+        preset: "fold";
+        /** A point on the hinge, like the bottom edge of a folder flap. */
+        origin: Point;
+        /** Horizontal lean in degrees (skewX) at the end of the fold. */
+        skew: number;
+        /** Vertical stretch from the hinge at the end of the fold. */
+        scale: number;
+      }
+    | {
         preset: "revolve";
         rx: number;
         radius: number;
@@ -156,10 +165,13 @@ const SPECS: Record<Preset, PresetSpec> = {
     duration: 500,
     easing: "ease-out",
     loopRest: 0.8,
-    // Drawn elements get pathLength="1", so a dash of 1 is the whole stroke.
+    // Drawn elements get pathLength="1", so a dash of 1 is the whole stroke. Before the
+    // stroke starts it is hidden: with round caps an empty dash still paints a dot, which
+    // showed while a staggered part waited for its delay.
     frames: () => ({
-      0: "stroke-dasharray:1 1;stroke-dashoffset:1",
-      100: "stroke-dasharray:1 1;stroke-dashoffset:0",
+      0: "stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0",
+      2: "opacity:1",
+      100: "stroke-dasharray:1 1;stroke-dashoffset:0;opacity:1",
     }),
   },
   spin: {
@@ -289,6 +301,21 @@ const SPECS: Record<Preset, PresetSpec> = {
         });
       }
       return frames;
+    },
+  },
+  // A flap that folds on a hinge and opens again: it leans (skewX) and stretches (scaleY)
+  // from the hinge, for example an open folder closing. Transform only, so every browser.
+  fold: {
+    duration: 900,
+    easing: "ease-in-out",
+    loopRest: 0.7,
+    origin: (m) => (m.preset === "fold" ? m.origin : undefined),
+    frames: (m) => {
+      const closed =
+        m.preset === "fold"
+          ? `transform:skewX(${round(m.skew)}deg) scaleY(${round(m.scale)})`
+          : REST;
+      return { 0: REST, 40: closed, 65: closed, 100: REST };
     },
   },
   flash: {
@@ -500,6 +527,7 @@ export function checkMotion(motion: unknown, parts: readonly string[]): string[]
       shake: ["x"],
       orbit: ["r"],
       flash: [],
+      fold: ["origin", "skew", "scale"],
       revolve: ["rx", "radius"],
       blink: ["to"],
       look: ["x"],
@@ -510,7 +538,7 @@ export function checkMotion(motion: unknown, parts: readonly string[]): string[]
     if (raw.beats !== undefined && raw.beats !== 1 && raw.beats !== 2) {
       errors.push(`${where}: beats must be 1 or 2`);
     }
-    for (const key of ["angle", "scale", "x", "y", "r", "rx", "radius", "offset"]) {
+    for (const key of ["angle", "scale", "skew", "x", "y", "r", "rx", "radius", "offset"]) {
       if (raw[key] !== undefined && !num(raw[key]))
         errors.push(`${where}: ${key} must be a number`);
     }

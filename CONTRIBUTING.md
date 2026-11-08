@@ -103,6 +103,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
   | `shake`   | `x`                                      | a warning shaking side to side                                                                                                                                                           |
   | `orbit`   | `r`                                      | a small circle, like a lens searching                                                                                                                                                    |
   | `flash`   | —                                        | flickers twice                                                                                                                                                                           |
+  | `fold`    | `origin`, `skew`, `scale`                | a flap folds on its hinge and opens again (an open folder closing): it leans with `skewX` and stretches with `scaleY` from `origin`                                                      |
   | `revolve` | `rx`, `radius`, `offset`                 | a meridian ellipse turning with a globe (animates `rx`, keeps the stroke width; Safari 17.4+); it fades out near the outline, so add a second meridian with `offset: 90` in `motionOnly` |
 
   Every motion also takes `delay` and `duration` (ms); `pulse` also takes `axis: "x" | "y"` to squash along one axis (a blinking eye). All presets return to the resting drawing (`pass` fades its part out and back in on the way), so `hover` and `once` end where they started.
