@@ -26,6 +26,19 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build:icons
       - run: pnpm build:registry
+      # Link-preview images: restored from the cache and rendered again only when an icon,
+      # its motion text or the image script changed, so most runs skip the browser.
+      - uses: actions/cache@v6
+        with:
+          path: apps/site/public/og
+          key: og-${{ hashFiles('icons/**', 'scripts/build-og-images.ts', 'scripts/lib/icon-list.ts') }}
+          restore-keys: og-
+      - id: og
+        run: pnpm build:og --check
+      - if: steps.og.outputs.stale != '0'
+        run: pnpm exec playwright install --with-deps chromium
+      # Always runs: it also removes images of deleted icons, which needs no browser.
+      - run: pnpm build:og
       - run: pnpm --filter @nudge-icons/site build
       - uses: actions/upload-pages-artifact@v5
         with:

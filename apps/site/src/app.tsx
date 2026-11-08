@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { ENTRY_BY_ID } from "./lib/data";
+import { pageMeta } from "./lib/page-meta";
 import { Header } from "./components/header";
 import { GalleryPage } from "./pages/gallery";
 import { IconPage } from "./pages/icon";
@@ -17,9 +19,17 @@ function NotFound({ title }: { title: string }) {
 function Routes() {
   const { pathname, search } = useLocation();
   const route = parse(pathname);
+  const entry = route.page === "icon" ? ENTRY_BY_ID.get(route.name) : undefined;
+  // The same title the build wrote into this page's HTML, kept as the app navigates.
+  const title = pageMeta(
+    entry ? route : route.page === "icon" ? { page: "not-found" } : route,
+    entry && { id: entry.id, motion: entry.animation },
+  ).title;
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   switch (route.page) {
     case "icon": {
-      const entry = ENTRY_BY_ID.get(route.name);
       if (!entry) return <NotFound title={`No icon called “${route.name}”`} />;
       return <IconPage key={entry.id} entry={entry} />;
     }

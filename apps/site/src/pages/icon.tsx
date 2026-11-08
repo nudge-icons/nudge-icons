@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Refresh } from "@nudge-icons/react";
 import { CORE_DIR, ICONS_DIR } from "../../../../scripts/lib/registry-layout.ts";
 import type { Entry } from "../lib/data";
@@ -42,13 +42,6 @@ export function IconPage({ entry }: { entry: Entry }) {
       else next.add(p);
       return next;
     });
-
-  useEffect(() => {
-    document.title = `${entry.id} · nudge-icons`;
-    return () => {
-      document.title = "nudge-icons";
-    };
-  }, [entry.id]);
 
   const parts = [...new Set([...animation.parts, ...(icon.toggle?.parts ?? [])])];
 
