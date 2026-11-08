@@ -10,13 +10,13 @@
     "css-animation",
     "lucide"
   ],
-  "homepage": "https://dimon85.github.io/nudge-icons/docs/getting-started",
+  "homepage": "https://nudge-icons.github.io/nudge-icons/docs/getting-started",
   "bugs": {
-    "url": "https://github.com/dimon85/nudge-icons/issues"
+    "url": "https://github.com/nudge-icons/nudge-icons/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dimon85/nudge-icons.git",
+    "url": "git+https://github.com/nudge-icons/nudge-icons.git",
     "directory": "packages/vue"
   },
   "license": "MIT",

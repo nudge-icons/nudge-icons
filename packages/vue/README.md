@@ -28,4 +28,4 @@ const open = ref(false);
 
 Requires Vue 3.3 or later. Tree-shakeable: only the icons you import end up in your bundle.
 
-[Docs](https://dimon85.github.io/nudge-icons/docs/getting-started) · [All icons](https://dimon85.github.io/nudge-icons/) · [GitHub](https://github.com/dimon85/nudge-icons) · MIT License
+[Docs](https://nudge-icons.github.io/nudge-icons/docs/getting-started) · [All icons](https://nudge-icons.github.io/nudge-icons/) · [GitHub](https://github.com/nudge-icons/nudge-icons) · MIT License

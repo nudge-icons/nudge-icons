@@ -4,6 +4,6 @@
 // `shadcn add` against a local server.
 const noSlash = (url: string) => url.replace(/\/+$/, "");
 
-export const siteUrl = `${noSlash(process.env.SITE_URL ?? "https://dimon85.github.io/nudge-icons")}/`;
+export const siteUrl = `${noSlash(process.env.SITE_URL ?? "https://nudge-icons.github.io/nudge-icons")}/`;
 
 export const registryUrl = noSlash(process.env.REGISTRY_URL ?? `${siteUrl}r`);

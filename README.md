@@ -3,12 +3,12 @@
 Animated line icons for React and Vue. Each icon has its own small motion that hints at what it does: the bell rings, the arrow sinks into the tray, the menu folds into a cross. The motion is CSS only, so there is no animation runtime, and it stops under `prefers-reduced-motion`.
 
 [![npm](https://img.shields.io/npm/v/@nudge-icons/react?color=0f766e)](https://www.npmjs.com/package/@nudge-icons/react)
-[![CI](https://github.com/dimon85/nudge-icons/actions/workflows/ci.yml/badge.svg)](https://github.com/dimon85/nudge-icons/actions/workflows/ci.yml)
+[![CI](https://github.com/nudge-icons/nudge-icons/actions/workflows/ci.yml/badge.svg)](https://github.com/nudge-icons/nudge-icons/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f766e)](LICENSE)
 
 ![A grid of nudge-icons, each playing its own motion](.github/readme/demo.gif)
 
-**[Browse the icons](https://dimon85.github.io/nudge-icons/)** · [Docs](https://dimon85.github.io/nudge-icons/docs/getting-started)
+**[Browse the icons](https://nudge-icons.github.io/nudge-icons/)** · [Docs](https://nudge-icons.github.io/nudge-icons/docs/getting-started)
 
 ## Why
 
@@ -77,13 +77,13 @@ const open = ref(false);
 
 `animate` sets when the motion plays: `"hover"` (default), `"loop"`, `"once"`, a number of runs, or `false`. For still icons everywhere, import from `@nudge-icons/react/static` or `@nudge-icons/vue/static`.
 
-Icons are hidden from screen readers unless they get a `title` (or `aria-label`); then they have `role="img"`. See [Accessibility](https://dimon85.github.io/nudge-icons/docs/accessibility) and [Styling](https://dimon85.github.io/nudge-icons/docs/styling).
+Icons are hidden from screen readers unless they get a `title` (or `aria-label`); then they have `role="img"`. See [Accessibility](https://nudge-icons.github.io/nudge-icons/docs/accessibility) and [Styling](https://nudge-icons.github.io/nudge-icons/docs/styling).
 
 ## Other ways to get the icons
 
-- **Copy the source** with the shadcn CLI, no package to keep up to date: `npx shadcn@latest add https://dimon85.github.io/nudge-icons/r/bell.json` (Vue: `npx shadcn-vue@latest add https://dimon85.github.io/nudge-icons/r/vue/bell.json`).
+- **Copy the source** with the shadcn CLI, no package to keep up to date: `npx shadcn@latest add https://nudge-icons.github.io/nudge-icons/r/bell.json` (Vue: `npx shadcn-vue@latest add https://nudge-icons.github.io/nudge-icons/r/vue/bell.json`).
 - **Plain SVG** files and `icons.json` with every icon's metadata: [`@nudge-icons/svg`](packages/svg).
-- **AI coding agents:** [llms.txt](https://dimon85.github.io/nudge-icons/llms.txt), [llms-full.txt](https://dimon85.github.io/nudge-icons/llms-full.txt) and a [skill](skills/nudge-icons) for Claude Code.
+- **AI coding agents:** [llms.txt](https://nudge-icons.github.io/nudge-icons/llms.txt), [llms-full.txt](https://nudge-icons.github.io/nudge-icons/llms-full.txt) and a [skill](skills/nudge-icons) for Claude Code.
 
 ## Size
 

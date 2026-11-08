@@ -7,14 +7,14 @@ description: Use when adding, choosing, styling or animating icons with nudge-ic
 
 Animated line icons for React and Vue. Every icon is a component with its own small CSS motion. The props match lucide-react, plus `animate` and, on a few icons, `active`.
 
-Full reference with every icon, its parts and its motion: https://dimon85.github.io/nudge-icons/llms-full.txt
+Full reference with every icon, its parts and its motion: https://nudge-icons.github.io/nudge-icons/llms-full.txt
 
 ## Find out how the project uses it
 
 Check `package.json` and the imports before writing code:
 
 - `@nudge-icons/react` or `@nudge-icons/vue` in dependencies: import from the package.
-- Files in `components/icons/` that import from `@/lib/nudge-icons/`: the icons were copied with the shadcn CLI. Import from `@/components/icons/<name>`, and add a missing icon with `npx shadcn@latest add https://dimon85.github.io/nudge-icons/r/<name>.json` (Vue: `npx shadcn-vue@latest add https://dimon85.github.io/nudge-icons/r/vue/<name>.json`).
+- Files in `components/icons/` that import from `@/lib/nudge-icons/`: the icons were copied with the shadcn CLI. Import from `@/components/icons/<name>`, and add a missing icon with `npx shadcn@latest add https://nudge-icons.github.io/nudge-icons/r/<name>.json` (Vue: `npx shadcn-vue@latest add https://nudge-icons.github.io/nudge-icons/r/vue/<name>.json`).
 - Neither: install the package for the framework (`pnpm add @nudge-icons/react`, React 19+; `pnpm add @nudge-icons/vue`, Vue 3.3+).
 
 ## Never invent an icon or a prop
@@ -68,7 +68,7 @@ Do not render two icons and switch between them when one icon has the second sta
 ## Replacing lucide-react
 
 1. Install `@nudge-icons/react` and change the imports.
-2. Find each new name in `icons.json` (`equivalents.lucide`) or in the table at https://dimon85.github.io/nudge-icons/docs/migrate-from-lucide. Many names are the same; some differ, such as `TriangleAlert` → `AlertTriangle`.
+2. Find each new name in `icons.json` (`equivalents.lucide`) or in the table at https://nudge-icons.github.io/nudge-icons/docs/migrate-from-lucide. Many names are the same; some differ, such as `TriangleAlert` → `AlertTriangle`.
 3. Pairs such as `Menu`/`X` or `Eye`/`EyeOff` become one icon with `active` where it exists.
 4. `<Heart fill="currentColor" />` becomes `<HeartFilled />`.
 5. Run the type checker; icons without a counterpart stay on Lucide for now (the sets match in grid and stroke).

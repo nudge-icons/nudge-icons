@@ -14,4 +14,4 @@ import icons from "@nudge-icons/svg/icons.json";
 - `@nudge-icons/svg/<name>.svg`: one file per icon and variant, such as `bell.svg` or `heart-filled.svg`. 24×24, `stroke="currentColor"`.
 - `@nudge-icons/svg/icons.json`: every icon with its tags, category, motion, parts, second state, variants and the matching names in Lucide, Heroicons, Tabler, Phosphor and Material Symbols.
 
-[All icons](https://dimon85.github.io/nudge-icons/) · [GitHub](https://github.com/dimon85/nudge-icons) · MIT License
+[All icons](https://nudge-icons.github.io/nudge-icons/) · [GitHub](https://github.com/nudge-icons/nudge-icons) · MIT License

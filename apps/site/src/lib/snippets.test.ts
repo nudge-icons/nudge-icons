@@ -15,10 +15,10 @@ const eye = { component: "Eye", hasToggle: true };
 describe("code snippets", () => {
   it("point the registry command at the item of the chosen framework", () => {
     expect(registryCommand("heart-filled", "react")).toBe(
-      "npx shadcn@latest add https://dimon85.github.io/nudge-icons/r/heart-filled.json",
+      "npx shadcn@latest add https://nudge-icons.github.io/nudge-icons/r/heart-filled.json",
     );
     expect(registryCommand("heart-filled", "vue")).toBe(
-      "npx shadcn-vue@latest add https://dimon85.github.io/nudge-icons/r/vue/heart-filled.json",
+      "npx shadcn-vue@latest add https://nudge-icons.github.io/nudge-icons/r/vue/heart-filled.json",
     );
   });
 
