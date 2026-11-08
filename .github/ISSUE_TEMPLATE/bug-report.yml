@@ -1,0 +1,38 @@
+name: Bug report
+description: An icon looks wrong, a motion misbehaves or something does not work.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens, and what did you expect?
+      description: A screenshot or a short recording helps, especially for motion and small sizes.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce
+      description: The smallest code that shows it, or a link to a repository or sandbox.
+      render: tsx
+    validations:
+      required: true
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - "@nudge-icons/react"
+        - "@nudge-icons/vue"
+        - "@nudge-icons/svg"
+        - Code copied with the shadcn CLI
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: nudge-icons, React or Vue, the framework (Next.js, Nuxt, Vite…) and the browser.
+      placeholder: "@nudge-icons/react 0.1.0, React 19.2, Vite 8, Chrome 142"
+    validations:
+      required: true

@@ -1,0 +1,30 @@
+name: Icon request
+description: Ask for an icon that is not in the set yet.
+title: "Icon: "
+labels: ["icon request"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Icon name
+      description: Lowercase, words joined with hyphens, the object first, like `file-plus` or `car-front`.
+      placeholder: file-plus
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: Where would you use it?
+      description: The screen or control it would sit in. This decides how the icon is drawn and how soon it comes.
+    validations:
+      required: true
+  - type: textarea
+    id: motion
+    attributes:
+      label: How could it move?
+      description: Optional. A small motion that shows what the icon means, like a bell that rings or an arrow that nudges.
+  - type: input
+    id: others
+    attributes:
+      label: Same icon in other sets
+      description: Optional. Its name in Lucide, Heroicons, Tabler, Phosphor or Material Symbols, if you know it.
