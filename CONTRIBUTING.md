@@ -147,3 +147,5 @@ CI runs everything above on every push and pull request, plus the Vue tests on V
 pnpm check:icons && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm format:check
 pnpm build:storybook && pnpm e2e
 ```
+
+If the change affects a published package, add a changeset with `pnpm changeset`: pick the bump and write one line for users. `@nudge-icons/react`, `@nudge-icons/vue` and `@nudge-icons/svg` share one version. A batch of new icons is a minor release, and the `since` of its icons is that version.

@@ -8,6 +8,8 @@
   },
   "scripts": {
     "check:icons": "tsx scripts/check-icons.ts && tsx scripts/check-equivalents.ts",
+    "check:packages": "tsx scripts/check-packages.ts",
+    "size": "size-limit",
     "preview": "tsx scripts/preview.ts",
     "build:icons": "tsx scripts/build-icons.ts",
     "build:registry": "tsx scripts/build-registry.ts",
@@ -23,11 +25,16 @@
     "site:root": "export SITE_URL=http://localhost:5173 && pnpm build:icons && pnpm build:registry && pnpm build:llms && pnpm --filter @nudge-icons/site dev:root",
     "storybook": "pnpm build:icons && pnpm --filter @nudge-icons/storybook dev",
     "build:storybook": "pnpm build:icons && pnpm --filter @nudge-icons/storybook build",
-    "e2e": "pnpm --filter @nudge-icons/storybook e2e"
+    "e2e": "pnpm --filter @nudge-icons/storybook e2e",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "3.0.2",
     "@eslint/js": "10.0.1",
     "@phosphor-icons/core": "2.1.1",
+    "@size-limit/preset-small-lib": "14.3.0",
     "@tabler/icons": "3.50.0",
     "@types/node": "26.6.6",
     "esbuild": "0.28.2",
@@ -38,6 +45,7 @@
     "material-symbols": "0.48.3",
     "playwright": "1.64.1",
     "prettier": "3.9.10",
+    "size-limit": "14.3.0",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.1",

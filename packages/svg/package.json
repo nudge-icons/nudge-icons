@@ -2,13 +2,37 @@
   "name": "@nudge-icons/svg",
   "version": "0.0.0",
   "description": "Raw SVG files and metadata for nudge-icons",
+  "keywords": [
+    "icons",
+    "svg",
+    "icon-set",
+    "line-icons"
+  ],
+  "homepage": "https://dimon85.github.io/nudge-icons/",
+  "bugs": {
+    "url": "https://github.com/dimon85/nudge-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimon85/nudge-icons.git",
+    "directory": "packages/svg"
+  },
   "license": "MIT",
+  "author": "Dmytro Shyshko (https://github.com/dimon85)",
   "files": [
     "icons",
-    "icons.json"
+    "icons.json",
+    "LICENSE",
+    "README.md"
   ],
   "exports": {
     "./icons.json": "./icons.json",
     "./*.svg": "./icons/*.svg"
+  },
+  "scripts": {
+    "prepack": "cp ../../LICENSE LICENSE"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

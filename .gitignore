@@ -28,3 +28,6 @@ docs/interview.md
 apps/storybook/src/generated/
 apps/storybook/test-results/
 apps/storybook/playwright-report/
+
+# Copied from the root LICENSE before packing
+packages/*/LICENSE

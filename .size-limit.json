@@ -1,0 +1,44 @@
+[
+  {
+    "name": "React: one animated icon",
+    "path": "packages/react/dist/index.js",
+    "import": "{ Heart }",
+    "ignore": ["react", "react/jsx-runtime"],
+    "limit": "1.25 kB"
+  },
+  {
+    "name": "React: one static icon",
+    "path": "packages/react/dist/static.js",
+    "import": "{ Heart }",
+    "ignore": ["react", "react/jsx-runtime"],
+    "limit": "620 B"
+  },
+  {
+    "name": "Vue: one animated icon",
+    "path": "packages/vue/dist/index.js",
+    "import": "{ Heart }",
+    "ignore": ["vue"],
+    "limit": "1.6 kB"
+  },
+  {
+    "name": "Vue: one static icon",
+    "path": "packages/vue/dist/static.js",
+    "import": "{ Heart }",
+    "ignore": ["vue"],
+    "limit": "650 B"
+  },
+  {
+    "name": "React: every icon",
+    "path": "packages/react/dist/index.js",
+    "import": "*",
+    "ignore": ["react", "react/jsx-runtime"],
+    "limit": "13 kB"
+  },
+  {
+    "name": "Vue: every icon",
+    "path": "packages/vue/dist/index.js",
+    "import": "*",
+    "ignore": ["vue"],
+    "limit": "13 kB"
+  }
+]

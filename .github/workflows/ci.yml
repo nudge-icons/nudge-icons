@@ -25,12 +25,15 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check:icons
+      - run: pnpm check:packages
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm typecheck
       - run: pnpm test
       # Also bundles one icon from every entry and fails if any other icon gets in.
       - run: pnpm build
+      # Bundle size of one icon and of the whole set, against the limits in .size-limit.json.
+      - run: pnpm size
 
   vue-3-3:
     name: Vue 3.3 (oldest supported)

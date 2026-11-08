@@ -2,11 +2,31 @@
   "name": "@nudge-icons/react",
   "version": "0.0.0",
   "description": "Animated line icons for React",
+  "keywords": [
+    "react",
+    "icons",
+    "animated-icons",
+    "svg",
+    "css-animation",
+    "lucide"
+  ],
+  "homepage": "https://dimon85.github.io/nudge-icons/docs/getting-started",
+  "bugs": {
+    "url": "https://github.com/dimon85/nudge-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimon85/nudge-icons.git",
+    "directory": "packages/react"
+  },
   "license": "MIT",
+  "author": "Dmytro Shyshko (https://github.com/dimon85)",
   "type": "module",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "exports": {
     ".": {
@@ -20,7 +40,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepack": "cp ../../LICENSE LICENSE"
   },
   "peerDependencies": {
     "react": ">=19"
@@ -32,5 +53,8 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "tsdown": "0.23.7"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

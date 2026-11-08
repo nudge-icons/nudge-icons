@@ -2,11 +2,31 @@
   "name": "@nudge-icons/vue",
   "version": "0.0.0",
   "description": "Animated line icons for Vue",
+  "keywords": [
+    "vue",
+    "icons",
+    "animated-icons",
+    "svg",
+    "css-animation",
+    "lucide"
+  ],
+  "homepage": "https://dimon85.github.io/nudge-icons/docs/getting-started",
+  "bugs": {
+    "url": "https://github.com/dimon85/nudge-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimon85/nudge-icons.git",
+    "directory": "packages/vue"
+  },
   "license": "MIT",
+  "author": "Dmytro Shyshko (https://github.com/dimon85)",
   "type": "module",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "exports": {
     ".": {
@@ -20,7 +40,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepack": "cp ../../LICENSE LICENSE"
   },
   "peerDependencies": {
     "vue": ">=3.3"
@@ -29,5 +50,8 @@
     "@vue/test-utils": "2.5.1",
     "tsdown": "0.23.7",
     "vue": "3.5.45"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
