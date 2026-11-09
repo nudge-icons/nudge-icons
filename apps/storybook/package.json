@@ -5,7 +5,7 @@
   "scripts": {
     "stories": "tsx scripts/gen-stories.ts",
     "dev": "pnpm stories && storybook dev -p 6006",
-    "build": "pnpm stories && storybook build --quiet",
+    "build": "pnpm stories && storybook build --quiet --stats-json",
     "typecheck": "pnpm stories && tsc --noEmit",
     "e2e": "playwright test"
   },

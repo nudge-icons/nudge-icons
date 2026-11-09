@@ -1,15 +1,21 @@
-import { iconByName } from "./icons";
+import type { ToggleIconComponent } from "@nudge-icons/react";
 
 const SIZES = [16, 20, 24, 32, 48];
 
 const cell = { padding: "8px 12px", textAlign: "center", verticalAlign: "middle" } as const;
 const label = { ...cell, textAlign: "left", font: "12px monospace", color: "#555" } as const;
 
+export interface IconMatrixProps {
+  /** The icon's components by variant. Passed in, not looked up, so a story imports one icon. */
+  variants: { variant: string; Icon: ToggleIconComponent }[];
+  /** The icon has a second state: each variant gets an `active` row too. */
+  toggle: boolean;
+}
+
 /** Every variant and state of one icon at every size, standing still. */
-export function IconMatrix({ name }: { name: string }) {
-  const icon = iconByName(name);
-  const rows = icon.variants.flatMap((v) =>
-    (icon.toggle ? [false, true] : [false]).map((active) => ({ ...v, active })),
+export function IconMatrix({ variants, toggle }: IconMatrixProps) {
+  const rows = variants.flatMap((v) =>
+    (toggle ? [false, true] : [false]).map((active) => ({ ...v, active })),
   );
   return (
     <table style={{ borderCollapse: "collapse", color: "#18181b" }}>
@@ -29,7 +35,7 @@ export function IconMatrix({ name }: { name: string }) {
             <td style={label}>{active ? `${variant} · active` : variant}</td>
             {SIZES.map((s) => (
               <td key={s} style={cell}>
-                <Icon size={s} animate={false} {...(icon.toggle ? { active } : {})} />
+                <Icon size={s} animate={false} {...(toggle ? { active } : {})} />
               </td>
             ))}
           </tr>

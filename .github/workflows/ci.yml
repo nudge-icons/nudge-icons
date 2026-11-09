@@ -93,5 +93,9 @@ jobs:
         run: >
           pnpm --filter @nudge-icons/storybook exec chromatic
           --storybook-build-dir storybook-static
+          --only-changed
+          --storybook-base-dir apps/storybook
+          --externals 'scripts/build-icons.ts'
+          --externals 'scripts/lib/**'
           --exit-zero-on-changes
           --auto-accept-changes main

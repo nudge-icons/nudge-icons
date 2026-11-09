@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "noEmit": true,
     "paths": { "@nudge-icons/react": ["../../packages/react/src/index.ts"] }
   },
