@@ -1,0 +1,42 @@
+{
+  "name": "text-align-center",
+  "category": "actions",
+  "tags": ["align", "alignment", "paragraph", "justify", "text", "middle", "centre"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["text-align-center", "align-center"],
+    "tabler": ["align-center"],
+    "phosphor": ["text-align-center"],
+    "material": ["format_align_center"]
+  },
+  "animation": {
+    "name": "align",
+    "description": "The lines draw in towards the centre and spring back",
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "pulse",
+        "origin": [12, 6],
+        "scale": 0.7,
+        "axis": "x"
+      },
+      {
+        "part": "middle",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 0.7,
+        "axis": "x",
+        "delay": 80
+      },
+      {
+        "part": "bottom",
+        "preset": "pulse",
+        "origin": [12, 18],
+        "scale": 0.7,
+        "axis": "x",
+        "delay": 160
+      }
+    ]
+  }
+}

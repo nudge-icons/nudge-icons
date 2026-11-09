@@ -1,0 +1,22 @@
+{
+  "name": "cursor-text",
+  "category": "interface",
+  "tags": ["text-cursor", "i-beam", "caret", "input", "select"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["text-cursor"],
+    "tabler": ["cursor-text"],
+    "phosphor": ["cursor-text"]
+  },
+  "animation": {
+    "name": "blink",
+    "description": "The cursor blinks twice",
+    "parts": ["cursor"],
+    "motion": [
+      {
+        "part": "cursor",
+        "preset": "flash"
+      }
+    ]
+  }
+}

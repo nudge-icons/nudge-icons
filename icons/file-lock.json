@@ -1,0 +1,23 @@
+{
+  "name": "file-lock",
+  "category": "status",
+  "tags": ["private", "protected", "secure", "encrypted", "document"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-lock"],
+    "tabler": ["file-lock"],
+    "phosphor": ["file-lock"]
+  },
+  "animation": {
+    "name": "jiggle",
+    "description": "The shackle jiggles as if tested",
+    "parts": ["shackle"],
+    "motion": [
+      {
+        "part": "shackle",
+        "preset": "bounce",
+        "y": -0.75
+      }
+    ]
+  }
+}

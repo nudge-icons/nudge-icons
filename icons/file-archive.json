@@ -1,0 +1,42 @@
+{
+  "name": "file-archive",
+  "category": "objects",
+  "tags": ["zip", "compressed", "archive", "package", "document"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-archive"],
+    "tabler": ["file-zip"],
+    "phosphor": ["file-zip", "file-archive"],
+    "material": ["folder_zip"]
+  },
+  "animation": {
+    "name": "zip",
+    "description": "The zipper teeth close one after another and the pull jolts",
+    "parts": ["first", "second", "third", "pull"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 200
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 200,
+        "delay": 100
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 200,
+        "delay": 200
+      },
+      {
+        "part": "pull",
+        "preset": "bounce",
+        "y": 0.5,
+        "delay": 250
+      }
+    ]
+  }
+}

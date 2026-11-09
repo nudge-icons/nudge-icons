@@ -1,0 +1,24 @@
+{
+  "name": "heading",
+  "category": "actions",
+  "tags": ["title", "header", "h", "text", "format"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["heading"],
+    "heroicons": ["h1"],
+    "tabler": ["heading"],
+    "phosphor": ["text-h"],
+    "material": ["format_h1"]
+  },
+  "animation": {
+    "name": "join",
+    "description": "The crossbar draws between the stems",
+    "parts": ["bar"],
+    "motion": [
+      {
+        "part": "bar",
+        "preset": "draw"
+      }
+    ]
+  }
+}

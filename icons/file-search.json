@@ -1,0 +1,25 @@
+{
+  "name": "file-search",
+  "category": "actions",
+  "tags": ["find", "lookup", "search", "document", "magnifier"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-search"],
+    "heroicons": ["document-magnifying-glass"],
+    "tabler": ["file-search"],
+    "phosphor": ["file-magnifying-glass"],
+    "material": ["find_in_page"]
+  },
+  "animation": {
+    "name": "search",
+    "description": "The lens circles as if searching",
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "orbit",
+        "r": 1
+      }
+    ]
+  }
+}

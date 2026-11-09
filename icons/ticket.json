@@ -1,0 +1,37 @@
+{
+  "name": "ticket",
+  "category": "objects",
+  "tags": ["pass", "admission", "event", "coupon", "entry"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["ticket"],
+    "heroicons": ["ticket"],
+    "tabler": ["ticket"],
+    "phosphor": ["ticket"],
+    "material": ["confirmation_number"]
+  },
+  "animation": {
+    "name": "punch",
+    "description": "The perforation punches through, dash by dash",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 200
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 200,
+        "delay": 120
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 200,
+        "delay": 240
+      }
+    ]
+  }
+}

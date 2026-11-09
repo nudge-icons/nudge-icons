@@ -1,0 +1,24 @@
+{
+  "name": "file-x",
+  "category": "actions",
+  "tags": ["close-file", "remove", "delete", "error", "document"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-x"],
+    "tabler": ["file-x"],
+    "phosphor": ["file-x"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The cross turns a quarter turn and settles",
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "spin",
+        "origin": [17, 18],
+        "angle": 90
+      }
+    ]
+  }
+}

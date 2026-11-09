@@ -1,0 +1,24 @@
+{
+  "name": "asterisk",
+  "category": "interface",
+  "tags": ["required", "star", "footnote", "wildcard", "multiply"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["asterisk"],
+    "tabler": ["asterisk"],
+    "phosphor": ["asterisk"],
+    "material": ["asterisk"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The asterisk turns a sixth of a turn and settles",
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "spin",
+        "angle": 60
+      }
+    ]
+  }
+}

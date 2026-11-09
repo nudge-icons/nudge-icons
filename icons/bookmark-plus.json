@@ -1,0 +1,30 @@
+{
+  "name": "bookmark-plus",
+  "category": "actions",
+  "tags": ["save", "add", "favorite", "later", "ribbon"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["bookmark-plus"],
+    "tabler": ["bookmark-plus"],
+    "material": ["bookmark_add"]
+  },
+  "animation": {
+    "name": "add",
+    "description": "The ribbon drops a little and the plus turns",
+    "parts": ["ribbon", "plus"],
+    "motion": [
+      {
+        "part": "ribbon",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [12, 10],
+        "angle": 90,
+        "delay": 100
+      }
+    ]
+  }
+}

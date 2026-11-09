@@ -1,0 +1,24 @@
+{
+  "name": "pen",
+  "category": "actions",
+  "tags": ["write", "edit", "ink", "draw", "compose"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["pen"],
+    "tabler": ["ballpen"],
+    "phosphor": ["pen"]
+  },
+  "animation": {
+    "name": "rock",
+    "description": "The pen rocks back and forth on its tip",
+    "parts": ["pen"],
+    "motion": [
+      {
+        "part": "pen",
+        "preset": "swing",
+        "origin": [3.5, 20.5],
+        "angle": 7
+      }
+    ]
+  }
+}

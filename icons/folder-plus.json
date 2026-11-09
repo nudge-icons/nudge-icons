@@ -1,0 +1,26 @@
+{
+  "name": "folder-plus",
+  "category": "actions",
+  "tags": ["new-folder", "add", "create", "directory"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["folder-plus"],
+    "heroicons": ["folder-plus"],
+    "tabler": ["folder-plus"],
+    "phosphor": ["folder-plus"],
+    "material": ["create_new_folder"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The plus turns a quarter turn and settles",
+    "parts": ["plus"],
+    "motion": [
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [18, 17.5],
+        "angle": 90
+      }
+    ]
+  }
+}

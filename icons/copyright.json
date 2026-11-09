@@ -1,0 +1,23 @@
+{
+  "name": "copyright",
+  "category": "interface",
+  "tags": ["license", "rights", "legal", "c"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["copyright"],
+    "tabler": ["copyright"],
+    "phosphor": ["copyright"],
+    "material": ["copyright"]
+  },
+  "animation": {
+    "name": "draw",
+    "description": "The C draws itself inside the circle",
+    "parts": ["letter"],
+    "motion": [
+      {
+        "part": "letter",
+        "preset": "draw"
+      }
+    ]
+  }
+}

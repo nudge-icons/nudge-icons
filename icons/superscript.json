@@ -1,0 +1,24 @@
+{
+  "name": "superscript",
+  "category": "actions",
+  "tags": ["exponent", "power", "raise", "text", "format"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["superscript"],
+    "tabler": ["superscript"],
+    "phosphor": ["text-superscript"],
+    "material": ["superscript"]
+  },
+  "animation": {
+    "name": "raise",
+    "description": "The small figure rises higher and comes back",
+    "parts": ["figure"],
+    "motion": [
+      {
+        "part": "figure",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

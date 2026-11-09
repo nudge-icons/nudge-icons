@@ -1,0 +1,24 @@
+{
+  "name": "eraser",
+  "category": "actions",
+  "tags": ["erase", "rubber", "clear", "remove", "delete"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["eraser"],
+    "tabler": ["eraser"],
+    "phosphor": ["eraser"],
+    "material": ["ink_eraser"]
+  },
+  "animation": {
+    "name": "rub",
+    "description": "The eraser rubs back and forth",
+    "parts": ["eraser"],
+    "motion": [
+      {
+        "part": "eraser",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

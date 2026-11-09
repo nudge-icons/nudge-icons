@@ -1,0 +1,24 @@
+{
+  "name": "certificate",
+  "category": "objects",
+  "tags": ["diploma", "award", "credential", "license", "achievement"],
+  "since": "0.3.0",
+  "equivalents": {
+    "tabler": ["certificate"],
+    "phosphor": ["certificate"],
+    "material": ["license"]
+  },
+  "animation": {
+    "name": "stamp",
+    "description": "The seal is stamped on and settles",
+    "parts": ["seal"],
+    "motion": [
+      {
+        "part": "seal",
+        "preset": "pulse",
+        "origin": [17, 15.5],
+        "scale": 1.15
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "folder-minus",
+  "category": "actions",
+  "tags": ["remove", "delete", "subtract", "directory"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["folder-minus"],
+    "heroicons": ["folder-minus"],
+    "tabler": ["folder-minus"],
+    "phosphor": ["folder-minus"]
+  },
+  "animation": {
+    "name": "squeeze",
+    "description": "The minus squeezes in and springs back",
+    "parts": ["minus"],
+    "motion": [
+      {
+        "part": "minus",
+        "preset": "pulse",
+        "origin": [18, 17.5],
+        "scale": 0.7,
+        "axis": "x"
+      }
+    ]
+  }
+}

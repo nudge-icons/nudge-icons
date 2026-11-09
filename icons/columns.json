@@ -1,0 +1,24 @@
+{
+  "name": "columns",
+  "category": "interface",
+  "tags": ["layout", "split", "two-columns", "panes", "grid"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["columns-2", "columns"],
+    "heroicons": ["view-columns"],
+    "tabler": ["layout-columns"],
+    "phosphor": ["columns"],
+    "material": ["view_column"]
+  },
+  "animation": {
+    "name": "split",
+    "description": "The divider draws down the middle",
+    "parts": ["divider"],
+    "motion": [
+      {
+        "part": "divider",
+        "preset": "draw"
+      }
+    ]
+  }
+}

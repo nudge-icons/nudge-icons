@@ -1,0 +1,26 @@
+{
+  "name": "file-minus",
+  "category": "actions",
+  "tags": ["remove", "delete", "subtract", "document", "page"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-minus"],
+    "heroicons": ["document-minus"],
+    "tabler": ["file-minus"],
+    "phosphor": ["file-minus"]
+  },
+  "animation": {
+    "name": "squeeze",
+    "description": "The minus squeezes in and springs back",
+    "parts": ["minus"],
+    "motion": [
+      {
+        "part": "minus",
+        "preset": "pulse",
+        "origin": [17, 18],
+        "scale": 0.7,
+        "axis": "x"
+      }
+    ]
+  }
+}

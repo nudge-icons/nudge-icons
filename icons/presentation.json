@@ -1,0 +1,24 @@
+{
+  "name": "presentation",
+  "category": "objects",
+  "tags": ["slides", "board", "talk", "meeting", "chart"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["presentation"],
+    "heroicons": ["presentation-chart-line"],
+    "tabler": ["presentation"],
+    "phosphor": ["presentation-chart"],
+    "material": ["co_present"]
+  },
+  "animation": {
+    "name": "present",
+    "description": "The chart line draws across the board",
+    "parts": ["chart"],
+    "motion": [
+      {
+        "part": "chart",
+        "preset": "draw"
+      }
+    ]
+  }
+}

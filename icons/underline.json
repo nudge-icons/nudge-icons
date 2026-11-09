@@ -1,0 +1,24 @@
+{
+  "name": "underline",
+  "category": "actions",
+  "tags": ["text", "format", "emphasis", "editor"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["underline"],
+    "heroicons": ["underline"],
+    "tabler": ["underline"],
+    "phosphor": ["text-underline"],
+    "material": ["format_underlined"]
+  },
+  "animation": {
+    "name": "underline",
+    "description": "The line draws under the letter",
+    "parts": ["line"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "draw"
+      }
+    ]
+  }
+}

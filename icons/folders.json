@@ -1,0 +1,25 @@
+{
+  "name": "folders",
+  "category": "objects",
+  "tags": ["directories", "collection", "multiple", "stack", "projects"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["folders"],
+    "tabler": ["folders"],
+    "phosphor": ["folders"],
+    "material": ["folder_copy"]
+  },
+  "animation": {
+    "name": "stack",
+    "description": "The front folder slides onto the back one and returns",
+    "parts": ["front"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": -2,
+        "y": 2
+      }
+    ]
+  }
+}

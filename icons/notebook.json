@@ -1,0 +1,23 @@
+{
+  "name": "notebook",
+  "category": "objects",
+  "tags": ["journal", "notes", "diary", "planner", "notepad"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["notebook"],
+    "tabler": ["notebook"],
+    "phosphor": ["notebook"]
+  },
+  "animation": {
+    "name": "snap",
+    "description": "The elastic band is pulled out and snaps back",
+    "parts": ["band"],
+    "motion": [
+      {
+        "part": "band",
+        "preset": "bounce",
+        "x": 1.5
+      }
+    ]
+  }
+}

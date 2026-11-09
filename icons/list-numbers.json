@@ -1,0 +1,34 @@
+{
+  "name": "list-numbers",
+  "category": "interface",
+  "tags": ["ordered", "numbered", "steps", "sequence", "rows"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["list-ordered"],
+    "heroicons": ["numbered-list"],
+    "tabler": ["list-numbers"],
+    "phosphor": ["list-numbers"],
+    "material": ["format_list_numbered"]
+  },
+  "animation": {
+    "name": "write",
+    "description": "The lines draw in one after another",
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "draw"
+      },
+      {
+        "part": "middle",
+        "preset": "draw",
+        "delay": 100
+      },
+      {
+        "part": "bottom",
+        "preset": "draw",
+        "delay": 200
+      }
+    ]
+  }
+}

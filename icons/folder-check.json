@@ -1,0 +1,22 @@
+{
+  "name": "folder-check",
+  "category": "status",
+  "tags": ["done", "synced", "approved", "complete", "directory"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["folder-check"],
+    "tabler": ["folder-check"],
+    "material": ["folder_check"]
+  },
+  "animation": {
+    "name": "check",
+    "description": "The tick draws itself",
+    "parts": ["check"],
+    "motion": [
+      {
+        "part": "check",
+        "preset": "draw"
+      }
+    ]
+  }
+}

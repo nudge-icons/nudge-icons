@@ -1,0 +1,27 @@
+{
+  "name": "italic",
+  "category": "actions",
+  "tags": ["slant", "emphasis", "text", "format", "editor"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["italic"],
+    "heroicons": ["italic"],
+    "tabler": ["italic"],
+    "phosphor": ["text-italic"],
+    "material": ["format_italic"]
+  },
+  "animation": {
+    "name": "lean",
+    "description": "The letter leans further over and straightens",
+    "parts": ["letter"],
+    "motion": [
+      {
+        "part": "letter",
+        "preset": "fold",
+        "origin": [12, 12],
+        "skew": -12,
+        "scale": 1
+      }
+    ]
+  }
+}

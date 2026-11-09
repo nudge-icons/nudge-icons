@@ -1,0 +1,24 @@
+{
+  "name": "type",
+  "category": "actions",
+  "tags": ["text", "font", "typography", "letter", "t"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["type"],
+    "tabler": ["letter-t", "typography"],
+    "phosphor": ["text-t"],
+    "material": ["title", "text_fields"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The letter is struck like a key and springs back",
+    "parts": ["letter"],
+    "motion": [
+      {
+        "part": "letter",
+        "preset": "bounce",
+        "y": 1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "highlighter",
+  "category": "actions",
+  "tags": ["highlight", "marker", "mark", "emphasis", "text"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["highlighter"],
+    "tabler": ["highlight"],
+    "phosphor": ["highlighter"],
+    "material": ["ink_highlighter"]
+  },
+  "animation": {
+    "name": "sweep",
+    "description": "The highlighter sweeps as if marking a line",
+    "parts": ["marker"],
+    "motion": [
+      {
+        "part": "marker",
+        "preset": "swing",
+        "origin": [3.5, 19.5],
+        "angle": 7
+      }
+    ]
+  }
+}

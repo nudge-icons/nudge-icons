@@ -1,0 +1,24 @@
+{
+  "name": "file-video",
+  "category": "objects",
+  "tags": ["movie", "clip", "media", "play", "document"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-play", "file-video"],
+    "phosphor": ["file-video"],
+    "material": ["video_file"]
+  },
+  "animation": {
+    "name": "play",
+    "description": "The play button pulses",
+    "parts": ["play"],
+    "motion": [
+      {
+        "part": "play",
+        "preset": "pulse",
+        "origin": [12, 15],
+        "scale": 1.2
+      }
+    ]
+  }
+}

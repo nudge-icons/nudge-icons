@@ -1,0 +1,23 @@
+{
+  "name": "folder-search",
+  "category": "actions",
+  "tags": ["find", "browse", "lookup", "directory", "magnifier"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["folder-search"],
+    "tabler": ["folder-search"],
+    "material": ["folder_eye"]
+  },
+  "animation": {
+    "name": "search",
+    "description": "The lens circles as if searching",
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "orbit",
+        "r": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "quote",
+  "category": "actions",
+  "tags": ["blockquote", "citation", "testimonial", "quotes", "text"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["quote"],
+    "tabler": ["quote", "blockquote"],
+    "phosphor": ["quotes"],
+    "material": ["format_quote"]
+  },
+  "animation": {
+    "name": "hop",
+    "description": "The quote marks hop one after the other",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "bounce",
+        "y": -1.5
+      },
+      {
+        "part": "right",
+        "preset": "bounce",
+        "y": -1.5,
+        "delay": 100
+      }
+    ]
+  }
+}

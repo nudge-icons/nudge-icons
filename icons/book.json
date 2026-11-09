@@ -1,0 +1,25 @@
+{
+  "name": "book",
+  "category": "objects",
+  "tags": ["read", "library", "manual", "guide", "docs"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["book"],
+    "tabler": ["book-2"],
+    "phosphor": ["book"],
+    "material": ["book"]
+  },
+  "animation": {
+    "name": "tip",
+    "description": "The book tips out as if taken from a shelf and settles",
+    "parts": ["book"],
+    "motion": [
+      {
+        "part": "book",
+        "preset": "swing",
+        "origin": [4.5, 21],
+        "angle": -6
+      }
+    ]
+  }
+}

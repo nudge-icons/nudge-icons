@@ -1,0 +1,22 @@
+{
+  "name": "file-image",
+  "category": "objects",
+  "tags": ["picture", "photo", "image", "document", "media"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-image"],
+    "phosphor": ["file-image"]
+  },
+  "animation": {
+    "name": "rise",
+    "description": "The sun rises and sets again",
+    "parts": ["sun"],
+    "motion": [
+      {
+        "part": "sun",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

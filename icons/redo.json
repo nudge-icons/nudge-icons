@@ -1,0 +1,25 @@
+{
+  "name": "redo",
+  "category": "actions",
+  "tags": ["forward", "repeat", "again", "arrow-uturn-right"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["redo-2"],
+    "heroicons": ["arrow-uturn-right"],
+    "tabler": ["arrow-forward-up"],
+    "phosphor": ["arrow-u-up-right"],
+    "material": ["redo"]
+  },
+  "animation": {
+    "name": "redo",
+    "description": "The arrow pushes on to the right and returns",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": 1.5
+      }
+    ]
+  }
+}

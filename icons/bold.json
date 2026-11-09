@@ -1,0 +1,26 @@
+{
+  "name": "bold",
+  "category": "actions",
+  "tags": ["strong", "text", "format", "weight", "editor"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["bold"],
+    "heroicons": ["bold"],
+    "tabler": ["bold"],
+    "phosphor": ["text-b"],
+    "material": ["format_bold"]
+  },
+  "animation": {
+    "name": "thicken",
+    "description": "The letter swells and settles",
+    "parts": ["letter"],
+    "motion": [
+      {
+        "part": "letter",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.15
+      }
+    ]
+  }
+}

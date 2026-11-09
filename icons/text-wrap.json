@@ -1,0 +1,28 @@
+{
+  "name": "text-wrap",
+  "category": "actions",
+  "tags": ["wrap", "line-break", "paragraph", "flow", "text"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["text-wrap", "wrap-text"],
+    "tabler": ["text-wrap"],
+    "material": ["wrap_text"]
+  },
+  "animation": {
+    "name": "wrap",
+    "description": "The line wraps round and the arrow pushes it to the next line",
+    "parts": ["wrap", "head"],
+    "motion": [
+      {
+        "part": "wrap",
+        "preset": "draw"
+      },
+      {
+        "part": "head",
+        "preset": "nudge",
+        "x": -1.5,
+        "delay": 300
+      }
+    ]
+  }
+}

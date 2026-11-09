@@ -1,0 +1,25 @@
+{
+  "name": "sticky-note",
+  "category": "objects",
+  "tags": ["note", "memo", "post-it", "reminder", "annotation"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["sticky-note"],
+    "tabler": ["note"],
+    "phosphor": ["note"],
+    "material": ["sticky_note_2"]
+  },
+  "animation": {
+    "name": "flutter",
+    "description": "The note flutters on its sticky edge",
+    "parts": ["note"],
+    "motion": [
+      {
+        "part": "note",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 6
+      }
+    ]
+  }
+}

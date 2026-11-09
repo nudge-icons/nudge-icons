@@ -1,0 +1,25 @@
+{
+  "name": "undo",
+  "category": "actions",
+  "tags": ["back", "revert", "return", "arrow-uturn-left"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["undo-2"],
+    "heroicons": ["arrow-uturn-left"],
+    "tabler": ["arrow-back-up"],
+    "phosphor": ["arrow-u-up-left"],
+    "material": ["undo"]
+  },
+  "animation": {
+    "name": "undo",
+    "description": "The arrow pulls back to the left and returns",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": -1.5
+      }
+    ]
+  }
+}

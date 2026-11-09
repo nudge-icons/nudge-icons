@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect data-part="cover" x="6" y="2.5" width="14" height="19" rx="2"/>
+  <g data-part="tabs">
+    <path d="M4 7.5h4"/>
+    <path d="M4 12h4"/>
+    <path d="M4 16.5h4"/>
+  </g>
+  <path data-part="band" d="M16.5 2.5v19"/>
+</svg>

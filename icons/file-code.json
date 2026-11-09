@@ -1,0 +1,29 @@
+{
+  "name": "file-code",
+  "category": "objects",
+  "tags": ["source", "script", "developer", "programming", "document"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-code"],
+    "tabler": ["file-code"],
+    "phosphor": ["file-code"],
+    "material": ["code_blocks"]
+  },
+  "animation": {
+    "name": "brackets",
+    "description": "The brackets push apart and come back",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1
+      }
+    ]
+  }
+}

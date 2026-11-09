@@ -1,0 +1,27 @@
+{
+  "name": "bookmark-check",
+  "category": "status",
+  "tags": ["saved", "bookmarked", "favorite", "done", "ribbon"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["bookmark-check"],
+    "material": ["bookmark_added", "bookmark_check"]
+  },
+  "animation": {
+    "name": "check",
+    "description": "The ribbon drops a little and the tick draws itself",
+    "parts": ["ribbon", "check"],
+    "motion": [
+      {
+        "part": "ribbon",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "check",
+        "preset": "draw",
+        "delay": 150
+      }
+    ]
+  }
+}

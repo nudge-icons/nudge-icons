@@ -1,0 +1,24 @@
+{
+  "name": "subscript",
+  "category": "actions",
+  "tags": ["index", "lower", "chemistry", "text", "format"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["subscript"],
+    "tabler": ["subscript"],
+    "phosphor": ["text-subscript"],
+    "material": ["subscript"]
+  },
+  "animation": {
+    "name": "drop",
+    "description": "The small figure drops lower and comes back",
+    "parts": ["figure"],
+    "motion": [
+      {
+        "part": "figure",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
+  }
+}

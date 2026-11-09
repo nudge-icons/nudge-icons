@@ -1,0 +1,24 @@
+{
+  "name": "signature",
+  "category": "actions",
+  "tags": ["sign", "autograph", "approve", "contract", "handwriting"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["signature"],
+    "tabler": ["signature"],
+    "phosphor": ["signature"],
+    "material": ["signature"]
+  },
+  "animation": {
+    "name": "sign",
+    "description": "The signature writes itself above the line",
+    "parts": ["scribble"],
+    "motion": [
+      {
+        "part": "scribble",
+        "preset": "draw",
+        "duration": 900
+      }
+    ]
+  }
+}

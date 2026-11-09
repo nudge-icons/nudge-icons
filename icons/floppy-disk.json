@@ -1,0 +1,24 @@
+{
+  "name": "floppy-disk",
+  "category": "actions",
+  "tags": ["save", "store", "disk", "write", "keep"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["save"],
+    "tabler": ["device-floppy"],
+    "phosphor": ["floppy-disk"],
+    "material": ["save"]
+  },
+  "animation": {
+    "name": "slide",
+    "description": "The shutter slides open and back",
+    "parts": ["shutter"],
+    "motion": [
+      {
+        "part": "shutter",
+        "preset": "nudge",
+        "x": 1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "scroll",
+  "category": "objects",
+  "tags": ["parchment", "document", "script", "story", "terms"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["scroll", "scroll-text"],
+    "phosphor": ["scroll"]
+  },
+  "animation": {
+    "name": "write",
+    "description": "The lines write themselves on the scroll",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 150
+      }
+    ]
+  }
+}

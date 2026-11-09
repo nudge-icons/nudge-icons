@@ -1,0 +1,43 @@
+{
+  "name": "text-align-right",
+  "category": "actions",
+  "tags": ["align", "alignment", "paragraph", "justify", "text", "end", "flush-right"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["text-align-end", "align-right"],
+    "heroicons": ["bars-3-bottom-right"],
+    "tabler": ["align-right"],
+    "phosphor": ["text-align-right"],
+    "material": ["format_align_right"]
+  },
+  "animation": {
+    "name": "align",
+    "description": "The lines draw in towards the right edge and spring back",
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "pulse",
+        "origin": [20.5, 6],
+        "scale": 0.7,
+        "axis": "x"
+      },
+      {
+        "part": "middle",
+        "preset": "pulse",
+        "origin": [20.5, 12],
+        "scale": 0.7,
+        "axis": "x",
+        "delay": 80
+      },
+      {
+        "part": "bottom",
+        "preset": "pulse",
+        "origin": [20.5, 18],
+        "scale": 0.7,
+        "axis": "x",
+        "delay": 160
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "strikethrough",
+  "category": "actions",
+  "tags": ["strike", "cross-out", "delete", "text", "format"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["strikethrough"],
+    "heroicons": ["strikethrough"],
+    "tabler": ["strikethrough"],
+    "phosphor": ["text-strikethrough"],
+    "material": ["format_strikethrough"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The line strikes through the letter",
+    "parts": ["line"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "draw"
+      }
+    ]
+  }
+}

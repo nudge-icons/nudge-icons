@@ -1,0 +1,36 @@
+{
+  "name": "link-break",
+  "category": "actions",
+  "tags": ["unlink", "broken-link", "detach", "disconnect", "url"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["unlink"],
+    "heroicons": ["link-slash"],
+    "tabler": ["unlink", "link-off"],
+    "phosphor": ["link-break"],
+    "material": ["link_off"]
+  },
+  "animation": {
+    "name": "snap",
+    "description": "The two links pull apart and the break marks flash",
+    "parts": ["top", "bottom", "marks"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "part": "marks",
+        "preset": "flash"
+      }
+    ]
+  }
+}

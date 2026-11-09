@@ -1,0 +1,22 @@
+{
+  "name": "file-spreadsheet",
+  "category": "objects",
+  "tags": ["sheet", "table", "excel", "csv", "data"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["file-spreadsheet"],
+    "tabler": ["file-spreadsheet"],
+    "phosphor": ["file-xls"]
+  },
+  "animation": {
+    "name": "fill",
+    "description": "The grid lines draw across the table",
+    "parts": ["grid"],
+    "motion": [
+      {
+        "part": "grid",
+        "preset": "draw"
+      }
+    ]
+  }
+}
