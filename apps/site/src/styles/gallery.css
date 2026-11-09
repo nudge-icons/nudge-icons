@@ -355,3 +355,15 @@ a.cell {
 .empty p {
   margin: 0;
 }
+
+@media (hover: hover) {
+  .chip:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-2);
+  }
+
+  .chip[aria-pressed="true"]:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+}

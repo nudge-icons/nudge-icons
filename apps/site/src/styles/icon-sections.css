@@ -61,6 +61,13 @@
   border-bottom-color: var(--accent);
 }
 
+@media (hover: hover) {
+  .tab-list button:not([aria-selected="true"]):hover {
+    color: var(--text);
+    border-bottom-color: var(--border-strong);
+  }
+}
+
 .svg-source {
   position: relative;
 }

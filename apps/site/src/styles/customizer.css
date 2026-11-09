@@ -170,6 +170,14 @@
     0 0 0 3.5px var(--accent);
 }
 
+@media (hover: hover) {
+  .swatch:not([aria-checked="true"], [data-checked]):hover {
+    box-shadow:
+      0 0 0 2px var(--surface),
+      0 0 0 3.5px var(--border-strong);
+  }
+}
+
 /* currentColor: half text colour, half page, like the icon taking the text colour. */
 .swatch-current {
   background: linear-gradient(135deg, var(--text) 50%, var(--surface) 50%);
