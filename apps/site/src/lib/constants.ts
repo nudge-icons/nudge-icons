@@ -12,3 +12,6 @@ export const NEW_ISSUE_URL = `${REPO_URL}/issues/new`;
 export const CONTRIBUTING_URL = `${REPO_URL}/blob/main/CONTRIBUTING.md`;
 export const LICENSE_URL = `${REPO_URL}/blob/main/LICENSE`;
 export const SKILL_URL = `${REPO_URL}/tree/main/skills/nudge-icons`;
+/** The GitHub release of a version. Releases are made on the React package tag. */
+export const releaseUrl = (version: string) =>
+  `${REPO_URL}/releases/tag/${encodeURIComponent(`@nudge-icons/react@${version}`)}`;

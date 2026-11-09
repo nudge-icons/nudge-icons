@@ -57,6 +57,22 @@
   font-size: 28px;
 }
 
+.icon-since {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.icon-since a {
+  color: inherit;
+  font-family: var(--mono);
+  text-underline-offset: 2px;
+}
+
+.icon-since a:hover {
+  color: var(--accent);
+}
+
 .icon-cols {
   display: grid;
   grid-template-columns: 340px minmax(0, 1fr);

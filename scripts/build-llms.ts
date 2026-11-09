@@ -23,6 +23,7 @@ interface ListedIcon {
   category: string;
   tags: string[];
   themes?: string[];
+  since: string;
   animation: Animation;
   toggle?: { description: string; parts: string[] };
   variants: { variant: string; id: string; component: string }[];
@@ -72,6 +73,7 @@ const icons = list
     ];
     if (icon.toggle) lines.push(`- Second state (\`active\`): ${icon.toggle.description}.`);
     if (variants.length) lines.push(`- Variants: ${variants.map((c) => `\`${c}\``).join(", ")}`);
+    lines.push(`- Added in: ${icon.since}`);
     if (icon.themes) lines.push(`- Themes: ${icon.themes.join(", ")}`);
     lines.push(`- Tags: ${icon.tags.join(", ")}`);
     return lines.join("\n");
