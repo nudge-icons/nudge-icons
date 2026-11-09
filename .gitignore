@@ -31,3 +31,6 @@ apps/storybook/playwright-report/
 
 # Copied from the root LICENSE before packing
 packages/*/LICENSE
+
+# Drafts of posts, published elsewhere
+docs/posts/
