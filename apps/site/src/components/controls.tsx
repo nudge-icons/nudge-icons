@@ -128,7 +128,16 @@ export function CodeBlock({
   return (
     <div className="code">
       <div className="code-bar">
-        <span className="code-label">{label}</span>
+        {/* A label cut short by the narrow bar shows in full as a tooltip; a whole one gets none. */}
+        <span
+          className="code-label"
+          onMouseEnter={(e) => {
+            const el = e.currentTarget;
+            el.title = el.scrollWidth > el.clientWidth ? label : "";
+          }}
+        >
+          {label}
+        </span>
         <span className="code-tools">
           {toolbar}
           <CopyButton text={code} />

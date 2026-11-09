@@ -16,13 +16,20 @@
   border-bottom: 1px solid var(--border);
 }
 
+/* The switch and Copy keep their size; a long label is cut short instead. */
 .code-tools {
   display: inline-flex;
+  flex: none;
   align-items: center;
   gap: 6px;
 }
 
+.code-tools .segmented {
+  flex-wrap: nowrap;
+}
+
 .code-label {
+  min-width: 0;
   font-size: 12px;
   font-family: var(--mono);
   color: var(--text-2);
