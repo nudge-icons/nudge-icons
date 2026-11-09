@@ -38,7 +38,7 @@ const none = new Set<never>();
 
 describe("gallery search", () => {
   it("lists every variant as its own entry", () => {
-    expect(ids(searchEntries(ENTRIES, "heart", null, none))).toEqual([
+    expect(ids(searchEntries(ENTRIES, "heart", {}, none))).toEqual([
       "heart",
       "heart-filled",
       "heart-half",
@@ -46,33 +46,43 @@ describe("gallery search", () => {
   });
 
   it("finds icons by tags and by names in other sets", () => {
-    expect(ids(searchEntries(ENTRIES, "love", null, none))).toEqual([
+    expect(ids(searchEntries(ENTRIES, "love", {}, none))).toEqual([
       "heart",
       "heart-filled",
       "heart-half",
     ]);
-    expect(ids(searchEntries(ENTRIES, "triangle alert", null, none))).toEqual(["alert-triangle"]);
+    expect(ids(searchEntries(ENTRIES, "triangle alert", {}, none))).toEqual(["alert-triangle"]);
   });
 
   it("finds icons by theme", () => {
     const sparkles = entry("sparkles", icon("sparkles", { themes: ["ai"] }));
-    expect(ids(searchEntries([...ENTRIES, sparkles], "AI", null, none))).toEqual(["sparkles"]);
+    expect(ids(searchEntries([...ENTRIES, sparkles], "AI", {}, none))).toEqual(["sparkles"]);
+  });
+
+  it("narrows to a theme, together with a category", () => {
+    const chip = entry("chip", icon("chip", { category: "objects", themes: ["ai"] }));
+    const bot = entry("bot", icon("bot", { category: "status", themes: ["ai"] }));
+    const list = [...ENTRIES, chip, bot];
+    expect(ids(searchEntries(list, "", { theme: "ai" }, none))).toEqual(["chip", "bot"]);
+    expect(ids(searchEntries(list, "", { category: "status", theme: "ai" }, none))).toEqual([
+      "bot",
+    ]);
   });
 
   it("shows only the chosen variants", () => {
-    expect(ids(searchEntries(ENTRIES, "", null, new Set(["filled"] as const)))).toEqual([
+    expect(ids(searchEntries(ENTRIES, "", {}, new Set(["filled"] as const)))).toEqual([
       "heart-filled",
     ]);
-    expect(ids(searchEntries(ENTRIES, "", null, new Set(["filled", "half"] as const)))).toEqual([
+    expect(ids(searchEntries(ENTRIES, "", {}, new Set(["filled", "half"] as const)))).toEqual([
       "heart-filled",
       "heart-half",
     ]);
   });
 
   it("combines category and second state", () => {
-    expect(ids(searchEntries(ENTRIES, "", "interface", new Set(["toggle"] as const)))).toEqual([
-      "eye",
-    ]);
+    expect(
+      ids(searchEntries(ENTRIES, "", { category: "interface" }, new Set(["toggle"] as const))),
+    ).toEqual(["eye"]);
   });
 });
 
@@ -126,18 +136,18 @@ describe("new icons", () => {
   const list = [entry("bell", old), entry("sun", fresh)];
 
   it("filters to the latest release", () => {
-    expect(ids(searchEntries(list, "", null, new Set(["new"] as const)))).toEqual(["sun"]);
+    expect(ids(searchEntries(list, "", {}, new Set(["new"] as const)))).toEqual(["sun"]);
   });
 
   it("sorts newest first, comparing versions as numbers", () => {
-    expect(ids(searchEntries(list, "", null, none, "newest"))).toEqual(["sun", "bell"]);
+    expect(ids(searchEntries(list, "", {}, none, "newest"))).toEqual(["sun", "bell"]);
     expect(compareVersions("0.10.0", "0.9.0")).toBeGreaterThan(0);
   });
 });
 
 describe("Z–A", () => {
   it("reverses icon names and keeps each icon's variants together, outline first", () => {
-    expect(ids(searchEntries(ENTRIES, "", null, none, "name-desc"))).toEqual([
+    expect(ids(searchEntries(ENTRIES, "", {}, none, "name-desc"))).toEqual([
       "heart",
       "heart-filled",
       "heart-half",

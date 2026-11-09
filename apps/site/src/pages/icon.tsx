@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Refresh } from "@nudge-icons/react";
 import { CORE_DIR, ICONS_DIR } from "../../../../scripts/lib/registry-layout.ts";
-import type { Entry } from "../lib/data";
+import { themeLabel, type Entry } from "../lib/data";
 import { galleryHref, href, Link } from "../state/router";
 import { forIcon, toAnimate, useSettings } from "../state/settings";
 import {
@@ -52,8 +52,8 @@ export function IconPage({ entry }: { entry: Entry }) {
       </Link>
       <header className="icon-head">
         <h1>{entry.id}</h1>
-        {/* One row: the category first, then the second state, then the search tags. */}
-        <ul className="tags" role="list" aria-label="Category and tags">
+        {/* One row: the category first, then themes, the second state and the search tags. */}
+        <ul className="tags" role="list" aria-label="Category, themes and tags">
           <li>
             <Link
               to={`${href({ page: "gallery" })}?category=${icon.category}`}
@@ -63,6 +63,17 @@ export function IconPage({ entry }: { entry: Entry }) {
               {icon.category}
             </Link>
           </li>
+          {(icon.themes ?? []).map((t) => (
+            <li key={t}>
+              <Link
+                to={`${href({ page: "gallery" })}?theme=${t}`}
+                className="tag"
+                title={`All ${themeLabel(t)} icons`}
+              >
+                {themeLabel(t)}
+              </Link>
+            </li>
+          ))}
           {icon.toggle && (
             <li>
               <Link
@@ -74,17 +85,20 @@ export function IconPage({ entry }: { entry: Entry }) {
               </Link>
             </li>
           )}
-          {icon.tags.map((t) => (
-            <li key={t}>
-              <Link
-                to={`${href({ page: "gallery" })}?q=${encodeURIComponent(t)}`}
-                className="tag"
-                title={`Search “${t}”`}
-              >
-                {t}
-              </Link>
-            </li>
-          ))}
+          {/* A tag that repeats a theme ("ai") is already shown as the theme link. */}
+          {icon.tags
+            .filter((t) => !(icon.themes ?? []).includes(t))
+            .map((t) => (
+              <li key={t}>
+                <Link
+                  to={`${href({ page: "gallery" })}?q=${encodeURIComponent(t)}`}
+                  className="tag"
+                  title={`Search “${t}”`}
+                >
+                  {t}
+                </Link>
+              </li>
+            ))}
         </ul>
       </header>
 

@@ -29,15 +29,21 @@ const matches = (e: Searchable, q: string) =>
   (e.icon.themes ?? []).some((t) => t === q) ||
   Object.values(e.icon.equivalents).some((ids) => ids?.some((id) => id.includes(q)));
 
+/** Where to look: a category (one per icon) and a theme (an icon may have several). */
+export interface Scope {
+  category?: string | null;
+  theme?: string | null;
+}
+
 /**
- * Filters by category and the "Show only" filters, then by the query against the id,
+ * Filters by category, theme and the "Show only" filters, then by the query against the id,
  * tags and names in other sets (so `triangle-alert` finds `alert-triangle`). Entries whose
  * id contains the query come first; the order of the set is kept otherwise.
  */
 export function searchEntries<T extends Searchable>(
   entries: readonly T[],
   query: string,
-  category: string | null,
+  { category = null, theme = null }: Scope,
   filters: ReadonlySet<Filter>,
   sort: Sort = "name",
 ): T[] {
@@ -45,6 +51,7 @@ export function searchEntries<T extends Searchable>(
   const wantVariants = (["filled", "half"] as const).filter((f) => filters.has(f));
   return entries
     .filter((e) => category === null || e.icon.category === category)
+    .filter((e) => theme === null || (e.icon.themes ?? []).includes(theme))
     .filter((e) => !filters.has("new") || e.icon.isNew)
     .filter((e) => !filters.has("toggle") || e.icon.hasToggle)
     .filter((e) => wantVariants.length === 0 || (wantVariants as Variant[]).includes(e.variant))

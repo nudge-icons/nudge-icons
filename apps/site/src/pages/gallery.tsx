@@ -7,6 +7,7 @@ import {
   FILTERS,
   HAS_NEW,
   search,
+  THEMES,
   type Filter,
   type Sort,
 } from "../lib/data";
@@ -56,11 +57,13 @@ export function GalleryPage({ selected }: { selected: string | null }) {
   const [initial] = useState(() =>
     parseGalleryUrl(location.search, {
       categories: CATEGORIES.map((c) => c.name),
+      themes: THEMES.map((t) => t.name),
       filters: FILTERS.map((f) => f.id),
     }),
   );
   const [query, setQuery] = useState(initial.query);
   const [category, setCategory] = useState<string | null>(initial.category);
+  const [theme, setTheme] = useState<string | null>(initial.theme);
   const [filters, setFilters] = useState<ReadonlySet<Filter>>(initial.filters);
   const [sort, setSort] = useState<Sort>(initial.sort);
   // With the New filter every icon is from the same release, so Newest falls back to A–Z.
@@ -80,8 +83,8 @@ export function GalleryPage({ selected }: { selected: string | null }) {
   }, [selected]);
 
   const results = useMemo(
-    () => search(query, category, filters, shownSort),
-    [query, category, filters, shownSort],
+    () => search(query, { category, theme }, filters, shownSort),
+    [query, category, theme, filters, shownSort],
   );
   const entry = selected ? (ENTRY_BY_ID.get(selected) ?? null) : null;
 
@@ -102,15 +105,22 @@ export function GalleryPage({ selected }: { selected: string | null }) {
 
   // Clicking the selected icon again, Esc or × clears the selection.
   const urlFor = (icon: string | null) =>
-    `${href({ page: "gallery" })}${galleryQuery({ query, category, filters, sort: shownSort, icon })}`;
+    `${href({ page: "gallery" })}${galleryQuery({ query, category, theme, filters, sort: shownSort, icon })}`;
   const select = (name: string | null) => navigate(urlFor(name), { replace: true });
 
   // Keep the address in step with the view, without adding history entries.
   useEffect(() => {
-    const search = galleryQuery({ query, category, filters, sort: shownSort, icon: selected });
+    const search = galleryQuery({
+      query,
+      category,
+      theme,
+      filters,
+      sort: shownSort,
+      icon: selected,
+    });
     rememberGallerySearch(search);
     if (search !== location.search) navigate(urlFor(selected), { replace: true });
-  }, [query, category, filters, shownSort, selected]);
+  }, [query, category, theme, filters, shownSort, selected]);
 
   useEffect(() => {
     if (!selected) return;
@@ -173,13 +183,37 @@ export function GalleryPage({ selected }: { selected: string | null }) {
                 {c.count}
                 {category === c.name && (
                   <span className="clear-mark" aria-hidden="true">
-                    <X size={12} animate={false} />
+                    <X size={10} animate={false} />
                   </span>
                 )}
               </span>
             </button>
           ))}
         </div>
+        {THEMES.length > 0 && (
+          <div className="side-group">
+            <span className="side-title">Themes</span>
+            {THEMES.map((t) => (
+              <button
+                key={t.name}
+                type="button"
+                className="side-item"
+                aria-pressed={theme === t.name}
+                onClick={() => setTheme(theme === t.name ? null : t.name)}
+              >
+                <span>{t.label}</span>
+                <span className="count">
+                  {t.count}
+                  {theme === t.name && (
+                    <span className="clear-mark" aria-hidden="true">
+                      <X size={10} animate={false} />
+                    </span>
+                  )}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
         <div className="side-group">
           <span className="side-title">Show only</span>
           {FILTERS.map((f) => (
@@ -196,7 +230,7 @@ export function GalleryPage({ selected }: { selected: string | null }) {
                 {f.count}
                 {filters.has(f.id) && (
                   <span className="clear-mark" aria-hidden="true">
-                    <X size={12} animate={false} />
+                    <X size={10} animate={false} />
                   </span>
                 )}
               </span>
@@ -299,6 +333,22 @@ export function GalleryPage({ selected }: { selected: string | null }) {
               )}
             </button>
           ))}
+          {THEMES.map((t) => (
+            <button
+              key={t.name}
+              type="button"
+              className="chip"
+              aria-pressed={theme === t.name}
+              onClick={() => setTheme(theme === t.name ? null : t.name)}
+            >
+              {t.label} {t.count}
+              {theme === t.name && (
+                <span className="clear-mark" aria-hidden="true">
+                  <X size={10} animate={false} />
+                </span>
+              )}
+            </button>
+          ))}
           {FILTERS.map((f) => (
             <button
               key={f.id}
@@ -360,12 +410,13 @@ export function GalleryPage({ selected }: { selected: string | null }) {
             ) : (
               <p>No icons match these filters.</p>
             )}
-            {(category !== null || filters.size > 0) && (
+            {(category !== null || theme !== null || filters.size > 0) && (
               <button
                 type="button"
                 className="btn btn-sm"
                 onClick={() => {
                   setCategory(null);
+                  setTheme(null);
                   setFilters(new Set());
                 }}
               >

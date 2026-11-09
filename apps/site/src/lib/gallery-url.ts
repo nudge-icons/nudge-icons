@@ -1,4 +1,4 @@
-// Gallery state in the address: search, category, filters, sort and the selected icon.
+// Gallery state in the address: search, category, theme, filters, sort and the selected icon.
 // Links can be shared, reloading keeps the view, and returning from an icon page restores it.
 
 import type { Filter, Sort } from "./search";
@@ -6,6 +6,7 @@ import type { Filter, Sort } from "./search";
 export interface GalleryState {
   query: string;
   category: string | null;
+  theme: string | null;
   filters: ReadonlySet<Filter>;
   sort: Sort;
   icon: string | null;
@@ -18,10 +19,15 @@ const SORT_PARAMS: Partial<Record<string, Sort>> = { za: "name-desc", newest: "n
 /** Reads the state; values that do not exist (`allowed`) are dropped instead of failing. */
 export function parseGalleryUrl(
   search: string,
-  allowed: { categories: readonly string[]; filters: readonly Filter[] },
+  allowed: {
+    categories: readonly string[];
+    themes: readonly string[];
+    filters: readonly Filter[];
+  },
 ): GalleryState {
   const p = new URLSearchParams(search);
   const category = p.get("category");
+  const theme = p.get("theme");
   const only = (p.get("only") ?? "")
     .split(",")
     .filter(
@@ -34,6 +40,7 @@ export function parseGalleryUrl(
   return {
     query: p.get("q") ?? "",
     category: category !== null && allowed.categories.includes(category) ? category : null,
+    theme: theme !== null && allowed.themes.includes(theme) ? theme : null,
     filters: new Set(filters),
     sort: SORT_PARAMS[p.get("sort") ?? ""] ?? "name",
     icon: p.get("icon"),
@@ -45,6 +52,7 @@ export function galleryQuery(s: GalleryState): string {
   const p = new URLSearchParams();
   if (s.query.trim() !== "") p.set("q", s.query.trim());
   if (s.category !== null) p.set("category", s.category);
+  if (s.theme !== null) p.set("theme", s.theme);
   const only = FILTER_IDS.filter((f) => s.filters.has(f));
   if (only.length > 0) p.set("only", only.join(","));
   if (s.sort !== "name") p.set("sort", s.sort === "name-desc" ? "za" : s.sort);

@@ -6,6 +6,7 @@ import {
   relatedEntries,
   searchEntries,
   type Filter,
+  type Scope,
   type Sort,
   type Variant,
 } from "./search";
@@ -154,11 +155,19 @@ export const FILTERS: { id: Filter; label: string; hint: string; count: number }
 /** Sorting by release only helps when some icons are newer than others. */
 export const HAS_NEW = ENTRIES.some((e) => e.icon.isNew);
 
-export const search = (
-  query: string,
-  category: string | null,
-  filters: ReadonlySet<Filter>,
-  sort: Sort,
-) => searchEntries(ENTRIES, query, category, filters, sort);
+/** Themes from the current set with their counts, A–Z; a new theme shows up on its own. */
+const THEME_LABELS: Partial<Record<string, string>> = { ai: "AI" };
+export const themeLabel = (id: string) =>
+  THEME_LABELS[id] ?? id.charAt(0).toUpperCase() + id.slice(1);
+export const THEMES = [...new Set(ENTRIES.flatMap((e) => e.icon.themes ?? []))]
+  .sort()
+  .map((name) => ({
+    name,
+    label: themeLabel(name),
+    count: ENTRIES.filter((e) => e.icon.themes?.includes(name)).length,
+  }));
+
+export const search = (query: string, scope: Scope, filters: ReadonlySet<Filter>, sort: Sort) =>
+  searchEntries(ENTRIES, query, scope, filters, sort);
 
 export const related = (entry: Entry) => relatedEntries(ENTRIES, entry);

@@ -3,6 +3,7 @@ import { galleryQuery, parseGalleryUrl } from "./gallery-url";
 
 const allowed = {
   categories: ["actions", "status"],
+  themes: ["ai"],
   filters: ["new", "toggle", "filled", "half"] as const,
 };
 
@@ -11,8 +12,8 @@ describe("gallery URL", () => {
     expect(galleryQuery(parseGalleryUrl("", allowed))).toBe("");
   });
 
-  it("round-trips search, category, filters, sort and icon", () => {
-    const url = "?q=arrow&category=status&only=new,filled&sort=newest&icon=bell";
+  it("round-trips search, category, theme, filters, sort and icon", () => {
+    const url = "?q=arrow&category=status&theme=ai&only=new,filled&sort=newest&icon=bell";
     expect(galleryQuery(parseGalleryUrl(url, allowed))).toBe(url);
   });
 
@@ -21,8 +22,9 @@ describe("gallery URL", () => {
   });
 
   it("drops unknown values instead of failing", () => {
-    const s = parseGalleryUrl("?category=nope&only=bogus&sort=weird", allowed);
+    const s = parseGalleryUrl("?category=nope&theme=nope&only=bogus&sort=weird", allowed);
     expect(s.category).toBeNull();
+    expect(s.theme).toBeNull();
     expect(s.filters.size).toBe(0);
     expect(s.sort).toBe("name");
   });

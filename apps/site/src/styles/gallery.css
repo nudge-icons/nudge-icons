@@ -188,9 +188,9 @@
 .clear-mark {
   display: inline-grid;
   place-items: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
   background: rgb(15 118 110 / 0.14);
   color: var(--accent);
 }
