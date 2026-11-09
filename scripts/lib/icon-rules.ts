@@ -36,6 +36,11 @@ export interface IconMeta {
   name: string;
   category: "actions" | "interface" | "status" | "objects";
   tags: string[];
+  /**
+   * Subject areas for the gallery filters, like `["ai"]`; an icon may have several.
+   * `category` stays the role of the icon (an action, a status…), themes say what it is about.
+   */
+  themes?: Theme[];
   /** Release that added the icon, like "0.2.0". The site marks the latest release as new. */
   since: string;
   /**
@@ -79,6 +84,10 @@ export interface IconMeta {
 /** Icon sets we map to in `equivalents`. */
 export const ICON_SETS = ["lucide", "heroicons", "tabler", "phosphor", "material"] as const;
 export type IconSet = (typeof ICON_SETS)[number];
+
+/** Themes an icon may list in `themes`. Add one here when a batch starts a new subject. */
+export const THEMES = ["ai"] as const;
+export type Theme = (typeof THEMES)[number];
 
 export interface VariantMeta {
   animation?: IconMeta["animation"];
@@ -353,6 +362,7 @@ function checkMeta(
   if (typeof m.since !== "string" || !/^\d+\.\d+\.\d+$/.test(m.since)) {
     errors.push('metadata needs "since": the release that added the icon, like "0.2.0"');
   }
+  errors.push(...checkThemes(m.themes));
   errors.push(...checkEquivalents(m.equivalents));
   const own = variant === "outline" ? undefined : m[variant];
   if (variant !== "outline" && (typeof own !== "object" || own === null)) {
@@ -377,6 +387,21 @@ function checkMeta(
     }
   }
   errors.push(...checkToggle(m.toggle, parts, a?.parts ?? [], elements));
+  return errors;
+}
+
+function checkThemes(themes: unknown): string[] {
+  if (themes === undefined) return [];
+  if (!Array.isArray(themes) || !themes.length) {
+    return ["metadata themes must be a non-empty list, or left out"];
+  }
+  const errors: string[] = [];
+  for (const t of themes) {
+    if (!(THEMES as readonly unknown[]).includes(t)) {
+      errors.push(`unknown theme "${String(t)}" (known: ${THEMES.join(", ")})`);
+    }
+  }
+  if (new Set(themes).size !== themes.length) errors.push("metadata themes has duplicates");
   return errors;
 }
 

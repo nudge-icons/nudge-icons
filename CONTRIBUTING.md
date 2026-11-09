@@ -12,6 +12,23 @@ Every icon in `icons/` follows these rules. `pnpm check:icons` enforces most of 
 - Animated parts are separate elements marked with `data-part="…"`, for example `data-part="clapper"` in `bell`. Part names are also a public styling API (users colour single parts with CSS), so do not rename them in a minor release.
 - Check every icon at 16, 24 and 48px on light and dark backgrounds.
 
+### Shared details
+
+Details that appear in many icons are drawn the same way everywhere, so icons added in different batches still look like one set. Copy them from the reference icon instead of drawing them again:
+
+| Detail                | Reference                     | Geometry                                                                                                 |
+| --------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Arrow                 | `arrow-right`                 | shaft `M5 12h14`, head `M12 5l7 7-7 7`: 7 units along each side of a right angle                         |
+| Diagonal arrow        | `arrow-up-right`              | shaft `M7 17L17 7`, head `M7 7h10v10`                                                                    |
+| Chevron               | `chevron-right`               | `M9 6l6 6-6 6`                                                                                           |
+| Sheet of paper        | `file`                        | `x` 4.5–19.5, `y` 2.5–21.5, corners `r` 2, folded corner 5.5 units from the top right                    |
+| Card or screen        | `credit-card`, `calendar`     | `rect` with `rx="2"`, full width 18–19 units                                                             |
+| Small part            | `clipboard`                   | `rx="1"` on details shorter than about 6 units, so a corner never takes half a side                      |
+| Plus, minus, check, x | `plus`, `minus`, `check`, `x` | full size within 4.5–19.5 (`plus` and `minus` 5–19, `x` 6–18); as a modifier: 6 units long (`user-plus`) |
+| Sparkle               | `sparkle`                     | four-pointed star from quadratic curves: `M9.5 3.5Q10.5 8.5 15.5 9.5…`; the small one is half size       |
+
+Modifiers (a plus on `user-plus`, a sparkle, a check, a small badge) sit on the right side or in the bottom right corner, in a square of about 8 units (14–22). The base shape is cut where the modifier is, leaving a 1.5–2 unit gap, instead of the two crossing. Give the modifier its own `data-part`: it is usually what moves.
+
 ### Filled variant
 
 Some icons also have a filled variant in `icons/filled/<name>.svg` (exported as `HeartFilled`, for example). It follows the same rules with two exceptions:
@@ -24,6 +41,15 @@ Keep the outer size equal to the outline icon and reuse its `data-part` names, s
 ### Half variant
 
 `star` and `heart` also have a half variant in `icons/half/<name>.svg` (`StarHalf`, `HeartHalf`) for ratings. It draws the full outline plus a filled left half, both inside one `data-part` group so the outline animation moves them together. It follows the filled rules. The filled half is stroked too, so its inner edge runs at x=11 and the stroke ends exactly on the centre line. Put the corners where that edge meets the outline on the outline path itself, so their round joins hide under the outline stroke. If the outline has a sharp turn on the centre line (the dip of `heart`), its round join bulges into the empty half; start the outline inside the filled half instead, along the tangent, so there is no join there.
+
+## Naming
+
+- Names are kebab-case and in the singular: `file`, `user`, `chart-bar`. A plural is a different drawing (`files` shows two sheets, `users` two people).
+- The subject comes first, then the modifier: `file-plus`, `user-plus`, `chart-bar`, `arrow-up-right`. Icons of one subject then sort together.
+- Describe what is drawn, not one use of it: `trash`, not `delete`. Uses go into `tags`.
+- No brand or product names, and no logos.
+- When three or more of the sets in `equivalents` agree on a name, use it, because people search for it. Otherwise follow the rules above and keep the other names in `tags` and `equivalents`.
+- Component names are the PascalCase of the file name (`file-plus` → `FilePlus`). A name is public API: do not rename an icon in a minor release.
 
 ## Icon metadata
 
@@ -44,6 +70,7 @@ Each `icons/<name>.svg` has a matching `icons/<name>.json`:
 ```
 
 - `category`: `actions`, `interface`, `status` or `objects`.
+- `themes` (optional): subject areas for the gallery filters, such as `["ai"]`. An icon may have several; general UI icons have none. `category` is the role of the icon, `themes` what it is about. The allowed themes are listed in `THEMES` in `scripts/lib/icon-rules.ts`; add a new one there with the first batch of its subject.
 - `since`: the release that adds the icon, like `"0.2.0"`. New icons get the next release; the site shows those of the latest release as new.
 - `equivalents` (optional) maps other icon sets to their closest icon, using each set's own icon id (its file name), not the component name. Supported sets: `lucide`, `heroicons`, `tabler`, `phosphor`, `material` (Material Symbols). List the set's current id first, then old names it still exports as aliases (Lucide `loader-2` for `loader-circle`). Leave a set out when it has no close match. `pnpm check:icons` checks every id against the sets, which are installed as dev dependencies:
 

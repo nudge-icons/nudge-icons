@@ -27,6 +27,7 @@ const FLAVORS: Flavor[] = [
 interface IconListEntry {
   name: string;
   category?: string;
+  themes?: string[];
   tags?: string[];
   variants: { variant: string; id: string; component: string }[];
 }
@@ -131,7 +132,7 @@ function iconItem(
     title: component,
     description: `Animated ${id.replace(/-/g, " ")} icon (${flavor.label}).`,
     registryDependencies: [itemUrl(flavor, CORE_ITEM)],
-    ...(icon.category && { categories: [icon.category] }),
+    ...(icon.category && { categories: [icon.category, ...(icon.themes ?? [])] }),
     files: [{ path: `${ICONS_DIR}/${id}.ts`, type: "registry:component", content }],
   };
 }

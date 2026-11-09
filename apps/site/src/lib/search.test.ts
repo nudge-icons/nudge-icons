@@ -54,6 +54,11 @@ describe("gallery search", () => {
     expect(ids(searchEntries(ENTRIES, "triangle alert", null, none))).toEqual(["alert-triangle"]);
   });
 
+  it("finds icons by theme", () => {
+    const sparkles = entry("sparkles", icon("sparkles", { themes: ["ai"] }));
+    expect(ids(searchEntries([...ENTRIES, sparkles], "AI", null, none))).toEqual(["sparkles"]);
+  });
+
   it("shows only the chosen variants", () => {
     expect(ids(searchEntries(ENTRIES, "", null, new Set(["filled"] as const)))).toEqual([
       "heart-filled",

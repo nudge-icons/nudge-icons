@@ -12,6 +12,8 @@ export interface Searchable {
     name: string;
     category: string;
     tags: readonly string[];
+    /** Subject areas such as `ai`; empty for general UI icons. */
+    themes?: readonly string[];
     equivalents: Partial<Record<string, readonly string[]>>;
     hasToggle: boolean;
     /** Release that added the icon, like "0.2.0". */
@@ -24,6 +26,7 @@ export interface Searchable {
 const matches = (e: Searchable, q: string) =>
   e.id.includes(q) ||
   e.icon.tags.some((t) => t.includes(q)) ||
+  (e.icon.themes ?? []).some((t) => t === q) ||
   Object.values(e.icon.equivalents).some((ids) => ids?.some((id) => id.includes(q)));
 
 /**

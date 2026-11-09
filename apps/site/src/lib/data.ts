@@ -30,6 +30,7 @@ interface IconMeta {
   name: string;
   category: string;
   tags: string[];
+  themes?: string[];
   since: string;
   equivalents: Partial<Record<EquivalentSet, string[]>>;
   animation: Animation;

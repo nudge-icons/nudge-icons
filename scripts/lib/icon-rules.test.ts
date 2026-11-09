@@ -277,3 +277,24 @@ describe("since", () => {
     expect(checkIcon("dot", body, { ...meta(), since: "v1" })).toContain(message);
   });
 });
+
+describe("themes", () => {
+  const body = svg('<circle data-part="core" cx="12" cy="12" r="4"/>');
+
+  it("is optional and accepts known themes", () => {
+    expect(checkIcon("dot", body, meta(["core"]))).toEqual([]);
+    expect(checkIcon("dot", body, { ...meta(["core"]), themes: ["ai"] })).toEqual([]);
+  });
+
+  it("rejects unknown, duplicate or empty themes", () => {
+    expect(checkIcon("dot", body, { ...meta(["core"]), themes: ["robots"] })).toContain(
+      'unknown theme "robots" (known: ai)',
+    );
+    expect(checkIcon("dot", body, { ...meta(["core"]), themes: ["ai", "ai"] })).toContain(
+      "metadata themes has duplicates",
+    );
+    expect(checkIcon("dot", body, { ...meta(["core"]), themes: [] })).toContain(
+      "metadata themes must be a non-empty list, or left out",
+    );
+  });
+});

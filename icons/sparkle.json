@@ -2,6 +2,7 @@
   "name": "sparkle",
   "category": "actions",
   "tags": ["ai", "magic", "generate", "stars"],
+  "themes": ["ai"],
   "since": "0.1.0",
   "equivalents": {
     "lucide": ["sparkles"],
