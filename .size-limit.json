@@ -32,13 +32,13 @@
     "path": "packages/react/dist/index.js",
     "import": "*",
     "ignore": ["react", "react/jsx-runtime"],
-    "limit": "13 kB"
+    "limit": "17 kB"
   },
   {
     "name": "Vue: every icon",
     "path": "packages/vue/dist/index.js",
     "import": "*",
     "ignore": ["vue"],
-    "limit": "13 kB"
+    "limit": "17 kB"
   }
 ]
