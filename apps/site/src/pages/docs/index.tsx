@@ -23,6 +23,7 @@ const isSlug = (slug: string): slug is DocSlug => slug in CONTENT;
 export function DocsPage({ doc }: { doc: DocSection }) {
   const Content = isSlug(doc.slug) ? CONTENT[doc.slug] : null;
   const index = DOCS.findIndex((d) => d.slug === doc.slug);
+  const prev = index > 0 ? DOCS[index - 1] : undefined;
   const next = DOCS[index + 1];
   return (
     <div className="docs">
@@ -46,11 +47,31 @@ export function DocsPage({ doc }: { doc: DocSection }) {
           <p className="lead">{doc.description}</p>
           {Content && <Content />}
         </article>
-        {next && (
-          <Link to={href({ page: "doc", slug: next.slug })} className="docs-next">
-            <span className="hint">Next</span>
-            {next.title} →
-          </Link>
+        {(prev ?? next) && (
+          <nav className="docs-pager" aria-label="Previous and next">
+            {prev && (
+              <Link
+                to={href({ page: "doc", slug: prev.slug })}
+                className="docs-pager-link"
+                rel="prev"
+              >
+                <span className="hint">Previous</span>
+                {"←\u00a0"}
+                {prev.title}
+              </Link>
+            )}
+            {next && (
+              <Link
+                to={href({ page: "doc", slug: next.slug })}
+                className="docs-pager-link is-next"
+                rel="next"
+              >
+                <span className="hint">Next</span>
+                {next.title}
+                {"\u00a0→"}
+              </Link>
+            )}
+          </nav>
         )}
       </main>
     </div>
