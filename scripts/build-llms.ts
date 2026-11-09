@@ -128,7 +128,7 @@ These are the only props. Any other attribute is passed to the \`<svg>\`.
   - \`"once"\`: plays once when the icon mounts.
   - a number, such as \`3\`: plays that many times.
   - \`false\`: never moves.
-- \`active\` (default false): shows the second drawing, with a transition. Exists only on icons with a second state: ${toggles.join(", ")}. Keep the state itself on the control, with \`aria-expanded\` or \`aria-pressed\`.
+- \`active\` (default false): shows the second drawing, with a transition. Exists only on icons with a second state: ${toggles.join(", ")}. Keep the state itself on the control, with \`aria-expanded\` or \`aria-pressed\`. An active icon does not play its motion. For a control that switches, use one icon with \`active\` (\`<Play active={playing} />\`), not two icons swapped; separate icons such as \`Pause\` and \`LockOpen\` are for drawings that never change.
 - \`className\` in React, \`class\` in Vue.
 
 Still icons without the motion CSS and without second states: import from \`@nudge-icons/react/static\` or \`@nudge-icons/vue/static\`.

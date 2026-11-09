@@ -130,6 +130,21 @@ export function GettingStartedDoc() {
           <Menu active={open} title="Menu" />
         </button>
       </Demo>
+      <p>
+        An active icon holds its second drawing still: it does not play its motion. Some second
+        drawings also exist as icons of their own, such as{" "}
+        <Link to={href({ page: "icon", name: "pause" })}>
+          <code>Pause</code>
+        </Link>{" "}
+        and{" "}
+        <Link to={href({ page: "icon", name: "lock-open" })}>
+          <code>LockOpen</code>
+        </Link>
+        , for places where the drawing never changes: static icons, SVG files, a status label. For a
+        control that switches, use one icon with <code>active</code>, such as{" "}
+        <code>{"<Play active={playing} />"}</code>, rather than swapping <code>Play</code> and{" "}
+        <code>Pause</code>.
+      </p>
 
       <h2>Without motion</h2>
       <p>

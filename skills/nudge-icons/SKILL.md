@@ -48,7 +48,7 @@ Keep the state on the control, not the icon:
 </button>
 ```
 
-Do not render two icons and switch between them when one icon has the second state.
+Do not render two icons and switch between them when one icon has the second state: a play button is `<Play active={playing} />`, not `Play` swapped for `Pause`. Separate icons such as `Pause` and `LockOpen` are for drawings that never change (a status label, static icons). An active icon does not play its motion.
 
 ## Accessibility
 
