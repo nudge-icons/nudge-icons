@@ -72,7 +72,13 @@ export const SET_NAMES: Record<EquivalentSet, string> = {
 
 const byName = Icons as unknown as Record<string, ToggleIconComponent | undefined>;
 
-const META = list as unknown as IconMeta[];
+// `equivalents` is optional in the source data (an icon no other set has leaves it out);
+// filled in here, so the pages can read it without checking.
+type ListedMeta = Omit<IconMeta, "equivalents"> & { equivalents?: IconMeta["equivalents"] };
+const META: IconMeta[] = (list as unknown as ListedMeta[]).map((m) => ({
+  ...m,
+  equivalents: m.equivalents ?? {},
+}));
 
 /** The latest release that added icons; its icons are shown as new. */
 export const LATEST = META.map((m) => m.since).reduce((a, b) =>
