@@ -1,0 +1,42 @@
+{
+  "name": "volume",
+  "category": "interface",
+  "tags": ["sound", "speaker", "audio", "loud", "mute"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["volume-2"],
+    "heroicons": ["speaker-wave"],
+    "tabler": ["volume"],
+    "phosphor": ["speaker-high"],
+    "material": ["volume_up"]
+  },
+  "animation": {
+    "name": "sound",
+    "description": "The waves spread out one by one",
+    "parts": ["inner", "outer"],
+    "motion": [
+      {
+        "part": "inner",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      }
+    ]
+  },
+  "toggle": {
+    "description": "A slash draws across the speaker to mute it",
+    "parts": ["slash"],
+    "activeOnly": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

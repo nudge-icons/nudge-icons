@@ -1,0 +1,33 @@
+{
+  "name": "chat-bot",
+  "category": "objects",
+  "tags": ["assistant", "chatbot", "ai", "support", "message"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["bot-message-square"],
+    "tabler": ["message-chatbot"]
+  },
+  "animation": {
+    "name": "blink",
+    "description": "The bubble pops up and the eyes blink",
+    "parts": ["bubble", "eyes"],
+    "motion": [
+      {
+        "part": "bubble",
+        "preset": "pulse",
+        "origin": [4, 20],
+        "scale": 1.06
+      },
+      {
+        "part": "eyes",
+        "preset": "pulse",
+        "origin": [12, 10],
+        "scale": 0.2,
+        "axis": "y",
+        "duration": 500,
+        "delay": 250
+      }
+    ]
+  }
+}

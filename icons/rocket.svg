@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="rocket">
+    <path d="M8 12.5C10 7.5 15 4 20.5 3.5 20 9 16.5 14 11.5 16z"/>
+    <circle cx="15" cy="9" r="1.5"/>
+    <path d="M8.5 11H5l-1.5 2.5"/>
+    <path d="M13 15.5V19l-2.5 1.5"/>
+  </g>
+  <path data-part="flame" d="M6.5 15.5c-2 .5-3 3-3 5 2 0 4.5-1 5-3"/>
+</svg>

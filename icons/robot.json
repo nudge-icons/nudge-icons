@@ -1,0 +1,33 @@
+{
+  "name": "robot",
+  "category": "objects",
+  "tags": ["bot", "ai", "assistant", "agent", "android"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["bot"],
+    "tabler": ["robot"],
+    "phosphor": ["robot"],
+    "material": ["smart_toy", "robot"]
+  },
+  "animation": {
+    "name": "beep",
+    "description": "The antenna light blinks and the eyes blink after it",
+    "parts": ["antenna", "eyes"],
+    "motion": [
+      {
+        "part": "antenna",
+        "preset": "flash"
+      },
+      {
+        "part": "eyes",
+        "preset": "pulse",
+        "origin": [12, 14.5],
+        "scale": 0.2,
+        "axis": "y",
+        "duration": 500,
+        "delay": 350
+      }
+    ]
+  }
+}

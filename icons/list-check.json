@@ -1,0 +1,30 @@
+{
+  "name": "list-check",
+  "category": "interface",
+  "tags": ["checklist", "tasks", "todo", "steps", "plan"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["list-checks", "list-todo"],
+    "tabler": ["list-check"],
+    "phosphor": ["list-checks"],
+    "material": ["checklist"]
+  },
+  "animation": {
+    "name": "check",
+    "description": "The checks tick off one after the other",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 350
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 350,
+        "delay": 300
+      }
+    ]
+  }
+}

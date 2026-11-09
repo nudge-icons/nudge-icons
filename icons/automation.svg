@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="gear">
+    <circle cx="10" cy="10" r="4.5"/>
+    <circle cx="10" cy="10" r="1.5"/>
+    <path d="M10 3v2"/>
+    <path d="M10 15v2"/>
+    <path d="M3 10h2"/>
+    <path d="M15 10h2"/>
+    <path d="M5 5l1.5 1.5"/>
+    <path d="M15 5l-1.5 1.5"/>
+    <path d="M5 15l1.5-1.5"/>
+  </g>
+  <path data-part="play" d="M15.5 15v6l5-3z"/>
+</svg>

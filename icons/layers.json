@@ -1,0 +1,31 @@
+{
+  "name": "layers",
+  "category": "interface",
+  "tags": ["stack", "levels", "overlay", "arrange", "depth"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["layers"],
+    "heroicons": ["square-3-stack-3d"],
+    "tabler": ["stack-2"],
+    "phosphor": ["stack"],
+    "material": ["layers"]
+  },
+  "animation": {
+    "name": "lift",
+    "description": "The layers lift apart and settle",
+    "parts": ["top", "middle"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "bounce",
+        "y": -2
+      },
+      {
+        "part": "middle",
+        "preset": "bounce",
+        "y": -1,
+        "delay": 60
+      }
+    ]
+  }
+}

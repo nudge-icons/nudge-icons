@@ -1,0 +1,26 @@
+{
+  "name": "search-sparkle",
+  "category": "interface",
+  "tags": ["ai-search", "ask", "find", "discover", "answer"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "animation": {
+    "name": "search",
+    "description": "The lens circles as if searching and the sparkle twinkles",
+    "parts": ["lens", "sparkle"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "orbit",
+        "r": 1.5
+      },
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [11, 11],
+        "scale": 1.35,
+        "delay": 200
+      }
+    ]
+  }
+}

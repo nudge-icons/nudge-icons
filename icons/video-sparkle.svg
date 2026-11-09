@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect data-part="body" x="2.5" y="3" width="12" height="12" rx="2"/>
+  <path data-part="lens" d="M17.5 7.5l4-3v9l-4-3z"/>
+  <path data-part="sparkle" d="M18 15Q18.5 17.5 21 18Q18.5 18.5 18 21Q17.5 18.5 15 18Q17.5 17.5 18 15z"/>
+</svg>

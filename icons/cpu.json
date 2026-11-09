@@ -1,0 +1,32 @@
+{
+  "name": "cpu",
+  "category": "objects",
+  "tags": ["processor", "chip", "hardware", "compute", "model"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["cpu"],
+    "heroicons": ["cpu-chip"],
+    "tabler": ["cpu"],
+    "phosphor": ["cpu"],
+    "material": ["memory"]
+  },
+  "animation": {
+    "name": "compute",
+    "description": "The core pulses and the pins flicker",
+    "parts": ["core", "pins"],
+    "motion": [
+      {
+        "part": "core",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.25
+      },
+      {
+        "part": "pins",
+        "preset": "flash",
+        "delay": 150
+      }
+    ]
+  }
+}

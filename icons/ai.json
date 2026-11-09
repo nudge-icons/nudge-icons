@@ -1,0 +1,27 @@
+{
+  "name": "ai",
+  "category": "objects",
+  "tags": ["artificial-intelligence", "letters", "model", "generate", "assistant"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["ai"]
+  },
+  "animation": {
+    "name": "write",
+    "description": "The letters write themselves",
+    "parts": ["a", "i"],
+    "motion": [
+      {
+        "part": "a",
+        "preset": "draw"
+      },
+      {
+        "part": "i",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 350
+      }
+    ]
+  }
+}

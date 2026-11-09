@@ -1,0 +1,33 @@
+{
+  "name": "wand",
+  "category": "actions",
+  "tags": ["magic", "ai", "generate", "auto", "enhance"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["wand-sparkles", "wand"],
+    "tabler": ["wand"],
+    "phosphor": ["magic-wand"],
+    "material": ["wand_stars"]
+  },
+  "animation": {
+    "name": "cast",
+    "description": "The wand flicks and its tip throws a spark",
+    "parts": ["wand", "sparkle"],
+    "motion": [
+      {
+        "part": "wand",
+        "preset": "swing",
+        "origin": [3.5, 20.5],
+        "angle": -8
+      },
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [17.5, 6.5],
+        "scale": 1.35,
+        "delay": 120
+      }
+    ]
+  }
+}

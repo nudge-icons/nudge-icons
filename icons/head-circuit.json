@@ -1,0 +1,31 @@
+{
+  "name": "head-circuit",
+  "category": "objects",
+  "tags": ["ai", "mind", "intelligence", "profile", "neural"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["brain-circuit"],
+    "phosphor": ["head-circuit"],
+    "material": ["psychology"]
+  },
+  "animation": {
+    "name": "spark",
+    "description": "A signal runs along the trace and the node lights up",
+    "parts": ["trace", "node"],
+    "motion": [
+      {
+        "part": "trace",
+        "preset": "draw",
+        "duration": 400
+      },
+      {
+        "part": "node",
+        "preset": "pulse",
+        "origin": [13.5, 8],
+        "scale": 1.5,
+        "delay": 300
+      }
+    ]
+  }
+}

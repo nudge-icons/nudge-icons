@@ -1,0 +1,23 @@
+{
+  "name": "file-sparkle",
+  "category": "objects",
+  "tags": ["generate-document", "ai-file", "summary", "document", "create"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["file-spark", "file-ai"]
+  },
+  "animation": {
+    "name": "twinkle",
+    "description": "The sparkle grows and shrinks",
+    "parts": ["sparkle"],
+    "motion": [
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [17, 18],
+        "scale": 1.35
+      }
+    ]
+  }
+}

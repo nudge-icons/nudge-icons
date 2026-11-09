@@ -1,0 +1,20 @@
+{
+  "name": "video-sparkle",
+  "category": "objects",
+  "tags": ["generate-video", "ai-video", "movie", "camera", "create"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "animation": {
+    "name": "twinkle",
+    "description": "The sparkle grows and shrinks",
+    "parts": ["sparkle"],
+    "motion": [
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [18, 18],
+        "scale": 1.35
+      }
+    ]
+  }
+}

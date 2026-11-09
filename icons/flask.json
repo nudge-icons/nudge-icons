@@ -1,0 +1,26 @@
+{
+  "name": "flask",
+  "category": "objects",
+  "tags": ["experiment", "lab", "science", "test", "beta"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["flask-conical"],
+    "heroicons": ["beaker"],
+    "tabler": ["flask"],
+    "phosphor": ["flask"],
+    "material": ["science"]
+  },
+  "animation": {
+    "name": "slosh",
+    "description": "The liquid sloshes and settles",
+    "parts": ["liquid"],
+    "motion": [
+      {
+        "part": "liquid",
+        "preset": "swing",
+        "origin": [12, 15],
+        "angle": 8
+      }
+    ]
+  }
+}

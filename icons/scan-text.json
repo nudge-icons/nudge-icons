@@ -1,0 +1,35 @@
+{
+  "name": "scan-text",
+  "category": "actions",
+  "tags": ["ocr", "read", "extract", "document", "recognize"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["scan-text"],
+    "tabler": ["text-scan-2"]
+  },
+  "animation": {
+    "name": "read",
+    "description": "The lines of text are read one after another",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 150
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 300
+      }
+    ]
+  }
+}

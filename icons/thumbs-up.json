@@ -1,0 +1,27 @@
+{
+  "name": "thumbs-up",
+  "category": "actions",
+  "tags": ["like", "approve", "good", "feedback", "upvote"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["thumbs-up"],
+    "heroicons": ["hand-thumb-up"],
+    "tabler": ["thumb-up"],
+    "phosphor": ["thumbs-up"],
+    "material": ["thumb_up"]
+  },
+  "animation": {
+    "name": "like",
+    "description": "The hand tips up and settles",
+    "parts": ["hand"],
+    "motion": [
+      {
+        "part": "hand",
+        "preset": "swing",
+        "origin": [4.5, 20],
+        "angle": -10
+      }
+    ]
+  },
+  "filled": {}
+}

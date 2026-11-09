@@ -1,0 +1,41 @@
+{
+  "name": "text-sparkle",
+  "category": "objects",
+  "tags": ["ai-text", "generate-text", "summarize", "write", "paragraph"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["file-text-spark"]
+  },
+  "animation": {
+    "name": "write",
+    "description": "The lines write themselves and the sparkle twinkles",
+    "parts": ["first", "second", "third", "sparkle"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 150
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 300
+      },
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [17.5, 17],
+        "scale": 1.35,
+        "delay": 400
+      }
+    ]
+  }
+}

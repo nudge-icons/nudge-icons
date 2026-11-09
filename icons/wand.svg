@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="wand">
+    <path d="M3.5 20.5l9-9"/>
+    <path d="M14.5 9.5l1-1"/>
+  </g>
+  <path data-part="sparkle" d="M17.5 3.5Q18 6 20.5 6.5Q18 7 17.5 9.5Q17 7 14.5 6.5Q17 6 17.5 3.5z"/>
+</svg>

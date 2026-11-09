@@ -1,0 +1,32 @@
+{
+  "name": "target",
+  "category": "objects",
+  "tags": ["goal", "aim", "focus", "objective", "precision"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["target"],
+    "tabler": ["target"],
+    "phosphor": ["target"],
+    "material": ["target", "my_location"]
+  },
+  "animation": {
+    "name": "hit",
+    "description": "The rings pulse from the centre outwards",
+    "parts": ["dot", "ring"],
+    "motion": [
+      {
+        "part": "dot",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.6
+      },
+      {
+        "part": "ring",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.15,
+        "delay": 120
+      }
+    ]
+  }
+}

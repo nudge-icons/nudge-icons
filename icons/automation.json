@@ -1,0 +1,30 @@
+{
+  "name": "automation",
+  "category": "objects",
+  "tags": ["auto", "gear", "process", "run", "robotic"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["automation", "settings-automation"],
+    "material": ["automation"]
+  },
+  "animation": {
+    "name": "run",
+    "description": "The gear turns by one tooth and the play sign nudges",
+    "parts": ["gear", "play"],
+    "motion": [
+      {
+        "part": "gear",
+        "preset": "spin",
+        "origin": [10, 10],
+        "angle": 45
+      },
+      {
+        "part": "play",
+        "preset": "nudge",
+        "x": 1.5,
+        "delay": 150
+      }
+    ]
+  }
+}

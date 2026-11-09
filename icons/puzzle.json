@@ -1,0 +1,26 @@
+{
+  "name": "puzzle",
+  "category": "objects",
+  "tags": ["plugin", "extension", "integration", "piece", "addon"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["puzzle"],
+    "heroicons": ["puzzle-piece"],
+    "tabler": ["puzzle"],
+    "phosphor": ["puzzle-piece"],
+    "material": ["extension"]
+  },
+  "animation": {
+    "name": "snap",
+    "description": "The piece pushes in and snaps back",
+    "parts": ["piece"],
+    "motion": [
+      {
+        "part": "piece",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

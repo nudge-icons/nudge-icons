@@ -1,0 +1,30 @@
+{
+  "name": "workflow",
+  "category": "objects",
+  "tags": ["flow", "pipeline", "process", "steps", "agent"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["workflow"],
+    "material": ["account_tree"]
+  },
+  "animation": {
+    "name": "flow",
+    "description": "The link runs to the next step and the step pops",
+    "parts": ["link", "next"],
+    "motion": [
+      {
+        "part": "link",
+        "preset": "draw",
+        "duration": 400
+      },
+      {
+        "part": "next",
+        "preset": "pulse",
+        "origin": [17.5, 17.5],
+        "scale": 1.15,
+        "delay": 350
+      }
+    ]
+  }
+}

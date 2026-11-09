@@ -1,0 +1,33 @@
+{
+  "name": "code-sparkle",
+  "category": "objects",
+  "tags": ["ai-code", "generate-code", "copilot", "developer", "brackets"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["code-ai"]
+  },
+  "animation": {
+    "name": "spread",
+    "description": "The brackets push apart as the sparkle twinkles",
+    "parts": ["left", "right", "sparkle"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1
+      },
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.35
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "translate",
+  "category": "actions",
+  "tags": ["language", "localize", "i18n", "translation", "multilingual"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["languages"],
+    "heroicons": ["language"],
+    "tabler": ["language"],
+    "phosphor": ["translate"],
+    "material": ["translate"]
+  },
+  "animation": {
+    "name": "swap",
+    "description": "The two letters hop one after the other",
+    "parts": ["source", "target"],
+    "motion": [
+      {
+        "part": "source",
+        "preset": "bounce",
+        "y": -1.5
+      },
+      {
+        "part": "target",
+        "preset": "bounce",
+        "y": -1.5,
+        "delay": 150
+      }
+    ]
+  }
+}

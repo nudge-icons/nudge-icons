@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "category": "objects",
+  "tags": ["hosting", "backend", "infrastructure", "rack", "data-center"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["server"],
+    "heroicons": ["server"],
+    "tabler": ["server"],
+    "phosphor": ["hard-drives"],
+    "material": ["dns"]
+  },
+  "animation": {
+    "name": "activity",
+    "description": "The lights flicker one after the other",
+    "parts": ["top-light", "bottom-light"],
+    "motion": [
+      {
+        "part": "top-light",
+        "preset": "flash"
+      },
+      {
+        "part": "bottom-light",
+        "preset": "flash",
+        "delay": 200
+      }
+    ]
+  }
+}

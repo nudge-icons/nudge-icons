@@ -1,0 +1,25 @@
+{
+  "name": "gauge",
+  "category": "interface",
+  "tags": ["speed", "performance", "meter", "dashboard", "usage"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["gauge"],
+    "tabler": ["gauge"],
+    "phosphor": ["gauge"],
+    "material": ["speed"]
+  },
+  "animation": {
+    "name": "rev",
+    "description": "The needle swings and settles",
+    "parts": ["needle"],
+    "motion": [
+      {
+        "part": "needle",
+        "preset": "swing",
+        "origin": [12, 14],
+        "angle": 30
+      }
+    ]
+  }
+}

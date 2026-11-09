@@ -1,0 +1,25 @@
+{
+  "name": "at-sign",
+  "category": "objects",
+  "tags": ["mention", "email", "address", "at", "tag"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["at-sign"],
+    "heroicons": ["at-symbol"],
+    "tabler": ["at"],
+    "phosphor": ["at"],
+    "material": ["alternate_email"]
+  },
+  "animation": {
+    "name": "draw",
+    "description": "The outer stroke draws round the letter",
+    "parts": ["outer"],
+    "motion": [
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 600
+      }
+    ]
+  }
+}

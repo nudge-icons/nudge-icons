@@ -1,0 +1,35 @@
+{
+  "name": "network",
+  "category": "objects",
+  "tags": ["neural-network", "ai", "nodes", "model", "deep-learning"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["topology-star-ring"],
+    "material": ["hub"]
+  },
+  "animation": {
+    "name": "signal",
+    "description": "The nodes appear layer by layer, from input to output",
+    "parts": ["input", "hidden", "output"],
+    "motion": [
+      {
+        "part": "input",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "hidden",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      },
+      {
+        "part": "output",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 500
+      }
+    ]
+  }
+}

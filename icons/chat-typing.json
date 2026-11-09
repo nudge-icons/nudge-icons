@@ -1,0 +1,40 @@
+{
+  "name": "chat-typing",
+  "category": "status",
+  "tags": ["typing", "thinking", "message", "reply", "dots"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["message-square-more"],
+    "heroicons": ["chat-bubble-left-ellipsis"],
+    "tabler": ["message-dots"],
+    "phosphor": ["chat-dots"]
+  },
+  "animation": {
+    "name": "type",
+    "description": "The dots hop one after another like a wave",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "nudge",
+        "y": -1.5,
+        "duration": 450
+      },
+      {
+        "part": "second",
+        "preset": "nudge",
+        "y": -1.5,
+        "duration": 450,
+        "delay": 120
+      },
+      {
+        "part": "third",
+        "preset": "nudge",
+        "y": -1.5,
+        "duration": 450,
+        "delay": 240
+      }
+    ]
+  }
+}

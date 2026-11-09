@@ -1,0 +1,33 @@
+{
+  "name": "rocket",
+  "category": "objects",
+  "tags": ["launch", "deploy", "startup", "boost", "release"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["rocket"],
+    "heroicons": ["rocket-launch"],
+    "tabler": ["rocket"],
+    "phosphor": ["rocket-launch"],
+    "material": ["rocket_launch"]
+  },
+  "animation": {
+    "name": "launch",
+    "description": "The rocket nudges up and its flame trails behind",
+    "parts": ["rocket", "flame"],
+    "motion": [
+      {
+        "part": "rocket",
+        "preset": "nudge",
+        "x": 1.5,
+        "y": -1.5
+      },
+      {
+        "part": "flame",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1,
+        "delay": 80
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "wrench",
+  "category": "objects",
+  "tags": ["tool", "settings", "fix", "repair", "configure"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["wrench"],
+    "heroicons": ["wrench"],
+    "tabler": ["tool"],
+    "phosphor": ["wrench"],
+    "material": ["build"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The wrench turns as if tightening a bolt",
+    "parts": ["wrench"],
+    "motion": [
+      {
+        "part": "wrench",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 12
+      }
+    ]
+  }
+}

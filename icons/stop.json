@@ -1,0 +1,44 @@
+{
+  "name": "stop",
+  "category": "actions",
+  "tags": ["stop-generating", "halt", "cancel", "media", "end"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["circle-stop", "stop-circle"],
+    "heroicons": ["stop-circle"],
+    "tabler": ["circle-stop"],
+    "phosphor": ["stop-circle"],
+    "material": ["stop_circle"]
+  },
+  "animation": {
+    "name": "pulse",
+    "description": "The square pulses inside the ring",
+    "parts": ["square"],
+    "motion": [
+      {
+        "part": "square",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.25,
+        "beats": 2
+      }
+    ]
+  },
+  "toggle": {
+    "description": "The stop square turns into a play triangle",
+    "parts": ["square", "triangle"],
+    "activeOnly": ["triangle"],
+    "motion": [
+      {
+        "part": "square",
+        "preset": "morph",
+        "morph": "M10 8L16 12L16 12L10 16z"
+      },
+      {
+        "part": "triangle",
+        "preset": "draw",
+        "fallback": true
+      }
+    ]
+  }
+}

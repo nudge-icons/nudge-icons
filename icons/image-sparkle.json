@@ -1,0 +1,23 @@
+{
+  "name": "image-sparkle",
+  "category": "objects",
+  "tags": ["generate-image", "ai-image", "picture", "photo", "create"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "tabler": ["photo-spark", "photo-ai"]
+  },
+  "animation": {
+    "name": "twinkle",
+    "description": "The sparkle grows and shrinks",
+    "parts": ["sparkle"],
+    "motion": [
+      {
+        "part": "sparkle",
+        "preset": "pulse",
+        "origin": [18, 18],
+        "scale": 1.35
+      }
+    ]
+  }
+}

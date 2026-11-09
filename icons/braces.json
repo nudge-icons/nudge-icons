@@ -1,0 +1,29 @@
+{
+  "name": "braces",
+  "category": "objects",
+  "tags": ["json", "code", "object", "curly-brackets", "data"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["braces"],
+    "tabler": ["braces"],
+    "phosphor": ["brackets-curly"],
+    "material": ["data_object"]
+  },
+  "animation": {
+    "name": "spread",
+    "description": "The braces push apart and back",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1.5
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1.5
+      }
+    ]
+  }
+}

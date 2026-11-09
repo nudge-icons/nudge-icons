@@ -1,0 +1,27 @@
+{
+  "name": "thumbs-down",
+  "category": "actions",
+  "tags": ["dislike", "reject", "bad", "feedback", "downvote"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["thumbs-down"],
+    "heroicons": ["hand-thumb-down"],
+    "tabler": ["thumb-down"],
+    "phosphor": ["thumbs-down"],
+    "material": ["thumb_down"]
+  },
+  "animation": {
+    "name": "dislike",
+    "description": "The hand tips down and settles",
+    "parts": ["hand"],
+    "motion": [
+      {
+        "part": "hand",
+        "preset": "swing",
+        "origin": [4.5, 4],
+        "angle": 10
+      }
+    ]
+  },
+  "filled": {}
+}

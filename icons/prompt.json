@@ -1,0 +1,24 @@
+{
+  "name": "prompt",
+  "category": "interface",
+  "tags": ["input", "text-field", "ask", "cursor", "query"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["text-cursor-input"],
+    "tabler": ["forms"],
+    "phosphor": ["textbox"],
+    "material": ["input"]
+  },
+  "animation": {
+    "name": "blink",
+    "description": "The cursor blinks",
+    "parts": ["cursor"],
+    "motion": [
+      {
+        "part": "cursor",
+        "preset": "flash"
+      }
+    ]
+  }
+}

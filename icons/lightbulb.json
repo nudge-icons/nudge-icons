@@ -1,0 +1,26 @@
+{
+  "name": "lightbulb",
+  "category": "objects",
+  "tags": ["idea", "insight", "tip", "suggestion", "light"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["lightbulb"],
+    "heroicons": ["light-bulb"],
+    "tabler": ["bulb"],
+    "phosphor": ["lightbulb"],
+    "material": ["lightbulb"]
+  },
+  "animation": {
+    "name": "glow",
+    "description": "The bulb flickers on",
+    "parts": ["bulb"],
+    "motion": [
+      {
+        "part": "bulb",
+        "preset": "flash"
+      }
+    ]
+  },
+  "filled": {}
+}

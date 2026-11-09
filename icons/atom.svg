@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="orbits">
+    <path d="M18.5 18.5C17 20 13 18 9.5 14.5S4 7 5.5 5.5 11 6 14.5 9.5 20 17 18.5 18.5z"/>
+    <path d="M5.5 18.5C7 20 11 18 14.5 14.5S20 7 18.5 5.5 13 6 9.5 9.5 4 17 5.5 18.5z"/>
+  </g>
+  <circle data-part="nucleus" cx="12" cy="12" r="1"/>
+</svg>

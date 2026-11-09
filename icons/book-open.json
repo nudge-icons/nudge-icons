@@ -1,0 +1,27 @@
+{
+  "name": "book-open",
+  "category": "objects",
+  "tags": ["docs", "read", "knowledge", "guide", "library"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["book-open"],
+    "heroicons": ["book-open"],
+    "tabler": ["book"],
+    "phosphor": ["book-open"],
+    "material": ["menu_book"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The right page turns towards the spine and back",
+    "parts": ["right"],
+    "motion": [
+      {
+        "part": "right",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 0.6,
+        "axis": "x"
+      }
+    ]
+  }
+}

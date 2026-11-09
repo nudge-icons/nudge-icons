@@ -1,0 +1,29 @@
+{
+  "name": "scan-eye",
+  "category": "actions",
+  "tags": ["vision", "recognize", "detect", "look", "preview"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["scan-eye"],
+    "tabler": ["scan-eye"]
+  },
+  "animation": {
+    "name": "blink",
+    "description": "The eye blinks, then glances left and right",
+    "parts": ["eye", "pupil"],
+    "motion": [
+      {
+        "part": "eye",
+        "preset": "blink",
+        "to": "M6 12S8 12 12 12s6 0 6 0-2 0-6 0S6 12 6 12z"
+      },
+      {
+        "part": "pupil",
+        "preset": "look",
+        "x": 1.5,
+        "blink": true
+      }
+    ]
+  }
+}

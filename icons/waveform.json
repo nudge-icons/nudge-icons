@@ -1,0 +1,64 @@
+{
+  "name": "waveform",
+  "category": "objects",
+  "tags": ["audio", "voice", "sound", "speech", "equalizer"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["audio-lines"],
+    "tabler": ["waveform"],
+    "phosphor": ["waveform"],
+    "material": ["graphic_eq"]
+  },
+  "animation": {
+    "name": "speak",
+    "description": "The bars bounce one after another",
+    "parts": ["first", "second", "third", "fourth", "fifth"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "pulse",
+        "origin": [4, 12],
+        "scale": 1.75,
+        "axis": "y",
+        "duration": 500
+      },
+      {
+        "part": "second",
+        "preset": "pulse",
+        "origin": [8, 12],
+        "scale": 0.6,
+        "axis": "y",
+        "duration": 500,
+        "delay": 90
+      },
+      {
+        "part": "third",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 0.6,
+        "axis": "y",
+        "duration": 500,
+        "delay": 180
+      },
+      {
+        "part": "fourth",
+        "preset": "pulse",
+        "origin": [16, 12],
+        "scale": 0.6,
+        "axis": "y",
+        "duration": 500,
+        "delay": 270
+      },
+      {
+        "part": "fifth",
+        "preset": "pulse",
+        "origin": [20, 12],
+        "scale": 1.75,
+        "axis": "y",
+        "duration": 500,
+        "delay": 360
+      }
+    ]
+  }
+}

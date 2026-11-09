@@ -1,0 +1,24 @@
+{
+  "name": "scan-face",
+  "category": "actions",
+  "tags": ["face-id", "recognize", "identity", "unlock", "biometric"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["scan-face"],
+    "tabler": ["face-id"],
+    "phosphor": ["scan-smiley"]
+  },
+  "animation": {
+    "name": "recognize",
+    "description": "The face glances left and right inside the frame",
+    "parts": ["face"],
+    "motion": [
+      {
+        "part": "face",
+        "preset": "look",
+        "x": 1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "cube",
+  "category": "objects",
+  "tags": ["3d", "box", "model", "object", "block"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["box"],
+    "heroicons": ["cube"],
+    "tabler": ["cube"],
+    "phosphor": ["cube"],
+    "material": ["deployed_code"]
+  },
+  "animation": {
+    "name": "build",
+    "description": "The inner edges draw the cube",
+    "parts": ["edges"],
+    "motion": [
+      {
+        "part": "edges",
+        "preset": "draw"
+      }
+    ]
+  }
+}

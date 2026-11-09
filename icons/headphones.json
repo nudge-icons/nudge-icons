@@ -1,0 +1,37 @@
+{
+  "name": "headphones",
+  "category": "objects",
+  "tags": ["audio", "music", "listen", "support", "headset"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["headphones"],
+    "tabler": ["headphones"],
+    "phosphor": ["headphones"],
+    "material": ["headphones"]
+  },
+  "animation": {
+    "name": "beat",
+    "description": "The headphones pulse to a beat",
+    "parts": ["set"],
+    "motion": [
+      {
+        "part": "set",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.08,
+        "beats": 2
+      }
+    ]
+  },
+  "toggle": {
+    "description": "A slash draws across the headphones to mute them",
+    "parts": ["slash"],
+    "activeOnly": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

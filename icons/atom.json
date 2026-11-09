@@ -1,0 +1,32 @@
+{
+  "name": "atom",
+  "category": "objects",
+  "tags": ["science", "physics", "orbit", "react", "nucleus"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["atom"],
+    "tabler": ["atom"],
+    "phosphor": ["atom"]
+  },
+  "animation": {
+    "name": "orbit",
+    "description": "The orbits turn a quarter round the pulsing nucleus",
+    "parts": ["orbits", "nucleus"],
+    "motion": [
+      {
+        "part": "orbits",
+        "preset": "spin",
+        "angle": 90,
+        "duration": 900
+      },
+      {
+        "part": "nucleus",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.5,
+        "delay": 200
+      }
+    ]
+  }
+}

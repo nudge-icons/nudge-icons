@@ -1,0 +1,25 @@
+{
+  "name": "scan",
+  "category": "actions",
+  "tags": ["scanner", "capture", "frame", "focus", "detect"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["scan-line", "scan"],
+    "tabler": ["scan"],
+    "phosphor": ["scan"],
+    "material": ["document_scanner"]
+  },
+  "animation": {
+    "name": "scan",
+    "description": "The line passes down through the frame and comes back from the top",
+    "parts": ["line"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "pass",
+        "y": 6
+      }
+    ]
+  }
+}

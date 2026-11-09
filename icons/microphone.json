@@ -1,0 +1,36 @@
+{
+  "name": "microphone",
+  "category": "objects",
+  "tags": ["mic", "voice", "record", "dictate", "audio"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["mic"],
+    "heroicons": ["microphone"],
+    "tabler": ["microphone"],
+    "phosphor": ["microphone"],
+    "material": ["mic"]
+  },
+  "animation": {
+    "name": "listen",
+    "description": "The microphone head bobs as it picks up sound",
+    "parts": ["head"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  },
+  "toggle": {
+    "description": "A slash draws across the microphone to mute it",
+    "parts": ["slash"],
+    "activeOnly": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

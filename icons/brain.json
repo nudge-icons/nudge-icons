@@ -1,0 +1,24 @@
+{
+  "name": "brain",
+  "category": "objects",
+  "tags": ["mind", "think", "intelligence", "ai", "idea"],
+  "themes": ["ai"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["brain"],
+    "tabler": ["brain"],
+    "phosphor": ["brain"],
+    "material": ["neurology", "psychology"]
+  },
+  "animation": {
+    "name": "think",
+    "description": "The folds draw in as the brain thinks",
+    "parts": ["folds"],
+    "motion": [
+      {
+        "part": "folds",
+        "preset": "draw"
+      }
+    ]
+  }
+}

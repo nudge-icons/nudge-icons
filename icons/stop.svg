@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle data-part="ring" cx="12" cy="12" r="9"/>
+  <path data-part="square" d="M9 9L15 9L15 15L9 15z"/>
+  <path data-part="triangle" d="M10 8L16 12L10 16z"/>
+</svg>

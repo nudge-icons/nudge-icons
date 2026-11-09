@@ -1,0 +1,37 @@
+{
+  "name": "sliders",
+  "category": "interface",
+  "tags": ["settings", "adjust", "controls", "filters", "tune"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["sliders-horizontal"],
+    "heroicons": ["adjustments-horizontal"],
+    "tabler": ["adjustments-horizontal"],
+    "phosphor": ["sliders-horizontal"],
+    "material": ["tune"]
+  },
+  "animation": {
+    "name": "adjust",
+    "description": "The knobs slide one after another and settle",
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": -1.5
+      },
+      {
+        "part": "middle",
+        "preset": "nudge",
+        "x": 1.5,
+        "delay": 100
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": -1.5,
+        "delay": 200
+      }
+    ]
+  }
+}

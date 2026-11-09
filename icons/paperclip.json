@@ -1,0 +1,25 @@
+{
+  "name": "paperclip",
+  "category": "actions",
+  "tags": ["attach", "attachment", "file", "upload", "clip"],
+  "since": "0.2.0",
+  "equivalents": {
+    "lucide": ["paperclip"],
+    "heroicons": ["paper-clip"],
+    "tabler": ["paperclip"],
+    "phosphor": ["paperclip"],
+    "material": ["attach_file"]
+  },
+  "animation": {
+    "name": "draw",
+    "description": "The clip is drawn along its wire, from the inner end out",
+    "parts": ["clip"],
+    "motion": [
+      {
+        "part": "clip",
+        "preset": "draw",
+        "duration": 800
+      }
+    ]
+  }
+}

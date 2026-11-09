@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path data-part="frame" d="M21 12.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7.5"/>
+  <circle data-part="sun" cx="15.5" cy="8.5" r="1.5"/>
+  <path data-part="hill" d="M3 15.5l5-5 4.5 4.5"/>
+  <path data-part="sparkle" d="M18 15Q18.5 17.5 21 18Q18.5 18.5 18 21Q17.5 18.5 15 18Q17.5 17.5 18 15z"/>
+</svg>
