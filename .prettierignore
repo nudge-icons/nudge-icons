@@ -1,2 +1,5 @@
 pnpm-lock.yaml
 icons/*.svg
+
+# Search Console verification: Google needs the content exactly as given
+apps/site/public/google*.html
