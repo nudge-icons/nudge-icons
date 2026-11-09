@@ -13,13 +13,35 @@ const components = list.flatMap((i) =>
 );
 const toggles = components.filter((c) => c.toggle);
 
+// Hover runs in real time, so it would grow with every batch. It covers the components of the
+// latest release (the batch under review) and the first component of every motion preset;
+// older icons keep their snapshots in Chromatic and their rules in check:icons.
+type Listed = (typeof list)[number];
+type Animation = { motion?: { preset: string }[] };
+const animationOf = (icon: Listed, variant: string): Animation => {
+  const own = (icon as Record<string, unknown>)[variant] as { animation?: Animation } | undefined;
+  return own?.animation ?? (icon.animation as Animation);
+};
+// "0.10.0" after "0.9.0": compare each number, padded, as text.
+const sortable = (v: string) => v.replace(/\d+/g, (n) => n.padStart(6, "0"));
+const latest = list.map((i) => i.since).sort((a, b) => sortable(b).localeCompare(sortable(a)))[0];
+const seenPresets = new Set<string>();
+const hoverSample = components.filter(({ name, variant }) => {
+  const icon = list.find((i) => i.name === name);
+  if (!icon) return false;
+  const presets = (animationOf(icon, variant).motion ?? []).map((m) => m.preset);
+  const firstOfPreset = presets.some((p) => !seenPresets.has(p));
+  presets.forEach((p) => seenPresets.add(p));
+  return icon.since === latest || firstOfPreset;
+});
+
 test.describe("animate", () => {
-  test("hover plays every component while the pointer is over it and stops after", async ({
+  test("hover plays each sampled component while the pointer is over it and stops after", async ({
     page,
   }) => {
     await open(page, { name: "bell", variant: "outline", animate: "hover" });
     const rest = await partStyles(page);
-    for (const { name, variant, component } of components) {
+    for (const { name, variant, component } of hoverSample) {
       // Explicit, because icons with a second state default to animate={false}.
       await update(page, { name, variant, animate: "hover" });
       await page.mouse.move(0, 0);
