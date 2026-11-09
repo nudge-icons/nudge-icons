@@ -1,0 +1,22 @@
+{
+  "name": "map-pin-off",
+  "category": "status",
+  "tags": ["location-off", "no-location", "untracked", "hidden", "unpin"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["map-pin-off"],
+    "tabler": ["map-pin-off"],
+    "material": ["location_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the pin",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

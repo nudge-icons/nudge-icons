@@ -1,0 +1,26 @@
+{
+  "name": "hand",
+  "category": "interface",
+  "tags": ["stop", "pan", "grab", "wave", "palm"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["hand"],
+    "heroicons": ["hand-raised"],
+    "tabler": ["hand-stop"],
+    "phosphor": ["hand"],
+    "material": ["back_hand"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The hand waves from the palm",
+    "parts": ["hand"],
+    "motion": [
+      {
+        "part": "hand",
+        "preset": "swing",
+        "origin": [12, 13],
+        "angle": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "x-circle",
+  "category": "status",
+  "tags": ["close", "cancel", "error", "clear", "failed"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-x", "x-circle"],
+    "heroicons": ["x-circle"],
+    "tabler": ["circle-x"],
+    "phosphor": ["x-circle"],
+    "material": ["cancel"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The cross turns a quarter turn inside the circle",
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "spin",
+        "angle": 90
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
+    }
+  }
+}

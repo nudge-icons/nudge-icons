@@ -1,0 +1,39 @@
+{
+  "name": "move",
+  "category": "actions",
+  "tags": ["drag", "pan", "arrows", "position", "reposition"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["move"],
+    "tabler": ["arrows-move"],
+    "phosphor": ["arrows-out-cardinal"],
+    "material": ["open_with"]
+  },
+  "animation": {
+    "name": "spread",
+    "description": "The four arrows push outwards and back",
+    "parts": ["up", "right", "down", "left"],
+    "motion": [
+      {
+        "part": "up",
+        "preset": "nudge",
+        "y": -1
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1
+      },
+      {
+        "part": "down",
+        "preset": "nudge",
+        "y": 1
+      },
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1
+      }
+    ]
+  }
+}

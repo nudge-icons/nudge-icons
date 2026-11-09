@@ -1,0 +1,24 @@
+{
+  "name": "eye-off",
+  "category": "status",
+  "tags": ["hide", "hidden", "invisible", "password"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["eye-off"],
+    "heroicons": ["eye-slash"],
+    "tabler": ["eye-off"],
+    "phosphor": ["eye-slash"],
+    "material": ["visibility_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the eye",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

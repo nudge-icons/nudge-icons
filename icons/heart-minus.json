@@ -1,0 +1,32 @@
+{
+  "name": "heart-minus",
+  "category": "actions",
+  "tags": ["unfavorite", "unlike", "remove-favorite", "love"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["heart-minus"],
+    "tabler": ["heart-minus"],
+    "material": ["heart_minus"]
+  },
+  "animation": {
+    "name": "unlike",
+    "description": "The heart shrinks as the minus squeezes in",
+    "parts": ["shape", "minus"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "pulse",
+        "origin": [11, 12],
+        "scale": 0.9
+      },
+      {
+        "part": "minus",
+        "preset": "pulse",
+        "origin": [18.5, 16.5],
+        "scale": 0.75,
+        "axis": "x",
+        "delay": 100
+      }
+    ]
+  }
+}

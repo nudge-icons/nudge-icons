@@ -1,0 +1,31 @@
+{
+  "name": "chevrons-left",
+  "category": "interface",
+  "tags": ["first", "rewind", "previous", "back"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["chevrons-left"],
+    "heroicons": ["chevron-double-left"],
+    "tabler": ["chevrons-left"],
+    "phosphor": ["caret-double-left"],
+    "material": ["keyboard_double_arrow_left"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The chevrons nudge left one after the other",
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": -2
+      },
+      {
+        "part": "back",
+        "preset": "nudge",
+        "x": -2,
+        "delay": 80
+      }
+    ]
+  }
+}

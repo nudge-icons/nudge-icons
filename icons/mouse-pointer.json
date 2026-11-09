@@ -1,0 +1,25 @@
+{
+  "name": "mouse-pointer",
+  "category": "interface",
+  "tags": ["cursor", "click", "select", "arrow", "mouse"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["mouse-pointer"],
+    "tabler": ["pointer"],
+    "phosphor": ["cursor"],
+    "material": ["arrow_selector_tool"]
+  },
+  "animation": {
+    "name": "click",
+    "description": "The pointer presses in like a click",
+    "parts": ["pointer"],
+    "motion": [
+      {
+        "part": "pointer",
+        "preset": "pulse",
+        "origin": [4, 4],
+        "scale": 0.85
+      }
+    ]
+  }
+}

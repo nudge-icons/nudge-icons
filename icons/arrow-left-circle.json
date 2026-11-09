@@ -1,0 +1,25 @@
+{
+  "name": "arrow-left-circle",
+  "category": "interface",
+  "tags": ["back", "previous", "return", "direction"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-arrow-left", "arrow-left-circle"],
+    "heroicons": ["arrow-left-circle"],
+    "tabler": ["circle-arrow-left"],
+    "phosphor": ["arrow-circle-left"],
+    "material": ["arrow_circle_left"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges left inside the circle and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": -1.5
+      }
+    ]
+  }
+}

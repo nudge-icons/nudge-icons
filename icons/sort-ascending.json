@@ -1,0 +1,41 @@
+{
+  "name": "sort-ascending",
+  "category": "actions",
+  "tags": ["sort-asc", "order", "ascending", "arrange", "a-z"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["arrow-up-narrow-wide", "sort-asc"],
+    "heroicons": ["bars-arrow-up"],
+    "tabler": ["sort-ascending"],
+    "phosphor": ["sort-ascending"]
+  },
+  "animation": {
+    "name": "sort",
+    "description": "The arrow nudges up as the bars draw in from short to long",
+    "parts": ["arrow", "short", "medium", "long"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "y": -2
+      },
+      {
+        "part": "short",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "medium",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 100
+      },
+      {
+        "part": "long",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 200
+      }
+    ]
+  }
+}

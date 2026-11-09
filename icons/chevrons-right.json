@@ -1,0 +1,31 @@
+{
+  "name": "chevrons-right",
+  "category": "interface",
+  "tags": ["last", "fast-forward", "next", "skip"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["chevrons-right"],
+    "heroicons": ["chevron-double-right"],
+    "tabler": ["chevrons-right"],
+    "phosphor": ["caret-double-right"],
+    "material": ["keyboard_double_arrow_right"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The chevrons nudge right one after the other",
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": 2
+      },
+      {
+        "part": "back",
+        "preset": "nudge",
+        "x": 2,
+        "delay": 80
+      }
+    ]
+  }
+}

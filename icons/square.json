@@ -1,0 +1,25 @@
+{
+  "name": "square",
+  "category": "interface",
+  "tags": ["box", "shape", "stop", "checkbox"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["square"],
+    "tabler": ["square"],
+    "phosphor": ["square"],
+    "material": ["square", "crop_square"]
+  },
+  "animation": {
+    "name": "pulse",
+    "description": "The square pulses once",
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "pulse",
+        "scale": 1.1
+      }
+    ]
+  },
+  "filled": {}
+}

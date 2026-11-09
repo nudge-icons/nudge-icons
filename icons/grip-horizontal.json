@@ -1,0 +1,23 @@
+{
+  "name": "grip-horizontal",
+  "category": "interface",
+  "tags": ["drag", "handle", "reorder", "move", "sortable"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["grip-horizontal"],
+    "tabler": ["grip-horizontal"],
+    "phosphor": ["dots-six"]
+  },
+  "animation": {
+    "name": "drag",
+    "description": "The handle is dragged sideways and settles",
+    "parts": ["grip"],
+    "motion": [
+      {
+        "part": "grip",
+        "preset": "bounce",
+        "x": 2
+      }
+    ]
+  }
+}

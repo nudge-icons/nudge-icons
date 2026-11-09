@@ -1,0 +1,24 @@
+{
+  "name": "grip-vertical",
+  "category": "interface",
+  "tags": ["drag", "handle", "reorder", "move", "sortable"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["grip-vertical"],
+    "tabler": ["grip-vertical"],
+    "phosphor": ["dots-six-vertical"],
+    "material": ["drag_indicator"]
+  },
+  "animation": {
+    "name": "drag",
+    "description": "The handle is lifted up and settles",
+    "parts": ["grip"],
+    "motion": [
+      {
+        "part": "grip",
+        "preset": "bounce",
+        "y": -2
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "plus-circle",
+  "category": "actions",
+  "tags": ["add", "new", "create", "insert"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-plus", "plus-circle"],
+    "heroicons": ["plus-circle"],
+    "tabler": ["circle-plus"],
+    "phosphor": ["plus-circle"],
+    "material": ["add_circle"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The plus turns a quarter turn inside the circle",
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "spin",
+        "angle": 90
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
+    }
+  }
+}

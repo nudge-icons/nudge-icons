@@ -1,0 +1,24 @@
+{
+  "name": "ban",
+  "category": "status",
+  "tags": ["block", "forbidden", "prohibited", "disabled", "not-allowed"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["ban"],
+    "heroicons": ["no-symbol"],
+    "tabler": ["ban"],
+    "phosphor": ["prohibit"],
+    "material": ["block"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash strikes across the circle",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

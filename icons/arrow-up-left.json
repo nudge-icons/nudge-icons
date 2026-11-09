@@ -1,0 +1,26 @@
+{
+  "name": "arrow-up-left",
+  "category": "interface",
+  "tags": ["diagonal", "back", "corner", "direction"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["arrow-up-left"],
+    "heroicons": ["arrow-up-left"],
+    "tabler": ["arrow-up-left"],
+    "phosphor": ["arrow-up-left"],
+    "material": ["north_west"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges up and to the left and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": -2,
+        "y": -2
+      }
+    ]
+  }
+}

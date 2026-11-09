@@ -1,0 +1,25 @@
+{
+  "name": "app-window",
+  "category": "interface",
+  "tags": ["browser", "application", "window", "app", "program"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["app-window"],
+    "heroicons": ["window"],
+    "tabler": ["app-window"],
+    "phosphor": ["app-window"],
+    "material": ["web_asset"]
+  },
+  "animation": {
+    "name": "open",
+    "description": "The window pops open and settles",
+    "parts": ["window"],
+    "motion": [
+      {
+        "part": "window",
+        "preset": "pulse",
+        "scale": 1.08
+      }
+    ]
+  }
+}

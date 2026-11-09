@@ -1,0 +1,24 @@
+{
+  "name": "toggle-right",
+  "category": "interface",
+  "tags": ["switch", "on", "enabled", "settings", "control"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["toggle-right"],
+    "tabler": ["toggle-right"],
+    "phosphor": ["toggle-right"],
+    "material": ["toggle_on"]
+  },
+  "animation": {
+    "name": "tease",
+    "description": "The knob nudges towards off and springs back",
+    "parts": ["knob"],
+    "motion": [
+      {
+        "part": "knob",
+        "preset": "nudge",
+        "x": -2
+      }
+    ]
+  }
+}

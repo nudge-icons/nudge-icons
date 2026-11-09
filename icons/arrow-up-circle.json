@@ -1,0 +1,25 @@
+{
+  "name": "arrow-up-circle",
+  "category": "interface",
+  "tags": ["upload", "top", "scroll-up", "direction"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-arrow-up", "arrow-up-circle"],
+    "heroicons": ["arrow-up-circle"],
+    "tabler": ["circle-arrow-up"],
+    "phosphor": ["arrow-circle-up"],
+    "material": ["arrow_circle_up"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges up inside the circle and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

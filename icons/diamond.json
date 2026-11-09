@@ -1,0 +1,24 @@
+{
+  "name": "diamond",
+  "category": "interface",
+  "tags": ["shape", "rhombus", "geometry", "decision"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["diamond"],
+    "tabler": ["square-rotated"],
+    "phosphor": ["diamond"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The diamond turns a quarter turn and settles",
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "spin",
+        "angle": 90
+      }
+    ]
+  },
+  "filled": {}
+}

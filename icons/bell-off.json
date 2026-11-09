@@ -1,0 +1,24 @@
+{
+  "name": "bell-off",
+  "category": "status",
+  "tags": ["mute", "silent", "notifications-off", "quiet", "do-not-disturb"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["bell-off"],
+    "heroicons": ["bell-slash"],
+    "tabler": ["bell-off"],
+    "phosphor": ["bell-slash"],
+    "material": ["notifications_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the bell",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

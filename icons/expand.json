@@ -1,0 +1,44 @@
+{
+  "name": "expand",
+  "category": "actions",
+  "tags": ["fullscreen", "maximize", "enlarge", "grow"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["expand"],
+    "heroicons": ["arrows-pointing-out"],
+    "tabler": ["arrows-maximize"],
+    "phosphor": ["arrows-out"],
+    "material": ["open_in_full"]
+  },
+  "animation": {
+    "name": "expand",
+    "description": "The corner arrows push outwards and back",
+    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"],
+    "motion": [
+      {
+        "part": "top-left",
+        "preset": "nudge",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "part": "top-right",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "part": "bottom-right",
+        "preset": "nudge",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "part": "bottom-left",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

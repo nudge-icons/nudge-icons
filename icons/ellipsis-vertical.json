@@ -1,0 +1,43 @@
+{
+  "name": "ellipsis-vertical",
+  "category": "interface",
+  "tags": ["more", "menu", "options", "dots", "kebab"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["ellipsis-vertical"],
+    "heroicons": ["ellipsis-vertical"],
+    "tabler": ["dots-vertical"],
+    "phosphor": ["dots-three-vertical"],
+    "material": ["more_vert"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The dots pulse one after another, top to bottom",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "pulse",
+        "origin": [12, 5],
+        "scale": 1.5,
+        "duration": 500
+      },
+      {
+        "part": "second",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.5,
+        "duration": 500,
+        "delay": 120
+      },
+      {
+        "part": "third",
+        "preset": "pulse",
+        "origin": [12, 19],
+        "scale": 1.5,
+        "duration": 500,
+        "delay": 240
+      }
+    ]
+  }
+}

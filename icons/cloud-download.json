@@ -1,0 +1,25 @@
+{
+  "name": "cloud-download",
+  "category": "actions",
+  "tags": ["download", "sync", "save", "storage", "arrow-down"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["cloud-download", "download-cloud"],
+    "heroicons": ["cloud-arrow-down"],
+    "tabler": ["cloud-download"],
+    "phosphor": ["cloud-arrow-down"],
+    "material": ["cloud_download"]
+  },
+  "animation": {
+    "name": "drop",
+    "description": "The arrow drops out of the cloud, fades and comes back from above",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "y": 4
+      }
+    ]
+  }
+}

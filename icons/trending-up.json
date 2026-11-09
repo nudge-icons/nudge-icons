@@ -1,0 +1,32 @@
+{
+  "name": "trending-up",
+  "category": "status",
+  "tags": ["growth", "increase", "rise", "chart", "stocks"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["trending-up"],
+    "heroicons": ["arrow-trending-up"],
+    "tabler": ["trending-up"],
+    "phosphor": ["trend-up"],
+    "material": ["trending_up"]
+  },
+  "animation": {
+    "name": "rise",
+    "description": "The line draws itself and the arrow head pushes up",
+    "parts": ["line", "head"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "draw",
+        "duration": 600
+      },
+      {
+        "part": "head",
+        "preset": "nudge",
+        "x": 1.5,
+        "y": -1.5,
+        "delay": 350
+      }
+    ]
+  }
+}

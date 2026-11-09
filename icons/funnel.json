@@ -1,0 +1,26 @@
+{
+  "name": "funnel",
+  "category": "interface",
+  "tags": ["filter", "refine", "narrow", "sift", "search"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["funnel", "filter"],
+    "heroicons": ["funnel"],
+    "tabler": ["filter"],
+    "phosphor": ["funnel"],
+    "material": ["filter_alt"]
+  },
+  "animation": {
+    "name": "narrow",
+    "description": "The funnel narrows and springs back",
+    "parts": ["funnel"],
+    "motion": [
+      {
+        "part": "funnel",
+        "preset": "pulse",
+        "scale": 0.85,
+        "axis": "x"
+      }
+    ]
+  }
+}

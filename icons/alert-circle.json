@@ -1,0 +1,26 @@
+{
+  "name": "alert-circle",
+  "category": "status",
+  "tags": ["error", "warning", "attention", "exclamation", "problem"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-exclamation-point", "circle-alert", "alert-circle"],
+    "heroicons": ["exclamation-circle"],
+    "tabler": ["alert-circle"],
+    "phosphor": ["warning-circle"],
+    "material": ["error"]
+  },
+  "animation": {
+    "name": "shake",
+    "description": "The sign shakes side to side",
+    "parts": ["sign"],
+    "motion": [
+      {
+        "part": "sign",
+        "preset": "shake",
+        "x": 1.5
+      }
+    ]
+  },
+  "filled": {}
+}

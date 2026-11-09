@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="up">
+    <path d="M12 12V3"/>
+    <path d="M9 6l3-3 3 3"/>
+  </g>
+  <g data-part="right">
+    <path d="M12 12h9"/>
+    <path d="M18 9l3 3-3 3"/>
+  </g>
+  <g data-part="down">
+    <path d="M12 12v9"/>
+    <path d="M15 18l-3 3-3-3"/>
+  </g>
+  <g data-part="left">
+    <path d="M12 12H3"/>
+    <path d="M6 15l-3-3 3-3"/>
+  </g>
+</svg>

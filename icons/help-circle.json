@@ -1,0 +1,26 @@
+{
+  "name": "help-circle",
+  "category": "status",
+  "tags": ["question", "support", "faq", "unknown", "hint"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-question-mark", "circle-help", "help-circle"],
+    "heroicons": ["question-mark-circle"],
+    "tabler": ["help-circle"],
+    "phosphor": ["question"],
+    "material": ["help"]
+  },
+  "animation": {
+    "name": "wonder",
+    "description": "The question mark tilts from side to side, puzzled",
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "swing",
+        "origin": [12, 17],
+        "angle": 12
+      }
+    ]
+  }
+}

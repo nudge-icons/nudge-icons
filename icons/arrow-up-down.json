@@ -1,0 +1,31 @@
+{
+  "name": "arrow-up-down",
+  "category": "interface",
+  "tags": ["swap", "sort", "vertical", "exchange", "reorder"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["arrow-up-down"],
+    "heroicons": ["arrows-up-down"],
+    "tabler": ["arrows-up-down"],
+    "phosphor": ["arrows-down-up"],
+    "material": ["swap_vert"]
+  },
+  "animation": {
+    "name": "swap",
+    "description": "The arrows push up and down one after the other",
+    "parts": ["up", "down"],
+    "motion": [
+      {
+        "part": "up",
+        "preset": "nudge",
+        "y": -1.5
+      },
+      {
+        "part": "down",
+        "preset": "nudge",
+        "y": 1.5,
+        "delay": 100
+      }
+    ]
+  }
+}

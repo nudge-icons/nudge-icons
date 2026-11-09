@@ -1,0 +1,35 @@
+{
+  "name": "toggle-left",
+  "category": "interface",
+  "tags": ["switch", "off", "disabled", "settings", "control"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["toggle-left"],
+    "tabler": ["toggle-left"],
+    "phosphor": ["toggle-left"],
+    "material": ["toggle_off"]
+  },
+  "animation": {
+    "name": "tease",
+    "description": "The knob nudges towards on and springs back",
+    "parts": ["knob"],
+    "motion": [
+      {
+        "part": "knob",
+        "preset": "nudge",
+        "x": 2
+      }
+    ]
+  },
+  "toggle": {
+    "description": "The knob slides across to switch on",
+    "parts": ["knob"],
+    "motion": [
+      {
+        "part": "knob",
+        "preset": "move",
+        "x": 7
+      }
+    ]
+  }
+}

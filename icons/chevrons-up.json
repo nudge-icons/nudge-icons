@@ -1,0 +1,31 @@
+{
+  "name": "chevrons-up",
+  "category": "interface",
+  "tags": ["collapse", "top", "scroll-up", "fast"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["chevrons-up"],
+    "heroicons": ["chevron-double-up"],
+    "tabler": ["chevrons-up"],
+    "phosphor": ["caret-double-up"],
+    "material": ["keyboard_double_arrow_up"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The chevrons nudge up one after the other",
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "y": -2
+      },
+      {
+        "part": "back",
+        "preset": "nudge",
+        "y": -2,
+        "delay": 80
+      }
+    ]
+  }
+}

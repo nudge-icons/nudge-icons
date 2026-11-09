@@ -1,0 +1,24 @@
+{
+  "name": "shield-alert",
+  "category": "status",
+  "tags": ["security", "warning", "threat", "risk", "unsafe"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["shield-exclamation-point", "shield-alert"],
+    "heroicons": ["shield-exclamation"],
+    "tabler": ["shield-exclamation"],
+    "phosphor": ["shield-warning"],
+    "material": ["gpp_maybe"]
+  },
+  "animation": {
+    "name": "alarm",
+    "description": "The exclamation mark flashes twice",
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "flash"
+      }
+    ]
+  }
+}

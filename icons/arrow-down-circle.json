@@ -1,0 +1,25 @@
+{
+  "name": "arrow-down-circle",
+  "category": "interface",
+  "tags": ["download", "bottom", "scroll-down", "direction"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-arrow-down", "arrow-down-circle"],
+    "heroicons": ["arrow-down-circle"],
+    "tabler": ["circle-arrow-down"],
+    "phosphor": ["arrow-circle-down"],
+    "material": ["arrow_circle_down"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The arrow nudges down inside the circle and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
+  }
+}

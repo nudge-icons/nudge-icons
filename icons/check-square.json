@@ -1,0 +1,37 @@
+{
+  "name": "check-square",
+  "category": "interface",
+  "tags": ["checkbox", "checked", "done", "task", "selected"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["square-check", "check-square"],
+    "tabler": ["square-check"],
+    "phosphor": ["check-square"],
+    "material": ["check_box"]
+  },
+  "animation": {
+    "name": "draw",
+    "description": "The tick draws itself inside the box",
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "draw"
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
+    }
+  }
+}

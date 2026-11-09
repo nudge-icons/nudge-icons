@@ -1,0 +1,25 @@
+{
+  "name": "hexagon",
+  "category": "interface",
+  "tags": ["shape", "polygon", "geometry", "honeycomb"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["hexagon"],
+    "tabler": ["hexagon"],
+    "phosphor": ["hexagon"],
+    "material": ["hexagon"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The hexagon turns a sixth of a turn and settles",
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "spin",
+        "angle": 60
+      }
+    ]
+  },
+  "filled": {}
+}

@@ -1,0 +1,25 @@
+{
+  "name": "funnel-x",
+  "category": "actions",
+  "tags": ["filter-x", "clear-filter", "reset", "remove-filter"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["funnel-x", "filter-x"],
+    "tabler": ["filter-x"],
+    "phosphor": ["funnel-x"],
+    "material": ["filter_alt_off"]
+  },
+  "animation": {
+    "name": "clear",
+    "description": "The cross turns a quarter turn by the funnel",
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "spin",
+        "origin": [19.5, 18.5],
+        "angle": 90
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "shrink",
+  "category": "actions",
+  "tags": ["exit-fullscreen", "minimize", "collapse", "reduce"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["shrink"],
+    "heroicons": ["arrows-pointing-in"],
+    "tabler": ["arrows-minimize"],
+    "phosphor": ["arrows-in"],
+    "material": ["close_fullscreen"]
+  },
+  "animation": {
+    "name": "shrink",
+    "description": "The corner arrows pull inwards and back",
+    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"],
+    "motion": [
+      {
+        "part": "top-left",
+        "preset": "nudge",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "part": "top-right",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "part": "bottom-right",
+        "preset": "nudge",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "part": "bottom-left",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

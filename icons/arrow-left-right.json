@@ -1,0 +1,31 @@
+{
+  "name": "arrow-left-right",
+  "category": "interface",
+  "tags": ["swap", "exchange", "horizontal", "transfer", "switch"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["arrow-left-right"],
+    "heroicons": ["arrows-right-left"],
+    "tabler": ["arrows-left-right"],
+    "phosphor": ["arrows-left-right"],
+    "material": ["swap_horiz"]
+  },
+  "animation": {
+    "name": "swap",
+    "description": "The arrows push left and right one after the other",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1.5
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1.5,
+        "delay": 100
+      }
+    ]
+  }
+}

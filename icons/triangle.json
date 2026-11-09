@@ -1,0 +1,26 @@
+{
+  "name": "triangle",
+  "category": "interface",
+  "tags": ["shape", "delta", "pyramid", "geometry"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["triangle"],
+    "tabler": ["triangle"],
+    "phosphor": ["triangle"],
+    "material": ["change_history"]
+  },
+  "animation": {
+    "name": "pulse",
+    "description": "The triangle pulses once",
+    "parts": ["shape"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "pulse",
+        "origin": [12, 14.5],
+        "scale": 1.1
+      }
+    ]
+  },
+  "filled": {}
+}

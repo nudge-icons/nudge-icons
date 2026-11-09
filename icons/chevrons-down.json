@@ -1,0 +1,31 @@
+{
+  "name": "chevrons-down",
+  "category": "interface",
+  "tags": ["expand", "bottom", "scroll-down", "more"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["chevrons-down"],
+    "heroicons": ["chevron-double-down"],
+    "tabler": ["chevrons-down"],
+    "phosphor": ["caret-double-down"],
+    "material": ["keyboard_double_arrow_down"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The chevrons nudge down one after the other",
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "y": 2
+      },
+      {
+        "part": "back",
+        "preset": "nudge",
+        "y": 2,
+        "delay": 80
+      }
+    ]
+  }
+}

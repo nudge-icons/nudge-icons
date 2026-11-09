@@ -1,0 +1,25 @@
+{
+  "name": "cloud-upload",
+  "category": "actions",
+  "tags": ["upload", "sync", "backup", "storage", "arrow-up"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["cloud-upload", "upload-cloud"],
+    "heroicons": ["cloud-arrow-up"],
+    "tabler": ["cloud-upload"],
+    "phosphor": ["cloud-arrow-up"],
+    "material": ["cloud_upload"]
+  },
+  "animation": {
+    "name": "lift",
+    "description": "The arrow rises into the cloud, fades and comes back from below",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "y": -4
+      }
+    ]
+  }
+}

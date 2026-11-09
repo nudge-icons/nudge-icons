@@ -1,0 +1,40 @@
+{
+  "name": "minus-circle",
+  "category": "actions",
+  "tags": ["remove", "subtract", "delete", "collapse"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["circle-minus", "minus-circle"],
+    "heroicons": ["minus-circle"],
+    "tabler": ["circle-minus"],
+    "phosphor": ["minus-circle"],
+    "material": ["do_not_disturb_on"]
+  },
+  "animation": {
+    "name": "squeeze",
+    "description": "The line squeezes in and springs back",
+    "parts": ["line"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "pulse",
+        "scale": 0.75,
+        "axis": "x"
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
+    }
+  }
+}

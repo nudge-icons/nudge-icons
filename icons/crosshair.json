@@ -1,0 +1,23 @@
+{
+  "name": "crosshair",
+  "category": "interface",
+  "tags": ["aim", "target", "precision", "locate", "focus"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["crosshair"],
+    "tabler": ["crosshair"],
+    "phosphor": ["crosshair"]
+  },
+  "animation": {
+    "name": "aim",
+    "description": "The ticks close in on the centre and back",
+    "parts": ["ticks"],
+    "motion": [
+      {
+        "part": "ticks",
+        "preset": "pulse",
+        "scale": 0.8
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ellipsis",
+  "category": "interface",
+  "tags": ["more", "menu", "options", "dots", "overflow"],
+  "since": "0.3.0",
+  "equivalents": {
+    "lucide": ["ellipsis"],
+    "heroicons": ["ellipsis-horizontal"],
+    "tabler": ["dots"],
+    "phosphor": ["dots-three"],
+    "material": ["more_horiz"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The dots hop one after another",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "nudge",
+        "y": -1.5,
+        "duration": 450
+      },
+      {
+        "part": "second",
+        "preset": "nudge",
+        "y": -1.5,
+        "duration": 450,
+        "delay": 120
+      },
+      {
+        "part": "third",
+        "preset": "nudge",
+        "y": -1.5,
+        "duration": 450,
+        "delay": 240
+      }
+    ]
+  }
+}
