@@ -6,6 +6,7 @@ html {
 }
 
 .panel,
+.sidebar,
 .code pre,
 .mobile-filters {
   scrollbar-width: thin;
