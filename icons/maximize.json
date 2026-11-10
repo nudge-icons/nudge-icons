@@ -1,0 +1,43 @@
+{
+  "name": "maximize",
+  "category": "actions",
+  "tags": ["fullscreen", "enlarge", "expand", "frame", "focus"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["maximize"],
+    "tabler": ["maximize"],
+    "phosphor": ["corners-out"],
+    "material": ["fullscreen"]
+  },
+  "animation": {
+    "name": "open",
+    "description": "The corners push outwards and back",
+    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"],
+    "motion": [
+      {
+        "part": "top-left",
+        "preset": "nudge",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "part": "top-right",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "part": "bottom-right",
+        "preset": "nudge",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "part": "bottom-left",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

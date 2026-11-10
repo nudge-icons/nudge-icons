@@ -1,0 +1,42 @@
+{
+  "name": "signal",
+  "category": "status",
+  "tags": ["cellular", "reception", "bars", "network", "strength"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["signal"],
+    "tabler": ["antenna-bars-5"],
+    "phosphor": ["cell-signal-full"],
+    "material": ["signal_cellular_alt"]
+  },
+  "animation": {
+    "name": "connect",
+    "description": "The bars rise one after the other",
+    "parts": ["first", "second", "third", "fourth"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 250
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 120
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 240
+      },
+      {
+        "part": "fourth",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 360
+      }
+    ]
+  }
+}

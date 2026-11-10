@@ -1,0 +1,26 @@
+{
+  "name": "tablet",
+  "category": "objects",
+  "tags": ["ipad", "device", "screen", "reader", "touch"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["tablet"],
+    "heroicons": ["device-tablet"],
+    "tabler": ["device-tablet"],
+    "phosphor": ["device-tablet"],
+    "material": ["tablet"]
+  },
+  "animation": {
+    "name": "tilt",
+    "description": "The tablet tilts side to side and settles",
+    "parts": ["body"],
+    "motion": [
+      {
+        "part": "body",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 6
+      }
+    ]
+  }
+}

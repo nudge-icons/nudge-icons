@@ -1,0 +1,24 @@
+{
+  "name": "album",
+  "category": "objects",
+  "tags": ["record", "collection", "music", "cover", "library"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["album"],
+    "tabler": ["album"]
+  },
+  "animation": {
+    "name": "pull",
+    "description": "The ribbon stretches down and springs back",
+    "parts": ["ribbon"],
+    "motion": [
+      {
+        "part": "ribbon",
+        "preset": "pulse",
+        "origin": [13.5, 3],
+        "scale": 1.3,
+        "axis": "y"
+      }
+    ]
+  }
+}

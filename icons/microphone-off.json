@@ -1,0 +1,23 @@
+{
+  "name": "microphone-off",
+  "category": "status",
+  "tags": ["mute", "mic-off", "silent", "voice", "audio"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["mic-off"],
+    "tabler": ["microphone-off"],
+    "phosphor": ["microphone-slash"],
+    "material": ["mic_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the microphone",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

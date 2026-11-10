@@ -1,0 +1,39 @@
+{
+  "name": "play-circle",
+  "category": "actions",
+  "tags": ["start", "video", "media", "resume", "player"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["circle-play", "play-circle"],
+    "heroicons": ["play-circle"],
+    "tabler": ["circle-play"],
+    "phosphor": ["play-circle"],
+    "material": ["play_circle"]
+  },
+  "animation": {
+    "name": "nudge",
+    "description": "The triangle nudges forward inside the circle and back",
+    "parts": ["triangle"],
+    "motion": [
+      {
+        "part": "triangle",
+        "preset": "nudge",
+        "x": 1
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
+    }
+  }
+}

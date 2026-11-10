@@ -1,0 +1,29 @@
+{
+  "name": "calculator",
+  "category": "objects",
+  "tags": ["math", "calculate", "finance", "numbers", "accounting"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calculator"],
+    "heroicons": ["calculator"],
+    "tabler": ["calculator"],
+    "phosphor": ["calculator"],
+    "material": ["calculate"]
+  },
+  "animation": {
+    "name": "compute",
+    "description": "The keys flicker and the result writes itself on the display",
+    "parts": ["keys", "display"],
+    "motion": [
+      {
+        "part": "keys",
+        "preset": "flash"
+      },
+      {
+        "part": "display",
+        "preset": "draw",
+        "delay": 300
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "laptop",
+  "category": "objects",
+  "tags": ["computer", "notebook", "device", "work", "screen"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["laptop"],
+    "tabler": ["device-laptop"],
+    "phosphor": ["laptop"],
+    "material": ["computer"]
+  },
+  "animation": {
+    "name": "close",
+    "description": "The lid dips towards the base and opens again",
+    "parts": ["lid"],
+    "motion": [
+      {
+        "part": "lid",
+        "preset": "fold",
+        "origin": [12, 15.5],
+        "skew": 0,
+        "scale": 0.8
+      }
+    ]
+  }
+}

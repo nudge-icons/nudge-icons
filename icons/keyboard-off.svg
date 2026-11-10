@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="frame">
+    <path d="M2.5 7v10.5a2 2 0 0 0 2 2H15"/>
+    <path d="M9 4.5h10.5a2 2 0 0 1 2 2V17"/>
+  </g>
+  <g data-part="top-keys">
+    <path d="M14 8v.5"/>
+    <path d="M18 8v.5"/>
+  </g>
+  <g data-part="middle-keys">
+    <path d="M16 11.5v.5"/>
+  </g>
+  <path data-part="space" d="M8 15.5h3"/>
+  <path data-part="slash" d="M3 3l18 18"/>
+</svg>

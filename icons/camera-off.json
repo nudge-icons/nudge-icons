@@ -1,0 +1,23 @@
+{
+  "name": "camera-off",
+  "category": "status",
+  "tags": ["photo", "disabled", "privacy", "no-camera"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["camera-off"],
+    "tabler": ["camera-off"],
+    "phosphor": ["camera-slash"],
+    "material": ["no_photography"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the camera",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

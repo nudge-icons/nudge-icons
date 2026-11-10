@@ -1,0 +1,26 @@
+{
+  "name": "music",
+  "category": "objects",
+  "tags": ["song", "audio", "note", "sound", "playlist"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["music"],
+    "heroicons": ["musical-note"],
+    "tabler": ["music"],
+    "phosphor": ["music-notes"],
+    "material": ["music_note"]
+  },
+  "animation": {
+    "name": "sway",
+    "description": "The notes sway to the beat",
+    "parts": ["note"],
+    "motion": [
+      {
+        "part": "note",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 8
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "nfc",
+  "category": "status",
+  "tags": ["contactless", "tap", "pay", "wireless", "near-field"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["nfc"],
+    "tabler": ["nfc"],
+    "material": ["nfc"]
+  },
+  "animation": {
+    "name": "tap",
+    "description": "The waves appear one by one",
+    "parts": ["first", "second", "third", "fourth"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 250
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 150
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 300
+      },
+      {
+        "part": "fourth",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 450
+      }
+    ]
+  }
+}

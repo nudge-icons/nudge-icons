@@ -1,0 +1,24 @@
+{
+  "name": "aperture",
+  "category": "objects",
+  "tags": ["camera", "lens", "shutter", "photography", "iris"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["aperture"],
+    "tabler": ["aperture"],
+    "phosphor": ["aperture"],
+    "material": ["shutter_speed"]
+  },
+  "animation": {
+    "name": "shutter",
+    "description": "The blades turn a sixth of a turn like a closing shutter",
+    "parts": ["blades"],
+    "motion": [
+      {
+        "part": "blades",
+        "preset": "spin",
+        "angle": 60
+      }
+    ]
+  }
+}

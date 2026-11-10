@@ -1,0 +1,24 @@
+{
+  "name": "bluetooth",
+  "category": "status",
+  "tags": ["wireless", "pairing", "connect", "devices", "headphones"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["bluetooth"],
+    "tabler": ["bluetooth"],
+    "phosphor": ["bluetooth"],
+    "material": ["bluetooth"]
+  },
+  "animation": {
+    "name": "pair",
+    "description": "The rune draws itself in one stroke",
+    "parts": ["rune"],
+    "motion": [
+      {
+        "part": "rune",
+        "preset": "draw",
+        "duration": 700
+      }
+    ]
+  }
+}

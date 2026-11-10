@@ -1,0 +1,25 @@
+{
+  "name": "film",
+  "category": "objects",
+  "tags": ["movie", "video", "cinema", "reel", "media"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["film"],
+    "heroicons": ["film"],
+    "tabler": ["movie"],
+    "phosphor": ["film-strip"],
+    "material": ["movie"]
+  },
+  "animation": {
+    "name": "roll",
+    "description": "The frames roll down the strip and come back from the top",
+    "parts": ["frames"],
+    "motion": [
+      {
+        "part": "frames",
+        "preset": "pass",
+        "y": 4.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "gamepad",
+  "category": "objects",
+  "tags": ["game", "controller", "joystick", "play", "console"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["gamepad"],
+    "tabler": ["device-gamepad"],
+    "phosphor": ["game-controller"],
+    "material": ["sports_esports"]
+  },
+  "animation": {
+    "name": "rumble",
+    "description": "The controller shakes as it rumbles",
+    "parts": ["pad"],
+    "motion": [
+      {
+        "part": "pad",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

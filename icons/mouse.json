@@ -1,0 +1,24 @@
+{
+  "name": "mouse",
+  "category": "objects",
+  "tags": ["click", "pointer", "scroll", "device", "input"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["mouse"],
+    "tabler": ["mouse"],
+    "phosphor": ["mouse"],
+    "material": ["mouse"]
+  },
+  "animation": {
+    "name": "scroll",
+    "description": "The wheel scrolls down and comes back from the top",
+    "parts": ["wheel"],
+    "motion": [
+      {
+        "part": "wheel",
+        "preset": "pass",
+        "y": 1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "pause-circle",
+  "category": "actions",
+  "tags": ["hold", "media", "break", "player", "stop"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["circle-pause", "pause-circle"],
+    "heroicons": ["pause-circle"],
+    "tabler": ["circle-pause"],
+    "phosphor": ["pause-circle"],
+    "material": ["pause_circle"]
+  },
+  "animation": {
+    "name": "bob",
+    "description": "The bars bob one after the other inside the circle",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "bounce",
+        "y": 1
+      },
+      {
+        "part": "right",
+        "preset": "bounce",
+        "y": 1,
+        "delay": 120
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.12
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "smartphone",
+  "category": "objects",
+  "tags": ["phone", "mobile", "cell", "device", "iphone"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["smartphone"],
+    "heroicons": ["device-phone-mobile"],
+    "tabler": ["device-mobile"],
+    "phosphor": ["device-mobile"],
+    "material": ["mobile"]
+  },
+  "animation": {
+    "name": "vibrate",
+    "description": "The phone shakes as it vibrates",
+    "parts": ["body"],
+    "motion": [
+      {
+        "part": "body",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

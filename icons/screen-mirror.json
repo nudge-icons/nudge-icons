@@ -1,0 +1,23 @@
+{
+  "name": "screen-mirror",
+  "category": "actions",
+  "tags": ["airplay", "stream", "mirror", "tv", "display"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["airplay"],
+    "phosphor": ["airplay"],
+    "material": ["airplay"]
+  },
+  "animation": {
+    "name": "send",
+    "description": "The triangle pushes up into the screen and back",
+    "parts": ["triangle"],
+    "motion": [
+      {
+        "part": "triangle",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

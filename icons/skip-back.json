@@ -1,0 +1,30 @@
+{
+  "name": "skip-back",
+  "category": "actions",
+  "tags": ["previous", "back", "track", "media", "player"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["skip-back"],
+    "tabler": ["player-skip-back"],
+    "phosphor": ["skip-back"],
+    "material": ["skip_previous"]
+  },
+  "animation": {
+    "name": "skip",
+    "description": "The triangle pushes the bar back and both return",
+    "parts": ["triangle", "bar"],
+    "motion": [
+      {
+        "part": "triangle",
+        "preset": "nudge",
+        "x": -1.5
+      },
+      {
+        "part": "bar",
+        "preset": "nudge",
+        "x": -1,
+        "delay": 100
+      }
+    ]
+  }
+}

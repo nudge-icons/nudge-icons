@@ -1,0 +1,22 @@
+{
+  "name": "keyboard-off",
+  "category": "status",
+  "tags": ["type", "input", "disabled", "hide-keyboard", "keys"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["keyboard-off"],
+    "tabler": ["keyboard-off"],
+    "material": ["keyboard_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the keyboard",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "shuffle",
+  "category": "actions",
+  "tags": ["random", "mix", "media", "playlist", "order"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["shuffle"],
+    "tabler": ["arrows-shuffle"],
+    "phosphor": ["shuffle"],
+    "material": ["shuffle"]
+  },
+  "animation": {
+    "name": "shuffle",
+    "description": "The two arrows push forward one after the other",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 1.5
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": 1.5,
+        "delay": 120
+      }
+    ]
+  }
+}

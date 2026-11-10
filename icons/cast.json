@@ -1,0 +1,30 @@
+{
+  "name": "cast",
+  "category": "actions",
+  "tags": ["chromecast", "stream", "tv", "broadcast", "screen"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["cast"],
+    "tabler": ["cast"],
+    "phosphor": ["screencast"],
+    "material": ["cast"]
+  },
+  "animation": {
+    "name": "cast",
+    "description": "The waves spread out from the corner one by one",
+    "parts": ["inner", "outer"],
+    "motion": [
+      {
+        "part": "inner",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      }
+    ]
+  }
+}

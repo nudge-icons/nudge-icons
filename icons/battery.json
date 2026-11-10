@@ -1,0 +1,24 @@
+{
+  "name": "battery",
+  "category": "status",
+  "tags": ["power", "charge", "energy", "empty", "level"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["battery"],
+    "heroicons": ["battery-0"],
+    "tabler": ["battery"],
+    "phosphor": ["battery-empty"],
+    "material": ["battery_android_0"]
+  },
+  "animation": {
+    "name": "low",
+    "description": "The terminal blinks as if asking for a charge",
+    "parts": ["terminal"],
+    "motion": [
+      {
+        "part": "terminal",
+        "preset": "flash"
+      }
+    ]
+  }
+}

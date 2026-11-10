@@ -1,0 +1,24 @@
+{
+  "name": "video-off",
+  "category": "status",
+  "tags": ["camera-off", "disabled", "meeting", "privacy", "record"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["video-off"],
+    "heroicons": ["video-camera-slash"],
+    "tabler": ["video-off"],
+    "phosphor": ["video-camera-slash"],
+    "material": ["videocam_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the camera",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

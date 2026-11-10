@@ -1,0 +1,24 @@
+{
+  "name": "eject",
+  "category": "actions",
+  "tags": ["remove", "disc", "media", "unmount", "drive"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["eject"],
+    "tabler": ["player-eject"],
+    "phosphor": ["eject"],
+    "material": ["eject"]
+  },
+  "animation": {
+    "name": "eject",
+    "description": "The triangle lifts up and settles",
+    "parts": ["triangle"],
+    "motion": [
+      {
+        "part": "triangle",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

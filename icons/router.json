@@ -1,0 +1,33 @@
+{
+  "name": "router",
+  "category": "objects",
+  "tags": ["wifi", "network", "modem", "internet", "hotspot"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["router"],
+    "tabler": ["router"],
+    "material": ["router"]
+  },
+  "animation": {
+    "name": "broadcast",
+    "description": "The waves rise from the antenna while the lights blink",
+    "parts": ["lights", "inner", "outer"],
+    "motion": [
+      {
+        "part": "lights",
+        "preset": "flash"
+      },
+      {
+        "part": "inner",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "disc",
+  "category": "objects",
+  "tags": ["cd", "dvd", "record", "vinyl", "music"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["disc"],
+    "tabler": ["disc"],
+    "phosphor": ["disc"],
+    "material": ["album"]
+  },
+  "animation": {
+    "name": "spin",
+    "description": "The shine turns round as the disc spins",
+    "parts": ["shine"],
+    "motion": [
+      {
+        "part": "shine",
+        "preset": "spin",
+        "duration": 900
+      }
+    ]
+  }
+}

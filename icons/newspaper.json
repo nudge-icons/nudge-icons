@@ -1,0 +1,24 @@
+{
+  "name": "newspaper",
+  "category": "objects",
+  "tags": ["news", "article", "press", "blog", "feed"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["newspaper"],
+    "heroicons": ["newspaper"],
+    "tabler": ["news"],
+    "phosphor": ["newspaper"],
+    "material": ["newspaper"]
+  },
+  "animation": {
+    "name": "print",
+    "description": "The lines of text print themselves",
+    "parts": ["text"],
+    "motion": [
+      {
+        "part": "text",
+        "preset": "draw"
+      }
+    ]
+  }
+}

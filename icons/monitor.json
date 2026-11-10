@@ -1,0 +1,24 @@
+{
+  "name": "monitor",
+  "category": "objects",
+  "tags": ["desktop", "screen", "display", "computer", "pc"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["monitor"],
+    "heroicons": ["computer-desktop"],
+    "tabler": ["device-desktop"],
+    "phosphor": ["monitor"],
+    "material": ["desktop_windows"]
+  },
+  "animation": {
+    "name": "wake",
+    "description": "The screen flickers as it wakes",
+    "parts": ["screen"],
+    "motion": [
+      {
+        "part": "screen",
+        "preset": "flash"
+      }
+    ]
+  }
+}

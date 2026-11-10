@@ -1,0 +1,27 @@
+{
+  "name": "radio",
+  "category": "objects",
+  "tags": ["receiver", "fm", "broadcast", "station", "audio"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["radio-receiver"],
+    "heroicons": ["radio"],
+    "tabler": ["radio"],
+    "phosphor": ["radio"],
+    "material": ["radio"]
+  },
+  "animation": {
+    "name": "play",
+    "description": "The speaker thumps to the music",
+    "parts": ["speaker"],
+    "motion": [
+      {
+        "part": "speaker",
+        "preset": "pulse",
+        "origin": [8.5, 14.5],
+        "scale": 1.25,
+        "beats": 2
+      }
+    ]
+  }
+}

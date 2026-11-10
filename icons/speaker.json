@@ -1,0 +1,26 @@
+{
+  "name": "speaker",
+  "category": "objects",
+  "tags": ["audio", "sound", "music", "hifi", "loudspeaker"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["speaker"],
+    "tabler": ["device-speaker"],
+    "phosphor": ["speaker-hifi"],
+    "material": ["speaker"]
+  },
+  "animation": {
+    "name": "bass",
+    "description": "The woofer thumps twice to the bass",
+    "parts": ["woofer"],
+    "motion": [
+      {
+        "part": "woofer",
+        "preset": "pulse",
+        "origin": [12, 14.5],
+        "scale": 1.15,
+        "beats": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "wifi-off",
+  "category": "status",
+  "tags": ["offline", "disconnected", "wireless", "no-internet", "network"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["wifi-off"],
+    "tabler": ["wifi-off"],
+    "phosphor": ["wifi-slash"],
+    "material": ["wifi_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the signal",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

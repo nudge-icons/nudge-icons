@@ -1,0 +1,25 @@
+{
+  "name": "picture-in-picture",
+  "category": "interface",
+  "tags": ["pip", "overlay", "video", "mini-player", "float"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["picture-in-picture-2"],
+    "tabler": ["picture-in-picture"],
+    "phosphor": ["picture-in-picture"],
+    "material": ["picture_in_picture"]
+  },
+  "animation": {
+    "name": "float",
+    "description": "The small window lifts out of its corner and settles back",
+    "parts": ["window"],
+    "motion": [
+      {
+        "part": "window",
+        "preset": "nudge",
+        "x": -1,
+        "y": -1
+      }
+    ]
+  }
+}

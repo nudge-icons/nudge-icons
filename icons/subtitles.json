@@ -1,0 +1,30 @@
+{
+  "name": "subtitles",
+  "category": "interface",
+  "tags": ["captions", "cc", "transcript", "video", "accessibility"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["subtitles"],
+    "tabler": ["subtitles"],
+    "phosphor": ["subtitles"],
+    "material": ["subtitles"]
+  },
+  "animation": {
+    "name": "caption",
+    "description": "The caption lines write themselves one after the other",
+    "parts": ["top-line", "bottom-line"],
+    "motion": [
+      {
+        "part": "top-line",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "bottom-line",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "battery-charging",
+  "category": "status",
+  "tags": ["power", "charge", "plugged-in", "energy", "bolt"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["battery-charging"],
+    "tabler": ["battery-charging"],
+    "phosphor": ["battery-charging"],
+    "material": ["battery_android_bolt"]
+  },
+  "animation": {
+    "name": "charge",
+    "description": "The bolt pulses twice as the battery charges",
+    "parts": ["bolt"],
+    "motion": [
+      {
+        "part": "bolt",
+        "preset": "pulse",
+        "origin": [10.5, 12],
+        "scale": 1.2,
+        "beats": 2
+      }
+    ]
+  }
+}

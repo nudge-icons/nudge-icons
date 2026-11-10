@@ -1,0 +1,43 @@
+{
+  "name": "minimize",
+  "category": "actions",
+  "tags": ["exit-fullscreen", "reduce", "collapse", "frame", "shrink"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["minimize"],
+    "tabler": ["minimize"],
+    "phosphor": ["corners-in"],
+    "material": ["fullscreen_exit"]
+  },
+  "animation": {
+    "name": "close",
+    "description": "The corners pull inwards and back",
+    "parts": ["top-left", "top-right", "bottom-right", "bottom-left"],
+    "motion": [
+      {
+        "part": "top-left",
+        "preset": "nudge",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "part": "top-right",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "part": "bottom-right",
+        "preset": "nudge",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "part": "bottom-left",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

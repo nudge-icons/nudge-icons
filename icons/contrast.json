@@ -1,0 +1,24 @@
+{
+  "name": "contrast",
+  "category": "interface",
+  "tags": ["brightness", "theme", "display", "dark-mode", "invert"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["contrast"],
+    "tabler": ["contrast"],
+    "phosphor": ["circle-half"],
+    "material": ["contrast"]
+  },
+  "animation": {
+    "name": "invert",
+    "description": "The half turns a full circle",
+    "parts": ["half"],
+    "motion": [
+      {
+        "part": "half",
+        "preset": "spin",
+        "duration": 900
+      }
+    ]
+  }
+}

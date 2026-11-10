@@ -1,0 +1,31 @@
+{
+  "name": "fast-forward",
+  "category": "actions",
+  "tags": ["forward", "skip", "media", "speed", "player"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["fast-forward"],
+    "heroicons": ["forward"],
+    "tabler": ["player-track-next"],
+    "phosphor": ["fast-forward"],
+    "material": ["fast_forward"]
+  },
+  "animation": {
+    "name": "rush",
+    "description": "The triangles rush forward one after the other",
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "nudge",
+        "x": 1.5
+      },
+      {
+        "part": "back",
+        "preset": "nudge",
+        "x": 1.5,
+        "delay": 80
+      }
+    ]
+  }
+}

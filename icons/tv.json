@@ -1,0 +1,26 @@
+{
+  "name": "tv",
+  "category": "objects",
+  "tags": ["television", "screen", "display", "channel", "media"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["tv"],
+    "heroicons": ["tv"],
+    "tabler": ["device-tv"],
+    "phosphor": ["television-simple"],
+    "material": ["tv"]
+  },
+  "animation": {
+    "name": "tune",
+    "description": "The antenna swings as if searching for a signal",
+    "parts": ["antenna"],
+    "motion": [
+      {
+        "part": "antenna",
+        "preset": "swing",
+        "origin": [12, 7.5],
+        "angle": 15
+      }
+    ]
+  }
+}

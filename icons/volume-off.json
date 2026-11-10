@@ -1,0 +1,23 @@
+{
+  "name": "volume-off",
+  "category": "status",
+  "tags": ["mute", "silent", "sound-off", "audio", "quiet"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["volume-off"],
+    "tabler": ["volume-off"],
+    "phosphor": ["speaker-slash"],
+    "material": ["volume_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the speaker",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

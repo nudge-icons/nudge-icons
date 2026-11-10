@@ -1,0 +1,24 @@
+{
+  "name": "screen-share",
+  "category": "actions",
+  "tags": ["present", "share", "monitor", "broadcast", "meeting"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["screen-share"],
+    "tabler": ["screen-share"],
+    "material": ["screen_share"]
+  },
+  "animation": {
+    "name": "share",
+    "description": "The arrow pushes out of the screen and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

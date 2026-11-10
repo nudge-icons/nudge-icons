@@ -1,0 +1,23 @@
+{
+  "name": "bluetooth-connected",
+  "category": "status",
+  "tags": ["wireless", "paired", "connected", "devices", "active"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["bluetooth-connected"],
+    "tabler": ["bluetooth-connected"],
+    "phosphor": ["bluetooth-connected"],
+    "material": ["bluetooth_connected"]
+  },
+  "animation": {
+    "name": "transfer",
+    "description": "The dashes on both sides blink as data flows",
+    "parts": ["dashes"],
+    "motion": [
+      {
+        "part": "dashes",
+        "preset": "flash"
+      }
+    ]
+  }
+}

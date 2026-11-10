@@ -1,0 +1,33 @@
+{
+  "name": "keyboard",
+  "category": "objects",
+  "tags": ["type", "input", "keys", "text", "shortcut"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["keyboard"],
+    "tabler": ["keyboard"],
+    "phosphor": ["keyboard"],
+    "material": ["keyboard"]
+  },
+  "animation": {
+    "name": "type",
+    "description": "The keys light up row by row as if typing",
+    "parts": ["top-keys", "middle-keys", "space"],
+    "motion": [
+      {
+        "part": "top-keys",
+        "preset": "flash"
+      },
+      {
+        "part": "middle-keys",
+        "preset": "flash",
+        "delay": 120
+      },
+      {
+        "part": "space",
+        "preset": "flash",
+        "delay": 240
+      }
+    ]
+  }
+}

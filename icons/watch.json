@@ -1,0 +1,25 @@
+{
+  "name": "watch",
+  "category": "objects",
+  "tags": ["wristwatch", "time", "smartwatch", "clock", "wearable"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["watch"],
+    "tabler": ["device-watch"],
+    "phosphor": ["watch"],
+    "material": ["watch"]
+  },
+  "animation": {
+    "name": "tick",
+    "description": "The minute hand sweeps a full turn while the hour hand stays",
+    "parts": ["minute"],
+    "motion": [
+      {
+        "part": "minute",
+        "preset": "spin",
+        "origin": [12, 12],
+        "duration": 900
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "headset",
+  "category": "objects",
+  "tags": ["support", "call", "microphone", "audio", "gaming"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["headset"],
+    "tabler": ["headset"],
+    "phosphor": ["headset"],
+    "material": ["headset_mic"]
+  },
+  "animation": {
+    "name": "speak",
+    "description": "The microphone boom draws towards the mouth",
+    "parts": ["boom"],
+    "motion": [
+      {
+        "part": "boom",
+        "preset": "draw"
+      }
+    ]
+  }
+}

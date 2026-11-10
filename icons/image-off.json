@@ -1,0 +1,22 @@
+{
+  "name": "image-off",
+  "category": "status",
+  "tags": ["picture", "photo", "hidden", "missing", "broken"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["image-off"],
+    "tabler": ["photo-off"],
+    "material": ["hide_image"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the image",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}
