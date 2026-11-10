@@ -284,6 +284,9 @@ export function GalleryPage({ selected }: { selected: string | null }) {
                 type="button"
                 className="clear-button"
                 aria-label="Clear search"
+                // Keep focus in the field: in Safari a press that blurs it brings the ⌘K hint
+                // back, which shifts the button away before the click lands.
+                onMouseDown={(e) => e.preventDefault()}
                 onClick={() => {
                   setQuery("");
                   searchRef.current?.focus();
