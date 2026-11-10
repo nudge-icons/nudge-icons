@@ -1,0 +1,23 @@
+{
+  "name": "handshake",
+  "category": "objects",
+  "tags": ["agreement", "deal", "partnership", "trust", "greeting"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["handshake"],
+    "phosphor": ["handshake"],
+    "material": ["handshake"]
+  },
+  "animation": {
+    "name": "shake",
+    "description": "The hands shake up and down",
+    "parts": ["hands"],
+    "motion": [
+      {
+        "part": "hands",
+        "preset": "bounce",
+        "y": 1.5
+      }
+    ]
+  }
+}

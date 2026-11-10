@@ -1,0 +1,25 @@
+{
+  "name": "face-frown",
+  "category": "status",
+  "tags": ["frown", "sad", "unhappy", "emoji", "feedback", "mood"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["frown"],
+    "heroicons": ["face-frown"],
+    "tabler": ["mood-sad"],
+    "phosphor": ["smiley-sad"],
+    "material": ["sentiment_dissatisfied"]
+  },
+  "animation": {
+    "name": "disapprove",
+    "description": "The face shakes in disapproval",
+    "parts": ["features"],
+    "motion": [
+      {
+        "part": "features",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

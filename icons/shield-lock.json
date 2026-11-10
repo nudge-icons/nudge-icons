@@ -1,0 +1,23 @@
+{
+  "name": "shield-lock",
+  "category": "status",
+  "tags": ["security", "protected", "encrypted", "private", "secure"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["shield-lock"],
+    "tabler": ["shield-lock"],
+    "material": ["shield_lock"]
+  },
+  "animation": {
+    "name": "jiggle",
+    "description": "The shackle jiggles as if tested",
+    "parts": ["shackle"],
+    "motion": [
+      {
+        "part": "shackle",
+        "preset": "bounce",
+        "y": -0.75
+      }
+    ]
+  }
+}

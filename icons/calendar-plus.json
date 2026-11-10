@@ -1,0 +1,25 @@
+{
+  "name": "calendar-plus",
+  "category": "actions",
+  "tags": ["add-event", "new", "schedule", "booking", "date"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-plus"],
+    "tabler": ["calendar-plus"],
+    "phosphor": ["calendar-plus"],
+    "material": ["calendar_add_on"]
+  },
+  "animation": {
+    "name": "add",
+    "description": "The plus turns a quarter turn by the calendar",
+    "parts": ["plus"],
+    "motion": [
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [18, 18],
+        "angle": 90
+      }
+    ]
+  }
+}

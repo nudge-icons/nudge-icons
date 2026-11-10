@@ -1,0 +1,31 @@
+{
+  "name": "rss",
+  "category": "objects",
+  "tags": ["feed", "subscribe", "news", "blog", "podcast"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["rss"],
+    "heroicons": ["rss"],
+    "tabler": ["rss"],
+    "phosphor": ["rss-simple"],
+    "material": ["rss_feed"]
+  },
+  "animation": {
+    "name": "broadcast",
+    "description": "The waves draw out from the dot one after the other",
+    "parts": ["inner", "outer"],
+    "motion": [
+      {
+        "part": "inner",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      }
+    ]
+  }
+}

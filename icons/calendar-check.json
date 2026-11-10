@@ -1,0 +1,23 @@
+{
+  "name": "calendar-check",
+  "category": "status",
+  "tags": ["scheduled", "booked", "confirmed", "event", "done", "date"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-check-2"],
+    "tabler": ["calendar-check"],
+    "phosphor": ["calendar-check"],
+    "material": ["event_available"]
+  },
+  "animation": {
+    "name": "confirm",
+    "description": "The tick draws itself by the calendar",
+    "parts": ["check"],
+    "motion": [
+      {
+        "part": "check",
+        "preset": "draw"
+      }
+    ]
+  }
+}

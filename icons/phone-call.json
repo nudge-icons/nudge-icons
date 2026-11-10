@@ -1,0 +1,35 @@
+{
+  "name": "phone-call",
+  "category": "status",
+  "tags": ["calling", "ringing", "telephone", "contact", "talk"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["phone-call"],
+    "tabler": ["phone-call"],
+    "phosphor": ["phone-call"],
+    "material": ["phone_in_talk"]
+  },
+  "animation": {
+    "name": "ring",
+    "description": "The handset shakes as the sound waves draw out",
+    "parts": ["handset", "inner", "outer"],
+    "motion": [
+      {
+        "part": "handset",
+        "preset": "shake",
+        "x": 1
+      },
+      {
+        "part": "inner",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 250
+      }
+    ]
+  }
+}

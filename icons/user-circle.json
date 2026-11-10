@@ -1,0 +1,25 @@
+{
+  "name": "user-circle",
+  "category": "objects",
+  "tags": ["account", "profile", "avatar", "person", "user"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["circle-user-round", "user-circle-2"],
+    "heroicons": ["user-circle"],
+    "tabler": ["user-circle"],
+    "phosphor": ["user-circle"],
+    "material": ["account_circle"]
+  },
+  "animation": {
+    "name": "nod",
+    "description": "The head nods inside the circle",
+    "parts": ["head"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "bounce",
+        "y": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "users-plus",
+  "category": "actions",
+  "tags": ["add-members", "invite", "team", "group", "people"],
+  "since": "0.4.0",
+  "equivalents": {
+    "tabler": ["users-plus"],
+    "material": ["group_add"]
+  },
+  "animation": {
+    "name": "invite",
+    "description": "Both people nod and the plus turns a quarter turn",
+    "parts": ["front", "back", "plus"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "back",
+        "preset": "bounce",
+        "y": 1.5,
+        "delay": 150
+      },
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [18.5, 17],
+        "angle": 90,
+        "delay": 100
+      }
+    ]
+  }
+}

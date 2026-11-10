@@ -1,0 +1,33 @@
+{
+  "name": "timeline",
+  "category": "interface",
+  "tags": ["history", "events", "steps", "activity", "progress", "roadmap"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["timeline"]
+  },
+  "animation": {
+    "name": "unfold",
+    "description": "The events write themselves one after the other",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 250
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 150
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 300
+      }
+    ]
+  }
+}

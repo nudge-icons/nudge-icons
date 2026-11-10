@@ -1,0 +1,29 @@
+{
+  "name": "calendar-range",
+  "category": "objects",
+  "tags": ["date-range", "period", "booking", "schedule", "dates"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-range"],
+    "heroicons": ["calendar-date-range"],
+    "material": ["date_range"]
+  },
+  "animation": {
+    "name": "select",
+    "description": "The range draws itself from start to end",
+    "parts": ["start", "end"],
+    "motion": [
+      {
+        "part": "start",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "end",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 200
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "mail-open",
+  "category": "status",
+  "tags": ["email", "read", "opened", "envelope", "letter"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["mail-open"],
+    "heroicons": ["envelope-open"],
+    "tabler": ["mail-opened"],
+    "phosphor": ["envelope-simple-open"],
+    "material": ["drafts"]
+  },
+  "animation": {
+    "name": "flutter",
+    "description": "The open flap flutters on its fold",
+    "parts": ["flap"],
+    "motion": [
+      {
+        "part": "flap",
+        "preset": "pulse",
+        "origin": [12, 10],
+        "scale": 0.75,
+        "axis": "y"
+      }
+    ]
+  }
+}

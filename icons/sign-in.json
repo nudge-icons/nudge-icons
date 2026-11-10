@@ -1,0 +1,25 @@
+{
+  "name": "sign-in",
+  "category": "actions",
+  "tags": ["login", "log-in", "enter", "sign-on", "door"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["log-in"],
+    "heroicons": ["arrow-right-end-on-rectangle"],
+    "tabler": ["login"],
+    "phosphor": ["sign-in"],
+    "material": ["login"]
+  },
+  "animation": {
+    "name": "enter",
+    "description": "The arrow slides into the door and back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "pass",
+        "x": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "user-search",
+  "category": "actions",
+  "tags": ["find-user", "lookup", "people", "member", "search"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["user-round-search"],
+    "tabler": ["user-search"],
+    "material": ["person_search"]
+  },
+  "animation": {
+    "name": "scan",
+    "description": "The lens circles as if searching",
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "orbit",
+        "r": 0.75
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "phone-outgoing",
+  "category": "status",
+  "tags": ["call", "dial", "outbound", "telephone", "make-call"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["phone-outgoing"],
+    "heroicons": ["phone-arrow-up-right"],
+    "tabler": ["phone-outgoing"],
+    "phosphor": ["phone-outgoing"],
+    "material": ["phone_forwarded"]
+  },
+  "animation": {
+    "name": "outgoing",
+    "description": "The arrow pushes out away from the handset",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

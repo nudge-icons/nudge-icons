@@ -1,0 +1,30 @@
+{
+  "name": "user-x",
+  "category": "actions",
+  "tags": ["remove-user", "block", "ban", "delete", "member"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["user-round-x", "user-x-2"],
+    "tabler": ["user-x"],
+    "material": ["person_cancel"]
+  },
+  "animation": {
+    "name": "refuse",
+    "description": "The head shakes no as the cross turns",
+    "parts": ["head", "cross"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "shake",
+        "x": 1
+      },
+      {
+        "part": "cross",
+        "preset": "spin",
+        "origin": [19, 11.5],
+        "angle": 90,
+        "delay": 100
+      }
+    ]
+  }
+}

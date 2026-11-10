@@ -1,0 +1,37 @@
+{
+  "name": "bell-ring",
+  "category": "status",
+  "tags": ["notification", "alarm", "ringing", "alert", "reminder"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["bell-ring"],
+    "heroicons": ["bell-alert"],
+    "tabler": ["bell-ringing"],
+    "phosphor": ["bell-ringing"],
+    "material": ["notifications_active"]
+  },
+  "animation": {
+    "name": "ring",
+    "description": "The bell swings, the clapper follows and the waves flicker",
+    "parts": ["body", "clapper", "waves"],
+    "motion": [
+      {
+        "part": "body",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 8
+      },
+      {
+        "part": "clapper",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 11,
+        "delay": 60
+      },
+      {
+        "part": "waves",
+        "preset": "flash"
+      }
+    ]
+  }
+}

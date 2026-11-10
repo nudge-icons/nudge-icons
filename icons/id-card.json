@@ -1,0 +1,31 @@
+{
+  "name": "id-card",
+  "category": "objects",
+  "tags": ["identity", "badge", "license", "passport", "profile", "contact"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["id-card"],
+    "heroicons": ["identification"],
+    "tabler": ["id"],
+    "phosphor": ["identification-card"],
+    "material": ["id_card"]
+  },
+  "animation": {
+    "name": "fill",
+    "description": "The details write themselves one line after the other",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 150
+      }
+    ]
+  }
+}

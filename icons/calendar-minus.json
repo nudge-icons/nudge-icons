@@ -1,0 +1,25 @@
+{
+  "name": "calendar-minus",
+  "category": "actions",
+  "tags": ["remove-event", "delete", "unschedule", "date"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-minus"],
+    "tabler": ["calendar-minus"],
+    "phosphor": ["calendar-minus"]
+  },
+  "animation": {
+    "name": "remove",
+    "description": "The minus squeezes in and springs back",
+    "parts": ["minus"],
+    "motion": [
+      {
+        "part": "minus",
+        "preset": "pulse",
+        "origin": [18, 18],
+        "scale": 0.75,
+        "axis": "x"
+      }
+    ]
+  }
+}

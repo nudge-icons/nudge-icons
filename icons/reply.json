@@ -1,0 +1,24 @@
+{
+  "name": "reply",
+  "category": "actions",
+  "tags": ["respond", "answer", "message", "email", "arrow-left"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["reply"],
+    "tabler": ["corner-up-left"],
+    "phosphor": ["arrow-bend-up-left"],
+    "material": ["reply"]
+  },
+  "animation": {
+    "name": "reply",
+    "description": "The arrow pulls back to the left and settles",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "bounce",
+        "x": -1.5
+      }
+    ]
+  }
+}

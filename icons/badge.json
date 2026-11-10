@@ -1,0 +1,24 @@
+{
+  "name": "badge",
+  "category": "objects",
+  "tags": ["seal", "rosette", "award", "label", "sticker"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["badge"],
+    "tabler": ["rosette"],
+    "phosphor": ["seal"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The badge turns by one point",
+    "parts": ["badge"],
+    "motion": [
+      {
+        "part": "badge",
+        "preset": "spin",
+        "angle": 45
+      }
+    ]
+  },
+  "filled": {}
+}

@@ -1,0 +1,38 @@
+{
+  "name": "badge-check",
+  "category": "status",
+  "tags": ["verified", "approved", "certified", "trusted", "seal"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["badge-check"],
+    "heroicons": ["check-badge"],
+    "tabler": ["rosette-discount-check"],
+    "phosphor": ["seal-check"],
+    "material": ["verified"]
+  },
+  "animation": {
+    "name": "verify",
+    "description": "The tick draws itself inside the badge",
+    "parts": ["mark"],
+    "motion": [
+      {
+        "part": "mark",
+        "preset": "draw"
+      }
+    ]
+  },
+  "filled": {
+    "animation": {
+      "name": "pop",
+      "description": "The badge pops up and settles",
+      "parts": ["badge"],
+      "motion": [
+        {
+          "part": "badge",
+          "preset": "pulse",
+          "scale": 1.08
+        }
+      ]
+    }
+  }
+}

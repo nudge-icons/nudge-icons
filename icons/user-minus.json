@@ -1,0 +1,33 @@
+{
+  "name": "user-minus",
+  "category": "actions",
+  "tags": ["remove-user", "unfollow", "member", "delete", "kick"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["user-round-minus", "user-minus-2"],
+    "heroicons": ["user-minus"],
+    "tabler": ["user-minus"],
+    "phosphor": ["user-minus"],
+    "material": ["person_remove"]
+  },
+  "animation": {
+    "name": "remove",
+    "description": "The head nods and the minus squeezes in",
+    "parts": ["head", "minus"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "minus",
+        "preset": "pulse",
+        "origin": [18.5, 11.5],
+        "scale": 0.75,
+        "axis": "x",
+        "delay": 100
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "reply-all",
+  "category": "actions",
+  "tags": ["respond", "answer", "everyone", "message", "email"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["reply-all"],
+    "tabler": ["corner-up-left-double"],
+    "phosphor": ["arrow-bend-double-up-left"],
+    "material": ["reply_all"]
+  },
+  "animation": {
+    "name": "reply",
+    "description": "Both arrowheads pull back to the left, one after the other",
+    "parts": ["front", "back"],
+    "motion": [
+      {
+        "part": "front",
+        "preset": "bounce",
+        "x": -1.5
+      },
+      {
+        "part": "back",
+        "preset": "bounce",
+        "x": -1.5,
+        "delay": 100
+      }
+    ]
+  }
+}

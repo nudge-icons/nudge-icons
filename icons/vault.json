@@ -1,0 +1,24 @@
+{
+  "name": "vault",
+  "category": "objects",
+  "tags": ["safe", "bank", "savings", "secure", "deposit", "money"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["vault"],
+    "tabler": ["vault"],
+    "phosphor": ["vault"]
+  },
+  "animation": {
+    "name": "unlock",
+    "description": "The handle wheel turns a quarter turn",
+    "parts": ["wheel"],
+    "motion": [
+      {
+        "part": "wheel",
+        "preset": "spin",
+        "origin": [12, 11],
+        "angle": 90
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "mail-plus",
+  "category": "actions",
+  "tags": ["compose", "new-email", "add", "envelope", "write"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["mail-plus"],
+    "tabler": ["mail-plus"]
+  },
+  "animation": {
+    "name": "compose",
+    "description": "The plus turns a quarter turn by the envelope",
+    "parts": ["plus"],
+    "motion": [
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [18.5, 16.5],
+        "angle": 90
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "megaphone",
+  "category": "objects",
+  "tags": ["announcement", "marketing", "broadcast", "loud", "campaign", "promote"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["megaphone"],
+    "heroicons": ["megaphone"],
+    "tabler": ["speakerphone"],
+    "phosphor": ["megaphone"],
+    "material": ["campaign"]
+  },
+  "animation": {
+    "name": "announce",
+    "description": "The horn blares twice",
+    "parts": ["horn"],
+    "motion": [
+      {
+        "part": "horn",
+        "preset": "pulse",
+        "origin": [8.5, 11.5],
+        "scale": 1.1,
+        "beats": 2
+      }
+    ]
+  }
+}

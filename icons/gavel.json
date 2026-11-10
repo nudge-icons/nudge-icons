@@ -1,0 +1,25 @@
+{
+  "name": "gavel",
+  "category": "objects",
+  "tags": ["law", "judge", "auction", "court", "justice", "verdict"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["gavel"],
+    "tabler": ["gavel"],
+    "phosphor": ["gavel"],
+    "material": ["gavel"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The gavel strikes and rebounds",
+    "parts": ["gavel"],
+    "motion": [
+      {
+        "part": "gavel",
+        "preset": "swing",
+        "origin": [3.5, 20.5],
+        "angle": 6
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "calendar-clock",
+  "category": "status",
+  "tags": ["schedule", "deadline", "appointment", "time", "pending", "date"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-clock"],
+    "tabler": ["calendar-clock"],
+    "material": ["calendar_clock"]
+  },
+  "animation": {
+    "name": "tick",
+    "description": "The minute hand sweeps a full turn",
+    "parts": ["minute"],
+    "motion": [
+      {
+        "part": "minute",
+        "preset": "spin",
+        "origin": [17.5, 17.5],
+        "duration": 900
+      }
+    ]
+  }
+}

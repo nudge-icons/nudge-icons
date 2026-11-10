@@ -1,0 +1,31 @@
+{
+  "name": "sun-moon",
+  "category": "interface",
+  "tags": ["theme", "auto", "appearance", "day-night", "light", "dark"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["sun-moon"],
+    "tabler": ["sun-moon"],
+    "material": ["routine"]
+  },
+  "animation": {
+    "name": "shine",
+    "description": "The sun's rays shine out, then the moon rocks",
+    "parts": ["rays", "moon"],
+    "motion": [
+      {
+        "part": "rays",
+        "preset": "pulse",
+        "origin": [8, 8],
+        "scale": 1.15
+      },
+      {
+        "part": "moon",
+        "preset": "swing",
+        "origin": [15, 16],
+        "angle": 10,
+        "delay": 150
+      }
+    ]
+  }
+}

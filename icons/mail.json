@@ -1,0 +1,25 @@
+{
+  "name": "mail",
+  "category": "objects",
+  "tags": ["email", "envelope", "message", "letter", "inbox"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["mail"],
+    "heroicons": ["envelope"],
+    "tabler": ["mail"],
+    "phosphor": ["envelope-simple"],
+    "material": ["mail"]
+  },
+  "animation": {
+    "name": "seal",
+    "description": "The flap presses down as the envelope seals",
+    "parts": ["flap"],
+    "motion": [
+      {
+        "part": "flap",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
+  }
+}

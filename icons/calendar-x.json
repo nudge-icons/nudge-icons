@@ -1,0 +1,25 @@
+{
+  "name": "calendar-x",
+  "category": "actions",
+  "tags": ["cancel-event", "busy", "unavailable", "delete", "date"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-x-2"],
+    "tabler": ["calendar-x"],
+    "phosphor": ["calendar-x"],
+    "material": ["event_busy"]
+  },
+  "animation": {
+    "name": "cancel",
+    "description": "The cross turns a quarter turn by the calendar",
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "spin",
+        "origin": [18, 18],
+        "angle": 90
+      }
+    ]
+  }
+}

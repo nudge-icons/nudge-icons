@@ -1,0 +1,22 @@
+{
+  "name": "mail-check",
+  "category": "status",
+  "tags": ["email", "sent", "delivered", "read", "envelope", "done"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["mail-check"],
+    "tabler": ["mail-check"],
+    "material": ["mark_email_read"]
+  },
+  "animation": {
+    "name": "deliver",
+    "description": "The tick draws itself by the envelope",
+    "parts": ["check"],
+    "motion": [
+      {
+        "part": "check",
+        "preset": "draw"
+      }
+    ]
+  }
+}

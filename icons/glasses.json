@@ -1,0 +1,24 @@
+{
+  "name": "glasses",
+  "category": "objects",
+  "tags": ["eyeglasses", "spectacles", "reading", "vision", "nerd"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["glasses"],
+    "tabler": ["eyeglass"],
+    "phosphor": ["eyeglasses"],
+    "material": ["eyeglasses"]
+  },
+  "animation": {
+    "name": "adjust",
+    "description": "The glasses are pushed up and settle",
+    "parts": ["glasses"],
+    "motion": [
+      {
+        "part": "glasses",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "user-settings",
+  "category": "interface",
+  "tags": ["account-settings", "user-cog", "gear", "manage", "preferences", "profile"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["user-round-cog", "user-cog-2"],
+    "tabler": ["user-cog"],
+    "phosphor": ["user-gear"],
+    "material": ["manage_accounts"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The gear turns by one tooth",
+    "parts": ["gear"],
+    "motion": [
+      {
+        "part": "gear",
+        "preset": "spin",
+        "origin": [18, 15.5],
+        "angle": 45
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "user-check",
+  "category": "status",
+  "tags": ["verified", "approved", "member", "confirmed", "friend"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["user-round-check", "user-check-2"],
+    "tabler": ["user-check"],
+    "phosphor": ["user-check"],
+    "material": ["person_check"]
+  },
+  "animation": {
+    "name": "approve",
+    "description": "The head nods and the tick draws itself",
+    "parts": ["head", "check"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "check",
+        "preset": "draw",
+        "delay": 100
+      }
+    ]
+  }
+}

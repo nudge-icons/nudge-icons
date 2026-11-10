@@ -1,0 +1,24 @@
+{
+  "name": "alarm-clock",
+  "category": "objects",
+  "tags": ["alarm", "wake-up", "reminder", "time", "morning"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["alarm-clock"],
+    "tabler": ["alarm"],
+    "phosphor": ["alarm"],
+    "material": ["alarm"]
+  },
+  "animation": {
+    "name": "ring",
+    "description": "The clock rattles as the alarm goes off",
+    "parts": ["clock"],
+    "motion": [
+      {
+        "part": "clock",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

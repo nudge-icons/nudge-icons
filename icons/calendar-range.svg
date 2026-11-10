@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect data-part="page" x="3" y="5" width="18" height="16" rx="2"/>
+  <path data-part="line" d="M3 10h18"/>
+  <g data-part="rings">
+    <path d="M8 3v4"/>
+    <path d="M16 3v4"/>
+  </g>
+  <g data-part="start">
+    <path d="M7 14h.5"/>
+    <path d="M11 14h6"/>
+  </g>
+  <g data-part="end">
+    <path d="M7 17.5h6"/>
+    <path d="M16.5 17.5h.5"/>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "name": "face-smile",
+  "category": "status",
+  "tags": ["smile", "happy", "emoji", "feedback", "satisfied", "mood"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["smile"],
+    "heroicons": ["face-smile"],
+    "tabler": ["mood-smile"],
+    "phosphor": ["smiley"],
+    "material": ["sentiment_satisfied"]
+  },
+  "animation": {
+    "name": "blink",
+    "description": "The eyes blink and the smile widens",
+    "parts": ["eyes", "mouth"],
+    "motion": [
+      {
+        "part": "eyes",
+        "preset": "pulse",
+        "origin": [12, 9.5],
+        "scale": 0.2,
+        "axis": "y",
+        "duration": 500
+      },
+      {
+        "part": "mouth",
+        "preset": "pulse",
+        "origin": [12, 15.5],
+        "scale": 1.15,
+        "delay": 150
+      }
+    ]
+  }
+}

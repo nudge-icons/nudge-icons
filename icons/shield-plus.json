@@ -1,0 +1,25 @@
+{
+  "name": "shield-plus",
+  "category": "actions",
+  "tags": ["add-protection", "security", "health", "insurance", "safe"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["shield-plus"],
+    "tabler": ["shield-plus"],
+    "phosphor": ["shield-plus"],
+    "material": ["add_moderator"]
+  },
+  "animation": {
+    "name": "add",
+    "description": "The plus turns a quarter turn inside the shield",
+    "parts": ["plus"],
+    "motion": [
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [12, 12],
+        "angle": 90
+      }
+    ]
+  }
+}

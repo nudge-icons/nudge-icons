@@ -1,0 +1,25 @@
+{
+  "name": "baby",
+  "category": "objects",
+  "tags": ["child", "infant", "kid", "toddler", "newborn"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["baby"],
+    "tabler": ["mood-kid"],
+    "phosphor": ["baby"],
+    "material": ["child_care"]
+  },
+  "animation": {
+    "name": "rock",
+    "description": "The baby rocks gently from side to side",
+    "parts": ["baby"],
+    "motion": [
+      {
+        "part": "baby",
+        "preset": "swing",
+        "origin": [12, 21],
+        "angle": 6
+      }
+    ]
+  }
+}

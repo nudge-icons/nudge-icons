@@ -1,0 +1,24 @@
+{
+  "name": "forward",
+  "category": "actions",
+  "tags": ["send", "share", "pass-on", "message", "email", "arrow-right"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["forward"],
+    "tabler": ["corner-up-right"],
+    "phosphor": ["arrow-bend-up-right"],
+    "material": ["forward"]
+  },
+  "animation": {
+    "name": "forward",
+    "description": "The arrow pushes on to the right and settles",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "bounce",
+        "x": 1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "lock-keyhole",
+  "category": "status",
+  "tags": ["secure", "private", "password", "locked", "keyhole"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["lock-keyhole"],
+    "phosphor": ["lock-key"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The keyhole turns back and forth like a key",
+    "parts": ["keyhole"],
+    "motion": [
+      {
+        "part": "keyhole",
+        "preset": "swing",
+        "origin": [12, 15],
+        "angle": 30
+      }
+    ]
+  },
+  "toggle": {
+    "description": "The shackle's right leg releases and the shackle lifts open",
+    "parts": ["shackle"],
+    "motion": [
+      {
+        "part": "shackle",
+        "preset": "trim",
+        "length": 30,
+        "offset": -3.5,
+        "morph": "M16 9V6a4 4 0 0 0-8 0v4.5"
+      }
+    ]
+  }
+}

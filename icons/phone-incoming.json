@@ -1,0 +1,26 @@
+{
+  "name": "phone-incoming",
+  "category": "status",
+  "tags": ["call", "receive", "inbound", "telephone", "answer"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["phone-incoming"],
+    "heroicons": ["phone-arrow-down-left"],
+    "tabler": ["phone-incoming"],
+    "phosphor": ["phone-incoming"],
+    "material": ["phone_callback"]
+  },
+  "animation": {
+    "name": "incoming",
+    "description": "The arrow pushes in towards the handset",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

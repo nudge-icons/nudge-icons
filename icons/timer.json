@@ -1,0 +1,32 @@
+{
+  "name": "timer",
+  "category": "objects",
+  "tags": ["stopwatch", "countdown", "time", "duration", "speed"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["timer"],
+    "tabler": ["stopwatch"],
+    "phosphor": ["timer"],
+    "material": ["timer"]
+  },
+  "animation": {
+    "name": "start",
+    "description": "The button is pressed and the hand sweeps a full turn",
+    "parts": ["button", "hand"],
+    "motion": [
+      {
+        "part": "button",
+        "preset": "nudge",
+        "y": 1,
+        "duration": 400
+      },
+      {
+        "part": "hand",
+        "preset": "spin",
+        "origin": [12, 13.5],
+        "duration": 900,
+        "delay": 150
+      }
+    ]
+  }
+}

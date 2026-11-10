@@ -1,0 +1,30 @@
+{
+  "name": "calendar-days",
+  "category": "objects",
+  "tags": ["month", "date", "schedule", "events", "agenda"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-days"],
+    "heroicons": ["calendar-days"],
+    "phosphor": ["calendar-dots"],
+    "material": ["calendar_month"]
+  },
+  "animation": {
+    "name": "fill",
+    "description": "The days appear row by row",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 250
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 200
+      }
+    ]
+  }
+}

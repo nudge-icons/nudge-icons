@@ -1,0 +1,36 @@
+{
+  "name": "fingerprint",
+  "category": "objects",
+  "tags": ["biometric", "touch-id", "identity", "authentication", "scan"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["fingerprint-pattern", "fingerprint"],
+    "tabler": ["fingerprint"],
+    "phosphor": ["fingerprint"],
+    "material": ["fingerprint"]
+  },
+  "animation": {
+    "name": "scan",
+    "description": "The ridges trace themselves from the core outwards",
+    "parts": ["core", "middle", "outer"],
+    "motion": [
+      {
+        "part": "core",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "middle",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 200
+      },
+      {
+        "part": "outer",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 400
+      }
+    ]
+  }
+}

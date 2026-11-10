@@ -1,0 +1,25 @@
+{
+  "name": "calendar-heart",
+  "category": "objects",
+  "tags": ["anniversary", "date-night", "wedding", "valentine", "favorite", "event"],
+  "since": "0.4.0",
+  "equivalents": {
+    "lucide": ["calendar-heart"],
+    "tabler": ["calendar-heart"],
+    "phosphor": ["calendar-heart"]
+  },
+  "animation": {
+    "name": "beat",
+    "description": "The heart beats twice by the calendar",
+    "parts": ["heart"],
+    "motion": [
+      {
+        "part": "heart",
+        "preset": "pulse",
+        "origin": [17.5, 17.5],
+        "scale": 1.15,
+        "beats": 2
+      }
+    ]
+  }
+}
