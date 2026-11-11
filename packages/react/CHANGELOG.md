@@ -1,5 +1,12 @@
 # @nudge-icons/react
 
+## 0.4.0
+
+### Minor Changes
+
+- 33e73b2: 48 new icons for media and devices: playback (`PlayCircle`, `PauseCircle`, `FastForward`, `SkipBack`, `SkipForward`, `Shuffle`, `Eject`), media (`Music`, `Film`, `Album`, `Disc`, `Radio`, `Subtitles`, `Newspaper`, `Aperture`, `Contrast`), screens and casting (`PictureInPicture`, `Maximize`, `Minimize`, `Cast`, `ScreenMirror`, `ScreenShare`), devices (`Monitor`, `Laptop`, `Tablet`, `Smartphone`, `Tv`, `Watch`, `Keyboard`, `Mouse`, `Gamepad`, `Headset`, `Speaker`, `Calculator`, `Router`), connectivity and power (`Bluetooth`, `BluetoothConnected`, `Nfc`, `Signal`, `Battery`, `BatteryCharging`) and crossed-out versions for `/static` and plain SVG (`MicrophoneOff`, `VolumeOff`, `CameraOff`, `VideoOff`, `ImageOff`, `WifiOff`, `KeyboardOff`). New filled variants: `PlayCircleFilled`, `PauseCircleFilled`.
+- 0900770: 48 new icons for people, communication, security and time: mail and messages (`Mail`, `MailOpen`, `MailPlus`, `MailCheck`, `Reply`, `ReplyAll`, `Forward`, `Rss`, `Megaphone`), calls (`PhoneCall`, `PhoneIncoming`, `PhoneOutgoing`), people (`UserCircle`, `UserCheck`, `UserMinus`, `UserX`, `UserSettings`, `UserSearch`, `UsersPlus`, `IdCard`, `Badge`, `BadgeCheck`, `Handshake`, `FaceSmile`, `FaceFrown`, `Baby`, `Glasses`), security (`SignIn`, `Fingerprint`, `LockKeyhole`, `ShieldLock`, `ShieldPlus`, `ShieldQuestion`, `Vault`, `Gavel`) and time (`BellRing`, `AlarmClock`, `Timer`, `Timeline`, `SunMoon`, `CalendarDays`, `CalendarRange`, `CalendarCheck`, `CalendarPlus`, `CalendarMinus`, `CalendarX`, `CalendarClock`, `CalendarHeart`). `LockKeyhole` opens with `active`, like `Lock`. New filled variants: `BadgeFilled`, `BadgeCheckFilled`.
+
 ## 0.3.0
 
 ### Minor Changes
