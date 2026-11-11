@@ -1,0 +1,24 @@
+{
+  "name": "shovel",
+  "category": "objects",
+  "tags": ["dig", "garden", "spade", "tool", "construction"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["shovel"],
+    "tabler": ["shovel"],
+    "phosphor": ["shovel"]
+  },
+  "animation": {
+    "name": "dig",
+    "description": "The shovel pushes into the ground and pulls back",
+    "parts": ["shovel"],
+    "motion": [
+      {
+        "part": "shovel",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

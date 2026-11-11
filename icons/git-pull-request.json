@@ -1,0 +1,29 @@
+{
+  "name": "git-pull-request",
+  "category": "objects",
+  "tags": ["version-control", "pull-request", "git", "review", "vcs"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["git-pull-request"],
+    "tabler": ["git-pull-request"],
+    "phosphor": ["git-pull-request"]
+  },
+  "animation": {
+    "name": "request",
+    "description": "The request line draws back to the source and its arrow pushes",
+    "parts": ["request", "head"],
+    "motion": [
+      {
+        "part": "request",
+        "preset": "draw",
+        "duration": 500
+      },
+      {
+        "part": "head",
+        "preset": "nudge",
+        "x": -1,
+        "delay": 350
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "git-branch",
+  "category": "objects",
+  "tags": ["version-control", "branch", "git", "code", "vcs"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["git-branch"],
+    "tabler": ["git-branch"],
+    "phosphor": ["git-branch"]
+  },
+  "animation": {
+    "name": "branch",
+    "description": "The branch grows from the main line and its commit pops",
+    "parts": ["branch", "tip"],
+    "motion": [
+      {
+        "part": "branch",
+        "preset": "draw",
+        "duration": 500
+      },
+      {
+        "part": "tip",
+        "preset": "pulse",
+        "origin": [18, 6],
+        "scale": 1.25,
+        "delay": 350
+      }
+    ]
+  }
+}

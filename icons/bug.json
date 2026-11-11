@@ -1,0 +1,26 @@
+{
+  "name": "bug",
+  "category": "objects",
+  "tags": ["debug", "error", "issue", "insect", "defect"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["bug"],
+    "heroicons": ["bug-ant"],
+    "tabler": ["bug"],
+    "phosphor": ["bug"],
+    "material": ["bug_report"]
+  },
+  "animation": {
+    "name": "crawl",
+    "description": "The bug wiggles from side to side",
+    "parts": ["bug"],
+    "motion": [
+      {
+        "part": "bug",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 8
+      }
+    ]
+  }
+}

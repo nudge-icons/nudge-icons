@@ -1,0 +1,30 @@
+{
+  "name": "align-center-horizontal",
+  "category": "actions",
+  "tags": ["align", "center", "middle", "arrange", "distribute"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["align-center-vertical"],
+    "tabler": ["layout-align-center"],
+    "phosphor": ["align-center-horizontal"],
+    "material": ["align_horizontal_center"]
+  },
+  "animation": {
+    "name": "centre",
+    "description": "The blocks slide sideways and settle back on the centre line",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "bounce",
+        "x": 2
+      },
+      {
+        "part": "bottom",
+        "preset": "bounce",
+        "x": -2,
+        "delay": 80
+      }
+    ]
+  }
+}

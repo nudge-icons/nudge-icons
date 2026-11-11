@@ -1,0 +1,24 @@
+{
+  "name": "battery-plus",
+  "category": "status",
+  "tags": ["power", "charge", "energy", "add", "boost"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["battery-plus"],
+    "phosphor": ["battery-plus"],
+    "material": ["battery_android_frame_plus"]
+  },
+  "animation": {
+    "name": "add",
+    "description": "The plus turns a quarter",
+    "parts": ["plus"],
+    "motion": [
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [10, 12],
+        "angle": 90
+      }
+    ]
+  }
+}

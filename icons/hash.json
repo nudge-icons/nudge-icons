@@ -1,0 +1,30 @@
+{
+  "name": "hash",
+  "category": "interface",
+  "tags": ["hashtag", "number", "pound", "channel", "tag"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["hash"],
+    "heroicons": ["hashtag"],
+    "tabler": ["hash"],
+    "phosphor": ["hash"],
+    "material": ["tag"]
+  },
+  "animation": {
+    "name": "shift",
+    "description": "The crossbars slide apart and back",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 1.5
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": -1.5
+      }
+    ]
+  }
+}

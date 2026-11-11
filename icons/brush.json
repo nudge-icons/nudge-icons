@@ -1,0 +1,26 @@
+{
+  "name": "brush",
+  "category": "actions",
+  "tags": ["paint", "paintbrush", "art", "draw", "stroke"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["brush"],
+    "heroicons": ["paint-brush"],
+    "tabler": ["brush"],
+    "phosphor": ["paint-brush"],
+    "material": ["brush"]
+  },
+  "animation": {
+    "name": "stroke",
+    "description": "The brush sweeps back and forth on its bristles",
+    "parts": ["brush"],
+    "motion": [
+      {
+        "part": "brush",
+        "preset": "swing",
+        "origin": [7, 17.5],
+        "angle": 6
+      }
+    ]
+  }
+}

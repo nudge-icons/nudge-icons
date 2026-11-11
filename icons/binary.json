@@ -1,0 +1,27 @@
+{
+  "name": "binary",
+  "category": "objects",
+  "tags": ["code", "bits", "zero", "one", "data"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["binary"],
+    "tabler": ["binary"],
+    "phosphor": ["binary"]
+  },
+  "animation": {
+    "name": "flicker",
+    "description": "The rows of bits flicker in turn",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "flash"
+      },
+      {
+        "part": "bottom",
+        "preset": "flash",
+        "delay": 200
+      }
+    ]
+  }
+}

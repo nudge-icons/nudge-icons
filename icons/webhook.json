@@ -1,0 +1,36 @@
+{
+  "name": "webhook",
+  "category": "objects",
+  "tags": ["hook", "callback", "event", "integration", "api"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["webhook"],
+    "tabler": ["webhook"],
+    "phosphor": ["webhooks-logo"],
+    "material": ["webhook"]
+  },
+  "animation": {
+    "name": "relay",
+    "description": "The three hooks draw one after another",
+    "parts": ["top", "left", "right"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "draw",
+        "duration": 400
+      },
+      {
+        "part": "left",
+        "preset": "draw",
+        "duration": 400,
+        "delay": 150
+      },
+      {
+        "part": "right",
+        "preset": "draw",
+        "duration": 400,
+        "delay": 300
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "shapes",
+  "category": "objects",
+  "tags": ["geometry", "objects", "triangle", "square", "circle"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["shapes"],
+    "tabler": ["category"],
+    "phosphor": ["shapes"],
+    "material": ["shapes", "category"]
+  },
+  "animation": {
+    "name": "wave",
+    "description": "The shapes pulse one after another",
+    "parts": ["triangle", "circle", "square"],
+    "motion": [
+      {
+        "part": "triangle",
+        "preset": "pulse",
+        "origin": [12, 8],
+        "scale": 0.8,
+        "duration": 500
+      },
+      {
+        "part": "circle",
+        "preset": "pulse",
+        "origin": [17.5, 17.5],
+        "scale": 0.8,
+        "duration": 500,
+        "delay": 100
+      },
+      {
+        "part": "square",
+        "preset": "pulse",
+        "origin": [6.5, 17.5],
+        "scale": 0.8,
+        "duration": 500,
+        "delay": 200
+      }
+    ]
+  },
+  "filled": {}
+}

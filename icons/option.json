@@ -1,0 +1,30 @@
+{
+  "name": "option",
+  "category": "objects",
+  "tags": ["keyboard", "alt", "key", "modifier", "shortcut"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["option"],
+    "tabler": ["option"],
+    "phosphor": ["option"],
+    "material": ["keyboard_option_key"]
+  },
+  "animation": {
+    "name": "switch",
+    "description": "The line traces the switch and the bar pushes aside",
+    "parts": ["path", "bar"],
+    "motion": [
+      {
+        "part": "path",
+        "preset": "draw",
+        "duration": 600
+      },
+      {
+        "part": "bar",
+        "preset": "nudge",
+        "x": 1.5,
+        "delay": 300
+      }
+    ]
+  }
+}

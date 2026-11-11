@@ -1,0 +1,30 @@
+{
+  "name": "bomb",
+  "category": "objects",
+  "tags": ["explosive", "danger", "blast", "boom", "destroy"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["bomb"],
+    "tabler": ["bomb"],
+    "phosphor": ["bomb"],
+    "material": ["bomb"]
+  },
+  "animation": {
+    "name": "fizz",
+    "description": "The fuse flickers and the bomb shakes",
+    "parts": ["bomb", "fuse"],
+    "motion": [
+      {
+        "part": "bomb",
+        "preset": "shake",
+        "x": 0.75,
+        "delay": 150
+      },
+      {
+        "part": "fuse",
+        "preset": "flash"
+      }
+    ]
+  },
+  "filled": {}
+}

@@ -1,0 +1,29 @@
+{
+  "name": "divide",
+  "category": "interface",
+  "tags": ["division", "math", "split", "calculator", "operator"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["divide"],
+    "heroicons": ["divide"],
+    "tabler": ["divide"],
+    "phosphor": ["divide"]
+  },
+  "animation": {
+    "name": "split",
+    "description": "The dots push apart and back",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "nudge",
+        "y": -1.5
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
+  }
+}

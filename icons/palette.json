@@ -1,0 +1,50 @@
+{
+  "name": "palette",
+  "category": "objects",
+  "tags": ["color", "paint", "art", "design", "theme"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["palette"],
+    "tabler": ["palette"],
+    "phosphor": ["palette"],
+    "material": ["palette"]
+  },
+  "animation": {
+    "name": "dab",
+    "description": "The paint dabs pop one after another",
+    "parts": ["first", "second", "third", "fourth"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "pulse",
+        "origin": [7, 12.75],
+        "scale": 1.6,
+        "duration": 500
+      },
+      {
+        "part": "second",
+        "preset": "pulse",
+        "origin": [8.5, 7.75],
+        "scale": 1.6,
+        "duration": 500,
+        "delay": 90
+      },
+      {
+        "part": "third",
+        "preset": "pulse",
+        "origin": [13, 6.25],
+        "scale": 1.6,
+        "duration": 500,
+        "delay": 180
+      },
+      {
+        "part": "fourth",
+        "preset": "pulse",
+        "origin": [17, 9.25],
+        "scale": 1.6,
+        "duration": 500,
+        "delay": 270
+      }
+    ]
+  }
+}

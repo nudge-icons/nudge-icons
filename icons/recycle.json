@@ -1,0 +1,38 @@
+{
+  "name": "recycle",
+  "category": "actions",
+  "tags": ["reuse", "environment", "eco", "green", "sustainable"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["recycle"],
+    "tabler": ["recycle"],
+    "phosphor": ["recycle"],
+    "material": ["recycling"]
+  },
+  "animation": {
+    "name": "cycle",
+    "description": "Each arrow pushes on along the loop, one after another",
+    "parts": ["left", "top", "bottom"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": 0.5,
+        "y": -1
+      },
+      {
+        "part": "top",
+        "preset": "nudge",
+        "x": 0.5,
+        "y": 1,
+        "delay": 150
+      },
+      {
+        "part": "bottom",
+        "preset": "nudge",
+        "x": -1,
+        "delay": 300
+      }
+    ]
+  }
+}

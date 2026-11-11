@@ -1,0 +1,27 @@
+{
+  "name": "hard-drive",
+  "category": "objects",
+  "tags": ["storage", "disk", "drive", "hardware", "hdd"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["hard-drive"],
+    "phosphor": ["hard-drive"],
+    "material": ["hard_drive"]
+  },
+  "animation": {
+    "name": "access",
+    "description": "The lights blink as the drive works",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "flash"
+      },
+      {
+        "part": "second",
+        "preset": "flash",
+        "delay": 200
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "git-fork",
+  "category": "objects",
+  "tags": ["version-control", "fork", "git", "copy", "vcs"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["git-fork"],
+    "tabler": ["git-fork"],
+    "phosphor": ["git-fork"]
+  },
+  "animation": {
+    "name": "fork",
+    "description": "The line splits in two and both copies pop",
+    "parts": ["fork", "left", "right"],
+    "motion": [
+      {
+        "part": "fork",
+        "preset": "draw",
+        "duration": 450
+      },
+      {
+        "part": "left",
+        "preset": "pulse",
+        "origin": [6, 6],
+        "scale": 1.25,
+        "delay": 350
+      },
+      {
+        "part": "right",
+        "preset": "pulse",
+        "origin": [18, 6],
+        "scale": 1.25,
+        "delay": 350
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "flip-vertical",
+  "category": "actions",
+  "tags": ["mirror", "reflect", "invert", "vertical"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["flip-vertical-2", "flip-vertical"],
+    "tabler": ["flip-vertical"],
+    "phosphor": ["flip-vertical"]
+  },
+  "animation": {
+    "name": "flip",
+    "description": "The top shape flips over the axis onto its mirror and back",
+    "parts": ["source"],
+    "motion": [
+      {
+        "part": "source",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": -1,
+        "axis": "y"
+      }
+    ]
+  }
+}

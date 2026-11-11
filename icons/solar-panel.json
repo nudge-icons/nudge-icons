@@ -1,0 +1,25 @@
+{
+  "name": "solar-panel",
+  "category": "objects",
+  "tags": ["solar", "energy", "renewable", "power", "sun"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["solar-panel"],
+    "tabler": ["solar-panel"],
+    "phosphor": ["solar-panel"],
+    "material": ["solar_power"]
+  },
+  "animation": {
+    "name": "tilt",
+    "description": "The panel tilts on its stand toward the sun",
+    "parts": ["panel"],
+    "motion": [
+      {
+        "part": "panel",
+        "preset": "swing",
+        "origin": [12, 15],
+        "angle": 5
+      }
+    ]
+  }
+}

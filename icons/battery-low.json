@@ -1,0 +1,23 @@
+{
+  "name": "battery-low",
+  "category": "status",
+  "tags": ["power", "charge", "energy", "low", "warning"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["battery-low"],
+    "tabler": ["battery-1"],
+    "phosphor": ["battery-low"],
+    "material": ["battery_low", "battery_android_1"]
+  },
+  "animation": {
+    "name": "low",
+    "description": "The last bar blinks as if asking for a charge",
+    "parts": ["level"],
+    "motion": [
+      {
+        "part": "level",
+        "preset": "flash"
+      }
+    ]
+  }
+}

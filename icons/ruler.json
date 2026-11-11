@@ -1,0 +1,24 @@
+{
+  "name": "ruler",
+  "category": "objects",
+  "tags": ["measure", "length", "scale", "size", "dimension"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["ruler"],
+    "tabler": ["ruler-2"],
+    "phosphor": ["ruler"],
+    "material": ["straighten"]
+  },
+  "animation": {
+    "name": "measure",
+    "description": "The marks draw along the ruler",
+    "parts": ["ticks"],
+    "motion": [
+      {
+        "part": "ticks",
+        "preset": "draw",
+        "duration": 500
+      }
+    ]
+  }
+}

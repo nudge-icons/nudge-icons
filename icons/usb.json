@@ -1,0 +1,50 @@
+{
+  "name": "usb",
+  "category": "objects",
+  "tags": ["port", "cable", "connector", "plug", "device"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["usb"],
+    "tabler": ["usb"],
+    "phosphor": ["usb"],
+    "material": ["usb"]
+  },
+  "animation": {
+    "name": "transfer",
+    "description": "The arrow head pushes up while the side branches draw out and their ends pop",
+    "parts": ["head", "left-branch", "left-end", "right-branch", "right-end"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "nudge",
+        "y": -1.5
+      },
+      {
+        "part": "left-branch",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 100
+      },
+      {
+        "part": "left-end",
+        "preset": "pulse",
+        "origin": [5.5, 8.5],
+        "scale": 1.35,
+        "delay": 350
+      },
+      {
+        "part": "right-branch",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 200
+      },
+      {
+        "part": "right-end",
+        "preset": "pulse",
+        "origin": [18.5, 6],
+        "scale": 1.35,
+        "delay": 450
+      }
+    ]
+  }
+}

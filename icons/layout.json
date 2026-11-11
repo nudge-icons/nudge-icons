@@ -1,0 +1,30 @@
+{
+  "name": "layout",
+  "category": "interface",
+  "tags": ["template", "panels", "header", "sidebar", "dashboard"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["panels-top-left", "layout"],
+    "tabler": ["layout"],
+    "phosphor": ["layout"],
+    "material": ["space_dashboard"]
+  },
+  "animation": {
+    "name": "build",
+    "description": "The header and the sidebar draw into the frame",
+    "parts": ["header", "sidebar"],
+    "motion": [
+      {
+        "part": "header",
+        "preset": "draw",
+        "duration": 400
+      },
+      {
+        "part": "sidebar",
+        "preset": "draw",
+        "duration": 400,
+        "delay": 250
+      }
+    ]
+  }
+}

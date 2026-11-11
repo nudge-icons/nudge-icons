@@ -1,0 +1,23 @@
+{
+  "name": "magnet",
+  "category": "objects",
+  "tags": ["attract", "magnetic", "snap", "pull", "physics"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["magnet"],
+    "tabler": ["magnet"],
+    "phosphor": ["magnet"]
+  },
+  "animation": {
+    "name": "pull",
+    "description": "The magnet jerks up as it pulls and settles",
+    "parts": ["magnet"],
+    "motion": [
+      {
+        "part": "magnet",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "battery-full",
+  "category": "status",
+  "tags": ["power", "charge", "energy", "full", "level"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["battery-full"],
+    "heroicons": ["battery-100"],
+    "tabler": ["battery-4"],
+    "phosphor": ["battery-full"],
+    "material": ["battery_full", "battery_android_6"]
+  },
+  "animation": {
+    "name": "fill",
+    "description": "The level bars fill up one by one",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 250
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 150
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 300
+      }
+    ]
+  }
+}

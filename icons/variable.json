@@ -1,0 +1,33 @@
+{
+  "name": "variable",
+  "category": "objects",
+  "tags": ["code", "function", "math", "parameter", "formula"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["variable"],
+    "heroicons": ["variable"],
+    "tabler": ["variable"]
+  },
+  "animation": {
+    "name": "evaluate",
+    "description": "The brackets spread as the x turns",
+    "parts": ["left", "x", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1
+      },
+      {
+        "part": "x",
+        "preset": "spin",
+        "angle": 90
+      },
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1
+      }
+    ]
+  }
+}

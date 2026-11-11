@@ -1,0 +1,58 @@
+{
+  "name": "chart-scatter",
+  "category": "interface",
+  "tags": ["analytics", "statistics", "dots", "correlation", "plot"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["chart-scatter", "scatter-chart"],
+    "tabler": ["chart-dots"],
+    "phosphor": ["chart-scatter"],
+    "material": ["scatter_plot"]
+  },
+  "animation": {
+    "name": "plot",
+    "description": "The points pop onto the chart one by one",
+    "parts": ["first", "second", "third", "fourth", "fifth"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "pulse",
+        "origin": [7.5, 16.5],
+        "scale": 1.5,
+        "duration": 450
+      },
+      {
+        "part": "second",
+        "preset": "pulse",
+        "origin": [7.5, 7.5],
+        "scale": 1.5,
+        "duration": 450,
+        "delay": 80
+      },
+      {
+        "part": "third",
+        "preset": "pulse",
+        "origin": [11.5, 11.5],
+        "scale": 1.5,
+        "duration": 450,
+        "delay": 160
+      },
+      {
+        "part": "fourth",
+        "preset": "pulse",
+        "origin": [17.5, 14.5],
+        "scale": 1.5,
+        "duration": 450,
+        "delay": 240
+      },
+      {
+        "part": "fifth",
+        "preset": "pulse",
+        "origin": [18.5, 5.5],
+        "scale": 1.5,
+        "duration": 450,
+        "delay": 320
+      }
+    ]
+  }
+}

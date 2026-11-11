@@ -1,0 +1,33 @@
+{
+  "name": "opacity",
+  "category": "interface",
+  "tags": ["transparency", "alpha", "fade", "checkerboard", "blend"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["opacity"],
+    "tabler": ["opacity"],
+    "phosphor": ["drop-half"],
+    "material": ["opacity"]
+  },
+  "animation": {
+    "name": "fade",
+    "description": "The dots fade row by row",
+    "parts": ["first", "second", "third"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "flash"
+      },
+      {
+        "part": "second",
+        "preset": "flash",
+        "delay": 120
+      },
+      {
+        "part": "third",
+        "preset": "flash",
+        "delay": 240
+      }
+    ]
+  }
+}

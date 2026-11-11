@@ -1,0 +1,23 @@
+{
+  "name": "binoculars",
+  "category": "objects",
+  "tags": ["search", "explore", "view", "zoom", "discover"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["binoculars"],
+    "tabler": ["binoculars"],
+    "phosphor": ["binoculars"]
+  },
+  "animation": {
+    "name": "scan",
+    "description": "The binoculars look left and right",
+    "parts": ["binoculars"],
+    "motion": [
+      {
+        "part": "binoculars",
+        "preset": "look",
+        "x": 1
+      }
+    ]
+  }
+}

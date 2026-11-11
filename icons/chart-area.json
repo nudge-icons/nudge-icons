@@ -1,0 +1,23 @@
+{
+  "name": "chart-area",
+  "category": "interface",
+  "tags": ["analytics", "statistics", "graph", "report", "area"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["chart-area", "area-chart"],
+    "tabler": ["chart-area"],
+    "material": ["area_chart"]
+  },
+  "animation": {
+    "name": "plot",
+    "description": "The area draws itself over the axis",
+    "parts": ["area"],
+    "motion": [
+      {
+        "part": "area",
+        "preset": "draw",
+        "duration": 700
+      }
+    ]
+  }
+}

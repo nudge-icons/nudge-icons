@@ -1,0 +1,32 @@
+{
+  "name": "sticker",
+  "category": "objects",
+  "tags": ["label", "decal", "emoji", "peel", "badge"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["sticker"],
+    "tabler": ["sticker"],
+    "phosphor": ["sticker"],
+    "material": ["sticker"]
+  },
+  "animation": {
+    "name": "stick",
+    "description": "The sticker pops as it sticks and the face blinks",
+    "parts": ["sticker", "eyes"],
+    "motion": [
+      {
+        "part": "sticker",
+        "preset": "pulse",
+        "scale": 1.08
+      },
+      {
+        "part": "eyes",
+        "preset": "pulse",
+        "origin": [12, 12.25],
+        "scale": 0.1,
+        "axis": "y",
+        "delay": 200
+      }
+    ]
+  }
+}

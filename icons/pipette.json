@@ -1,0 +1,25 @@
+{
+  "name": "pipette",
+  "category": "actions",
+  "tags": ["eyedropper", "color-picker", "sample", "dropper", "color"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["pipette"],
+    "tabler": ["color-picker"],
+    "phosphor": ["eyedropper"],
+    "material": ["colorize"]
+  },
+  "animation": {
+    "name": "dip",
+    "description": "The dropper dips to pick up a colour",
+    "parts": ["pipette"],
+    "motion": [
+      {
+        "part": "pipette",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

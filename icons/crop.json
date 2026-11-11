@@ -1,0 +1,31 @@
+{
+  "name": "crop",
+  "category": "actions",
+  "tags": ["trim", "cut", "resize", "frame", "image"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["crop"],
+    "tabler": ["crop"],
+    "phosphor": ["crop"],
+    "material": ["crop"]
+  },
+  "animation": {
+    "name": "tighten",
+    "description": "The crop marks close in and spring back",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      },
+      {
+        "part": "second",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "database-search",
+  "category": "actions",
+  "tags": ["query", "find", "lookup", "sql", "storage"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["database-search"],
+    "tabler": ["database-search"],
+    "material": ["database_search"]
+  },
+  "animation": {
+    "name": "scan",
+    "description": "The lens circles as if searching",
+    "parts": ["lens"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "orbit",
+        "r": 1
+      }
+    ]
+  }
+}

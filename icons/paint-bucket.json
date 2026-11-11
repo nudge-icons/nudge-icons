@@ -1,0 +1,30 @@
+{
+  "name": "paint-bucket",
+  "category": "actions",
+  "tags": ["fill", "color", "paint", "bucket", "flood"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["paint-bucket"],
+    "tabler": ["bucket-droplet"],
+    "phosphor": ["paint-bucket"],
+    "material": ["format_color_fill"]
+  },
+  "animation": {
+    "name": "sway",
+    "description": "The bucket sways on its handle while the paint drips over the rim",
+    "parts": ["bucket", "drip"],
+    "motion": [
+      {
+        "part": "bucket",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 6
+      },
+      {
+        "part": "drip",
+        "preset": "draw",
+        "delay": 150
+      }
+    ]
+  }
+}

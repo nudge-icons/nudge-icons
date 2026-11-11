@@ -1,0 +1,25 @@
+{
+  "name": "pencil-ruler",
+  "category": "objects",
+  "tags": ["design", "draft", "measure", "drawing", "tools"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["pencil-ruler"],
+    "tabler": ["pencil-ruler"],
+    "phosphor": ["pencil-ruler"],
+    "material": ["design_services"]
+  },
+  "animation": {
+    "name": "draft",
+    "description": "The pencil slides along the ruler and back",
+    "parts": ["pencil"],
+    "motion": [
+      {
+        "part": "pencil",
+        "preset": "nudge",
+        "x": -2.5,
+        "duration": 800
+      }
+    ]
+  }
+}

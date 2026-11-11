@@ -1,0 +1,36 @@
+{
+  "name": "trending-up-down",
+  "category": "status",
+  "tags": ["volatility", "change", "fluctuate", "chart", "stocks"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["trending-up-down"],
+    "tabler": ["trending-up-down"]
+  },
+  "animation": {
+    "name": "swing",
+    "description": "The line draws itself and both arrow heads push out",
+    "parts": ["line", "head", "down"],
+    "motion": [
+      {
+        "part": "line",
+        "preset": "draw",
+        "duration": 600
+      },
+      {
+        "part": "head",
+        "preset": "nudge",
+        "x": 1.5,
+        "y": -1.5,
+        "delay": 350
+      },
+      {
+        "part": "down",
+        "preset": "nudge",
+        "x": 1,
+        "y": 1,
+        "delay": 350
+      }
+    ]
+  }
+}

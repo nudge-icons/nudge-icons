@@ -1,0 +1,25 @@
+{
+  "name": "git-commit",
+  "category": "objects",
+  "tags": ["version-control", "commit", "git", "save", "vcs"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["git-commit-horizontal", "git-commit"],
+    "tabler": ["git-commit"],
+    "phosphor": ["git-commit"],
+    "material": ["commit"]
+  },
+  "animation": {
+    "name": "commit",
+    "description": "The commit pops on the line",
+    "parts": ["commit"],
+    "motion": [
+      {
+        "part": "commit",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.3
+      }
+    ]
+  }
+}

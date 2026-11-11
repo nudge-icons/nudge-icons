@@ -1,0 +1,26 @@
+{
+  "name": "flip-horizontal",
+  "category": "actions",
+  "tags": ["mirror", "reflect", "invert", "horizontal"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["flip-horizontal-2", "flip-horizontal"],
+    "tabler": ["flip-horizontal"],
+    "phosphor": ["flip-horizontal"],
+    "material": ["flip"]
+  },
+  "animation": {
+    "name": "flip",
+    "description": "The left shape flips over the axis onto its mirror and back",
+    "parts": ["source"],
+    "motion": [
+      {
+        "part": "source",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": -1,
+        "axis": "x"
+      }
+    ]
+  }
+}

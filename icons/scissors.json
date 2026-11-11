@@ -1,0 +1,32 @@
+{
+  "name": "scissors",
+  "category": "actions",
+  "tags": ["cut", "clip", "trim", "snip"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["scissors"],
+    "heroicons": ["scissors"],
+    "tabler": ["scissors"],
+    "phosphor": ["scissors"],
+    "material": ["content_cut"]
+  },
+  "animation": {
+    "name": "snip",
+    "description": "The blades open and close around the pivot",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "swing",
+        "origin": [12.5, 12],
+        "angle": 10
+      },
+      {
+        "part": "bottom",
+        "preset": "swing",
+        "origin": [12.5, 12],
+        "angle": -10
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "pencil-square",
+  "category": "actions",
+  "tags": ["edit", "compose", "write", "modify", "update"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["square-pen", "edit", "pen-box"],
+    "heroicons": ["pencil-square"],
+    "tabler": ["edit"],
+    "phosphor": ["note-pencil"],
+    "material": ["edit_square"]
+  },
+  "animation": {
+    "name": "scribble",
+    "description": "The pencil wiggles over the square as if writing",
+    "parts": ["pencil"],
+    "motion": [
+      {
+        "part": "pencil",
+        "preset": "swing",
+        "origin": [8, 16],
+        "angle": 8
+      }
+    ]
+  }
+}

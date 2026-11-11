@@ -1,0 +1,30 @@
+{
+  "name": "equal",
+  "category": "interface",
+  "tags": ["equals", "math", "same", "result", "calculator"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["equal"],
+    "heroicons": ["equals"],
+    "tabler": ["equal"],
+    "phosphor": ["equals"],
+    "material": ["equal"]
+  },
+  "animation": {
+    "name": "press",
+    "description": "The bars press together and settle",
+    "parts": ["top", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "bounce",
+        "y": 1.5
+      },
+      {
+        "part": "bottom",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}
