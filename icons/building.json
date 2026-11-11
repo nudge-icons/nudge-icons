@@ -1,0 +1,24 @@
+{
+  "name": "building",
+  "category": "objects",
+  "tags": ["office", "company", "city", "apartment", "business"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["building"],
+    "heroicons": ["building-office"],
+    "tabler": ["building"],
+    "phosphor": ["building"],
+    "material": ["domain", "apartment"]
+  },
+  "animation": {
+    "name": "lights",
+    "description": "The lights in the windows flicker",
+    "parts": ["windows"],
+    "motion": [
+      {
+        "part": "windows",
+        "preset": "flash"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "satellite",
+  "category": "objects",
+  "tags": ["space", "orbit", "broadcast", "gps", "communication"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["satellite"],
+    "tabler": ["satellite"],
+    "material": ["satellite_alt"]
+  },
+  "animation": {
+    "name": "orbit",
+    "description": "The satellite turns and its signal flashes",
+    "parts": ["satellite", "signal"],
+    "motion": [
+      {
+        "part": "satellite",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 8
+      },
+      {
+        "part": "signal",
+        "preset": "flash",
+        "delay": 200
+      }
+    ]
+  }
+}

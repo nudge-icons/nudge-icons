@@ -1,0 +1,27 @@
+{
+  "name": "bed",
+  "category": "objects",
+  "tags": ["sleep", "hotel", "bedroom", "rest", "night"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["bed"],
+    "tabler": ["bed"],
+    "phosphor": ["bed"],
+    "material": ["bed", "hotel"]
+  },
+  "animation": {
+    "name": "breathe",
+    "description": "The blanket rises and falls as if breathing",
+    "parts": ["blanket"],
+    "motion": [
+      {
+        "part": "blanket",
+        "preset": "pulse",
+        "origin": [15, 16],
+        "scale": 1.12,
+        "axis": "y",
+        "beats": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "wind",
+  "category": "objects",
+  "tags": ["weather", "breeze", "air", "gust", "blow"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["wind"],
+    "tabler": ["wind"],
+    "phosphor": ["wind"],
+    "material": ["air"]
+  },
+  "animation": {
+    "name": "blow",
+    "description": "The gusts blow in one after another",
+    "parts": ["top", "middle", "bottom"],
+    "motion": [
+      {
+        "part": "top",
+        "preset": "draw"
+      },
+      {
+        "part": "middle",
+        "preset": "draw",
+        "delay": 100
+      },
+      {
+        "part": "bottom",
+        "preset": "draw",
+        "delay": 200
+      }
+    ]
+  }
+}

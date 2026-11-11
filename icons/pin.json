@@ -1,0 +1,25 @@
+{
+  "name": "pin",
+  "category": "actions",
+  "tags": ["pushpin", "pinned", "attach", "stick", "keep", "favorite"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["pin"],
+    "tabler": ["pin"],
+    "phosphor": ["push-pin"],
+    "material": ["keep"]
+  },
+  "animation": {
+    "name": "press",
+    "description": "The pin is pressed in and springs back",
+    "parts": ["head"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "nudge",
+        "y": 1.5
+      }
+    ]
+  },
+  "filled": {}
+}

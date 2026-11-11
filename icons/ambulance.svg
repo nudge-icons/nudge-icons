@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="ambulance">
+    <path d="M5 17H3.5a1 1 0 0 1-1-1V7a2 2 0 0 1 2-2H12a2 2 0 0 1 2 2v10M9 17h6M14 9.5h3.5l4 4.5v2a1 1 0 0 1-1 1H19"/>
+    <g data-part="cross">
+      <path d="M8 8.5v4"/>
+      <path d="M6 10.5h4"/>
+    </g>
+    <circle cx="7" cy="17" r="2"/>
+    <circle cx="17" cy="17" r="2"/>
+  </g>
+</svg>

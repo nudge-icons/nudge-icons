@@ -1,0 +1,27 @@
+{
+  "name": "radar",
+  "category": "objects",
+  "tags": ["scan", "detect", "sonar", "nearby", "tracking"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["radar"],
+    "tabler": ["radar"],
+    "material": ["radar"]
+  },
+  "animation": {
+    "name": "sweep",
+    "description": "The beam sweeps around and a blip lights up",
+    "parts": ["sweep", "blip"],
+    "motion": [
+      {
+        "part": "sweep",
+        "preset": "spin"
+      },
+      {
+        "part": "blip",
+        "preset": "flash",
+        "delay": 350
+      }
+    ]
+  }
+}

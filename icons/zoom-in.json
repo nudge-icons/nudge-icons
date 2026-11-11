@@ -1,0 +1,32 @@
+{
+  "name": "zoom-in",
+  "category": "actions",
+  "tags": ["magnify", "enlarge", "plus", "scale", "magnifier"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["zoom-in"],
+    "heroicons": ["magnifying-glass-plus"],
+    "tabler": ["zoom-in"],
+    "phosphor": ["magnifying-glass-plus"],
+    "material": ["zoom_in"]
+  },
+  "animation": {
+    "name": "enlarge",
+    "description": "The lens and its plus grow and settle",
+    "parts": ["lens", "plus"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "pulse",
+        "origin": [11, 11],
+        "scale": 1.08
+      },
+      {
+        "part": "plus",
+        "preset": "pulse",
+        "origin": [11, 11],
+        "scale": 1.3
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "graduation-cap",
+  "category": "objects",
+  "tags": ["school", "education", "university", "student", "learning", "academic"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["graduation-cap"],
+    "heroicons": ["academic-cap"],
+    "tabler": ["school"],
+    "phosphor": ["graduation-cap"],
+    "material": ["school"]
+  },
+  "animation": {
+    "name": "toss",
+    "description": "The cap is tossed up and lands",
+    "parts": ["cap"],
+    "motion": [
+      {
+        "part": "cap",
+        "preset": "bounce",
+        "y": -2
+      }
+    ]
+  }
+}

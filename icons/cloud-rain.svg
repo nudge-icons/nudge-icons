@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path data-part="cloud" d="M3 12.5a6.5 6.5 0 0 1 12-5h2a4.5 4.5 0 1 1 0 9"/>
+  <g data-part="rain">
+    <path d="M6.5 14.5v4"/>
+    <path d="M10 16.5v4"/>
+    <path d="M13.5 14.5v4"/>
+  </g>
+</svg>

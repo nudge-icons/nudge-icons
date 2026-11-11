@@ -1,0 +1,26 @@
+{
+  "name": "armchair",
+  "category": "objects",
+  "tags": ["chair", "sofa", "furniture", "seat", "lounge", "relax"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["armchair"],
+    "tabler": ["armchair"],
+    "phosphor": ["armchair"],
+    "material": ["chair", "weekend"]
+  },
+  "animation": {
+    "name": "sink",
+    "description": "The chair sinks a little as if someone sat down",
+    "parts": ["chair"],
+    "motion": [
+      {
+        "part": "chair",
+        "preset": "pulse",
+        "origin": [12, 20],
+        "scale": 0.9,
+        "axis": "y"
+      }
+    ]
+  }
+}

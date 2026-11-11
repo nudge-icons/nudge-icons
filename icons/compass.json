@@ -1,0 +1,25 @@
+{
+  "name": "compass",
+  "category": "objects",
+  "tags": ["explore", "direction", "navigation", "orientation", "discover"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["compass"],
+    "tabler": ["compass"],
+    "phosphor": ["compass"],
+    "material": ["explore"]
+  },
+  "animation": {
+    "name": "seek",
+    "description": "The needle swings and settles",
+    "parts": ["needle"],
+    "motion": [
+      {
+        "part": "needle",
+        "preset": "swing",
+        "origin": [12, 12],
+        "angle": 20
+      }
+    ]
+  }
+}

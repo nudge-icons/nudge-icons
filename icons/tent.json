@@ -1,0 +1,27 @@
+{
+  "name": "tent",
+  "category": "objects",
+  "tags": ["camping", "outdoors", "camp", "travel", "shelter"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["tent"],
+    "tabler": ["tent"],
+    "phosphor": ["tent"],
+    "material": ["camping"]
+  },
+  "animation": {
+    "name": "flutter",
+    "description": "The door flap flutters in the wind",
+    "parts": ["flap"],
+    "motion": [
+      {
+        "part": "flap",
+        "preset": "pulse",
+        "origin": [12, 20.5],
+        "scale": 0.7,
+        "axis": "x",
+        "beats": 2
+      }
+    ]
+  }
+}

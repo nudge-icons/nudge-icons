@@ -1,0 +1,30 @@
+{
+  "name": "cloud-fog",
+  "category": "objects",
+  "tags": ["weather", "mist", "haze", "foggy", "forecast"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["cloud-fog"],
+    "tabler": ["cloud-fog"],
+    "phosphor": ["cloud-fog"],
+    "material": ["foggy"]
+  },
+  "animation": {
+    "name": "drift",
+    "description": "The fog drifts back and forth",
+    "parts": ["upper", "lower"],
+    "motion": [
+      {
+        "part": "upper",
+        "preset": "nudge",
+        "x": 1.5
+      },
+      {
+        "part": "lower",
+        "preset": "nudge",
+        "x": -1.5,
+        "delay": 100
+      }
+    ]
+  }
+}

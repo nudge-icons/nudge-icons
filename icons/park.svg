@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="tree">
+    <circle cx="7" cy="8" r="4"/>
+    <path d="M7 12v8"/>
+  </g>
+  <g data-part="bench">
+    <path d="M13.5 11l1.5 4.5h6.5"/>
+    <path d="M15 15.5V20M20.5 15.5V20"/>
+  </g>
+</svg>

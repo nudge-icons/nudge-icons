@@ -1,0 +1,31 @@
+{
+  "name": "map-pin-plus",
+  "category": "actions",
+  "tags": ["add-location", "new-place", "marker", "location", "address"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["map-pin-plus"],
+    "tabler": ["map-pin-plus"],
+    "phosphor": ["map-pin-plus"],
+    "material": ["add_location"]
+  },
+  "animation": {
+    "name": "place",
+    "description": "The pin drops in as the plus turns",
+    "parts": ["pin", "plus"],
+    "motion": [
+      {
+        "part": "pin",
+        "preset": "bounce",
+        "y": -1
+      },
+      {
+        "part": "plus",
+        "preset": "spin",
+        "origin": [18, 18],
+        "angle": 90,
+        "delay": 100
+      }
+    ]
+  }
+}

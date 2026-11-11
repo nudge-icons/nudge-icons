@@ -1,0 +1,24 @@
+{
+  "name": "scooter",
+  "category": "objects",
+  "tags": ["kick-scooter", "ride", "micromobility", "transport", "commute"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["scooter"],
+    "tabler": ["scooter"],
+    "phosphor": ["scooter"],
+    "material": ["scooter", "electric_scooter"]
+  },
+  "animation": {
+    "name": "ride",
+    "description": "The scooter rolls forward and back",
+    "parts": ["scooter"],
+    "motion": [
+      {
+        "part": "scooter",
+        "preset": "nudge",
+        "x": 1
+      }
+    ]
+  }
+}

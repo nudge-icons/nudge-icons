@@ -1,0 +1,28 @@
+{
+  "name": "ambulance",
+  "category": "objects",
+  "tags": ["emergency", "hospital", "medical", "health", "rescue"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["ambulance"],
+    "tabler": ["ambulance"],
+    "phosphor": ["ambulance"],
+    "material": ["ambulance", "emergency"]
+  },
+  "animation": {
+    "name": "rush",
+    "description": "The ambulance rolls forward and back while the cross flashes like a siren",
+    "parts": ["ambulance", "cross"],
+    "motion": [
+      {
+        "part": "ambulance",
+        "preset": "nudge",
+        "x": 1
+      },
+      {
+        "part": "cross",
+        "preset": "flash"
+      }
+    ]
+  }
+}

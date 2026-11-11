@@ -1,0 +1,25 @@
+{
+  "name": "leaf",
+  "category": "objects",
+  "tags": ["nature", "eco", "plant", "green", "organic"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["leaf"],
+    "tabler": ["leaf"],
+    "phosphor": ["leaf"],
+    "material": ["eco"]
+  },
+  "animation": {
+    "name": "sway",
+    "description": "The leaf sways on its stem",
+    "parts": ["leaf"],
+    "motion": [
+      {
+        "part": "leaf",
+        "preset": "swing",
+        "origin": [3.5, 20.5],
+        "angle": 6
+      }
+    ]
+  }
+}

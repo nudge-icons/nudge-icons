@@ -1,0 +1,25 @@
+{
+  "name": "train",
+  "category": "objects",
+  "tags": ["railway", "transit", "subway", "metro", "travel"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["train-front"],
+    "tabler": ["train"],
+    "phosphor": ["train"],
+    "material": ["train", "directions_railway"]
+  },
+  "animation": {
+    "name": "arrive",
+    "description": "The train rolls toward you and back",
+    "parts": ["train"],
+    "motion": [
+      {
+        "part": "train",
+        "preset": "pulse",
+        "origin": [12, 21],
+        "scale": 1.06
+      }
+    ]
+  }
+}

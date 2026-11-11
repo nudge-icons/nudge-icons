@@ -1,0 +1,26 @@
+{
+  "name": "umbrella",
+  "category": "objects",
+  "tags": ["rain", "weather", "protection", "insurance", "shelter"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["umbrella"],
+    "tabler": ["umbrella"],
+    "phosphor": ["umbrella"],
+    "material": ["umbrella", "beach_access"]
+  },
+  "animation": {
+    "name": "open",
+    "description": "The canopy folds in and opens again",
+    "parts": ["canopy"],
+    "motion": [
+      {
+        "part": "canopy",
+        "preset": "pulse",
+        "origin": [12, 12.5],
+        "scale": 0.8,
+        "axis": "x"
+      }
+    ]
+  }
+}

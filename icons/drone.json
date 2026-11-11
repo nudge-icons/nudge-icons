@@ -1,0 +1,24 @@
+{
+  "name": "drone",
+  "category": "objects",
+  "tags": ["quadcopter", "aerial", "flying", "camera", "uav"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["drone"],
+    "tabler": ["drone"],
+    "phosphor": ["drone"],
+    "material": ["drone"]
+  },
+  "animation": {
+    "name": "hover",
+    "description": "The drone lifts off and settles",
+    "parts": ["drone"],
+    "motion": [
+      {
+        "part": "drone",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

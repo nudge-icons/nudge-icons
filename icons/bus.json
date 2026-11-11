@@ -1,0 +1,30 @@
+{
+  "name": "bus",
+  "category": "objects",
+  "tags": ["transit", "public-transport", "coach", "travel", "commute"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["bus"],
+    "tabler": ["bus"],
+    "phosphor": ["bus"],
+    "material": ["directions_bus"]
+  },
+  "animation": {
+    "name": "drive",
+    "description": "The bus rolls forward and back, bobbing on its wheels",
+    "parts": ["bus", "body"],
+    "motion": [
+      {
+        "part": "bus",
+        "preset": "nudge",
+        "x": 1
+      },
+      {
+        "part": "body",
+        "preset": "bounce",
+        "y": -1,
+        "delay": 100
+      }
+    ]
+  }
+}

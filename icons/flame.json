@@ -1,0 +1,27 @@
+{
+  "name": "flame",
+  "category": "objects",
+  "tags": ["fire", "hot", "trending", "burn", "energy"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["flame"],
+    "heroicons": ["fire"],
+    "tabler": ["flame"],
+    "phosphor": ["flame", "fire"],
+    "material": ["local_fire_department", "whatshot"]
+  },
+  "animation": {
+    "name": "flicker",
+    "description": "The flame flickers from side to side",
+    "parts": ["flame"],
+    "motion": [
+      {
+        "part": "flame",
+        "preset": "swing",
+        "origin": [12, 21.5],
+        "angle": 6
+      }
+    ]
+  },
+  "filled": {}
+}

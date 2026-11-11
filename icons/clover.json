@@ -1,0 +1,23 @@
+{
+  "name": "clover",
+  "category": "objects",
+  "tags": ["luck", "four-leaf", "shamrock", "nature", "plant"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["clover"],
+    "tabler": ["clover"],
+    "phosphor": ["clover"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The clover turns a quarter turn",
+    "parts": ["leaves"],
+    "motion": [
+      {
+        "part": "leaves",
+        "preset": "spin",
+        "angle": 90
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "moped",
+  "category": "objects",
+  "tags": ["motorbike", "vespa", "delivery", "ride", "transport"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["moped"],
+    "tabler": ["moped"],
+    "phosphor": ["moped"],
+    "material": ["moped", "two_wheeler"]
+  },
+  "animation": {
+    "name": "ride",
+    "description": "The moped rolls forward and back",
+    "parts": ["moped"],
+    "motion": [
+      {
+        "part": "moped",
+        "preset": "nudge",
+        "x": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "sunrise",
+  "category": "objects",
+  "tags": ["morning", "dawn", "day", "sun", "weather"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["sunrise"],
+    "tabler": ["sunrise"],
+    "phosphor": ["sun-horizon"],
+    "material": ["wb_twilight"]
+  },
+  "animation": {
+    "name": "rise",
+    "description": "The sun rises a little and settles",
+    "parts": ["sun"],
+    "motion": [
+      {
+        "part": "sun",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

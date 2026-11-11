@@ -1,0 +1,25 @@
+{
+  "name": "tree",
+  "category": "objects",
+  "tags": ["nature", "forest", "park", "plant", "environment"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["tree-deciduous"],
+    "tabler": ["tree"],
+    "phosphor": ["tree"],
+    "material": ["nature", "park"]
+  },
+  "animation": {
+    "name": "sway",
+    "description": "The tree sways in the wind",
+    "parts": ["tree"],
+    "motion": [
+      {
+        "part": "tree",
+        "preset": "swing",
+        "origin": [12, 21.5],
+        "angle": 4
+      }
+    ]
+  }
+}

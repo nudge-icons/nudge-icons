@@ -1,0 +1,24 @@
+{
+  "name": "park",
+  "category": "objects",
+  "tags": ["garden", "nature", "outdoors", "bench", "tree"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["park"],
+    "phosphor": ["park"],
+    "material": ["park"]
+  },
+  "animation": {
+    "name": "sway",
+    "description": "The tree sways beside the bench",
+    "parts": ["tree"],
+    "motion": [
+      {
+        "part": "tree",
+        "preset": "swing",
+        "origin": [7, 20],
+        "angle": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "cloud-check",
+  "category": "status",
+  "tags": ["synced", "saved", "uploaded", "backup", "done"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["cloud-check"],
+    "tabler": ["cloud-check"],
+    "phosphor": ["cloud-check"],
+    "material": ["cloud_done"]
+  },
+  "animation": {
+    "name": "confirm",
+    "description": "The check draws in",
+    "parts": ["check"],
+    "motion": [
+      {
+        "part": "check",
+        "preset": "draw"
+      }
+    ]
+  }
+}

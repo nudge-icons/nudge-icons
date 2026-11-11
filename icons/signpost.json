@@ -1,0 +1,30 @@
+{
+  "name": "signpost",
+  "category": "objects",
+  "tags": ["direction", "sign", "crossroads", "wayfinding", "choice"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["signpost"],
+    "tabler": ["sign-right"],
+    "phosphor": ["signpost"],
+    "material": ["signpost"]
+  },
+  "animation": {
+    "name": "point",
+    "description": "The signs point their ways",
+    "parts": ["right", "left"],
+    "motion": [
+      {
+        "part": "right",
+        "preset": "nudge",
+        "x": 1
+      },
+      {
+        "part": "left",
+        "preset": "nudge",
+        "x": -1,
+        "delay": 120
+      }
+    ]
+  }
+}

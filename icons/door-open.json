@@ -1,0 +1,26 @@
+{
+  "name": "door-open",
+  "category": "objects",
+  "tags": ["entrance", "exit", "enter", "room", "leave"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["door-open"],
+    "tabler": ["door-enter"],
+    "phosphor": ["door-open"],
+    "material": ["door_open", "meeting_room"]
+  },
+  "animation": {
+    "name": "swing",
+    "description": "The door swings on its hinge",
+    "parts": ["door"],
+    "motion": [
+      {
+        "part": "door",
+        "preset": "pulse",
+        "origin": [11, 12],
+        "scale": 0.7,
+        "axis": "x"
+      }
+    ]
+  }
+}

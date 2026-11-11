@@ -1,0 +1,23 @@
+{
+  "name": "cloud-off",
+  "category": "status",
+  "tags": ["offline", "disconnected", "no-sync", "unavailable", "cloud-slash"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["cloud-off"],
+    "tabler": ["cloud-off"],
+    "phosphor": ["cloud-slash"],
+    "material": ["cloud_off"]
+  },
+  "animation": {
+    "name": "strike",
+    "description": "The slash draws across the cloud",
+    "parts": ["slash"],
+    "motion": [
+      {
+        "part": "slash",
+        "preset": "draw"
+      }
+    ]
+  }
+}

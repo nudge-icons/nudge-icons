@@ -1,0 +1,33 @@
+{
+  "name": "zoom-out",
+  "category": "actions",
+  "tags": ["magnify", "shrink", "minus", "scale", "magnifier"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["zoom-out"],
+    "heroicons": ["magnifying-glass-minus"],
+    "tabler": ["zoom-out"],
+    "phosphor": ["magnifying-glass-minus"],
+    "material": ["zoom_out"]
+  },
+  "animation": {
+    "name": "shrink",
+    "description": "The lens and its minus shrink and settle",
+    "parts": ["lens", "minus"],
+    "motion": [
+      {
+        "part": "lens",
+        "preset": "pulse",
+        "origin": [11, 11],
+        "scale": 0.92
+      },
+      {
+        "part": "minus",
+        "preset": "pulse",
+        "origin": [11, 11],
+        "scale": 0.6,
+        "axis": "x"
+      }
+    ]
+  }
+}

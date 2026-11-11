@@ -1,0 +1,27 @@
+{
+  "name": "home",
+  "category": "objects",
+  "tags": ["house", "start", "main", "dashboard", "building"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["house", "home"],
+    "heroicons": ["home"],
+    "tabler": ["home"],
+    "phosphor": ["house"],
+    "material": ["home"]
+  },
+  "animation": {
+    "name": "open",
+    "description": "The door swings open and closes",
+    "parts": ["door"],
+    "motion": [
+      {
+        "part": "door",
+        "preset": "pulse",
+        "origin": [9.5, 18],
+        "scale": 0.6,
+        "axis": "x"
+      }
+    ]
+  }
+}

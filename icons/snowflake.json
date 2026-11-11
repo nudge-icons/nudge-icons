@@ -1,0 +1,24 @@
+{
+  "name": "snowflake",
+  "category": "objects",
+  "tags": ["winter", "cold", "freeze", "snow", "frost"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["snowflake"],
+    "tabler": ["snowflake"],
+    "phosphor": ["snowflake"],
+    "material": ["ac_unit"]
+  },
+  "animation": {
+    "name": "turn",
+    "description": "The snowflake turns a sixth of a turn",
+    "parts": ["flake"],
+    "motion": [
+      {
+        "part": "flake",
+        "preset": "spin",
+        "angle": 60
+      }
+    ]
+  }
+}

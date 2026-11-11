@@ -1,0 +1,32 @@
+{
+  "name": "rainbow",
+  "category": "objects",
+  "tags": ["weather", "colors", "pride", "arc", "sky"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["rainbow"],
+    "tabler": ["rainbow"],
+    "phosphor": ["rainbow"]
+  },
+  "animation": {
+    "name": "arc",
+    "description": "The bands draw in one after another",
+    "parts": ["outer", "middle", "inner"],
+    "motion": [
+      {
+        "part": "outer",
+        "preset": "draw"
+      },
+      {
+        "part": "middle",
+        "preset": "draw",
+        "delay": 100
+      },
+      {
+        "part": "inner",
+        "preset": "draw",
+        "delay": 200
+      }
+    ]
+  }
+}

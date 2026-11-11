@@ -1,0 +1,25 @@
+{
+  "name": "tornado",
+  "category": "objects",
+  "tags": ["weather", "storm", "twister", "cyclone", "wind"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["tornado"],
+    "tabler": ["tornado"],
+    "phosphor": ["tornado"],
+    "material": ["tornado", "cyclone"]
+  },
+  "animation": {
+    "name": "twist",
+    "description": "The funnel sways from its tip",
+    "parts": ["funnel"],
+    "motion": [
+      {
+        "part": "funnel",
+        "preset": "swing",
+        "origin": [10.5, 20],
+        "angle": 5
+      }
+    ]
+  }
+}

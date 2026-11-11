@@ -1,0 +1,24 @@
+{
+  "name": "flower",
+  "category": "objects",
+  "tags": ["nature", "plant", "blossom", "garden", "spring"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["flower"],
+    "tabler": ["flower"],
+    "phosphor": ["flower"],
+    "material": ["local_florist"]
+  },
+  "animation": {
+    "name": "bloom",
+    "description": "The petals open wider and settle",
+    "parts": ["petals"],
+    "motion": [
+      {
+        "part": "petals",
+        "preset": "pulse",
+        "scale": 1.1
+      }
+    ]
+  }
+}

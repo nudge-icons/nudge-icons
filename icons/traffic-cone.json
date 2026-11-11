@@ -1,0 +1,24 @@
+{
+  "name": "traffic-cone",
+  "category": "status",
+  "tags": ["construction", "roadwork", "maintenance", "warning", "under-construction"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["traffic-cone"],
+    "tabler": ["traffic-cone"],
+    "phosphor": ["traffic-cone"]
+  },
+  "animation": {
+    "name": "wobble",
+    "description": "The cone wobbles on its base",
+    "parts": ["cone"],
+    "motion": [
+      {
+        "part": "cone",
+        "preset": "swing",
+        "origin": [12, 20],
+        "angle": 6
+      }
+    ]
+  }
+}

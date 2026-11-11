@@ -1,0 +1,25 @@
+{
+  "name": "truck",
+  "category": "objects",
+  "tags": ["delivery", "shipping", "lorry", "transport", "cargo"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["truck"],
+    "heroicons": ["truck"],
+    "tabler": ["truck"],
+    "phosphor": ["truck"],
+    "material": ["local_shipping"]
+  },
+  "animation": {
+    "name": "drive",
+    "description": "The truck rolls forward and back",
+    "parts": ["truck"],
+    "motion": [
+      {
+        "part": "truck",
+        "preset": "nudge",
+        "x": 1
+      }
+    ]
+  }
+}

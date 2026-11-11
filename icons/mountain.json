@@ -1,0 +1,26 @@
+{
+  "name": "mountain",
+  "category": "objects",
+  "tags": ["nature", "landscape", "hiking", "peak", "outdoors"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["mountain"],
+    "tabler": ["mountain"],
+    "phosphor": ["mountains"],
+    "material": ["landscape"]
+  },
+  "animation": {
+    "name": "rise",
+    "description": "The peaks rise and settle",
+    "parts": ["peaks"],
+    "motion": [
+      {
+        "part": "peaks",
+        "preset": "pulse",
+        "origin": [12, 19.5],
+        "scale": 1.1,
+        "axis": "y"
+      }
+    ]
+  }
+}

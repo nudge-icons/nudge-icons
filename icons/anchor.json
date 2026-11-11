@@ -1,0 +1,25 @@
+{
+  "name": "anchor",
+  "category": "objects",
+  "tags": ["marine", "sea", "harbor", "ship", "link"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["anchor"],
+    "tabler": ["anchor"],
+    "phosphor": ["anchor"],
+    "material": ["anchor"]
+  },
+  "animation": {
+    "name": "swing",
+    "description": "The anchor swings on its ring",
+    "parts": ["anchor"],
+    "motion": [
+      {
+        "part": "anchor",
+        "preset": "swing",
+        "origin": [12, 5],
+        "angle": 10
+      }
+    ]
+  }
+}

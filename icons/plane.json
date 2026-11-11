@@ -1,0 +1,24 @@
+{
+  "name": "plane",
+  "category": "objects",
+  "tags": ["flight", "airplane", "travel", "airport", "trip"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["plane"],
+    "tabler": ["plane"],
+    "phosphor": ["airplane"],
+    "material": ["flight"]
+  },
+  "animation": {
+    "name": "climb",
+    "description": "The plane climbs forward and settles",
+    "parts": ["plane"],
+    "motion": [
+      {
+        "part": "plane",
+        "preset": "nudge",
+        "y": -1
+      }
+    ]
+  }
+}

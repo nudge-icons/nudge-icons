@@ -1,0 +1,26 @@
+{
+  "name": "helicopter",
+  "category": "objects",
+  "tags": ["aircraft", "flight", "rescue", "chopper", "transport"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["helicopter"],
+    "tabler": ["helicopter"],
+    "material": ["helicopter"]
+  },
+  "animation": {
+    "name": "spin",
+    "description": "The rotor blades whirl",
+    "parts": ["rotor"],
+    "motion": [
+      {
+        "part": "rotor",
+        "preset": "pulse",
+        "origin": [14, 3.5],
+        "scale": 0.2,
+        "axis": "x",
+        "beats": 2
+      }
+    ]
+  }
+}

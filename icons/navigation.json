@@ -1,0 +1,26 @@
+{
+  "name": "navigation",
+  "category": "interface",
+  "tags": ["location", "direction", "gps", "arrow", "current-location"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["navigation"],
+    "tabler": ["navigation"],
+    "phosphor": ["navigation-arrow"],
+    "material": ["near_me"]
+  },
+  "animation": {
+    "name": "go",
+    "description": "The arrow heads off and comes back",
+    "parts": ["arrow"],
+    "motion": [
+      {
+        "part": "arrow",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  },
+  "filled": {}
+}
