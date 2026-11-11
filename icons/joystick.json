@@ -1,0 +1,24 @@
+{
+  "name": "joystick",
+  "category": "objects",
+  "tags": ["game", "arcade", "controller", "gaming", "play"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["joystick"],
+    "phosphor": ["joystick"],
+    "material": ["joystick"]
+  },
+  "animation": {
+    "name": "steer",
+    "description": "The stick tilts and springs back",
+    "parts": ["stick"],
+    "motion": [
+      {
+        "part": "stick",
+        "preset": "swing",
+        "origin": [12, 15],
+        "angle": 15
+      }
+    ]
+  }
+}

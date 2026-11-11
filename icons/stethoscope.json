@@ -1,0 +1,26 @@
+{
+  "name": "stethoscope",
+  "category": "objects",
+  "tags": ["doctor", "medical", "health", "checkup", "diagnosis"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["stethoscope"],
+    "tabler": ["stethoscope"],
+    "phosphor": ["stethoscope"],
+    "material": ["stethoscope"]
+  },
+  "animation": {
+    "name": "listen",
+    "description": "The chest piece picks up a heartbeat",
+    "parts": ["chestpiece"],
+    "motion": [
+      {
+        "part": "chestpiece",
+        "preset": "pulse",
+        "origin": [19, 10.5],
+        "scale": 1.25,
+        "beats": 2
+      }
+    ]
+  }
+}

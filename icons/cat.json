@@ -1,0 +1,33 @@
+{
+  "name": "cat",
+  "category": "objects",
+  "tags": ["pet", "animal", "kitten", "kitty", "feline"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["cat"],
+    "tabler": ["cat"],
+    "phosphor": ["cat"],
+    "material": ["pets"]
+  },
+  "animation": {
+    "name": "tilt",
+    "description": "The cat tilts its head and blinks",
+    "parts": ["head", "eyes"],
+    "motion": [
+      {
+        "part": "head",
+        "preset": "swing",
+        "origin": [12, 20],
+        "angle": 8
+      },
+      {
+        "part": "eyes",
+        "preset": "pulse",
+        "origin": [12, 13],
+        "scale": 0.1,
+        "axis": "y",
+        "delay": 250
+      }
+    ]
+  }
+}

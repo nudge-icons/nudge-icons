@@ -1,0 +1,24 @@
+{
+  "name": "piggy-bank",
+  "category": "objects",
+  "tags": ["savings", "money", "bank", "budget", "deposit"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["piggy-bank"],
+    "tabler": ["pig-money"],
+    "phosphor": ["piggy-bank"],
+    "material": ["savings"]
+  },
+  "animation": {
+    "name": "deposit",
+    "description": "A coin drops into the slot and comes back from the top",
+    "parts": ["coin"],
+    "motion": [
+      {
+        "part": "coin",
+        "preset": "pass",
+        "y": 2
+      }
+    ]
+  }
+}

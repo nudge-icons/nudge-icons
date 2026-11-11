@@ -1,0 +1,25 @@
+{
+  "name": "hospital",
+  "category": "objects",
+  "tags": ["clinic", "medical", "health", "emergency", "building"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["hospital"],
+    "tabler": ["building-hospital"],
+    "phosphor": ["hospital"],
+    "material": ["local_hospital"]
+  },
+  "animation": {
+    "name": "pulse",
+    "description": "The cross pulses",
+    "parts": ["cross"],
+    "motion": [
+      {
+        "part": "cross",
+        "preset": "pulse",
+        "origin": [12, 9],
+        "scale": 1.2
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "fork-knife",
+  "category": "objects",
+  "tags": ["utensils", "restaurant", "food", "dining", "meal", "cutlery"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["utensils", "fork-knife"],
+    "tabler": ["tools-kitchen-2"],
+    "phosphor": ["fork-knife"],
+    "material": ["restaurant"]
+  },
+  "animation": {
+    "name": "clink",
+    "description": "The fork and knife tap together",
+    "parts": ["fork", "knife"],
+    "motion": [
+      {
+        "part": "fork",
+        "preset": "nudge",
+        "x": 1
+      },
+      {
+        "part": "knife",
+        "preset": "nudge",
+        "x": -1
+      }
+    ]
+  }
+}

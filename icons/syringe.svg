@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M13.5 4.5l6 6"/>
+  <g data-part="plunger">
+    <path d="M16.5 7.5L19 5"/>
+    <path d="M17.5 3.5l3 3"/>
+  </g>
+  <path d="M15 6l-7 7 3 3 7-7"/>
+  <path d="M9.5 14.5l-6 6"/>
+  <path d="M11.5 9.5l1 1"/>
+  <path d="M9.5 11.5l1 1"/>
+</svg>

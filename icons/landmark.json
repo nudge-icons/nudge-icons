@@ -1,0 +1,42 @@
+{
+  "name": "landmark",
+  "category": "objects",
+  "tags": ["bank", "museum", "government", "institution", "building", "finance"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["landmark"],
+    "tabler": ["building-bank"],
+    "phosphor": ["bank"],
+    "material": ["account_balance"]
+  },
+  "animation": {
+    "name": "raise",
+    "description": "The columns rise one after another",
+    "parts": ["first", "second", "third", "fourth"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 80
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 160
+      },
+      {
+        "part": "fourth",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 240
+      }
+    ]
+  }
+}

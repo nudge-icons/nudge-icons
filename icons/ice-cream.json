@@ -1,0 +1,25 @@
+{
+  "name": "ice-cream",
+  "category": "objects",
+  "tags": ["dessert", "cone", "sweet", "summer", "gelato"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["ice-cream-cone", "ice-cream"],
+    "tabler": ["ice-cream"],
+    "phosphor": ["ice-cream"],
+    "material": ["icecream"]
+  },
+  "animation": {
+    "name": "wobble",
+    "description": "The scoop wobbles on the cone",
+    "parts": ["scoop"],
+    "motion": [
+      {
+        "part": "scoop",
+        "preset": "swing",
+        "origin": [12, 11.5],
+        "angle": 8
+      }
+    ]
+  }
+}

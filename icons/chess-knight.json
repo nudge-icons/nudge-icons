@@ -1,0 +1,24 @@
+{
+  "name": "chess-knight",
+  "category": "objects",
+  "tags": ["chess", "strategy", "game", "horse", "move"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["chess-knight"],
+    "tabler": ["chess-knight"],
+    "material": ["chess_knight"]
+  },
+  "animation": {
+    "name": "rear",
+    "description": "The knight rears up and settles",
+    "parts": ["knight"],
+    "motion": [
+      {
+        "part": "knight",
+        "preset": "swing",
+        "origin": [12, 21],
+        "angle": 8
+      }
+    ]
+  }
+}

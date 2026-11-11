@@ -1,0 +1,25 @@
+{
+  "name": "pizza",
+  "category": "objects",
+  "tags": ["food", "slice", "fast-food", "italian", "delivery"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["pizza"],
+    "tabler": ["pizza"],
+    "phosphor": ["pizza"],
+    "material": ["local_pizza"]
+  },
+  "animation": {
+    "name": "serve",
+    "description": "The slice tilts as it is picked up",
+    "parts": ["slice"],
+    "motion": [
+      {
+        "part": "slice",
+        "preset": "swing",
+        "origin": [12, 21],
+        "angle": 5
+      }
+    ]
+  }
+}

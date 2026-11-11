@@ -1,0 +1,25 @@
+{
+  "name": "fish",
+  "category": "objects",
+  "tags": ["animal", "seafood", "aquarium", "food", "fishing"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["fish"],
+    "tabler": ["fish"],
+    "phosphor": ["fish"],
+    "material": ["set_meal"]
+  },
+  "animation": {
+    "name": "swim",
+    "description": "The tail flicks",
+    "parts": ["tail"],
+    "motion": [
+      {
+        "part": "tail",
+        "preset": "swing",
+        "origin": [7, 12],
+        "angle": 15
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "factory",
+  "category": "objects",
+  "tags": ["industry", "manufacturing", "plant", "production", "building"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["factory"],
+    "tabler": ["building-factory"],
+    "phosphor": ["factory"],
+    "material": ["factory"]
+  },
+  "animation": {
+    "name": "work",
+    "description": "The windows light up",
+    "parts": ["windows"],
+    "motion": [
+      {
+        "part": "windows",
+        "preset": "flash"
+      }
+    ]
+  }
+}

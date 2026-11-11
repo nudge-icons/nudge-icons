@@ -1,0 +1,26 @@
+{
+  "name": "coins",
+  "category": "objects",
+  "tags": ["money", "cash", "change", "currency", "savings"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["coins"],
+    "tabler": ["coins"],
+    "phosphor": ["coins"],
+    "material": ["toll"]
+  },
+  "animation": {
+    "name": "flip",
+    "description": "The front coin flips over",
+    "parts": ["coin"],
+    "motion": [
+      {
+        "part": "coin",
+        "preset": "pulse",
+        "origin": [15, 15],
+        "scale": 0.25,
+        "axis": "x"
+      }
+    ]
+  }
+}

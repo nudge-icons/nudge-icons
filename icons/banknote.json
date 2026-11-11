@@ -1,0 +1,25 @@
+{
+  "name": "banknote",
+  "category": "objects",
+  "tags": ["money", "cash", "bill", "payment", "currency"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["banknote"],
+    "heroicons": ["banknotes"],
+    "tabler": ["cash-banknote"],
+    "phosphor": ["money"],
+    "material": ["payments"]
+  },
+  "animation": {
+    "name": "flick",
+    "description": "The note is flicked and settles",
+    "parts": ["note"],
+    "motion": [
+      {
+        "part": "note",
+        "preset": "bounce",
+        "x": 1.5
+      }
+    ]
+  }
+}

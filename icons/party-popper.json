@@ -1,0 +1,31 @@
+{
+  "name": "party-popper",
+  "category": "objects",
+  "tags": ["celebration", "confetti", "party", "congratulations", "birthday"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["party-popper"],
+    "tabler": ["confetti"],
+    "phosphor": ["confetti"],
+    "material": ["celebration"]
+  },
+  "animation": {
+    "name": "pop",
+    "description": "The confetti bursts out and the popper recoils",
+    "parts": ["popper", "confetti"],
+    "motion": [
+      {
+        "part": "popper",
+        "preset": "nudge",
+        "x": -0.5,
+        "y": 0.5
+      },
+      {
+        "part": "confetti",
+        "preset": "pass",
+        "x": 2,
+        "y": -2
+      }
+    ]
+  }
+}

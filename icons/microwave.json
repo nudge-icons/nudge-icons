@@ -1,0 +1,22 @@
+{
+  "name": "microwave",
+  "category": "objects",
+  "tags": ["oven", "kitchen", "appliance", "heat", "cooking"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["microwave"],
+    "tabler": ["microwave"],
+    "material": ["microwave"]
+  },
+  "animation": {
+    "name": "cook",
+    "description": "The light inside blinks",
+    "parts": ["window"],
+    "motion": [
+      {
+        "part": "window",
+        "preset": "flash"
+      }
+    ]
+  }
+}

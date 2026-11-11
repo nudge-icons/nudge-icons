@@ -1,0 +1,23 @@
+{
+  "name": "weight",
+  "category": "objects",
+  "tags": ["kilogram", "mass", "heavy", "gym", "fitness"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["weight"],
+    "tabler": ["weight"],
+    "material": ["weight"]
+  },
+  "animation": {
+    "name": "lift",
+    "description": "The weight is lifted and drops back",
+    "parts": ["weight"],
+    "motion": [
+      {
+        "part": "weight",
+        "preset": "nudge",
+        "y": -1.5
+      }
+    ]
+  }
+}

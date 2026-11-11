@@ -1,0 +1,24 @@
+{
+  "name": "cake",
+  "category": "objects",
+  "tags": ["birthday", "celebration", "party", "dessert", "anniversary"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["cake"],
+    "heroicons": ["cake"],
+    "tabler": ["cake"],
+    "phosphor": ["cake"],
+    "material": ["cake"]
+  },
+  "animation": {
+    "name": "flicker",
+    "description": "The candle flames flicker",
+    "parts": ["flames"],
+    "motion": [
+      {
+        "part": "flames",
+        "preset": "flash"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "qr-code",
+  "category": "objects",
+  "tags": ["scan", "code", "link", "matrix", "share"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["qr-code"],
+    "heroicons": ["qr-code"],
+    "tabler": ["qrcode"],
+    "phosphor": ["qr-code"],
+    "material": ["qr_code"]
+  },
+  "animation": {
+    "name": "read",
+    "description": "The data modules flicker as if read",
+    "parts": ["modules"],
+    "motion": [
+      {
+        "part": "modules",
+        "preset": "flash"
+      }
+    ]
+  }
+}

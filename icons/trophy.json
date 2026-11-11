@@ -1,0 +1,26 @@
+{
+  "name": "trophy",
+  "category": "objects",
+  "tags": ["winner", "cup", "prize", "champion", "achievement"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["trophy"],
+    "heroicons": ["trophy"],
+    "tabler": ["trophy"],
+    "phosphor": ["trophy"],
+    "material": ["trophy"]
+  },
+  "animation": {
+    "name": "wobble",
+    "description": "The trophy wobbles as it is set down",
+    "parts": ["trophy"],
+    "motion": [
+      {
+        "part": "trophy",
+        "preset": "swing",
+        "origin": [12, 21],
+        "angle": 5
+      }
+    ]
+  }
+}

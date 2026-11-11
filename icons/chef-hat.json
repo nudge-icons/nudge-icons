@@ -1,0 +1,25 @@
+{
+  "name": "chef-hat",
+  "category": "objects",
+  "tags": ["cooking", "kitchen", "cook", "recipe", "restaurant"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["chef-hat"],
+    "tabler": ["chef-hat"],
+    "phosphor": ["chef-hat"],
+    "material": ["chef_hat"]
+  },
+  "animation": {
+    "name": "tip",
+    "description": "The hat tips and settles",
+    "parts": ["hat"],
+    "motion": [
+      {
+        "part": "hat",
+        "preset": "swing",
+        "origin": [12, 21],
+        "angle": 6
+      }
+    ]
+  }
+}

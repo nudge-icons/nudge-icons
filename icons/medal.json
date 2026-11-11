@@ -1,0 +1,25 @@
+{
+  "name": "medal",
+  "category": "objects",
+  "tags": ["prize", "winner", "achievement", "sport", "first"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["medal"],
+    "tabler": ["medal"],
+    "phosphor": ["medal-military"],
+    "material": ["military_tech"]
+  },
+  "animation": {
+    "name": "dangle",
+    "description": "The medal swings on its ribbon",
+    "parts": ["medal"],
+    "motion": [
+      {
+        "part": "medal",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 8
+      }
+    ]
+  }
+}

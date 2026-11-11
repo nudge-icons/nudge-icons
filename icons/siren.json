@@ -1,0 +1,22 @@
+{
+  "name": "siren",
+  "category": "status",
+  "tags": ["alarm", "emergency", "alert", "police", "warning"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["siren"],
+    "phosphor": ["siren"],
+    "material": ["siren"]
+  },
+  "animation": {
+    "name": "alarm",
+    "description": "The light flashes",
+    "parts": ["rays"],
+    "motion": [
+      {
+        "part": "rays",
+        "preset": "flash"
+      }
+    ]
+  }
+}

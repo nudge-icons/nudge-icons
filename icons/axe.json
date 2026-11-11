@@ -1,0 +1,24 @@
+{
+  "name": "axe",
+  "category": "objects",
+  "tags": ["chop", "wood", "tool", "lumberjack", "weapon"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["axe"],
+    "tabler": ["axe"],
+    "phosphor": ["axe"]
+  },
+  "animation": {
+    "name": "chop",
+    "description": "The axe chops down and lifts back",
+    "parts": ["axe"],
+    "motion": [
+      {
+        "part": "axe",
+        "preset": "swing",
+        "origin": [4, 18.5],
+        "angle": 8
+      }
+    ]
+  }
+}

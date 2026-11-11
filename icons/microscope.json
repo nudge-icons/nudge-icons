@@ -1,0 +1,24 @@
+{
+  "name": "microscope",
+  "category": "objects",
+  "tags": ["science", "lab", "research", "biology", "magnify"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["microscope"],
+    "tabler": ["microscope"],
+    "phosphor": ["microscope"],
+    "material": ["biotech"]
+  },
+  "animation": {
+    "name": "focus",
+    "description": "The tube lowers to focus and comes back",
+    "parts": ["tube"],
+    "motion": [
+      {
+        "part": "tube",
+        "preset": "nudge",
+        "y": 1
+      }
+    ]
+  }
+}

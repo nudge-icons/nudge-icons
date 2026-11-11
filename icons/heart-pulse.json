@@ -1,0 +1,31 @@
+{
+  "name": "heart-pulse",
+  "category": "status",
+  "tags": ["heartbeat", "health", "pulse", "cardio", "vital"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["heart-pulse"],
+    "tabler": ["heartbeat"],
+    "phosphor": ["heartbeat"],
+    "material": ["cardiology", "monitor_heart"]
+  },
+  "animation": {
+    "name": "beat",
+    "description": "The heart beats twice as the pulse line draws",
+    "parts": ["shape", "line"],
+    "motion": [
+      {
+        "part": "shape",
+        "preset": "pulse",
+        "origin": [12, 12],
+        "scale": 1.15,
+        "beats": 2
+      },
+      {
+        "part": "line",
+        "preset": "draw",
+        "duration": 600
+      }
+    ]
+  }
+}

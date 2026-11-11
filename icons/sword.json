@@ -1,0 +1,24 @@
+{
+  "name": "sword",
+  "category": "objects",
+  "tags": ["weapon", "fight", "battle", "game", "attack"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["sword"],
+    "tabler": ["sword"],
+    "phosphor": ["sword"]
+  },
+  "animation": {
+    "name": "thrust",
+    "description": "The sword thrusts forward",
+    "parts": ["sword"],
+    "motion": [
+      {
+        "part": "sword",
+        "preset": "nudge",
+        "x": 1,
+        "y": -1
+      }
+    ]
+  }
+}

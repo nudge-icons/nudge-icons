@@ -1,0 +1,24 @@
+{
+  "name": "pill",
+  "category": "objects",
+  "tags": ["medicine", "capsule", "drug", "pharmacy", "health"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["pill"],
+    "tabler": ["pill"],
+    "phosphor": ["pill"],
+    "material": ["pill"]
+  },
+  "animation": {
+    "name": "rattle",
+    "description": "The capsule rattles",
+    "parts": ["pill"],
+    "motion": [
+      {
+        "part": "pill",
+        "preset": "shake",
+        "x": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "swords",
+  "category": "objects",
+  "tags": ["battle", "fight", "duel", "versus", "game"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["swords"],
+    "tabler": ["swords"],
+    "material": ["swords"]
+  },
+  "animation": {
+    "name": "clash",
+    "description": "The swords clash",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "swing",
+        "origin": [17, 17],
+        "angle": -6
+      },
+      {
+        "part": "right",
+        "preset": "swing",
+        "origin": [7, 17],
+        "angle": 6
+      }
+    ]
+  }
+}

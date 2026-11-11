@@ -1,0 +1,26 @@
+{
+  "name": "scale",
+  "category": "objects",
+  "tags": ["balance", "justice", "law", "compare", "fair"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["scale"],
+    "heroicons": ["scale"],
+    "tabler": ["scale"],
+    "phosphor": ["scales"],
+    "material": ["balance"]
+  },
+  "animation": {
+    "name": "tip",
+    "description": "The beam tips and settles level",
+    "parts": ["beam"],
+    "motion": [
+      {
+        "part": "beam",
+        "preset": "swing",
+        "origin": [12, 7],
+        "angle": 6
+      }
+    ]
+  }
+}

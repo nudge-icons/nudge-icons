@@ -1,0 +1,30 @@
+{
+  "name": "coffee",
+  "category": "objects",
+  "tags": ["cup", "mug", "drink", "cafe", "break", "tea"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["coffee"],
+    "tabler": ["coffee"],
+    "phosphor": ["coffee"],
+    "material": ["coffee", "local_cafe"]
+  },
+  "animation": {
+    "name": "steam",
+    "description": "The steam rises and drifts away",
+    "parts": ["left", "right"],
+    "motion": [
+      {
+        "part": "left",
+        "preset": "pass",
+        "y": -2
+      },
+      {
+        "part": "right",
+        "preset": "pass",
+        "y": -2,
+        "delay": 150
+      }
+    ]
+  }
+}

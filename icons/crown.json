@@ -1,0 +1,25 @@
+{
+  "name": "crown",
+  "category": "objects",
+  "tags": ["king", "queen", "premium", "vip", "royal", "leader"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["crown"],
+    "tabler": ["crown"],
+    "phosphor": ["crown"],
+    "material": ["crown"]
+  },
+  "animation": {
+    "name": "crown",
+    "description": "The crown is set down and settles",
+    "parts": ["crown"],
+    "motion": [
+      {
+        "part": "crown",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  },
+  "filled": {}
+}

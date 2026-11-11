@@ -1,0 +1,23 @@
+{
+  "name": "ghost",
+  "category": "objects",
+  "tags": ["halloween", "spooky", "phantom", "hidden", "anonymous"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["ghost"],
+    "tabler": ["ghost"],
+    "phosphor": ["ghost"]
+  },
+  "animation": {
+    "name": "float",
+    "description": "The ghost floats up and settles",
+    "parts": ["ghost"],
+    "motion": [
+      {
+        "part": "ghost",
+        "preset": "bounce",
+        "y": -1.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "store",
+  "category": "objects",
+  "tags": ["shop", "storefront", "market", "retail", "commerce"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["store"],
+    "heroicons": ["building-storefront"],
+    "tabler": ["building-store"],
+    "phosphor": ["storefront"],
+    "material": ["storefront", "store"]
+  },
+  "animation": {
+    "name": "roll",
+    "description": "The awning rolls up and drops back",
+    "parts": ["awning"],
+    "motion": [
+      {
+        "part": "awning",
+        "preset": "pulse",
+        "origin": [12, 2.5],
+        "scale": 0.8,
+        "axis": "y"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "warehouse",
+  "category": "objects",
+  "tags": ["storage", "depot", "logistics", "inventory", "building"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["warehouse"],
+    "tabler": ["building-warehouse"],
+    "phosphor": ["warehouse"],
+    "material": ["warehouse"]
+  },
+  "animation": {
+    "name": "shutter",
+    "description": "The shutter rolls down slat by slat",
+    "parts": ["upper", "lower"],
+    "motion": [
+      {
+        "part": "upper",
+        "preset": "draw",
+        "duration": 300
+      },
+      {
+        "part": "lower",
+        "preset": "draw",
+        "duration": 300,
+        "delay": 120
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "briefcase",
+  "category": "objects",
+  "tags": ["work", "job", "business", "portfolio", "office"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["briefcase"],
+    "heroicons": ["briefcase"],
+    "tabler": ["briefcase"],
+    "phosphor": ["briefcase"],
+    "material": ["work"]
+  },
+  "animation": {
+    "name": "carry",
+    "description": "The case swings as if carried",
+    "parts": ["case"],
+    "motion": [
+      {
+        "part": "case",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 5
+      }
+    ]
+  }
+}

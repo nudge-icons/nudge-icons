@@ -1,0 +1,23 @@
+{
+  "name": "thermometer",
+  "category": "objects",
+  "tags": ["temperature", "fever", "weather", "heat", "health"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["thermometer"],
+    "tabler": ["thermometer"],
+    "phosphor": ["thermometer"],
+    "material": ["thermometer"]
+  },
+  "animation": {
+    "name": "rise",
+    "description": "The mercury rises",
+    "parts": ["mercury"],
+    "motion": [
+      {
+        "part": "mercury",
+        "preset": "draw"
+      }
+    ]
+  }
+}

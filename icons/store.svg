@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g data-part="awning">
+    <path d="M5 2.5h14l2 5.5H3z"/>
+    <path d="M3 8a3 3 0 0 0 6 0a3 3 0 0 0 6 0a3 3 0 0 0 6 0"/>
+  </g>
+  <path d="M4.5 11.5v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-8"/>
+  <path d="M9.5 21.5V17h5v4.5"/>
+</svg>

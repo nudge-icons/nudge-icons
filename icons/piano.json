@@ -1,0 +1,30 @@
+{
+  "name": "piano",
+  "category": "objects",
+  "tags": ["music", "keys", "keyboard", "instrument", "play"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["piano"],
+    "tabler": ["piano"],
+    "phosphor": ["piano-keys"],
+    "material": ["piano"]
+  },
+  "animation": {
+    "name": "play",
+    "description": "Two keys are played one after the other",
+    "parts": ["first", "second"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "nudge",
+        "y": 1
+      },
+      {
+        "part": "second",
+        "preset": "nudge",
+        "y": 1,
+        "delay": 150
+      }
+    ]
+  }
+}

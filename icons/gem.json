@@ -1,0 +1,23 @@
+{
+  "name": "gem",
+  "category": "objects",
+  "tags": ["diamond", "jewel", "premium", "value", "crystal"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["gem"],
+    "tabler": ["diamond"],
+    "phosphor": ["diamond"],
+    "material": ["diamond"]
+  },
+  "animation": {
+    "name": "gleam",
+    "description": "Light catches the facets",
+    "parts": ["facets"],
+    "motion": [
+      {
+        "part": "facets",
+        "preset": "flash"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "award",
+  "category": "objects",
+  "tags": ["rosette", "prize", "achievement", "badge", "winner"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["award"],
+    "tabler": ["award"],
+    "phosphor": ["medal"],
+    "material": ["workspace_premium"]
+  },
+  "animation": {
+    "name": "pop",
+    "description": "The rosette pops",
+    "parts": ["award"],
+    "motion": [
+      {
+        "part": "award",
+        "preset": "pulse",
+        "origin": [12, 9],
+        "scale": 1.12
+      }
+    ]
+  },
+  "filled": {}
+}

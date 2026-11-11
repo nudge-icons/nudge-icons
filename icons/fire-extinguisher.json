@@ -1,0 +1,31 @@
+{
+  "name": "fire-extinguisher",
+  "category": "objects",
+  "tags": ["fire", "safety", "emergency", "extinguish", "protection"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["fire-extinguisher"],
+    "tabler": ["fire-extinguisher"],
+    "phosphor": ["fire-extinguisher"],
+    "material": ["fire_extinguisher"]
+  },
+  "animation": {
+    "name": "spray",
+    "description": "The lever is squeezed and the hose swings",
+    "parts": ["lever", "hose"],
+    "motion": [
+      {
+        "part": "lever",
+        "preset": "nudge",
+        "y": 1
+      },
+      {
+        "part": "hose",
+        "preset": "swing",
+        "origin": [11, 4],
+        "angle": 6,
+        "delay": 100
+      }
+    ]
+  }
+}

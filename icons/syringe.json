@@ -1,0 +1,25 @@
+{
+  "name": "syringe",
+  "category": "objects",
+  "tags": ["injection", "vaccine", "needle", "medicine", "shot"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["syringe"],
+    "tabler": ["vaccine"],
+    "phosphor": ["syringe"],
+    "material": ["syringe"]
+  },
+  "animation": {
+    "name": "inject",
+    "description": "The plunger presses in",
+    "parts": ["plunger"],
+    "motion": [
+      {
+        "part": "plunger",
+        "preset": "nudge",
+        "x": -1,
+        "y": 1
+      }
+    ]
+  }
+}

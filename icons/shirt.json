@@ -1,0 +1,25 @@
+{
+  "name": "shirt",
+  "category": "objects",
+  "tags": ["t-shirt", "clothing", "apparel", "fashion", "merch"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["shirt"],
+    "tabler": ["shirt"],
+    "phosphor": ["t-shirt"],
+    "material": ["apparel"]
+  },
+  "animation": {
+    "name": "sway",
+    "description": "The shirt sways on a hanger",
+    "parts": ["shirt"],
+    "motion": [
+      {
+        "part": "shirt",
+        "preset": "swing",
+        "origin": [12, 3],
+        "angle": 6
+      }
+    ]
+  }
+}

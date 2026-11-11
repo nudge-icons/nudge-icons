@@ -1,0 +1,60 @@
+{
+  "name": "barcode",
+  "category": "objects",
+  "tags": ["scan", "product", "inventory", "price", "label"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["barcode"],
+    "tabler": ["barcode"],
+    "phosphor": ["barcode"],
+    "material": ["barcode"]
+  },
+  "animation": {
+    "name": "print",
+    "description": "The bars print from left to right, then the digits flash",
+    "parts": ["first", "second", "third", "fourth", "fifth", "sixth", "digits"],
+    "motion": [
+      {
+        "part": "first",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 0
+      },
+      {
+        "part": "second",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 60
+      },
+      {
+        "part": "third",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 120
+      },
+      {
+        "part": "fourth",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 180
+      },
+      {
+        "part": "fifth",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 240
+      },
+      {
+        "part": "sixth",
+        "preset": "draw",
+        "duration": 250,
+        "delay": 300
+      },
+      {
+        "part": "digits",
+        "preset": "flash",
+        "delay": 360
+      }
+    ]
+  }
+}

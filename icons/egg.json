@@ -1,0 +1,25 @@
+{
+  "name": "egg",
+  "category": "objects",
+  "tags": ["food", "breakfast", "easter", "hatch", "protein"],
+  "since": "0.5.0",
+  "equivalents": {
+    "lucide": ["egg"],
+    "tabler": ["egg"],
+    "phosphor": ["egg"],
+    "material": ["egg"]
+  },
+  "animation": {
+    "name": "wobble",
+    "description": "The egg wobbles as if about to hatch",
+    "parts": ["egg"],
+    "motion": [
+      {
+        "part": "egg",
+        "preset": "swing",
+        "origin": [12, 21.5],
+        "angle": 8
+      }
+    ]
+  }
+}
