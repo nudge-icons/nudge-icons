@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Refresh } from "@nudge-icons/react";
 import { CORE_DIR, ICONS_DIR } from "../../../../scripts/lib/registry-layout.ts";
 import { releaseUrl } from "../lib/constants";
-import { themeLabel, type Entry } from "../lib/data";
+import { isReleased, themeLabel, type Entry } from "../lib/data";
 import { galleryHref, href, Link } from "../state/router";
 import { forIcon, toAnimate, useSettings } from "../state/settings";
 import {
@@ -53,12 +53,19 @@ export function IconPage({ entry }: { entry: Entry }) {
       </Link>
       <header className="icon-head">
         <h1>{entry.id}</h1>
-        {/* The package version that has this icon: older versions do not export it. */}
+        {/* The package version that has this icon: older versions do not export it. An icon
+            of the next release is already on the site but not on npm, and has no release page. */}
         <p className="icon-since">
-          Added in{" "}
-          <a href={releaseUrl(icon.since)} target="_blank" rel="noreferrer">
-            {icon.since}
-          </a>
+          {isReleased(icon.since) ? (
+            <>
+              Added in{" "}
+              <a href={releaseUrl(icon.since)} target="_blank" rel="noreferrer">
+                {icon.since}
+              </a>
+            </>
+          ) : (
+            <>Coming in {icon.since}, not on npm yet</>
+          )}
         </p>
         {/* One row: the category first, then themes, the second state and the search tags. */}
         <ul className="tags" role="list" aria-label="Category, themes and tags">

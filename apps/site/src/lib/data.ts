@@ -1,6 +1,7 @@
 import * as Icons from "@nudge-icons/react";
 import type { ToggleIconComponent } from "@nudge-icons/react";
 import list from "@nudge-icons/svg/icons.json";
+import react from "../../../../packages/react/package.json";
 import {
   compareVersions,
   relatedEntries,
@@ -85,6 +86,13 @@ const META: IconMeta[] = (list as unknown as ListedMeta[]).map((m) => ({
 export const LATEST = META.map((m) => m.since).reduce((a, b) =>
   compareVersions(a, b) >= 0 ? a : b,
 );
+
+/**
+ * The version on npm. The site is built from `main`, which can already hold icons of the
+ * next release; those have no release page yet.
+ */
+export const PUBLISHED = react.version;
+export const isReleased = (version: string) => compareVersions(version, PUBLISHED) <= 0;
 
 export const ENTRIES: Entry[] = META.flatMap((meta) => {
   const icon: IconMetaEntry = {
