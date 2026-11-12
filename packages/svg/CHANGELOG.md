@@ -1,5 +1,13 @@
 # @nudge-icons/svg
 
+## 0.5.0
+
+### Minor Changes
+
+- 5e85962: 52 new icons for places, travel, transport, weather and nature: places (`Home`, `Building`, `GraduationCap`, `Park`, `DoorOpen`, `Bed`, `Armchair`, `Tent`), transport (`Plane`, `Train`, `Bus`, `Car`, `Truck`, `Ambulance`, `Helicopter`, `Drone`, `Scooter`, `Moped`, `Sailboat`, `Anchor`, `Luggage`), navigation (`Compass`, `Navigation`, `Route`, `Road`, `Signpost`, `TrafficCone`, `Pin`, `MapPinPlus`, `Radar`, `Satellite`, `ZoomIn`, `ZoomOut`), weather (`Umbrella`, `CloudRain`, `CloudSnow`, `CloudFog`, `CloudCheck`, `CloudOff`, `Snowflake`, `Droplet`, `Wind`, `Tornado`, `Rainbow`, `Sunrise`) and nature (`Mountain`, `Tree`, `Leaf`, `Flower`, `Clover`, `Flame`, `Waves`). New filled variants: `NavigationFilled`, `PinFilled`, `DropletFilled`, `FlameFilled`.
+- e622970: 50 new icons for commerce, food, health, sport and games: commerce (`Store`, `Banknote`, `Coins`, `PiggyBank`, `Landmark`, `Briefcase`, `Factory`, `Warehouse`, `Barcode`, `QrCode`, `Scale`, `Weight`, `Gem`), awards (`Crown`, `Award`, `Medal`, `Trophy`, `PartyPopper`), food (`Cake`, `Coffee`, `Pizza`, `Cookie`, `Egg`, `Carrot`, `IceCream`, `ForkKnife`, `ChefHat`, `Microwave`), things (`Shirt`, `Backpack`), health (`HeartPulse`, `Pill`, `Syringe`, `Stethoscope`, `Thermometer`, `Hospital`, `Microscope`, `FireExtinguisher`, `Siren`), games (`Skull`, `Ghost`, `Joystick`, `ChessKnight`, `Piano`, `Sword`, `Swords`, `Axe`) and animals (`Cat`, `Dog`, `Fish`). New filled variants: `CrownFilled`, `AwardFilled`.
+- b9a55e6: 51 new icons for design, data and development, which bring the set to 500: design tools (`Palette`, `Brush`, `PaintBucket`, `Pipette`, `PencilRuler`, `PencilSquare`, `Ruler`, `Crop`, `Scissors`, `Lasso`, `Magnet`, `Shapes`, `Layout`, `Opacity`, `Sticker`, `Feather`, `FlipHorizontal`, `FlipVertical`, `AlignCenterHorizontal`, `AlignCenterVertical`), tools (`Hammer`, `Shovel`, `Binoculars`, `Bomb`), development (`GitBranch`, `GitCommit`, `GitFork`, `GitMerge`, `GitPullRequest`, `Bug`, `Webhook`, `Binary`, `Variable`, `Hash`, `Option`), maths (`Percent`, `Equal`, `Divide`, `InfinitySign`), data and hardware (`DatabaseSearch`, `HardDrive`, `Usb`, `BatteryFull`, `BatteryLow`, `BatteryPlus`, `SolarPanel`) and charts (`Activity`, `TrendingUpDown`, `ChartArea`, `ChartScatter`), plus `Recycle`. New filled variants: `ShapesFilled`, `BombFilled`.
+
 ## 0.4.0
 
 ### Minor Changes
