@@ -1,7 +1,7 @@
 {
-  "name": "infinity",
+  "name": "infinity-sign",
   "category": "interface",
-  "tags": ["forever", "loop", "unlimited", "endless", "repeat"],
+  "tags": ["infinity", "forever", "loop", "unlimited", "endless", "repeat"],
   "since": "0.5.0",
   "equivalents": {
     "lucide": ["infinity"],
