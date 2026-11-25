@@ -11,7 +11,7 @@ import {
   type Filter,
   type Sort,
 } from "../lib/data";
-import { href, navigate, rememberGallerySearch } from "../state/router";
+import { href, Link, navigate, rememberGallerySearch } from "../state/router";
 import { galleryQuery, parseGalleryUrl } from "../lib/gallery-url";
 import { useSettings, type PageMotion } from "../state/settings";
 import { installCommand } from "../lib/snippets";
@@ -430,10 +430,12 @@ export function GalleryPage({ selected }: { selected: string | null }) {
         ) : (
           <ul className="grid" role="list">
             {results.map((e) => (
-              <li key={e.id}>
+              // The whole card selects the icon; the name is a real link to its page, so search
+              // engines (and middle clicks) reach every icon page from the gallery.
+              <li key={e.id} className={`cell ${e.id === selected ? "is-selected" : ""}`}>
                 <button
                   type="button"
-                  className="cell"
+                  className="cell-hit"
                   aria-pressed={e.id === selected}
                   aria-label={e.id}
                   onClick={() => select(e.id === selected ? null : e.id)}
@@ -449,9 +451,16 @@ export function GalleryPage({ selected }: { selected: string | null }) {
                     })}
                     {...(showActive && filters.has("toggle") && { active: true })}
                   />
-                  <span className="cell-name">{e.id}</span>
-                  {e.icon.isNew && <span className="badge-new">new</span>}
                 </button>
+                {/* Out of the tab order: keyboard users open the page from the panel's link. */}
+                <Link
+                  to={href({ page: "icon", name: e.id })}
+                  className="cell-name cell-link"
+                  tabIndex={-1}
+                >
+                  {e.id}
+                </Link>
+                {e.icon.isNew && <span className="badge-new">new</span>}
               </li>
             ))}
           </ul>
