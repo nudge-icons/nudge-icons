@@ -281,6 +281,15 @@ function elementPoints(el: Element): Array<[number, number]> {
   }
 }
 
+/**
+ * Globals a module may not shadow without breaking ESLint's recommended rules
+ * (`no-shadow-restricted-names`): `import { Infinity } from "@nudge-icons/react"` would fail
+ * for anyone with that preset and hide the number in their file.
+ */
+const RESTRICTED_GLOBALS = new Set(["Infinity", "NaN", "undefined", "eval", "arguments"]);
+const pascal = (name: string) =>
+  name.replace(/(^|-)([a-z0-9])/g, (_, _dash: string, c: string) => c.toUpperCase());
+
 /** Returns a list of rule violations; an empty list means the icon is valid. */
 export function checkIcon(
   name: string,
@@ -290,6 +299,10 @@ export function checkIcon(
 ): string[] {
   const errors: string[] = [];
   if (!/^[a-z][a-z0-9]*(-[a-z0-9]+)*$/.test(name)) errors.push(`name "${name}" is not kebab-case`);
+  if (RESTRICTED_GLOBALS.has(pascal(name)))
+    errors.push(
+      `name "${name}" makes the component ${pascal(name)}, which shadows a JavaScript global`,
+    );
 
   const [root, ...children] = parseSvg(svg);
   if (root?.tag !== "svg") return [...errors, "file must start with an <svg> element"];

@@ -141,6 +141,16 @@ describe("checkIcon", () => {
     ).toBe(true);
   });
 
+  it("rejects a name whose component would shadow a JavaScript global", () => {
+    const errors = checkIcon("infinity", svg('<circle cx="12" cy="12" r="4"/>'), {
+      ...meta(),
+      name: "infinity",
+    });
+    expect(errors).toContain(
+      'name "infinity" makes the component Infinity, which shadows a JavaScript global',
+    );
+  });
+
   it("requires metadata to match the file name", () => {
     const errors = checkIcon("dot", svg('<circle cx="12" cy="12" r="4"/>'), {
       ...meta(),

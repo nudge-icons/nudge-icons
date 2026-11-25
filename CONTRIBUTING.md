@@ -48,6 +48,7 @@ Keep the outer size equal to the outline icon and reuse its `data-part` names, s
 - The subject comes first, then the modifier: `file-plus`, `user-plus`, `chart-bar`, `arrow-up-right`. Icons of one subject then sort together.
 - Describe what is drawn, not one use of it: `trash`, not `delete`. Uses go into `tags`.
 - No brand or product names, and no logos.
+- The component must not shadow a JavaScript global that ESLint's recommended rules protect (`Infinity`, `NaN`, `undefined`, `eval`, `arguments`): the infinity sign is `infinity-sign`. `pnpm check:icons` checks this.
 - When three or more of the sets in `equivalents` agree on a name, use it, because people search for it. Otherwise follow the rules above and keep the other names in `tags` and `equivalents`.
 - Component names are the PascalCase of the file name (`file-plus` → `FilePlus`). A name is public API: do not rename an icon in a minor release.
 
